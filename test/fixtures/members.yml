@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  last_name: MyString
+  first_name: MyString
+  street_1: MyString
+  street_2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  home_phone: MyString
+  work_phone: MyString
+  cell_phone: MyString
+  email: MyString
+  caf_col_no: 1
+  caf_join_date: 2016-07-29
+
+two:
+  user: 
+  last_name: MyString
+  first_name: MyString
+  street_1: MyString
+  street_2: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  home_phone: MyString
+  work_phone: MyString
+  cell_phone: MyString
+  email: MyString
+  caf_col_no: 1
+  caf_join_date: 2016-07-29
