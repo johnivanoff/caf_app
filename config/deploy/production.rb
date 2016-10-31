@@ -31,43 +31,8 @@ role :db,  domain, :primary => true # This is where Rails migrations will run
 # require "bundler/capistrano"
 # set :bundle_flags, "--quiet --no-cache"
 
-before "deploy:assets:precompile", "deploy:symlink_db_file"
-
-after "deploy:restart", "deploy:cleanup", "deploy:symlink_env_file", "deploy:symlink_htaccess_file", "deploy:precompile_other"
 
 namespace :deploy do
 
-   task :start do ; end
-   task :stop do ; end
-
-
-   task :restart, :roles => :app, :except => { :no_release => true } do
-     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-   end
-
-  desc "symlink my db file"
-  task :symlink_db_file do
-    run "ln -s /home/#{user}/#{application}/shared/database.yml #{latest_release}/config/database.yml"
-  end
-
-  desc "symlink my db file again"
-  task :symlink_db_file_II do
-    run "ln -s /home/#{user}/#{application}/shared/database.yml /home/#{user}/#{application}/current/config/database.yml"
-  end
-
-  desc "symlink my env file"
-  task :symlink_env_file do
-    run "ln -s /home/#{user}/#{application}/shared/production.rb /home/#{user}/#{application}/current/config/environments/production.rb"
-  end
-
-  desc "symlink my htaccess file"
-  task :symlink_htaccess_file do
-    run "ln -s /home/#{user}/#{application}/shared/.htaccess /home/#{user}/#{application}/current/public/.htaccess"
-  end
-
-  desc "precompile other"
-  task :precompile_other do
-    run "cd /home/#{user}/#{application}/current && bundle exec rake RAILS_ENV=production RAILS_GROUPS=assets assets:precompile"
-  end
 
 end
