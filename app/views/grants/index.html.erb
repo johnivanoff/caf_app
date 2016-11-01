@@ -1,4 +1,5 @@
-<h1>Listing grants</h1>
+
+<h1>Grants</h1>
 
 <table>
   <tr>
@@ -11,8 +12,8 @@
 
 <% @grants.each do |grant| %>
   <tr>
-    <td><%= grant.right_id %></td>
-    <td><%= grant.role_id %></td>
+    <td><%= grant.right.resource %> <%= grant.right.operation %></td>
+    <td><%= grant.role.name %></td>
     <td><%= link_to 'Show', grant %></td>
     <td><%= link_to 'Edit', edit_grant_path(grant) %></td>
     <td><%= link_to 'Destroy', grant, method: :delete, data: { confirm: 'Are you sure?' } %></td>

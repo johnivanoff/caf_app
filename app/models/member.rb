@@ -1,4 +1,21 @@
 class Member < ActiveRecord::Base
   belongs_to :user
   attr_accessible :user_id, :caf_col_no, :caf_join_date, :cell_phone, :city, :email, :first_name, :home_phone, :last_name, :state, :street_1, :street_2, :work_phone, :zip
+
+#  scope :active, where("members.active = 1")
+#  scope :inactive, where("members.active = 0")
+
+  scope :ordered, order("members.last_name ASC, members.first_name ASC")
+
+#  scope :dues_most_recent, joins(:dues_payments).merge(DuesPayment.ordered)
+  
+#  scope :dues_current, joins(:dues_payments).merge(DuesPayment.current)
+
+#  scope :dues_past, joins(:dues_payments).merge(DuesPayment.past_due)
+  
+  def full_name
+    self.last_name + ', ' + self.first_name
+  end
+
+
 end
