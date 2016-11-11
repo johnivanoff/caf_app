@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>User:</b>
-  <%= @member.user %>
+  <%= @member.user_id %>
 </p>
 
 <p>
@@ -16,14 +14,16 @@
 </p>
 
 <p>
-  <b>Street 1:</b>
+  <b>Address:</b>
   <%= @member.street_1 %>
 </p>
 
-<p>
-  <b>Street 2:</b>
-  <%= @member.street_2 %>
-</p>
+<% if @member.street_2? %>
+  <p>
+    <b>Address 2:</b>
+    <%= @member.street_2 %>
+  </p>
+<% end %>
 
 <p>
   <b>City:</b>
@@ -40,20 +40,26 @@
   <%= @member.zip %>
 </p>
 
+<% if @member.home_phone? %>
 <p>
   <b>Home phone:</b>
   <%= @member.home_phone %>
 </p>
+<% end %>
 
+<% if @member.work_phone? %>
 <p>
   <b>Work phone:</b>
   <%= @member.work_phone %>
 </p>
+<% end %>
 
+<% if @member.cell_phone? %>
 <p>
   <b>Cell phone:</b>
   <%= @member.cell_phone %>
 </p>
+<% end %>
 
 <p>
   <b>Email:</b>
@@ -61,13 +67,13 @@
 </p>
 
 <p>
-  <b>Caf col no:</b>
+  <b>CAF Col No:</b>
   <%= @member.caf_col_no %>
 </p>
 
 <p>
-  <b>Caf join date:</b>
-  <%= @member.caf_join_date %>
+  <b>CAF join date:</b>
+  <%= @member.caf_join_date.strftime('%b. %d, %Y') %>
 </p>
 
 

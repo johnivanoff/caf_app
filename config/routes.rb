@@ -14,7 +14,13 @@ DwApp::Application.routes.draw do
   resources :members
 
 
-  devise_for :users
+devise_for :users, :skip => [:registrations]                                          
+    as :user do
+      get "login", :to => "devise/sessions#new"
+      get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
+      put 'users' => 'devise/registrations#update', :as => 'user_registration'            
+    end
+
   resources :users
 
   # The priority is based upon order of creation:
