@@ -15,20 +15,53 @@ class MembersController < ApplicationController
   def new
     @member = Member.new
     user = @member.build_user
+    @roles = Role.find(:all)
     respond_with(@member)
   end
 
   def edit
+    @roles = Role.find(:all)
   end
 
   def create
     @member = Member.new(params[:member])
+    @roles = Role.find(:all)
+
+    checked_roles = []
+    checked_params = params[:role_list] || []
+    for check_box_id in checked_params
+      role = Role.find(check_box_id)
+      if not @member.user.roles.include?(role)
+        @member.user.roles << role
+      end
+      checked_roles << role
+    end
+    
     @member.save
     respond_with(@member)
   end
 
   def update
     @member.update_attributes(params[:member])
+    
+    if params[:commit] == "Update Member"
+      checked_roles = []
+      checked_params = params[:role_list] || []
+      for check_box_id in checked_params
+        role = Role.find(check_box_id)
+        if not @member.user.roles.include?(role)
+          @member.user.roles << role
+        end
+        checked_roles << role
+      end
+      missing_roles = @roles - checked_roles
+      for role in missing_roles
+        if @member.user.roles.include?(role)
+          @member.user.roles.delete(role)
+        end
+      end
+    end
+    
     respond_with(@member)
   end
 

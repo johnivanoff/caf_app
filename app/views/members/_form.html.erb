@@ -67,6 +67,16 @@
     <%= f.label :caf_join_date, 'CAF join date' %><br />
     <%= f.date_select :caf_join_date %>
   </div>
+
+<%# if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+
+  <%= f.fields_for :roles do |builder| %>
+    <%= render "roles", :f => builder %>
+  <% end %>
+
+  </div>
+<%# end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
