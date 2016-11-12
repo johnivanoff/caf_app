@@ -14,6 +14,7 @@ class MembersController < ApplicationController
 
   def new
     @member = Member.new
+    user = @member.build_user
     respond_with(@member)
   end
 

@@ -1,3 +1,5 @@
+<%= render "scripts" %>
+
 <%= form_for(@member) do |f| %>
   <% if @member.errors.any? %>
     <div id="error_explanation">
@@ -11,10 +13,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </div>
+
+  <%= f.fields_for :user do |builder| %>
+        <%= render "user_fields", :f => builder %> 
+  <% end %>
+
+
   <div class="field">
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
@@ -56,15 +60,11 @@
     <%= f.text_field :cell_phone %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :caf_col_no %><br />
+    <%= f.label :caf_col_no, 'CAF Col No' %><br />
     <%= f.number_field :caf_col_no %>
   </div>
   <div class="field">
-    <%= f.label :caf_join_date %><br />
+    <%= f.label :caf_join_date, 'CAF join date' %><br />
     <%= f.date_select :caf_join_date %>
   </div>
   <div class="actions">

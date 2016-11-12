@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
 #  force_ssl
 
-  before_filter :check_authentication
+#  before_filter :check_authentication
 
   def check_authentication
     unless params[:controller] == 'devise/sessions' or params[:controller] == 'devise/passwords'
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  before_filter :check_authorization
+#  before_filter :check_authorization
 
   private 
 

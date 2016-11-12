@@ -1,0 +1,10 @@
+
+<div class="field">
+  <%= f.label :email, 'Email (login)' %><br />
+  <%= f.text_field :email %>
+</div>
+
+<% if @member.user.email.blank? %>
+  create a password
+  <%= f.hidden_field :password, :value => 'welcome_1'  %>
+<% end %>

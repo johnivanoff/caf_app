@@ -1,6 +1,8 @@
 class Member < ActiveRecord::Base
+  attr_accessible :user_id, :caf_col_no, :caf_join_date, :cell_phone, :city, :email, :first_name, :home_phone, :last_name, :state, :street_1, :street_2, :work_phone, :zip, :user_attributes
+
   belongs_to :user
-  attr_accessible :user_id, :caf_col_no, :caf_join_date, :cell_phone, :city, :email, :first_name, :home_phone, :last_name, :state, :street_1, :street_2, :work_phone, :zip
+  accepts_nested_attributes_for :user, :allow_destroy => true
 
 #  scope :active, where("members.active = 1")
 #  scope :inactive, where("members.active = 0")
