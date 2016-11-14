@@ -14,6 +14,8 @@ gem 'acts_as_list', '< 0.3.0'
 gem 'will_paginate'
 gem 'redcarpet', '<= 2.3.0'
 gem 'exception_notification', '~> 3.0.1'
+gem 'rmagick', '<= 2.15.4'
+gem 'carrierwave', '<= 0.10.0'
 gem 'activemerchant', :require => 'active_merchant'
 
 #SEO Gems
