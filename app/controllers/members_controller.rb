@@ -1,6 +1,9 @@
 class MembersController < ApplicationController
   before_filter :set_member, only: [:show, :edit, :update, :destroy]
 
+skip_before_filter :check_authorization, :check_authentication, :only => [:index]
+
+
   respond_to :html
 
   def index
@@ -43,6 +46,7 @@ class MembersController < ApplicationController
 
   def update
     @member.update_attributes(params[:member])
+    @roles = Role.find(:all)
     
     if params[:commit] == "Update Member"
       checked_roles = []

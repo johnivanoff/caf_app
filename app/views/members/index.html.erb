@@ -1,21 +1,23 @@
+<%= render "scripts" %>
+
 <h1>Members</h1>
 
 <table>
   <tr>
-    <th>User</th>
-    <th>Last name</th>
-    <th>First name</th>
-    <th>Street 1</th>
-    <th>Street 2</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Zip</th>
-    <th>Home phone</th>
-    <th>Work phone</th>
-    <th>Cell phone</th>
-    <th>Email</th>
-    <th>Caf col no</th>
-    <th>Caf join date</th>
+    <th class="sortable">User</th>
+    <th class="sortable">Last name</th>
+    <th class="sortable">First name</th>
+    <th class="sortable">Email/Username</th>
+    <th class="sortable">Street 1</th>
+    <th class="sortable">Street 2</th>
+    <th class="sortable">City</th>
+    <th class="sortable">State</th>
+    <th class="sortable">Zip</th>
+    <th class="sortable">Home phone</th>
+    <th class="sortable">Work phone</th>
+    <th class="sortable">Cell phone</th>
+    <th class="sortable">CAF Col No</th>
+    <th class="sortable">CAF join date</th>
     <th></th>
     <th></th>
     <th></th>
@@ -26,6 +28,7 @@
     <td><%= member.user_id %></td>
     <td><%= member.last_name %></td>
     <td><%= member.first_name %></td>
+    <td><%= member.user.email %></td>
     <td><%= member.street_1 %></td>
     <td><%= member.street_2 %></td>
     <td><%= member.city %></td>
@@ -34,7 +37,6 @@
     <td><%= member.home_phone %></td>
     <td><%= member.work_phone %></td>
     <td><%= member.cell_phone %></td>
-    <td><%= member.email %></td>
     <td><%= member.caf_col_no %></td>
     <td><%= member.caf_join_date %></td>
     <td><%= link_to 'Show', member %></td>

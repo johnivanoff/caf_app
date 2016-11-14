@@ -65,7 +65,7 @@
   </div>
   <div class="field">
     <%= f.label :caf_join_date, 'CAF join date' %><br />
-    <%= f.date_select :caf_join_date %>
+    <%= f.text_field :caf_join_date %>
   </div>
 
 <%# if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
@@ -76,7 +76,7 @@
 
   </div>
 <%# end %>
-
+<br /><br />
   <div class="actions">
     <%= f.submit %>
   </div>
