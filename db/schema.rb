@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161115053025) do
+ActiveRecord::Schema.define(:version => 20161115220522) do
 
   create_table "aircraft_classes", :force => true do |t|
     t.string   "class_type"
@@ -61,12 +61,12 @@ ActiveRecord::Schema.define(:version => 20161115053025) do
     t.string   "n_number"
     t.text     "description"
     t.string   "nose_art"
-    t.integer  "aircraft_type_id_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.string   "aircraft_type_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
-  add_index "aircrafts", ["aircraft_type_id_id"], :name => "index_aircrafts_on_aircraft_type_id_id"
+  add_index "aircrafts", ["aircraft_type_id"], :name => "index_aircrafts_on_aircraft_type_id_id"
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
