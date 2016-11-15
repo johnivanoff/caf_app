@@ -16,7 +16,9 @@ class User < ActiveRecord::Base
 
   has_many :roles, :through => :assignments
 
-#  has_paper_trail
+  has_paper_trail :class_name => 'UserVersion',
+     :meta => { :author_username => :user_name}
+
 
   def can?(action, resource)
     roles.includes(:rights).for(action, resource).any?

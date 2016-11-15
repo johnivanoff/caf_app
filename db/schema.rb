@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161115213346) do
+ActiveRecord::Schema.define(:version => 20161115220522) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -78,6 +78,18 @@ ActiveRecord::Schema.define(:version => 20161115213346) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "user_versions", :force => true do |t|
+    t.string   "item_type",       :null => false
+    t.integer  "item_id",         :null => false
+    t.string   "event",           :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.string   "author_username"
+    t.datetime "created_at"
+  end
+
+  add_index "user_versions", ["item_type", "item_id"], :name => "index_user_versions_on_item_type_and_item_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

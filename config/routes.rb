@@ -28,7 +28,17 @@ devise_for :users, :skip => [:registrations]
       put 'users' => 'devise/registrations#update', :as => 'user_registration'            
     end
 
-  resources :users
+
+
+#  resources :users
+resources :users do
+    resources :versions, :only => [:destroy] do
+      member do
+        get 'diff', :to => 'users_versions#diff'
+        put 'rollback', :to => 'users_versions#rollback'
+      end
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

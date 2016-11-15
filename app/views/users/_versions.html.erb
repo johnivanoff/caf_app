@@ -1,0 +1,28 @@
+<h2>Revisions</h2>
+
+<table class="table_border">
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Date</th>
+      <th>Author</th>
+      <th>Event</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%- @user.versions.reverse.each do |version| %>
+      <tr class="<%= cycle('odd_row', 'even_row') %>">
+        <td><%= version.index %></td>
+        <td><%= version.created_at.strftime("%b %d, %Y") %></td>
+        <td><%= find_version_author_name(version) %></td>
+        <td><%= version.event.humanize %></td>
+        <td><%= link_to 'Diff', diff_user_version_path(@user, version) %></td>
+        <td><%= link_to 'Rollback', rollback_user_version_path(@user, version), :method => 'put' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
