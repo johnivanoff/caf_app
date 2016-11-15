@@ -10,8 +10,15 @@ DwApp::Application.routes.draw do
 
   resources :rights
 
-
-  resources :members
+#  resources :members
+  resources :members do
+    resources :versions, :only => [:destroy] do
+      member do
+        get 'diff', :to => 'members_versions#diff'
+        put 'rollback', :to => 'members_versions#rollback'
+      end
+    end
+  end
 
 
 devise_for :users, :skip => [:registrations]                                          

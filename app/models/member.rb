@@ -1,8 +1,12 @@
 class Member < ActiveRecord::Base
-  attr_accessible :user_id, :caf_col_no, :caf_join_date, :cell_phone, :city, :email, :first_name, :home_phone, :last_name, :state, :street_1, :street_2, :work_phone, :zip, :user_attributes
+  attr_accessible :user_id, :author_username, :caf_col_no, :caf_join_date, :cell_phone, :city, :email, :first_name, :home_phone, :last_name, :state, :street_1, :street_2, :work_phone, :zip, :user_attributes
 
   belongs_to :user
   accepts_nested_attributes_for :user, :allow_destroy => true
+
+  has_paper_trail :class_name => 'MemberVersion',
+     :meta => { :author_username => :user_name}
+  #   meta: { author_username: :user_name}
 
 #  scope :active, where("members.active = 1")
 #  scope :inactive, where("members.active = 0")
