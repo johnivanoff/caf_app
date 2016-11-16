@@ -11,7 +11,62 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161115220522) do
+ActiveRecord::Schema.define(:version => 20161115053025) do
+
+  create_table "aircraft_classes", :force => true do |t|
+    t.string   "class_type"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "aircraft_types", :force => true do |t|
+    t.integer  "aircraft_class_id"
+    t.string   "aircraft_type"
+    t.text     "description"
+    t.string   "manufacturer"
+    t.string   "introduced"
+    t.string   "production_years"
+    t.string   "role"
+    t.string   "power"
+    t.string   "length"
+    t.string   "height"
+    t.string   "wingspan"
+    t.string   "empty_weight"
+    t.string   "gross_weight"
+    t.string   "max_weight"
+    t.string   "range"
+    t.string   "max_speed"
+    t.string   "cruise_speed"
+    t.string   "ceiling"
+    t.string   "crew"
+    t.string   "guns"
+    t.string   "hardpoints"
+    t.string   "rockets"
+    t.string   "bombs"
+    t.string   "fuel_capacity"
+    t.string   "fuel_burn"
+    t.string   "oil_capacity"
+    t.string   "qty_produced"
+    t.string   "cost"
+    t.string   "qty_still_flying"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "aircraft_types", ["aircraft_class_id"], :name => "index_aircraft_types_on_aircraft_class_id"
+
+  create_table "aircrafts", :force => true do |t|
+    t.string   "name"
+    t.string   "n_number"
+    t.text     "description"
+    t.string   "nose_art"
+    t.integer  "aircraft_type_id_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "aircrafts", ["aircraft_type_id_id"], :name => "index_aircrafts_on_aircraft_type_id_id"
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"

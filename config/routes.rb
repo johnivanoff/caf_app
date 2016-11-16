@@ -1,4 +1,13 @@
 DwApp::Application.routes.draw do
+  resources :aircrafts
+
+
+  resources :aircraft_types
+
+
+  resources :aircraft_classes
+
+
   resources :assignments
 
 

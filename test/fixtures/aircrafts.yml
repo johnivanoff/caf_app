@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  n_number: MyString
+  description: MyText
+  nose_art: MyString
+  aircraft_type_id: 
+
+two:
+  name: MyString
+  n_number: MyString
+  description: MyText
+  nose_art: MyString
+  aircraft_type_id: 

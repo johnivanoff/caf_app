@@ -1,0 +1,37 @@
+<%= form_for(@aircraft) do |f| %>
+  <% if @aircraft.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@aircraft.errors.count, "error") %> prohibited this aircraft from being saved:</h2>
+
+      <ul>
+      <% @aircraft.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :aircraft_type_id, 'Aircraft Type' %><br />
+    <%= f.collection_select :aircraft_type_id, AircraftType.all, :id, :aircraft_type, options = {:prompt => true}, html_options = {:class => "styled-select"} %>
+  </div>
+  <div class="field">
+    <%= f.label :n_number %><br />
+    <%= f.text_field :n_number %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :nose_art %><br />
+    <%= f.text_field :nose_art %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

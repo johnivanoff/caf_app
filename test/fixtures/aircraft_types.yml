@@ -1,0 +1,63 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  aircraft_class: 
+  type: 
+  description: MyText
+  manufacturer: MyString
+  introduced: MyString
+  production_years: MyString
+  role: MyString
+  power: MyString
+  length: MyString
+  height: MyString
+  wingspan: MyString
+  empty_weight: MyString
+  gross_weight: MyString
+  max_weight: MyString
+  range: MyString
+  max_speed: MyString
+  cruise_speed: MyString
+  ceiling: MyString
+  crew: MyString
+  guns: MyString
+  hardpoints: MyString
+  rockets: MyString
+  bombs: MyString
+  fuel_capacity: MyString
+  fuel_burn: MyString
+  oil_capacity: MyString
+  qty_produced: MyString
+  cost: MyString
+  qty_still_flying: MyString
+
+two:
+  aircraft_class: 
+  type: 
+  description: MyText
+  manufacturer: MyString
+  introduced: MyString
+  production_years: MyString
+  role: MyString
+  power: MyString
+  length: MyString
+  height: MyString
+  wingspan: MyString
+  empty_weight: MyString
+  gross_weight: MyString
+  max_weight: MyString
+  range: MyString
+  max_speed: MyString
+  cruise_speed: MyString
+  ceiling: MyString
+  crew: MyString
+  guns: MyString
+  hardpoints: MyString
+  rockets: MyString
+  bombs: MyString
+  fuel_capacity: MyString
+  fuel_burn: MyString
+  oil_capacity: MyString
+  qty_produced: MyString
+  cost: MyString
+  qty_still_flying: MyString

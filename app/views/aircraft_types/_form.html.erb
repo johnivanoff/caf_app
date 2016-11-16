@@ -1,0 +1,133 @@
+<%= form_for(@aircraft_type) do |f| %>
+  <% if @aircraft_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@aircraft_type.errors.count, "error") %> prohibited this aircraft_type from being saved:</h2>
+
+      <ul>
+      <% @aircraft_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :aircraft_class_id, "Aircraft Class" %><br />
+    <%= f.collection_select :aircraft_class_id, AircraftClass.all, :id, :class_type, options = {:prompt => true}, html_options = {:class => "styled-select"} %>
+  </div>
+  <div class="field">
+    <%= f.label :aircraft_type %><br />
+    <%= f.text_field :aircraft_type %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :manufacturer %><br />
+    <%= f.text_field :manufacturer %>
+  </div>
+  <div class="field">
+    <%= f.label :introduced %><br />
+    <%= f.text_field :introduced %>
+  </div>
+  <div class="field">
+    <%= f.label :production_years %><br />
+    <%= f.text_field :production_years %>
+  </div>
+  <div class="field">
+    <%= f.label :role %><br />
+    <%= f.text_field :role %>
+  </div>
+  <div class="field">
+    <%= f.label :power %><br />
+    <%= f.text_field :power %>
+  </div>
+  <div class="field">
+    <%= f.label :length %><br />
+    <%= f.text_field :length %>
+  </div>
+  <div class="field">
+    <%= f.label :height %><br />
+    <%= f.text_field :height %>
+  </div>
+  <div class="field">
+    <%= f.label :wingspan %><br />
+    <%= f.text_field :wingspan %>
+  </div>
+  <div class="field">
+    <%= f.label :empty_weight %><br />
+    <%= f.text_field :empty_weight %>
+  </div>
+  <div class="field">
+    <%= f.label :gross_weight %><br />
+    <%= f.text_field :gross_weight %>
+  </div>
+  <div class="field">
+    <%= f.label :max_weight %><br />
+    <%= f.text_field :max_weight %>
+  </div>
+  <div class="field">
+    <%= f.label :range %><br />
+    <%= f.text_field :range %>
+  </div>
+  <div class="field">
+    <%= f.label :max_speed %><br />
+    <%= f.text_field :max_speed %>
+  </div>
+  <div class="field">
+    <%= f.label :cruise_speed %><br />
+    <%= f.text_field :cruise_speed %>
+  </div>
+  <div class="field">
+    <%= f.label :ceiling %><br />
+    <%= f.text_field :ceiling %>
+  </div>
+  <div class="field">
+    <%= f.label :crew %><br />
+    <%= f.text_field :crew %>
+  </div>
+  <div class="field">
+    <%= f.label :guns %><br />
+    <%= f.text_field :guns %>
+  </div>
+  <div class="field">
+    <%= f.label :hardpoints %><br />
+    <%= f.text_field :hardpoints %>
+  </div>
+  <div class="field">
+    <%= f.label :rockets %><br />
+    <%= f.text_field :rockets %>
+  </div>
+  <div class="field">
+    <%= f.label :bombs %><br />
+    <%= f.text_field :bombs %>
+  </div>
+  <div class="field">
+    <%= f.label :fuel_capacity %><br />
+    <%= f.text_field :fuel_capacity %>
+  </div>
+  <div class="field">
+    <%= f.label :fuel_burn %><br />
+    <%= f.text_field :fuel_burn %>
+  </div>
+  <div class="field">
+    <%= f.label :oil_capacity %><br />
+    <%= f.text_field :oil_capacity %>
+  </div>
+  <div class="field">
+    <%= f.label :qty_produced %><br />
+    <%= f.text_field :qty_produced %>
+  </div>
+  <div class="field">
+    <%= f.label :cost %><br />
+    <%= f.text_field :cost %>
+  </div>
+  <div class="field">
+    <%= f.label :qty_still_flying %><br />
+    <%= f.text_field :qty_still_flying %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,49 @@
+<h1>CAF Aircraft</h1>
+
+<table>
+  <tr>
+    <th class="sortable">Name</th>
+    <th class="sortable">N number</th>
+    <th class="sortable">Description</th>
+    <th class="sortable">Aircraft type</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @aircrafts.each do |aircraft| %>
+  <tr>
+    <td><%= aircraft.name %></td>
+    <td><%= aircraft.n_number %></td>
+    <td><%= simple_format(truncate(aircraft.description, :length => 50, :separator => ' ')) %></td>
+    <td><%= aircraft.aircraft_type.aircraft_type %></td>
+    <td><%= link_to 'Show', aircraft %></td>
+    <td><%= link_to 'Edit', edit_aircraft_path(aircraft) %></td>
+    <td><%= link_to 'Destroy', aircraft, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Aircraft', new_aircraft_path %>
+
+<script>
+$(function() {
+  $('th').click(function(){
+      var table = $(this).parents('table').eq(0)
+      var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+      this.asc = !this.asc
+      if (!this.asc){rows = rows.reverse()}
+      for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+  })
+function comparer(index) {
+    return function(a, b) {
+        var valA = getCellValue(a, index), valB = getCellValue(b, index)
+        return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB)
+    }
+}
+function getCellValue(row, index){ return $(row).children('td').eq(index).html() }
+  });
+
+</script>
