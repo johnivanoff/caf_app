@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
 #  force_ssl
 
-#  before_filter :check_authentication
+  before_filter :check_authentication, :menu
 
   def check_authentication
     unless params[:controller] == 'devise/sessions' or params[:controller] == 'devise/passwords'
@@ -16,6 +16,12 @@ class ApplicationController < ActionController::Base
   end
 
 #  before_filter :check_authorization
+
+  def menu
+    @sub_menu = Menu.sub.order("position").all
+
+    @main_menu = Menu.search(params[:search])
+  end
 
   private 
 

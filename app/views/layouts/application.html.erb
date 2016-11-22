@@ -19,18 +19,23 @@
 </div>
 <p id="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-
+<nav>
 <ul class="links">
-  <li><a href="/aircraft_classes">Aircraft Classes</a></li>
-  <li><a href="/aircraft_types">Aircraft Types</a></li>
-  <li><a href="/aircrafts">Aircraft</a></li>
-  <li><a href="/assignments">Assignments</a></li>
-  <li><a href="/grants">Grants</a></li>
-  <li><a href="/members">Members</a></li>
-  <li><a href="/rights">Rights</a></li>
-  <li><a href="/roles">Roles</a></li>
-  <li><a href="/users">Users</a></li>
+<% @main_menu.each do |menu| %>
+  <li><a href="<%= menu.url %>"><%= menu.display %></a>
+  <% if @sub_menu.collect(&:parent_id).include?(menu.id) %>
+    <ul>
+      <% @sub_menu.each do |submenu| %>
+        <% if submenu.parent_id == menu.id %>
+        <li><a href="<%= submenu.url %>"><%= submenu.display %></a></li>
+      <% end %>
+      <% end %>
 </ul>
+  <% end %>
+</li>
+<% end %>
+</ul>
+</nav>
 
 <%= yield %>
 

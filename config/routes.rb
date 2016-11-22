@@ -1,4 +1,11 @@
 DwApp::Application.routes.draw do
+  resources :menus do
+    collection { post :sort}
+  end
+
+  resources :units
+
+
   resources :aircrafts
 
 

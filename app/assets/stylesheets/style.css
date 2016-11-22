@@ -155,6 +155,79 @@ input[type=submit] {
   padding: 0.1em 0.5em;
    }
 
+/* =Nav Elements
+-------------------------------------------------------------- */
+nav {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  }
+
+nav ul {
+  list-style: none;
+  margin: 0 0 1em 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row;
+  -ms-flex-flow: row;
+  flex-flow: row;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  }
+
+nav ul ul {
+  list-style: none;
+  margin: 0 0 1em 0;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: column;
+  -ms-flex-flow: column;
+  flex-flow: column;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  }
+
+nav a, nav a:visited {
+  display: block;
+  padding: 8px 16px;
+  cursor: pointer;
+  color: #666;
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid #fff;
+  }
+
+nav a:hover {
+  background: #fdf9ef;
+  border: 1px solid #e0debc;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  }
+
+nav li, nav ul ul li {
+  min-width: min-content;
+  display: block;
+  white-space: nowrap;
+  }
+
+nav li ul { /* second-level lists */
+	position: absolute;
+	top: 66px; /*positions the drop down box vertically relative to its container, so padding + button height to get to align at bottom - my code*/
+  padding-top: 10px; /*moves nav boxes down but preserves the block element so the hover is not lost*/
+	margin-left: -5px; /*offset margin between top nav boxes and second level boxes - my code*/
+	left: -999em;
+	text-align: left;
+  }
+
+nav li:hover ul, nav li li:hover ul { /* lists nested under hovered list items */
+	left: auto;
+}
+
 /* =Misc Elements
 -------------------------------------------------------------- */
 
@@ -164,6 +237,3 @@ input[type=submit] {
   margin: 0 3em 0 0;
 }
 
-.links {
-  font-size: 0.75em;
-}
