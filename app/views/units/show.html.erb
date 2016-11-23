@@ -1,5 +1,55 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+  <b>Unit name:</b>
+  <%= @unit.unit_name %>
+</p>
+
+<p>
+  <b>Address 1:</b>
+  <%= @unit.address_1 %>
+</p>
+
+<p>
+  <b>Address 2:</b>
+  <%= @unit.address_2 %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @unit.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @unit.state %>
+</p>
+
+<p>
+  <b>Postal code:</b>
+  <%= @unit.postal_code %>
+</p>
+
+<p>
+  <b>Primary phone:</b>
+  <%= @unit.primary_phone %>
+</p>
+
+<p>
+  <b>Primary email:</b>
+  <%= @unit.primary_email %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @unit.website %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @unit.description %>
+</p>
+
 
 <%= link_to 'Edit', edit_unit_path(@unit) %> |
 <%= link_to 'Back', units_path %>

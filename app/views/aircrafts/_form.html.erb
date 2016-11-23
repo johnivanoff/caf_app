@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :aircraft_type_id, 'Aircraft Type' %><br />
-    <%= f.collection_select :aircraft_type_id, AircraftType.all, :id, :aircraft_type, options = {:prompt => true}, html_options = {:class => "styled-select"} %>
+    <%= f.collection_select :aircraft_type_id, AircraftType.all, :id, :aircraft_type_designation, options = {:prompt => true}, html_options = {:class => "styled-select"} %>
   </div>
   <div class="field">
     <%= f.label :n_number %><br />

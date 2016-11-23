@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161115220522) do
+ActiveRecord::Schema.define(:version => 20161123214611) do
 
   create_table "aircraft_classes", :force => true do |t|
     t.string   "class_type"
@@ -60,10 +60,15 @@ ActiveRecord::Schema.define(:version => 20161115220522) do
     t.string   "name"
     t.string   "n_number"
     t.text     "description"
+    t.string   "website"
+    t.boolean  "tours",            :default => false, :null => false
+    t.boolean  "rides",            :default => false, :null => false
+    t.string   "profile_photo"
     t.string   "nose_art"
-    t.string   "aircraft_type_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.integer  "aircraft_type_id"
+    t.integer  "unit_id"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
   add_index "aircrafts", ["aircraft_type_id"], :name => "index_aircrafts_on_aircraft_type_id_id"
@@ -121,6 +126,15 @@ ActiveRecord::Schema.define(:version => 20161115220522) do
 
   add_index "members", ["user_id"], :name => "index_members_on_user_id"
 
+  create_table "menus", :force => true do |t|
+    t.integer  "parent_id"
+    t.string   "display"
+    t.string   "url"
+    t.integer  "position"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "rights", :force => true do |t|
     t.string   "resource"
     t.string   "operation"
@@ -132,6 +146,21 @@ ActiveRecord::Schema.define(:version => 20161115220522) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "units", :force => true do |t|
+    t.string   "unit_name"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postal_code"
+    t.string   "primary_phone"
+    t.string   "primary_email"
+    t.string   "website"
+    t.text     "description"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "user_versions", :force => true do |t|

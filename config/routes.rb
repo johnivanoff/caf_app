@@ -1,4 +1,7 @@
 DwApp::Application.routes.draw do
+  resources :menus
+
+
   resources :menus do
     collection { post :sort}
   end
