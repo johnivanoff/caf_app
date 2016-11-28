@@ -1,0 +1,90 @@
+<div class='row mt'>
+  <div class='col-sm-12'>
+    <h2><%= "Diff between Version #{@version.id} and Current Version" %></h2>
+    <style><%= Diffy::CSS %></style>
+    <div class='well diff'>
+<%# update for aircraft fields %>
+<% if diff(@version.reify.name, @aircraft.name) != 'No Changes' %>
+      <p>
+        <strong>Aircraft Name:</strong>
+        <%= diff(@version.reify.name, @aircraft.name) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.n_number, @aircraft.n_number) != 'No Changes' %>
+      <p>
+        <strong>N-number:</strong>
+        <%= diff(@version.reify.n_number, @aircraft.n_number) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.description, @aircraft.description) != 'No Changes' %>
+      <p>
+        <strong>Description:</strong>
+        <%= diff(@version.reify.description, @aircraft.description) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.website, @aircraft.website) != 'No Changes' %>
+      <p>
+        <strong>Website:</strong>
+        <%= diff(@version.reify.website, @aircraft.website) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.tours, @aircraft.tours) != 'No Changes' %>
+      <p>
+        <strong>Tours:</strong>
+        <%= diff(@version.reify.tours, @aircraft.tours) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.rides, @aircraft.rides) != 'No Changes' %>
+      <p>
+        <strong>rides:</strong>
+        <%= diff(@version.reify.rides, @aircraft.rides) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.profile_photo, @aircraft.profile_photo) != 'No Changes' %>
+      <p>
+        <strong>profile_photo:</strong>
+        <%= diff(@version.reify.profile_photo, @aircraft.profile_photo) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.nose_art, @aircraft.nose_art) != 'No Changes' %>
+      <p>
+        <strong>nose_art:</strong>
+        <%= diff(@version.reify.nose_art, @aircraft.nose_art) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.aircraft_type_id, @aircraft.aircraft_type_id) != 'No Changes' %>
+      <p>
+        <strong>aircraft_type_id:</strong>
+        <%= diff(@version.reify.aircraft_type_id, @aircraft.aircraft_type_id) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.unit_id, @aircraft.unit_id) != 'No Changes' %>
+      <p>
+        <strong>unit_id:</strong>
+        <%= diff(@version.reify.unit_id, @aircraft.unit_id) %>
+      </p>
+<% end %>
+
+</div>
+
+    <p>
+    <%= "Version authored by #{find_version_author_name(@version)} 
+on #{@version.created_at} by '#{@version.event.humanize}'." %>
+    </p>
+  </div>
+</div>
+<div class='fr'>
+  <%= link_to 'Back', edit_aircraft_path(@aircraft), 
+:class => 'btn btn-danger' %>
+  <%= link_to 'Rollback', rollback_aircraft_version_path(@aircraft, @version), 
+:class => 'btn btn-primary', :method => 'put' %>
+</div>

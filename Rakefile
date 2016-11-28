@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-DwApp::Application.load_tasks
+CafApp::Application.load_tasks

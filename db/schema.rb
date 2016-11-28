@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161123214611) do
+ActiveRecord::Schema.define(:version => 20161128190946) do
 
   create_table "aircraft_classes", :force => true do |t|
     t.string   "class_type"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20161123214611) do
 
   create_table "aircraft_types", :force => true do |t|
     t.integer  "aircraft_class_id"
-    t.string   "aircraft_type"
+    t.string   "aircraft_type_designation"
     t.text     "description"
     t.string   "manufacturer"
     t.string   "introduced"
@@ -50,11 +50,23 @@ ActiveRecord::Schema.define(:version => 20161123214611) do
     t.string   "qty_produced"
     t.string   "cost"
     t.string   "qty_still_flying"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_index "aircraft_types", ["aircraft_class_id"], :name => "index_aircraft_types_on_aircraft_class_id"
+
+  create_table "aircraft_versions", :force => true do |t|
+    t.string   "item_type",       :null => false
+    t.integer  "item_id",         :null => false
+    t.string   "event",           :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.string   "author_username"
+    t.datetime "created_at"
+  end
+
+  add_index "aircraft_versions", ["item_type", "item_id"], :name => "index_aircraft_versions_on_item_type_and_item_id"
 
   create_table "aircrafts", :force => true do |t|
     t.string   "name"
@@ -159,8 +171,9 @@ ActiveRecord::Schema.define(:version => 20161123214611) do
     t.string   "primary_email"
     t.string   "website"
     t.text     "description"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.boolean  "museum",        :default => false, :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   create_table "user_versions", :force => true do |t|

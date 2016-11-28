@@ -1,4 +1,4 @@
-DwApp::Application.routes.draw do
+CafApp::Application.routes.draw do
   resources :menus
 
 
@@ -10,6 +10,15 @@ DwApp::Application.routes.draw do
 
 
   resources :aircrafts
+
+  resources :aircrafts do
+    resources :versions, :only => [:destroy] do
+      member do
+        get 'diff', :to => 'aircrafts_versions#diff'
+        put 'rollback', :to => 'aircrafts_versions#rollback'
+      end
+    end
+  end
 
 
   resources :aircraft_types
