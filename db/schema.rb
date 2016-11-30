@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161128190946) do
+ActiveRecord::Schema.define(:version => 20161130213918) do
 
   create_table "aircraft_classes", :force => true do |t|
     t.string   "class_type"
@@ -20,9 +20,22 @@ ActiveRecord::Schema.define(:version => 20161128190946) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "aircraft_type_versions", :force => true do |t|
+    t.string   "item_type",       :null => false
+    t.integer  "item_id",         :null => false
+    t.string   "event",           :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.string   "author_username"
+    t.datetime "created_at"
+  end
+
+  add_index "aircraft_type_versions", ["item_type", "item_id"], :name => "index_aircraft_type_versions_on_item_type_and_item_id"
+
   create_table "aircraft_types", :force => true do |t|
     t.integer  "aircraft_class_id"
     t.string   "aircraft_type_designation"
+    t.string   "aircraft_name"
     t.text     "description"
     t.string   "manufacturer"
     t.string   "introduced"

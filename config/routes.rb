@@ -9,8 +9,7 @@ CafApp::Application.routes.draw do
   resources :units
 
 
-  resources :aircrafts
-
+#  resources :aircrafts
   resources :aircrafts do
     resources :versions, :only => [:destroy] do
       member do
@@ -21,7 +20,15 @@ CafApp::Application.routes.draw do
   end
 
 
-  resources :aircraft_types
+#  resources :aircraft_types
+  resources :aircraft_types do
+      resources :versions, :only => [:destroy] do
+        member do
+          get 'diff', :to => 'aircraft_type_versions#diff'
+          put 'rollback', :to => 'aircraft_type_versions#rollback'
+        end
+      end
+    end
 
 
   resources :aircraft_classes

@@ -4,6 +4,7 @@
   <tr>
     <th>Aircraft class</th>
     <th>Type</th>
+    <th>Aircraft Name</th>
     <th>Description</th>
     <th>Manufacturer</th>
     <th>Introduced</th>
@@ -39,7 +40,8 @@
 <% @aircraft_types.each do |aircraft_type| %>
   <tr>
     <td><%= aircraft_type.aircraft_class.class_type %></td>
-    <td><%= aircraft_type.aircraft_type %></td>
+    <td><%= aircraft_type.aircraft_type_designation %></td>
+    <td><%= aircraft_type.aircraft_name %></td>
     <td><%= aircraft_type.description %></td>
     <td><%= aircraft_type.manufacturer %></td>
     <td><%= aircraft_type.introduced %></td>

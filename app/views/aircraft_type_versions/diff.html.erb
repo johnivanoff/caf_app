@@ -1,0 +1,235 @@
+<div class='row mt'>
+  <div class='col-sm-12'>
+    <h2><%= "Diff between Version #{@version.id} and Current Version" %></h2>
+    <style><%= Diffy::CSS %></style>
+    <div class='well diff'>
+
+<% if diff(@version.reify.aircraft_type_designation, @aircraft_type.aircraft_type_designation) != 'No Changes' %>
+      <p>
+        <strong>Aircraft Type Designation:</strong>
+        <%= diff(@version.reify.aircraft_type_designation,  @aircraft_type.aircraft_type_designation) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.aircraft_name, @aircraft_type.aircraft_name) != 'No Changes' %>
+      <p>
+        <strong>Aircraft Name:</strong>
+        <%= diff(@version.reify.aircraft_name,  @aircraft_type.aircraft_name) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.description, @aircraft_type.description) != 'No Changes' %>
+      <p>
+        <strong>Description:</strong>
+        <%= diff(@version.reify.description,  @aircraft_type.description) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.manufacturer, @aircraft_type.manufacturer) != 'No Changes' %>
+      <p>
+        <strong>Manufacturer:</strong>
+        <%= diff(@version.reify.manufacturer,  @aircraft_type.manufacturer) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.introduced, @aircraft_type.introduced) != 'No Changes' %>
+      <p>
+        <strong>Introduced:</strong>
+        <%= diff(@version.reify.introduced,  @aircraft_type.introduced) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.production_years, @aircraft_type.production_years) != 'No Changes' %>
+      <p>
+        <strong>Production Years:</strong>
+        <%= diff(@version.reify.production_years,  @aircraft_type.production_years) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.role, @aircraft_type.role) != 'No Changes' %>
+      <p>
+        <strong>Role:</strong>
+        <%= diff(@version.reify.role,  @aircraft_type.role) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.power, @aircraft_type.power) != 'No Changes' %>
+      <p>
+        <strong>Power:</strong>
+        <%= diff(@version.reify.power,  @aircraft_type.power) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.length, @aircraft_type.length) != 'No Changes' %>
+      <p>
+        <strong>Length:</strong>
+        <%= diff(@version.reify.length,  @aircraft_type.length) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.height, @aircraft_type.height) != 'No Changes' %>
+      <p>
+        <strong>Height:</strong>
+        <%= diff(@version.reify.height,  @aircraft_type.height) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.wingspan, @aircraft_type.wingspan) != 'No Changes' %>
+      <p>
+        <strong>Wingspan:</strong>
+        <%= diff(@version.reify.wingspan,  @aircraft_type.wingspan) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.empty_weight, @aircraft_type.empty_weight) != 'No Changes' %>
+      <p>
+        <strong>Empty Weight:</strong>
+        <%= diff(@version.reify.empty_weight,  @aircraft_type.empty_weight) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.gross_weight, @aircraft_type.gross_weight) != 'No Changes' %>
+      <p>
+        <strong>Gross Weight:</strong>
+        <%= diff(@version.reify.ngross_weightame,  @aircraft_type.gross_weight) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.max_weight, @aircraft_type.max_weight) != 'No Changes' %>
+      <p>
+        <strong>Max Weight:</strong>
+        <%= diff(@version.reify.max_weight,  @aircraft_type.max_weight) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.range, @aircraft_type.range) != 'No Changes' %>
+      <p>
+        <strong>Range:</strong>
+        <%= diff(@version.reify.range,  @aircraft_type.range) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.max_speed, @aircraft_type.max_speed) != 'No Changes' %>
+      <p>
+        <strong>Max Speed:</strong>
+        <%= diff(@version.reify.max_speed,  @aircraft_type.max_speed) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.cruise_speed, @aircraft_type.cruise_speed) != 'No Changes' %>
+      <p>
+        <strong>Cruise Speed:</strong>
+        <%= diff(@version.reify.cruise_speed,  @aircraft_type.cruise_speed) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.ceiling, @aircraft_type.ceiling) != 'No Changes' %>
+      <p>
+        <strong>Ceiling:</strong>
+        <%= diff(@version.reify.ceiling,  @aircraft_type.ceiling) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.crew, @aircraft_type.crew) != 'No Changes' %>
+      <p>
+        <strong>Crew:</strong>
+        <%= diff(@version.reify.crew,  @aircraft_type.crew) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.guns, @aircraft_type.guns) != 'No Changes' %>
+      <p>
+        <strong>Guns:</strong>
+        <%= diff(@version.reify.guns,  @aircraft_type.guns) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.hardpoints, @aircraft_type.hardpoints) != 'No Changes' %>
+      <p>
+        <strong>Hardpoints:</strong>
+        <%= diff(@version.reify.hardpoints,  @aircraft_type.hardpoints) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.rockets, @aircraft_type.rockets) != 'No Changes' %>
+      <p>
+        <strong>Rockets:</strong>
+        <%= diff(@version.reify.rockets,  @aircraft_type.rockets) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.bombs, @aircraft_type.bombs) != 'No Changes' %>
+      <p>
+        <strong>Bombs:</strong>
+        <%= diff(@version.reify.bombs,  @aircraft_type.bombs) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.fuel_capacity, @aircraft_type.fuel_capacity) != 'No Changes' %>
+      <p>
+        <strong>Fuel Capacity:</strong>
+        <%= diff(@version.reify.fuel_capacity,  @aircraft_type.fuel_capacity) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.fuel_burn, @aircraft_type.fuel_burn) != 'No Changes' %>
+      <p>
+        <strong>Fuel Burn:</strong>
+        <%= diff(@version.reify.fuel_burn,  @aircraft_type.fuel_burn) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.oil_capacity, @aircraft_type.oil_capacity) != 'No Changes' %>
+      <p>
+        <strong>Oil Capacity:</strong>
+        <%= diff(@version.reify.oil_capacity,  @aircraft_type.oil_capacity) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.qty_produced, @aircraft_type.qty_produced) != 'No Changes' %>
+      <p>
+        <strong>Qty Produced:</strong>
+        <%= diff(@version.reify.qty_produced,  @aircraft_type.qty_produced) %>
+      </p>
+<% end %>
+
+
+<% if diff(@version.reify.cost, @aircraft_type.cost) != 'No Changes' %>
+      <p>
+        <strong>Cost:</strong>
+        <%= diff(@version.reify.cost,  @aircraft_type.cost) %>
+      </p>
+<% end %>
+
+<% if diff(@version.reify.qty_still_flying, @aircraft_type.qty_still_flying) != 'No Changes' %>
+      <p>
+        <strong>Qty Still Flying:</strong>
+        <%= diff(@version.reify.qty_still_flying,  @aircraft_type.qty_still_flying) %>
+      </p>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <p>
+    <%= "Version authored by #{find_version_author_name(@version)} 
+on #{@version.created_at} by '#{@version.event.humanize}'." %>
+    </p>
+  </div>
+</div>
+
+<div class='fr'>
+  <%= link_to 'Back', edit_aircraft_type_path(@aircraft_type), 
+:class => 'btn btn-danger' %>
+  <%= link_to 'Rollback', rollback_aircraft_type_version_path(@aircraft_type, @version), 
+:class => 'btn btn-primary', :method => 'put' %>
+</div>
