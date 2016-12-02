@@ -1,0 +1,88 @@
+<div class='row mt'>
+  <div class='col-sm-12'>
+    <h2><%= "Diff between Version #{@version.id} and Current Version" %></h2>
+    <style><%= Diffy::CSS %></style>
+    <div class='well diff'>
+      <% if diff(@version.reify.unit_name, @unit.unit_name) != 'No Changes' %>
+            <p>
+              <strong>Unit name:</strong>
+              <%= diff(@version.reify.unit_name, @unit.unit_name) %>
+            </p>
+      <% end %>
+
+      <% if diff(@version.reify.address_1, @unit.address_1) != 'No Changes' %>
+            <p>
+              <strong>Address_1:</strong>
+              <%= diff(@version.reify.address_1, @unit.address_1) %>
+            </p>
+      <% end %>
+
+      <% if diff(@version.reify.address_2, @unit.address_2) != 'No Changes' %>
+            <p>
+              <strong>Address_2:</strong>
+              <%= diff(@version.reify.address_2, @unit.address_2) %>
+            </p>
+      <% end %>
+
+      <% if diff(@version.reify.city, @unit.city) != 'No Changes' %>
+            <p>
+              <strong>City:</strong>
+              <%= diff(@version.reify.city, @unit.city) %>
+            </p>
+      <% end %>
+
+      <% if diff(@version.reify.state, @unit.state) != 'No Changes' %>
+            <p>
+              <strong>State:</strong>
+              <%= diff(@version.reify.state, @unit.state) %>
+            </p>
+      <% end %>
+
+      <% if diff(@version.reify.postal_code, @unit.postal_code) != 'No Changes' %>
+            <p>
+              <strong>Postal code:</strong>
+              <%= diff(@version.reify.postal_code, @unit.postal_code) %>
+            </p>
+      <% end %>
+
+      <% if diff(@version.reify.primary_phone, @unit.primary_phone) != 'No Changes' %>
+            <p>
+              <strong>Primary phone:</strong>
+              <%= diff(@version.reify.primary_phone, @unit.primary_phone) %>
+            </p>
+      <% end %>
+
+      <% if diff(@version.reify.primary_email, @unit.primary_email) != 'No Changes' %>
+            <p>
+              <strong>Primary email:</strong>
+              <%= diff(@version.reify.primary_email, @unit.primary_email) %>
+            </p>
+      <% end %>
+      <% if diff(@version.reify.website, @unit.website) != 'No Changes' %>
+            <p>
+              <strong>Website:</strong>
+              <%= diff(@version.reify.website, @unit.website) %>
+            </p>
+      <% end %>
+
+      <% if diff(@version.reify.description, @unit.description) != 'No Changes' %>
+            <p>
+              <strong>Description:</strong>
+              <%= diff(@version.reify.description, @unit.description) %>
+            </p>
+      <% end %>
+
+</div>
+
+    <p>
+    <%= "Version authored by #{find_version_author_name(@version)} 
+on #{@version.created_at} by '#{@version.event.humanize}'." %>
+    </p>
+  </div>
+</div>
+<div class='fr'>
+  <%= link_to 'Back', edit_unit_path(@unit), 
+:class => 'btn btn-danger' %>
+  <%= link_to 'Rollback', rollback_unit_version_path(@unit, @version), 
+:class => 'btn btn-primary', :method => 'put' %>
+</div>

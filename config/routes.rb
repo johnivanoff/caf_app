@@ -1,13 +1,27 @@
 CafApp::Application.routes.draw do
   resources :menus
-
+  resources :menus do
+    resources :versions, :only => [:destroy] do
+      member do
+        get 'diff', :to => 'menu_versions#diff'
+        put 'rollback', :to => 'menu_versions#rollback'
+      end
+    end
+  end
 
   resources :menus do
     collection { post :sort}
   end
 
   resources :units
-
+  resources :units do
+    resources :versions, :only => [:destroy] do
+      member do
+        get 'diff', :to => 'unit_versions#diff'
+        put 'rollback', :to => 'unit_versions#rollback'
+      end
+    end
+  end
 
 #  resources :aircrafts
   resources :aircrafts do
@@ -124,7 +138,7 @@ resources :users do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'welcome#index'
+   root :to => 'aircrafts#index'
 
   # See how all your routes lay out with "rake routes"
 

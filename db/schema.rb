@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161130213918) do
+ActiveRecord::Schema.define(:version => 20161202055238) do
 
   create_table "aircraft_classes", :force => true do |t|
     t.string   "class_type"
@@ -151,6 +151,18 @@ ActiveRecord::Schema.define(:version => 20161130213918) do
 
   add_index "members", ["user_id"], :name => "index_members_on_user_id"
 
+  create_table "menu_versions", :force => true do |t|
+    t.string   "item_type",       :null => false
+    t.integer  "item_id",         :null => false
+    t.string   "event",           :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.string   "author_username"
+    t.datetime "created_at"
+  end
+
+  add_index "menu_versions", ["item_type", "item_id"], :name => "index_menu_versions_on_item_type_and_item_id"
+
   create_table "menus", :force => true do |t|
     t.integer  "parent_id"
     t.string   "display"
@@ -172,6 +184,18 @@ ActiveRecord::Schema.define(:version => 20161130213918) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "unit_versions", :force => true do |t|
+    t.string   "item_type",       :null => false
+    t.integer  "item_id",         :null => false
+    t.string   "event",           :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.string   "author_username"
+    t.datetime "created_at"
+  end
+
+  add_index "unit_versions", ["item_type", "item_id"], :name => "index_unit_versions_on_item_type_and_item_id"
 
   create_table "units", :force => true do |t|
     t.string   "unit_name"
