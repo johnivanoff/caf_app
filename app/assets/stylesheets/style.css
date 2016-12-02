@@ -55,7 +55,7 @@ body,
 input,
 textarea {
   font-family: 'Open sans', Arial, Helvetica, sans-serif;
-  color: #666;
+  color: #555;
   font-size: 16px;
   line-height: 20px;
 }
@@ -82,6 +82,27 @@ h1 {
   font-size: 1.2em;
 }
 
+p {
+  margin: 1.12em 0;
+}
+
+ul {
+  list-style: disc;
+  margin: 1.12em 2em;
+}
+
+ol {
+  list-style: decimal;
+  margin: 1.12em 2em;
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+}
 /* =Table Elements
 -------------------------------------------------------------- */
 
@@ -237,3 +258,9 @@ nav li:hover ul, nav li li:hover ul { /* lists nested under hovered list items *
   margin: 0 3em 0 0;
 }
 
+.boxsizingBorder {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  }

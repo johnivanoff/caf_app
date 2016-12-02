@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @content.title %></h1>
+
+<%= markdown @content.body %>
+
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <%= link_to 'Edit', edit_content_path(@content) %>
+  <% end %>
+<% end %>

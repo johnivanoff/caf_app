@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161202055238) do
+ActiveRecord::Schema.define(:version => 20161202200138) do
 
   create_table "aircraft_classes", :force => true do |t|
     t.string   "class_type"
@@ -107,6 +107,18 @@ ActiveRecord::Schema.define(:version => 20161202055238) do
 
   add_index "assignments", ["role_id"], :name => "index_assignments_on_role_id"
   add_index "assignments", ["user_id"], :name => "index_assignments_on_user_id"
+
+  create_table "contents", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "slug"
+    t.integer  "user_id"
+    t.datetime "published_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "contents", ["user_id", "title", "slug"], :name => "index_contents_on_user_id_and_title_and_slug"
 
   create_table "grants", :force => true do |t|
     t.integer  "right_id"

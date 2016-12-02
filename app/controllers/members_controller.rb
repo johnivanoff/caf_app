@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
   before_filter :set_member, only: [:show, :edit, :update, :destroy]
 
-skip_before_filter :check_authorization, :check_authentication, :only => [:index]
+#skip_before_filter :check_authorization, :check_authentication, :only => [:index]
 
 
   respond_to :html

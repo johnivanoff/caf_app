@@ -1,4 +1,8 @@
 CafApp::Application.routes.draw do
+  resources :contents
+
+  post 'preview', :to => 'previews#show', :as => :preview
+
   resources :menus
   resources :menus do
     resources :versions, :only => [:destroy] do
@@ -138,7 +142,7 @@ resources :users do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => 'aircrafts#index'
+   root :to => 'contents#show', :id => 2
 
   # See how all your routes lay out with "rake routes"
 
