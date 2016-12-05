@@ -4,12 +4,22 @@ one:
   name: MyString
   n_number: MyString
   description: MyText
+  website: MyString
+  tours: 1
+  rides: 0
+  profile_photo: MyString
   nose_art: MyString
-  aircraft_type_id: 
+  aircraft_type_id: 1
+  init_id: 1
 
 two:
   name: MyString
   n_number: MyString
   description: MyText
+  website: MyString
+  tours: 1
+  rides: 0
+  profile_photo: MyString
   nose_art: MyString
-  aircraft_type_id: 
+  aircraft_type_id: 1
+  init_id: 1

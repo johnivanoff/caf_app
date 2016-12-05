@@ -1,5 +1,7 @@
 require 'test_helper'
 
+# sign_in users(:user1)
+
 class AircraftsControllerTest < ActionController::TestCase
   setup do
     @aircraft = aircrafts(:one)

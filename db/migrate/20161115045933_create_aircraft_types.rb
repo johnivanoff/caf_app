@@ -2,7 +2,7 @@ class CreateAircraftTypes < ActiveRecord::Migration
   def change
     create_table :aircraft_types do |t|
       t.references :aircraft_class
-      t.string :type
+      t.string :aircraft_type_designation
       t.text :description
       t.string :manufacturer
       t.string :introduced

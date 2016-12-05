@@ -18,7 +18,7 @@ class UnitsControllerTest < ActionController::TestCase
 
   test "should create unit" do
     assert_difference('Unit.count') do
-      post :create, unit: { address_1: @unit.address_1, address_2: @unit.address_2, city: @unit.city, description: @unit.description, postal_code: @unit.postal_code, primary-email: @unit.primary-email, primary_phone: @unit.primary_phone, state: @unit.state, unit_name: @unit.unit_name, website: @unit.website }
+      post :create, unit: { address_1: @unit.address_1, address_2: @unit.address_2, city: @unit.city, description: @unit.description, postal_code: @unit.postal_code, primary_email: @unit.primary_email, primary_phone: @unit.primary_phone, state: @unit.state, unit_name: @unit.unit_name, website: @unit.website }
     end
 
     assert_redirected_to unit_path(assigns(:unit))
@@ -35,7 +35,7 @@ class UnitsControllerTest < ActionController::TestCase
   end
 
   test "should update unit" do
-    put :update, id: @unit, unit: { address_1: @unit.address_1, address_2: @unit.address_2, city: @unit.city, description: @unit.description, postal_code: @unit.postal_code, primary-email: @unit.primary-email, primary_phone: @unit.primary_phone, state: @unit.state, unit_name: @unit.unit_name, website: @unit.website }
+    put :update, id: @unit, unit: { address_1: @unit.address_1, address_2: @unit.address_2, city: @unit.city, description: @unit.description, postal_code: @unit.postal_code, primary_email: @unit.primary_email, primary_phone: @unit.primary_phone, state: @unit.state, unit_name: @unit.unit_name, website: @unit.website }
     assert_redirected_to unit_path(assigns(:unit))
   end
 

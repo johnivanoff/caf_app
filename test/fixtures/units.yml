@@ -8,7 +8,7 @@ one:
   state: MyString
   postal_code: MyString
   primary_phone: MyString
-  primary-email: MyString
+  primary_email: MyString
   website: MyString
   description: MyText
 
@@ -20,6 +20,6 @@ two:
   state: MyString
   postal_code: MyString
   primary_phone: MyString
-  primary-email: MyString
+  primary_email: MyString
   website: MyString
   description: MyText
