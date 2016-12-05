@@ -9,8 +9,8 @@ one:
   rides: 0
   profile_photo: MyString
   nose_art: MyString
-  aircraft_type_id: 1
-  init_id: 1
+  aircraft_type: one
+  unit: one
 
 two:
   name: MyString
@@ -21,5 +21,5 @@ two:
   rides: 0
   profile_photo: MyString
   nose_art: MyString
-  aircraft_type_id: 1
-  init_id: 1
+  aircraft_type: two
+  unit: one

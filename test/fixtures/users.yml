@@ -5,15 +5,9 @@
 # below each fixture, per the syntax in the comments below
 #
 one: 
-id: 1
-email: user1@test.eu
-encrypted_password: abcdef1
-password_salt:  efvfvffdv
-confirmed_at: <%= Time.now %>
-#
+  email: user1@test.eu
+  encrypted_password: abcdef1
+
 two: 
-id: 2
-email: user2@test.eu
-encrypted_password: abcdef1
-password_salt:  efvfvffdv
-confirmed_at: <%= Time.now %>
+  email: user2@test.eu
+  encrypted_password: abcdef1

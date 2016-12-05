@@ -1,6 +1,6 @@
 require 'test_helper'
 
-# sign_in users(:user1)
+# sign_in @user, :scope => 'admin'
 
 class AircraftsControllerTest < ActionController::TestCase
   setup do

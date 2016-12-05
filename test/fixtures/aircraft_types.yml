@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  aircraft_class_id: 1
+  aircraft_class: one
   aircraft_type_designation: MyString
   description: MyText
   manufacturer: MyString
@@ -32,7 +32,7 @@ one:
   qty_still_flying: MyString
 
 two:
-  aircraft_class_id: 2
+  aircraft_class: two
   aircraft_type_designation: MyString
   description: MyText
   manufacturer: MyString
