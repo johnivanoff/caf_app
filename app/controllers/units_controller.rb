@@ -4,7 +4,7 @@ class UnitsController < ApplicationController
   respond_to :html
 
   def index
-    @units = Unit.all
+    @units = Unit.alpha_order.all
     respond_with(@units)
   end
 

@@ -25,11 +25,32 @@
   </div>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :size => '30x4' %>
+  </div>
+  <div class="field">
+    <%= f.label :profile_photo %><br />
+    <%= f.text_field :profile_photo %>
   </div>
   <div class="field">
     <%= f.label :nose_art %><br />
     <%= f.text_field :nose_art %>
+  </div>
+  <div class="field">
+    <%= f.label :website %><br />
+    <%= f.text_field :website %>
+  </div>
+  <div class="field">
+    <%= f.label :tours %><br />
+    <%= f.check_box :tours %>Aircraft tours country? (check for yes)
+  </div>
+  <div class="field">
+    <%= f.label :rides %><br />
+    <%= f.check_box :rides %>Aircraft rides availble? (check for yes)
+  </div>
+  <div class="field">
+    <%= f.label :unit_id %><br />
+    <%= f.collection_select :unit_id, Unit.alpha_order.all, :id, :unit_name, options = {:prompt => true}, html_options = {:class => "styled-select"} %>
+
   </div>
   <div class="actions">
     <%= f.submit %>

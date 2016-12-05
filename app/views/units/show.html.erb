@@ -1,55 +1,32 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Unit name:</b>
-  <%= @unit.unit_name %>
+  <strong><%= @unit.unit_name %></strong><br />
+  <%= @unit.address_1 %><br />
+<% if !@unit.address_2.blank? %>
+  <%= @unit.address_2 %><br />
+<% end %>
+  <%= @unit.city %>, <%= @unit.state %> <%= @unit.postal_code %>
 </p>
 
 <p>
-  <b>Address 1:</b>
-  <%= @unit.address_1 %>
+  Primary phone: <%= @unit.primary_phone %></br />
+  Primary email: <%= @unit.primary_email %></br />
+  Website: <%= @unit.website %></br />
 </p>
 
 <p>
-  <b>Address 2:</b>
-  <%= @unit.address_2 %>
-</p>
-
-<p>
-  <b>City:</b>
-  <%= @unit.city %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%= @unit.state %>
-</p>
-
-<p>
-  <b>Postal code:</b>
-  <%= @unit.postal_code %>
-</p>
-
-<p>
-  <b>Primary phone:</b>
-  <%= @unit.primary_phone %>
-</p>
-
-<p>
-  <b>Primary email:</b>
-  <%= @unit.primary_email %>
-</p>
-
-<p>
-  <b>Website:</b>
-  <%= @unit.website %>
-</p>
-
-<p>
-  <b>Description:</b>
+  Description:</br />
   <%= @unit.description %>
 </p>
 
+<h1>Unit Aircraft x<%= @unit.aircrafts.count %></h1>
+
+<ol>
+<% @unit.aircrafts.each do |aircraft| %>
+ <li><%= link_to aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.name, aircraft_path(aircraft) %>
+<% end %>
+</ol>
 
 <%= link_to 'Edit', edit_unit_path(@unit) %> |
 <%= link_to 'Back', units_path %>
