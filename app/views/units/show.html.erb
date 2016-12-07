@@ -1,32 +1,66 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong><%= @unit.unit_name %></strong><br />
-  <%= @unit.address_1 %><br />
-<% if !@unit.address_2.blank? %>
-  <%= @unit.address_2 %><br />
-<% end %>
-  <%= @unit.city %>, <%= @unit.state %> <%= @unit.postal_code %>
-</p>
+<div style="display: block; width: 100%; padding: 0.5em 0.75em; background: #000;color:#fff; font-size: 3em; font-weight: bold;">
+  <div style="display: inline-block; width: 45%;">
+  <%= @unit.unit_name %>
+  </div>
+  <div style="display: inline-block; width: 45%;">
+    <%= @unit.city %>, <%= @unit.state %>
+  </div>
+</div>
+<div style="display: block; width: 100%;padding: 0.5em 0;">
+  <div style="float: left; width: 20%; border-right: 1px solid #999;padding: 0.5em 0.75em;">
+    <img src="<%= @unit.unit_logo %>" width="100%" />
+  </div>
+  <div style="float: left; width: 30%; padding: 0.5em 0.75em; text-align: top;">
+    <p><%= @unit.unit_name %><br />
+      <%= @unit.address_1 %><br />
+    <% if !@unit.address_2.blank? %>
+      <%= @unit.address_2 %><br />
+    <% end %>
+      <%= @unit.city %>, <%= @unit.state %> <%= @unit.postal_code %></p>
 
-<p>
-  Primary phone: <%= @unit.primary_phone %></br />
-  Primary email: <%= @unit.primary_email %></br />
-  Website: <%= @unit.website %></br />
-</p>
+    <p>
+      Primary phone: <%= @unit.primary_phone %></br />
+      Primary email: <%= @unit.primary_email %></br />
+      Website: <%= @unit.website %></br />
+    </p>
+  </div>
+  <div style="float: left; width: 30%; padding: 0.5em 0.75em; text-align: top;">
+    <% if !@unit.facebook.blank? %>
+      <a href="<%= @unit.facebook %>" ><img src="https://www.devildogsquadron.com/assets/facebook_icon-cd7457bcfdc62efb72ee37b87f637aa8.png" /></a></br />
+    <% end %>
+    <% if !@unit.twitter.blank? %>
+      <a href="<%= @unit.twitter %>" ><img src="https://www.devildogsquadron.com/assets/twitter_icon-4eaa5de94eabb68780f362280c569c38.png" /></a></br />
+    <% end %>
+  </div>
+</div>
 
-<p>
-  Description:</br />
-  <%= @unit.description %>
-</p>
+<div style="clear: both;"></div>
 
-<h1>Unit Aircraft x<%= @unit.aircrafts.count %></h1>
+<div style="display: block; width: 100%;">
+  <div style="float: left; width: 30%; padding: 0.5em 0.75em; border-right: 1px solid #999;">
 
-<ol>
-<% @unit.aircrafts.each do |aircraft| %>
- <li><%= link_to aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.name, aircraft_path(aircraft) %>
-<% end %>
-</ol>
+      <h3>About</h3>
+    <p>
+      <%= @unit.description %>
+    </p>
+  </div>
+  <div style="float: left; width: 30%;padding: 0.5em 0.75em;">
+
+      <h3>Unit Aircraft x<%= @unit.aircrafts.count %></h3>
+
+      <ol>
+      <% @unit.aircrafts.each do |aircraft| %>
+       <li><%= link_to aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.aircraft_type.aircraft_name + ' ' + aircraft.name, aircraft_path(aircraft) %>
+      <% end %>
+      </ol>
+  </div>
+</div>
+
+<div style="clear: both;"></div>
+
+
 
 <%= link_to 'Edit', edit_unit_path(@unit) %> |
 <%= link_to 'Back', units_path %>

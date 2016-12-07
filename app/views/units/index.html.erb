@@ -14,12 +14,11 @@
     <th>Description</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @units.each do |unit| %>
   <tr>
-    <td><%= unit.unit_name %></td>
+    <td><%= link_to unit.unit_name, unit %></td>
     <td><%= unit.address_1 %></td>
     <td><%= unit.address_2 %></td>
     <td><%= unit.city %></td>
@@ -29,7 +28,6 @@
     <td><%= unit.primary_email %></td>
     <td><%= unit.website %></td>
     <td><%= unit.description %></td>
-    <td><%= link_to 'Show', unit %></td>
     <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
     <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

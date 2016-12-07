@@ -59,6 +59,22 @@ jQuery(function($){
     <%= f.label :description %><br />
     <%= f.text_area :description, :size => '30x4' %>
   </div>
+  <div class="field">
+    <%= f.label :museum %><br />
+    <%= f.check_box :museum %>Unit has museum? (check for yes)
+  </div>
+  <div class="field">
+    <%= f.label :unit_logo %><br />
+    <%= f.text_field :unit_logo %>
+  </div>
+  <div class="field">
+    <%= f.label :facebook %><br />
+    <%= f.text_field :facebook %>
+  </div>
+  <div class="field">
+    <%= f.label :twitter %><br />
+    <%= f.text_field :twitter %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

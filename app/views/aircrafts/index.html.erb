@@ -8,17 +8,15 @@
     <th class="sortable">Unit</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @aircrafts.each do |aircraft| %>
   <tr>
-    <td><%= aircraft.aircraft_type.aircraft_type_designation %></td>
+    <td><%= link_to aircraft.aircraft_type.aircraft_type_designation, aircraft %></td>
     <td><%= aircraft.name %></td>
     <td><%= aircraft.n_number %></td>
     <td><%= simple_format(truncate(aircraft.description, :length => 50, :separator => ' ')) %></td>
-    <td><%= aircraft.unit.unit_name %></td>
-    <td><%= link_to 'Show', aircraft %></td>
+    <td><% if !aircraft.unit.nil? %><%= aircraft.unit.unit_name %><% else %>n/a<% end %></td>
     <td><%= link_to 'Edit', edit_aircraft_path(aircraft) %></td>
     <td><%= link_to 'Destroy', aircraft, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

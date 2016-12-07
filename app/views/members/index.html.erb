@@ -20,13 +20,12 @@
     <th class="sortable">CAF join date</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @members.each do |member| %>
   <tr>
     <td><%= member.user_id %></td>
-    <td><%= member.last_name %></td>
+    <td><%= link_to member.last_name, member %></td>
     <td><%= member.first_name %></td>
     <td><%= member.user.email %></td>
     <td><%= member.street_1 %></td>
@@ -39,7 +38,6 @@
     <td><%= member.cell_phone %></td>
     <td><%= member.caf_col_no %></td>
     <td><%= member.caf_join_date %></td>
-    <td><%= link_to 'Show', member %></td>
     <td><%= link_to 'Edit', edit_member_path(member) %></td>
     <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
