@@ -60,7 +60,9 @@
 
 <div style="clear: both;"></div>
 
-
-
-<%= link_to 'Edit', edit_unit_path(@unit) %> |
-<%= link_to 'Back', units_path %>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <%= link_to 'Edit', edit_unit_path(@unit) %> |
+    <%= link_to 'Back', units_path %>
+  <% end %>
+<% end %>

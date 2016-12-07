@@ -25,8 +25,12 @@
   <%= @aircraft.aircraft_type.aircraft_type_designation %>
 </p>
 
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <%= link_to 'Edit', edit_aircraft_path(@aircraft) %> |
+    <%= link_to 'Back', aircrafts_path %>
+  <% end %>
+<% end %>
 
-<%= link_to 'Edit', edit_aircraft_path(@aircraft) %> |
-<%= link_to 'Back', aircrafts_path %>
 
   <%= render 'versions', :aircraft => @aircraft %>

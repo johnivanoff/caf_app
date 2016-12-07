@@ -12,8 +12,12 @@
     <th>Primary email</th>
     <th>Website</th>
     <th>Description</th>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+      <th></th>
     <th></th>
-    <th></th>
+  <% end %>
+<% end %>
   </tr>
 
 <% @units.each do |unit| %>
@@ -28,8 +32,12 @@
     <td><%= unit.primary_email %></td>
     <td><%= unit.website %></td>
     <td><%= unit.description %></td>
-    <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+      <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
     <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <% end %>
+<% end %>
   </tr>
 <% end %>
 </table>

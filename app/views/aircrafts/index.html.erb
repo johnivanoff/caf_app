@@ -6,8 +6,12 @@
     <th class="sortable">N number</th>
     <th class="sortable">Description</th>
     <th class="sortable">Unit</th>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
     <th></th>
     <th></th>
+  <% end %>
+<% end %>
   </tr>
 
 <% @aircrafts.each do |aircraft| %>
@@ -17,9 +21,13 @@
     <td><%= aircraft.n_number %></td>
     <td><%= simple_format(truncate(aircraft.description, :length => 50, :separator => ' ')) %></td>
     <td><% if !aircraft.unit.nil? %><%= aircraft.unit.unit_name %><% else %>n/a<% end %></td>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
     <td><%= link_to 'Edit', edit_aircraft_path(aircraft) %></td>
     <td><%= link_to 'Destroy', aircraft, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
+  <% end %>
+<% end %>
 <% end %>
 </table>
 
