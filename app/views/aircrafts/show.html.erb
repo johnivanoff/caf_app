@@ -1,36 +1,66 @@
-<p id="notice"><%= notice %></p>
+<div class='row' style='margin-bottom: 0.5em;'>
+  <div class='col-sm-6 black-header'>
+  <%= @aircraft.aircraft_type.aircraft_type_designation %> <%= @aircraft.name %>
+  </div>
+  <div class='col-sm-6 black-header'>
+    <%= @aircraft.unit.unit_name %>
+  </div>
+</div>
 
-<p>
-  <b>Name:</b>
-  <%= @aircraft.name %>
-</p>
+<div class='row'>
+    <div class='col-sm-3 right-border'>
+    <img src="<%= @aircraft.profile_photo %>" width="100%" />
+  </div>
+  <div class='col-sm-4'>
 
-<p>
-  <b>N number:</b>
-  <%= @aircraft.n_number %>
-</p>
+  </div>
+  <div class='col-sm-4'>
 
-<p>
-  <b>Description:</b>
-  <%= @aircraft.description %>
-</p>
+  </div>
+</div>
 
-<p>
-  <b>Nose art:</b>
-  <%= @aircraft.nose_art %>
-</p>
+<div style="clear: both;"></div>
 
-<p>
-  <b>Aircraft type:</b>
-  <%= @aircraft.aircraft_type.aircraft_type_designation %>
-</p>
+<div class='row'>
+    <div class='col-sm-4'>
+      <h3 class='black-header'>History</h3>
+    <p>
+      placeholder
+    </p>
+
+  </div>
+    <div class='col-sm-4'>
+      <h3 class='black-header'>Our Aircraft</h3>
+    <p>
+      placeholder
+    </p>
+
+  </div>
+    <div class='col-sm-4'>
+      <h3 class='black-header'>Facts</h3>
+    <p>
+      placeholder
+    </p>
+  </div>
+</div>
+
+<div style="clear: both;"></div>
 
 <% if signed_in?%>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
     <%= link_to 'Edit', edit_aircraft_path(@aircraft) %> |
     <%= link_to 'Back', aircrafts_path %>
+
+  <%= render 'versions', :aircraft => @aircraft %>
   <% end %>
 <% end %>
 
 
-  <%= render 'versions', :aircraft => @aircraft %>
+
+
+
+
+
+
+
+

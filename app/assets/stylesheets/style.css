@@ -65,8 +65,6 @@ textarea {
 
 /* Main global 'theme' and typographic styles */
 body {
-  background: #fff;
-  padding: 1em;
 }
 
 h1, h2, h3, h4 {
@@ -264,3 +262,39 @@ nav li:hover ul, nav li li:hover ul { /* lists nested under hovered list items *
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   }
+
+.black-header {
+  background: #000;
+  color: #fff;
+  font-size: 3em;
+  padding: 0.5em 0.75em;
+}
+
+h3.black-header {
+  font-size: 1.5em;
+}
+
+.right-border {
+  border-right: 1px solid #999;
+}
+
+#top1{width: 100%; position: relative; left: 0; top: 0; /*z-index: 99;*/ min-width: 320px;  background-image:url(../images/img_header-bg.jpg); background-size: cover;}
+
+.top1_wrapper{ }
+
+.top1{color: #e1e1e1; font-family: 'Lato'; font-weight: 300; text-transform: uppercase;text-align: right;}
+
+.top1 strong{font-weight: 900;}
+
+.phone1{display: block; padding: 10px 5px 5px 30px; float: right;}
+
+.phone1 a { font-family: 'Roboto Condensed'; font-weight: 500; font-size: 18px; text-decoration: none; color: #fff;}
+
+.phone2{display: inline-block;}
+.phone2 a{ color: #f00; text-decoration: none;}
+.phone2 a:HOVER{ color: #ffcf45;}
+
+
+
+
+
