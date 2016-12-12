@@ -71,11 +71,12 @@
   <%= @member.caf_col_no %>
 </p>
 
+<%= if @member.caf_join_date? %>
 <p>
   <b>CAF join date:</b>
   <%= @member.caf_join_date.strftime('%b. %d, %Y') %>
 </p>
-
+<% end %>
 
 <%= link_to 'Edit', edit_member_path(@member) %> |
 <%= link_to 'Back', members_path %>
