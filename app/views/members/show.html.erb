@@ -71,7 +71,7 @@
   <%= @member.caf_col_no %>
 </p>
 
-<%= if @member.caf_join_date? %>
+<% if @member.caf_join_date? %>
 <p>
   <b>CAF join date:</b>
   <%= @member.caf_join_date.strftime('%b. %d, %Y') %>
