@@ -9,41 +9,24 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<div class="container-fluid">
+<body class="onepage front" data-spy="scroll" data-target="#top1" data-offset="80">
 
-<div class="login-bar">
-  <% if user_signed_in? %>
-    Welcome: <%= current_user.member.first_name + ' ' + current_user.member.last_name %> | 
-    <%= link_to current_user.email, member_path(current_user.member) %> | 
-    Last login: <%= current_user.last_sign_in_at.strftime('%H:%M on %m/%d/%y') %> | 
-    <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to 'Login', login_path %>
-  <% end %>
-</div>
-<p id="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<nav>
-<ul class="links">
-<% @main_menu.each do |menu| %>
-  <li><a href="<%= menu.url %>"><%= menu.display %></a>
-  <% if @sub_menu.collect(&:parent_id).include?(menu.id) %>
-    <ul>
-      <% @sub_menu.each do |submenu| %>
-        <% if submenu.parent_id == menu.id %>
-        <li><a href="<%= submenu.url %>"><%= submenu.display %></a></li>
-      <% end %>
-      <% end %>
-</ul>
-  <% end %>
-</li>
-<% end %>
-</ul>
-</nav>
+<div id="main">
 
-<%= yield %>
+  <%= render 'layouts/header' %>
+
+  <div class="container-fluid">
+  
+  <div id="notice"><%= notice %></div>
+  <div class="alert"><%= alert %></div>
+
+  <%= yield %>
+
+  </div>
+
+  <%= render 'layouts/footer' %>
 
 </div>
+
 </body>
 </html>
