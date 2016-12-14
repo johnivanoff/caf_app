@@ -1,11 +1,17 @@
-<p id="notice"><%= notice %></p>
+<div class='row'>
+  <div class='col-sm-8 col-sm-push-2'>
+    <h1><%= @content.title %></h1>
 
-<h1><%= @content.title %></h1>
+    <%= markdown @content.body %>
 
-<%= markdown @content.body %>
+  </div>
+</div>
 
 <% if signed_in?%>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
-    <%= link_to 'Edit', edit_content_path(@content) %>
+    <div class="admin-section" >
+      <h2>Admin</h2>
+        <%= link_to 'Edit', edit_content_path(@content) %>
+    </div>
   <% end %>
 <% end %>

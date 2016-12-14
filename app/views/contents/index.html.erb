@@ -28,4 +28,14 @@
 
 <br />
 
-<%= link_to 'New Content', new_content_path %>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="admin-section" >
+      <h2>Admin</h2>
+        <%= link_to 'New Content', new_content_path %>
+    </div>
+  <% end %>
+<% end %>
+
+
+

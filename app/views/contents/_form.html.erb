@@ -61,33 +61,34 @@ Wellspring.LivePreview.initialize();
       </ul>
     </div>
   <% end %>
-<div style="display: block; width: 100%;">
-<div style="float: left; width: 45%;">
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+<div class='row'>
+  <div class='col-sm-6'>
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+    <div class="field">
+      <%= f.label :body %><br />
+      <%= f.text_area :body, :class => 'boxsizingBorder' %>
+    </div>
+    <div class="field">
+      <%= f.label :slug %><br />
+      <%= f.text_field :slug %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :user_id, :value => current_user %>
+    </div>
+    <div class="field">
+      <%= f.label :published_at %><br />
+      <%= f.datetime_select :published_at %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
   </div>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body, :class => 'boxsizingBorder' %>
+  <div class='col-sm-6'>
+    Preview:
+     <div id="live-preview" data-preview-url="<%= preview_path %>"></div>
   </div>
-  <div class="field">
-    <%= f.label :slug %><br />
-    <%= f.text_field :slug %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :user_id, :value => current_user %>
-  </div>
-  <div class="field">
-    <%= f.label :published_at %><br />
-    <%= f.datetime_select :published_at %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-</div>
-<div style="float: left; width: 45%;">
-Preview:
- <div id="live-preview" data-preview-url="<%= preview_path %>"></div>
 </div>

@@ -1,3 +1,6 @@
+<div class='row'>
+  <div class='col-sm-8 col-sm-push-2'>
+
 <h1>CAF Aircraft <%= @aircrafts.count %></h1>
 <table>
   <tr>
@@ -33,7 +36,17 @@
 
 <br />
 
-<%= link_to 'New Aircraft', new_aircraft_path %>
+</div></div>
+
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="admin-section" >
+      <h2>Admin</h2>
+        <%= link_to 'New Aircraft', new_aircraft_path %>
+    </div>
+  <% end %>
+<% end %>
+
 
 <script>
 $(function() {

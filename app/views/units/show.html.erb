@@ -68,7 +68,10 @@
 
 <% if signed_in?%>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
-    <%= link_to 'Edit', edit_unit_path(@unit) %> |
-    <%= link_to 'Back', units_path %>
+    <div class="admin-section" >
+      <h2>Admin</h2>
+      <%= link_to 'Edit', edit_unit_path(@unit) %> |
+      <%= link_to 'Back', units_path %>
+    </div>
   <% end %>
 <% end %>

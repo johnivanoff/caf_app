@@ -1,6 +1,9 @@
 CafApp::Application.routes.draw do
   resources :contents
 
+  match 'contacts' => 'contents#show', :id => 3, :as => :contacts
+
+
   post 'preview', :to => 'previews#show', :as => :preview
 
   resources :menus

@@ -8,14 +8,13 @@
 </div>
 
 <div class='row'>
-    <div class='col-sm-3 right-border'>
+    <div class='col-sm-6 right-border'>
     <img src="<%= @aircraft.profile_photo %>" width="100%" />
   </div>
-  <div class='col-sm-4'>
-
-  </div>
-  <div class='col-sm-4'>
-
+  <div class='col-sm-6'>
+    <%= @aircraft.unit.description %>
+    
+    <p><%= link_to @aircraft.unit.website, @aircraft.unit.website %></p>
   </div>
 </div>
 
@@ -44,14 +43,34 @@
   </div>
 </div>
 
-<div style="clear: both;"></div>
+<div class='row'>
+  <div class='col-sm-6'>
+    <% if @aircraft.id - 1 >= 1 %>
+      <%= button_to 'Previous Aircraft', aircraft_path(@aircraft.id - 1), :class => 'btn btn-success', :method => 'get' %> 
+    <% else %>
+      <em>beginning -></em>
+    <% end %>
+  </div>
+  <div class='col-sm-6 text-right'>
+    <% if @aircraft.id + 1 <= @all_aircrafts.last.id %>
+      <%= button_to 'Next Aircraft', aircraft_path(@aircraft.id + 1), :class => 'btn btn-success', :method => 'get' %> 
+    <% else %>
+      <em> <- end</em>
+    <% end %>
+  </div>
+</div>
+
+
 
 <% if signed_in?%>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
-    <%= link_to 'Edit', edit_aircraft_path(@aircraft) %> |
-    <%= link_to 'Back', aircrafts_path %>
+    <div class="admin-section" >
+      <h2>Admin</h2>
+      <%= link_to 'Edit', edit_aircraft_path(@aircraft) %> |
+      <%= link_to 'Back', aircrafts_path %>
 
-  <%= render 'versions', :aircraft => @aircraft %>
+      <%= render 'versions', :aircraft => @aircraft %>
+    </div>
   <% end %>
 <% end %>
 

@@ -18,4 +18,8 @@
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <%= link_to 'New User', new_user_path %>
+  <% end %>
+<% end %>
