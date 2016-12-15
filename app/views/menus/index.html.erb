@@ -1,34 +1,39 @@
-<h1>Listing menus</h1>
+<div class='row'>
+  <div class='col-sm-8 col-sm-push-2'>
+
+    <h1>Menu</h1>
+
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Parent</th>
+        <th>Display</th>
+        <th>Url</th>
+        <th>Position</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    <tbody id="menus" data-update-url="<%= sort_menus_url %>">
+    <% @menus.each do |menu| %>
+      <%= content_tag_for :tr, menu do %>
+        <td><%= menu.id %></td>
+        <td><%= menu.parent_id %></td>
+        <td><%= menu.display %></td>
+        <td><%= menu.url %></td>
+        <td><%= menu.position %></td>
+        <td><%= link_to 'Show', menu %></td>
+        <td><%= link_to 'Edit', edit_menu_path(menu) %></td>
+        <td><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+    <% end %>
+    </tbody>
+    </table>
 
 
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Parent</th>
-    <th>Display</th>
-    <th>Url</th>
-    <th>Position</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-<tbody id="menus" data-update-url="<%= sort_menus_url %>">
-<% @menus.each do |menu| %>
-  <%= content_tag_for :tr, menu do %>
-    <td><%= menu.id %></td>
-    <td><%= menu.parent_id %></td>
-    <td><%= menu.display %></td>
-    <td><%= menu.url %></td>
-    <td><%= menu.position %></td>
-    <td><%= link_to 'Show', menu %></td>
-    <td><%= link_to 'Edit', edit_menu_path(menu) %></td>
-    <td><%= link_to 'Destroy', menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  <% end %>
-<% end %>
-</tbody>
-</table>
+    <br />
 
+    <%= link_to 'New Menu', new_menu_path %>
 
-<br />
-
-<%= link_to 'New Menu', new_menu_path %>
+  </div>
+</div>
