@@ -1,17 +1,10 @@
 <div class='row' style='margin-bottom: 0.5em;'>
-  <div class='col-sm-6 black-header'>
-  <%= @unit.unit_name %>
-  </div>
-  <div class='col-sm-6 black-header'>
-    <%= @unit.city %>, <%= @unit.state %>
-  </div>
-</div>
-
-<div class='row'>
-    <div class='col-sm-3 right-border'>
+  <div class='col-sm-6' >
+      <h1 class="reverse"><%= @unit.unit_name %></h1>
     <img src="<%= @unit.unit_logo %>" width="100%" />
   </div>
-  <div class='col-sm-4'>
+  <div class='col-sm-6'>
+    <h1 class="reverse"><%= @unit.city %>, <%= @unit.state %></h1>
     <p><%= @unit.unit_name %><br />
       <%= @unit.address_1 %><br />
     <% if !@unit.address_2.blank? %>
@@ -40,14 +33,14 @@
 <div class='row'>
     <div class='col-sm-4'>
 
-      <h3 class='black-header'>About</h3>
+      <h3 class='reverse'>About</h3>
     <p>
       <%= @unit.description %>
     </p>
   </div>
     <div class='col-sm-4'>
 
-      <h3 class='black-header'>Unit Aircraft x<%= @unit.aircrafts.count %></h3>
+      <h3 class='reverse'>Unit Aircraft x<%= @unit.aircrafts.count %></h3>
 
       <ol>
       <% @unit.aircrafts.each do |aircraft| %>
@@ -57,7 +50,7 @@
   </div>
     <div class='col-sm-4'>
 
-      <h3 class='black-header'>Events</h3>
+      <h3 class='reverse'>Events</h3>
     <p>
       placeholder
     </p>
@@ -69,9 +62,11 @@
 <% if signed_in?%>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
     <div class="admin-section" >
-      <h2>Admin</h2>
-      <%= link_to 'Edit', edit_unit_path(@unit) %> |
-      <%= link_to 'Back', units_path %>
+      <h2>Admin Unit</h2>
+      <%= link_to 'Edit Unit', edit_unit_path(@unit) %> |
+      <%= link_to 'Back to all Units', units_path %>
+
+      <%= render 'versions', :unit => @unit %>
     </div>
   <% end %>
 <% end %>

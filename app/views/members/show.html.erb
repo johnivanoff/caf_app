@@ -1,82 +1,63 @@
-<p>
-  <b>User:</b>
-  <%= @member.user_id %>
-</p>
+<div class="row">
+  <div class='col-sm-6 col-sm-push-3'><p>
+    <table>
+      <tr>
+        <td>Name:</td>
+        <td><strong><%= @member.first_name %> <%= @member.last_name %></strong></td>
+      </tr>
+      <tr>
+        <td>Col No:</td>
+        <td><strong><%= @member.caf_col_no %></strong></td>
+      </tr>
+      <% if @member.caf_join_date? %>
+        <tr>
+          <td>CAF join date:</td>
+          <td><%= @member.caf_join_date.strftime('%b. %d, %Y') %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td>Address:</td>
+        <td><%= @member.street_1 %><br />
+        <% if @member.street_2? %><%= @member.street_1 %><br /><% end %>
+        <%= @member.city %>, <%= @member.state %> <%= @member.zip %>      
+        </td>
+      </tr>
+      <% if @member.home_phone? %>
+        <tr>
+          <td>Phone (H):</td>
+          <td><%= @member.home_phone %></td>
+        </tr>
+      <% end %>
+      <% if @member.home_phone? %>
+        <tr>
+          <td>Phone (W):</td>
+          <td><%= @member.work_phone %></td>
+        </tr>
+      <% end %>
+      <% if @member.home_phone? %>
+        <tr>
+          <td>Phone (C):</td>
+          <td><%= @member.cell_phone %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td>Email:</td>
+        <td><%= @member.user.email %></td>
+      </tr>
+      <tr>
+        <td>Member of:</td>
+        <td>
+          <% @member.units.each do |unit| %>
+            <li><%= unit.unit_name %></li>
+          <% end %>
+          </td>
+      </tr>
+</table>
 
-<p>
-  <b>Last name:</b>
-  <%= @member.last_name %>
-</p>
 
-<p>
-  <b>First name:</b>
-  <%= @member.first_name %>
-</p>
 
-<p>
-  <b>Address:</b>
-  <%= @member.street_1 %>
-</p>
-
-<% if @member.street_2? %>
-  <p>
-    <b>Address 2:</b>
-    <%= @member.street_2 %>
-  </p>
-<% end %>
-
-<p>
-  <b>City:</b>
-  <%= @member.city %>
-</p>
-
-<p>
-  <b>State:</b>
-  <%= @member.state %>
-</p>
-
-<p>
-  <b>Zip:</b>
-  <%= @member.zip %>
-</p>
-
-<% if @member.home_phone? %>
-<p>
-  <b>Home phone:</b>
-  <%= @member.home_phone %>
-</p>
-<% end %>
-
-<% if @member.work_phone? %>
-<p>
-  <b>Work phone:</b>
-  <%= @member.work_phone %>
-</p>
-<% end %>
-
-<% if @member.cell_phone? %>
-<p>
-  <b>Cell phone:</b>
-  <%= @member.cell_phone %>
-</p>
-<% end %>
-
-<p>
-  <b>Email:</b>
-  <%= @member.email %>
-</p>
-
-<p>
-  <b>CAF Col No:</b>
-  <%= @member.caf_col_no %>
-</p>
-
-<% if @member.caf_join_date? %>
-<p>
-  <b>CAF join date:</b>
-  <%= @member.caf_join_date.strftime('%b. %d, %Y') %>
-</p>
-<% end %>
+  </div>
+</div>
 
 <% if signed_in?%>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>

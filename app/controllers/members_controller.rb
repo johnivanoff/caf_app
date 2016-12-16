@@ -19,11 +19,13 @@ class MembersController < ApplicationController
     @member = Member.new
     user = @member.build_user
     @roles = Role.find(:all)
+    @units = Unit.find(:all)
     respond_with(@member)
   end
 
   def edit
     @roles = Role.find(:all)
+    @units = Unit.find(:all)
   end
 
   def create
@@ -39,6 +41,17 @@ class MembersController < ApplicationController
       end
       checked_roles << role
     end
+
+    checked_units = []
+    checked_params_2 = params[:unit_list] || []
+    for check_box_id in checked_params_2
+      unit = Unit.find(check_box_id)
+      if not @member.units.include?(unit)
+        @member.units << unit
+      end
+      checked_units << unit
+    end
+
     
     @member.save
     respond_with(@member)
@@ -47,7 +60,8 @@ class MembersController < ApplicationController
   def update
     @member.update_attributes(params[:member])
     @roles = Role.find(:all)
-    
+    @units = Unit.find(:all)
+        
     if params[:commit] == "Update Member"
       checked_roles = []
       checked_params = params[:role_list] || []
@@ -62,6 +76,22 @@ class MembersController < ApplicationController
       for role in missing_roles
         if @member.user.roles.include?(role)
           @member.user.roles.delete(role)
+        end
+      end
+
+      checked_units = []
+      checked_params_2 = params[:unit_list] || []
+      for check_box_id in checked_params_2
+        unit = Unit.find(check_box_id)
+        if not @member.units.include?(unit)
+          @member.units << unit
+        end
+        checked_units << unit
+      end
+      missing_units = @units - checked_units
+      for unit in missing_units
+        if @member.units.include?(unit)
+          @member.units.delete(unit)
         end
       end
     end

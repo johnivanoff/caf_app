@@ -1,0 +1,17 @@
+<h3>Member of</h3>
+
+<% @units.each.each_with_index do |unit, i| %>
+<% if i == 0 %>
+  <div class="cell">
+<% end %>
+  <%= check_box_tag('unit_list[]', unit.id, @member.units.collect {|obj| obj.id}.include?(unit.id)) %><%= unit.unit_name %><br />
+<% if i == 2 %>
+  </div>
+  <div class="cell">
+<% end %>
+<% if i == 5 %>
+  </div>
+  <div class="cell">
+<% end %>
+<% end %>
+      </div>

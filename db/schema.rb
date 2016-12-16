@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161202200138) do
+ActiveRecord::Schema.define(:version => 20161216184522) do
 
   create_table "aircraft_classes", :force => true do |t|
     t.string   "class_type"
@@ -197,6 +197,16 @@ ActiveRecord::Schema.define(:version => 20161202200138) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "unit_assignments", :force => true do |t|
+    t.integer  "member_id"
+    t.integer  "unit_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "unit_assignments", ["member_id"], :name => "index_unit_assignments_on_member_id"
+  add_index "unit_assignments", ["unit_id"], :name => "index_unit_assignments_on_unit_id"
+
   create_table "unit_versions", :force => true do |t|
     t.string   "item_type",       :null => false
     t.integer  "item_id",         :null => false
@@ -221,6 +231,9 @@ ActiveRecord::Schema.define(:version => 20161202200138) do
     t.string   "website"
     t.text     "description"
     t.boolean  "museum",        :default => false, :null => false
+    t.string   "unit_logo"
+    t.string   "facebook"
+    t.string   "twitter"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
   end

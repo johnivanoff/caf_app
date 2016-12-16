@@ -74,10 +74,14 @@
     <%= render "roles", :f => builder %>
   <% end %>
 
+  <%= f.fields_for :units do |builder| %>
+    <%= render "units", :f => builder %>
+  <% end %>
+
   </div>
 <%# end %>
 <br /><br />
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'btn btn-primary' %>
   </div>
 <% end %>

@@ -1,17 +1,10 @@
-<div class='row' style='margin-bottom: 0.5em;'>
-  <div class='col-sm-6 black-header'>
-  <%= @aircraft.aircraft_type.aircraft_type_designation %> <%= @aircraft.name %>
-  </div>
-  <div class='col-sm-6 black-header'>
-    <%= @aircraft.unit.unit_name %>
-  </div>
-</div>
-
 <div class='row'>
-    <div class='col-sm-6 right-border'>
+    <div class='col-sm-6'>
+    <h1 class="reverse"><%= @aircraft.aircraft_type.aircraft_type_designation %> <%= @aircraft.name %></h1>
     <img src="<%= @aircraft.profile_photo %>" width="100%" />
   </div>
   <div class='col-sm-6'>
+    <h1 class="reverse"><%= @aircraft.unit.unit_name %></h1>
     <%= @aircraft.unit.description %>
     
     <p><%= link_to @aircraft.unit.website, @aircraft.unit.website %></p>
@@ -22,24 +15,61 @@
 
 <div class='row'>
     <div class='col-sm-4'>
-      <h3 class='black-header'>History</h3>
-    <p>
-      placeholder
-    </p>
+      <h3 class='reverse'>History</h3>
+      <%= markdown @aircraft.aircraft_type.description %>
 
   </div>
     <div class='col-sm-4'>
-      <h3 class='black-header'>Our Aircraft</h3>
-    <p>
-      placeholder
-    </p>
+      <h3 class='reverse'>Our Aircraft</h3>
+      <%= markdown @aircraft.description %>
 
   </div>
     <div class='col-sm-4'>
-      <h3 class='black-header'>Facts</h3>
-    <p>
-      placeholder
-    </p>
+      <h3 class='reverse'>Facts</h3>
+        <table>
+          <tr>
+            <th colspan='2'><%= @aircraft.aircraft_type.aircraft_type_designation %> Specs</th>
+          </tr>
+          <tr>
+            <td>Role</td>
+            <td><%= @aircraft.aircraft_type.role %></td>
+          </tr>
+          <tr>
+            <td>Manufacturer</td>
+            <td><%= @aircraft.aircraft_type.manufacturer %></td>
+          </tr>
+          <tr>
+            <td>Introduced</td>
+            <td><%= @aircraft.aircraft_type.introduced %></td>
+          </tr>
+          <tr>
+            <td>Produced</td>
+            <td><%= @aircraft.aircraft_type.production_years %></td>
+          </tr>
+          <tr>
+            <td>Power</td>
+            <td><%= @aircraft.aircraft_type.power %></td>
+          </tr>
+          <tr>
+            <td>Length</td>
+            <td><%= @aircraft.aircraft_type.length %></td>
+          </tr>
+          <tr>
+            <td>Height</td>
+            <td><%= @aircraft.aircraft_type.height %></td>
+          </tr>
+          <tr>
+            <td>Wingspan</td>
+            <td><%= @aircraft.aircraft_type.wingspan %></td>
+          </tr>
+          <tr>
+            <td>Range</td>
+            <td><%= @aircraft.aircraft_type.range %></td>
+          </tr>
+        </table>
+
+
+
   </div>
 </div>
 
@@ -48,7 +78,7 @@
     <% if @aircraft.id - 1 >= 1 %>
       <%= button_to 'Previous Aircraft', aircraft_path(@aircraft.id - 1), :class => 'btn btn-success', :method => 'get' %> 
     <% else %>
-      <em>beginning -></em>
+      <%= button_to 'Previous Aircraft', aircraft_path(@aircraft.id - 1), :class => 'btn btn-success disabled', :method => 'get' %>
     <% end %>
   </div>
   <div class='col-sm-6 text-right'>
@@ -65,11 +95,21 @@
 <% if signed_in?%>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
     <div class="admin-section" >
-      <h2>Admin</h2>
-      <%= link_to 'Edit', edit_aircraft_path(@aircraft) %> |
-      <%= link_to 'Back', aircrafts_path %>
+      <div class='row'>
+        <div class='col-sm-4'>
+          <h2>Admin Aircraft</h2>
+          <%= link_to 'Edit Aircraft', edit_aircraft_path(@aircraft) %> |
+          <%= link_to 'Back to all Aircraft', aircrafts_path %>
 
-      <%= render 'versions', :aircraft => @aircraft %>
+          <%= render 'versions', :aircraft => @aircraft %>
+        </div>
+        <div class='col-sm-4'>
+          <h2>Admin Aircraft Type</h2>
+          <%= link_to 'Edit Aircraft Type', edit_aircraft_type_path(@aircraft.aircraft_type) %>
+
+          <%#= render 'versions', :aircraft => @aircraft %>
+        </div>
+      </div>
     </div>
   <% end %>
 <% end %>

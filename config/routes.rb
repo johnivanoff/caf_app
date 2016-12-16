@@ -1,4 +1,7 @@
 CafApp::Application.routes.draw do
+  resources :unit_assignments
+
+
   resources :contents
 
   match 'contacts' => 'contents#show', :id => 3, :as => :contacts

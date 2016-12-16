@@ -53,6 +53,6 @@
 
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  :data => { :disable_with => "Submitting..." }, :class => 'btn btn-primary' %>
   </div>
 <% end %>
