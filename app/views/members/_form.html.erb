@@ -13,61 +13,68 @@
     </div>
   <% end %>
 
-
   <%= f.fields_for :user do |builder| %>
         <%= render "user_fields", :f => builder %> 
   <% end %>
 
-
-  <div class="field">
+<div class='row'>
+  <div class="field col-sm-6">
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name %>
   </div>
-  <div class="field">
+  <div class="field col-sm-6">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
   </div>
-  <div class="field">
+</div>
+<div class='row'>
+  <div class="field col-sm-6">
     <%= f.label :street_1 %><br />
     <%= f.text_field :street_1 %>
   </div>
-  <div class="field">
+  <div class="field col-sm-6">
     <%= f.label :street_2 %><br />
     <%= f.text_field :street_2 %>
   </div>
-  <div class="field">
+</div>
+<div class='row'>
+  <div class="field col-sm-4">
     <%= f.label :city %><br />
     <%= f.text_field :city %>
   </div>
-  <div class="field">
+  <div class="field col-sm-4">
     <%= f.label :state %><br />
     <%= f.text_field :state %>
   </div>
-  <div class="field">
+  <div class="field col-sm-4">
     <%= f.label :zip %><br />
     <%= f.text_field :zip %>
   </div>
-  <div class="field">
+</div>
+<div class='row'>
+  <div class="field col-sm-4">
     <%= f.label :home_phone %><br />
     <%= f.text_field :home_phone %>
   </div>
-  <div class="field">
+  <div class="field col-sm-4">
     <%= f.label :work_phone %><br />
     <%= f.text_field :work_phone %>
   </div>
-  <div class="field">
+  <div class="field col-sm-4">
     <%= f.label :cell_phone %><br />
     <%= f.text_field :cell_phone %>
   </div>
-  <div class="field">
+</div>
+<div class='row'>
+  <div class="field col-sm-6">
     <%= f.label :caf_col_no, 'CAF Col No' %><br />
-    <%= f.number_field :caf_col_no %>
+    <%= f.text_field :caf_col_no %>
   </div>
-  <div class="field">
+  <div class="field col-sm-6">
     <%= f.label :caf_join_date, 'CAF join date' %><br />
     <%= f.text_field :caf_join_date %>
   </div>
-
+</div>
 <%# if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
 
   <%= f.fields_for :roles do |builder| %>
@@ -85,3 +92,5 @@
     <%= f.submit :class => 'btn btn-primary' %>
   </div>
 <% end %>
+
+

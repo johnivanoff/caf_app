@@ -19,19 +19,20 @@ class MembersController < ApplicationController
     @member = Member.new
     user = @member.build_user
     @roles = Role.find(:all)
-    @units = Unit.find(:all)
+    @units = Unit.alpha_order.find(:all)
     respond_with(@member)
   end
 
   def edit
     @roles = Role.find(:all)
-    @units = Unit.find(:all)
+    @units = Unit.alpha_order.find(:all)
   end
 
   def create
     @member = Member.new(params[:member])
     @roles = Role.find(:all)
-
+    @units = Unit.alpha_order.find(:all)
+    
     checked_roles = []
     checked_params = params[:role_list] || []
     for check_box_id in checked_params
@@ -60,7 +61,7 @@ class MembersController < ApplicationController
   def update
     @member.update_attributes(params[:member])
     @roles = Role.find(:all)
-    @units = Unit.find(:all)
+    @units = Unit.alpha_order.find(:all)
         
     if params[:commit] == "Update Member"
       checked_roles = []
