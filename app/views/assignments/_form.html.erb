@@ -10,14 +10,13 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
+    <%= f.collection_select :user_id, User.member_ordered.all, :id, :full_name, options = {:prompt => true}, html_options = {:class => "styled-select"} %>
   </div>
   <div class="field">
     <%= f.label :role_id %><br />
-    <%= f.number_field :role_id %>
+    <%= f.collection_select :role_id, Role.all, :id, :name, options = {:prompt => true}, html_options = {:class => "styled-select"} %>
   </div>
   <div class="actions">
     <%= f.submit :class => 'btn btn-primary' %>

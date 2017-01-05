@@ -26,6 +26,11 @@ class User < ActiveRecord::Base
 
   scope :member_ordered, joins(:member).merge(Member.ordered)
 
+  def full_name
+    self.member.last_name + ', ' + self.member.first_name
+  end
+
+
   def self.find_version_author(version)
     find(version.terminator)   
   end

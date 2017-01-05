@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20161216184522) do
+ActiveRecord::Schema.define(:version => 20170105193409) do
 
   create_table "aircraft_classes", :force => true do |t|
     t.string   "class_type"
@@ -197,6 +197,23 @@ ActiveRecord::Schema.define(:version => 20161216184522) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "social_brands", :force => true do |t|
+    t.string   "social_brand"
+    t.string   "brand_icon"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "social_links", :force => true do |t|
+    t.integer  "unit_id"
+    t.string   "social_brand"
+    t.string   "brand_url"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "social_links", ["unit_id"], :name => "index_social_links_on_unit_id"
+
   create_table "unit_assignments", :force => true do |t|
     t.integer  "member_id"
     t.integer  "unit_id"
@@ -234,6 +251,7 @@ ActiveRecord::Schema.define(:version => 20161216184522) do
     t.string   "unit_logo"
     t.string   "facebook"
     t.string   "twitter"
+    t.string   "pinterest"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
   end

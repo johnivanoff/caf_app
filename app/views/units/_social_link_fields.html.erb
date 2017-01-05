@@ -1,0 +1,11 @@
+<div class="row fields" style="background: #cadbeb;margin-top: 0.25em;">
+  <div class="field col-sm-2">
+    <%= f.label :social_brand_id %><br />
+    <%= f.collection_select :social_brand_id, SocialBrand.all, :id, :social_brand_name, options = {:prompt => true}, html_options = {:class => "styled-select"} %>
+  </div>
+  <div class="field col-sm-3">
+    <%= f.label :brand_url %><br />
+    <%= f.text_field :brand_url %>
+  </div>
+  <%= link_to_remove_fields "remove", f %>
+</div>

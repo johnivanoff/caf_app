@@ -2,12 +2,12 @@
 
 <p>
   <b>User:</b>
-  <%= @assignment.user_id %>
+  <%= @assignment.user.member.last_name + ', ' + @assignment.user.member.first_name %>
 </p>
 
 <p>
   <b>Role:</b>
-  <%= @assignment.role_id %>
+  <%= @assignment.role.name %>
 </p>
 
 

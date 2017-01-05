@@ -1,4 +1,10 @@
 CafApp::Application.routes.draw do
+  resources :social_brands
+
+
+  resources :social_links
+
+
   resources :unit_assignments
 
 

@@ -16,6 +16,9 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:index
 
   def new
     @unit = Unit.new
+
+    social_links = @unit.social_links.build
+     
     respond_with(@unit)
   end
 

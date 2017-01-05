@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  unit: 
+  social_brand: MyText
+  brand_url: MyText
+
+two:
+  unit: 
+  social_brand: MyText
+  brand_url: MyText

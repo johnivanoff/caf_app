@@ -65,12 +65,15 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-weight: 600;
+  font-weight: 900;
+  font-family: 'Lato';
   margin: 1em 0 0.5em;
 }
 
 h1 {
-  font-size: 1.6em;
+  font-size: 3em; /* 48/16 = 3 */
+  padding: 30px 0;
+    line-height: 1.6em;
 }
 
 h2 {
@@ -89,6 +92,10 @@ ul {
 ol {
   list-style: decimal;
   margin: 1.12em 2em;
+}
+
+ul.nav {
+  margin: 0;
 }
 
 em {

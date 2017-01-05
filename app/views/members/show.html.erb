@@ -52,6 +52,16 @@
           <% end %>
           </td>
       </tr>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+        <tr>
+        <td>Website Roles:</td>
+        <td>
+          <% @member.user.roles.each do |role| %>
+            <li><%= role.name %></li>
+          <% end %>
+          </td>
+      </tr>
+  <% end %>
 </table>
 
 
