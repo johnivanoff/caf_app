@@ -42,7 +42,7 @@
     <td><%= aircraft_type.aircraft_class.class_type %></td>
     <td><%= aircraft_type.aircraft_type_designation %></td>
     <td><%= aircraft_type.aircraft_name %></td>
-    <td><%= aircraft_type.description %></td>
+    <td><%= simple_format(truncate(aircraft_type.description, :length => 25, :separator => ' ')) %></td>
     <td><%= aircraft_type.manufacturer %></td>
     <td><%= aircraft_type.introduced %></td>
     <td><%= aircraft_type.production_years %></td>

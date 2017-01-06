@@ -11,6 +11,7 @@ CafApp::Application.routes.draw do
   resources :contents
 
   match 'contacts' => 'contents#show', :id => 3, :as => :contacts
+  match 'admin' => 'contents#show', :id => 4, :as => :admin
 
 
   post 'preview', :to => 'previews#show', :as => :preview
