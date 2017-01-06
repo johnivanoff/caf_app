@@ -8,7 +8,9 @@
   </div>
 </div>
 
-<div class='row'>
+<div id="content">
+  <div class="container">
+    <div class="row">
   <div class='col-sm-12' >
       <h1><%= @unit.unit_name %> <span><%= @unit.city %>, <%= @unit.state %></span></h1>
     
@@ -202,20 +204,26 @@
 	  
 	  
 
-    </div>
-  </div>
-</div>
+
 
 
 
 <% if signed_in?%>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
-    <div class="admin-section" >
-      <h2>Admin Unit</h2>
-      <%= link_to 'Edit Unit', edit_unit_path(@unit) %> |
-      <%= link_to 'Back to all Units', units_path %>
+    <div class="row">
+      <div class='col-sm-12' >
+        <div class="admin-section" >
+          <h2>Admin Unit</h2>
+          <%= link_to 'Edit Unit', edit_unit_path(@unit) %> |
+          <%= link_to 'Back to all Units', units_path %>
 
-      <%= render 'versions', :unit => @unit %>
+          <%= render 'versions', :unit => @unit %>
+        </div>
+      </div>
     </div>
   <% end %>
 <% end %>
+
+    </div>
+  </div>
+</div>

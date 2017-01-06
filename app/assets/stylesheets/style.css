@@ -257,3 +257,12 @@ input:focus, select:focus, textarea:focus /*, input[type=submit]:hover */ {
 label {
   padding-left: 30px; text-indent: -30px;
 }
+
+.profile_photo {
+  border: 1px solid #000;
+}
+
+
+.blocchi-unit {
+  border: none;
+}

@@ -16,7 +16,7 @@
 <div class="col-xs-12 col-sm-6">
 		<div class="blocchi-unit">
 			<% if @aircraft.profile_photo? %>
-			  <img src="<%= @aircraft.profile_photo %>" width="100%" />
+			  <img src="<%= @aircraft.profile_photo %>" width="100%" class="profile_photo" />
 			<% else %>
 			  <img src="http://polarbeardesign.net/uploads/misc_images/default_2.jpg" />
 			<% end %>
@@ -253,20 +253,10 @@
       </div>
 	  
 	  
-	  
-	  
-	  
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-<% if signed_in?%>
+	  <% if signed_in?%>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="row">
+      <div class='col-sm-12' >
     <div class="admin-section" >
       <div class='row'>
         <div class='col-sm-4'>
@@ -279,13 +269,25 @@
         <div class='col-sm-4'>
           <h2>Admin Aircraft Type</h2>
           <%= link_to 'Edit Aircraft Type', edit_aircraft_type_path(@aircraft.aircraft_type) %>
-
-          <%#= render 'versions', :aircraft => @aircraft %>
         </div>
       </div>
     </div>
+    </div>
+    </div>
   <% end %>
 <% end %>
+	  
+	  
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 
 
 
