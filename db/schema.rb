@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170105193409) do
+ActiveRecord::Schema.define(:version => 20170106185524) do
 
   create_table "aircraft_classes", :force => true do |t|
     t.string   "class_type"
@@ -198,18 +198,18 @@ ActiveRecord::Schema.define(:version => 20170105193409) do
   end
 
   create_table "social_brands", :force => true do |t|
-    t.string   "social_brand"
+    t.string   "social_brand_name"
     t.string   "brand_icon"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "social_links", :force => true do |t|
     t.integer  "unit_id"
-    t.string   "social_brand"
+    t.integer  "social_brand_id"
     t.string   "brand_url"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   add_index "social_links", ["unit_id"], :name => "index_social_links_on_unit_id"
@@ -223,6 +223,13 @@ ActiveRecord::Schema.define(:version => 20170105193409) do
 
   add_index "unit_assignments", ["member_id"], :name => "index_unit_assignments_on_member_id"
   add_index "unit_assignments", ["unit_id"], :name => "index_unit_assignments_on_unit_id"
+
+  create_table "unit_types", :force => true do |t|
+    t.string   "type_name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "unit_versions", :force => true do |t|
     t.string   "item_type",       :null => false

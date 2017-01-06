@@ -23,6 +23,12 @@ jQuery(function($){
     <%= f.label :unit_name %><br />
     <%= f.text_field :unit_name %>
   </div>
+
+  <div class="field">
+    <%= f.label :unit_type_id %><br />
+    <%= f.collection_select :unit_type_id, UnitType.all, :id, :type_name, options = {:prompt => true}, html_options = {:class => "styled-select"} %>
+  </div>
+
   <div class="field">
     <%= f.label :address_1 %><br />
     <%= f.text_field :address_1 %>
