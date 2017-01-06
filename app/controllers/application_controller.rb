@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-#  before_filter :check_authorization
+  before_filter :check_authorization
 
   def header_footer
     @sub_menu = Menu.sub.order("position").all
