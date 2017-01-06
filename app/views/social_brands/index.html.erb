@@ -11,7 +11,7 @@
 
 <% @social_brands.each do |social_brand| %>
   <tr>
-    <td><%= social_brand.social_brand %></td>
+    <td><%= social_brand.social_brand_name %></td>
     <td><%= social_brand.brand_icon %></td>
     <td><%= link_to 'Show', social_brand %></td>
     <td><%= link_to 'Edit', edit_social_brand_path(social_brand) %></td>
