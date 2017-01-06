@@ -15,12 +15,11 @@
         </div>
 
         <ul class="social2 socialtop clearfix">
-          <li><a href="https://www.facebook.com/CommemorativeAF" target="_blank"><i class="fa fa-facebook"></i></a></li>
-          <li><a href="https://twitter.com/CAF1957" target="_blank"><i class="fa fa-twitter"></i></a></li>
-          <li><a href="https://www.youtube.com/channel/UCajbMdqv165JZRKjs60E46g" target="_blank"><i class="fa fa-youtube"></i></a></li>
-          <li><a href="https://instagram.com/caf1957/" target="_blank"><i class="fa fa-instagram"></i></a></li>
-          <li><a href="https://www.linkedin.com/company/67653" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-          <li><a href="mailto:lblock@cafhq.org"><i class="fa fa-envelope"></i></a></li>
+          <% if !@hqinfo.last.social_links.blank? %>
+            <% @hqinfo.last.social_links.each do |social_link| %>
+              <li><a href="<%= social_link.brand_url %>" ><i class="fa <%= social_link.social_brand.brand_icon %>"></i></a></li>
+            <% end %>
+          <% end %>
         </ul>
       </div>
     </div>

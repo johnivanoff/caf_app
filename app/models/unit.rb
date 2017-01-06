@@ -14,5 +14,7 @@ class Unit < ActiveRecord::Base
   scope :alpha_order, order("unit_name ASC")
 
   scope :is_squadron, where("unit_type_id = 3")
+  
+  scope :hq, where("id = 23")
 
 end
