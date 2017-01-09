@@ -266,3 +266,14 @@ label {
 .blocchi-unit {
   border: none;
 }
+
+/* Ludos overwrites */
+
+@media (max-width: 767px) {
+
+  /* add background color so nav links show in mobile ~ LN 1002 */
+	.navbar_ .nav > li > a{
+	background: #284b71;
+	}
+	
+	}
