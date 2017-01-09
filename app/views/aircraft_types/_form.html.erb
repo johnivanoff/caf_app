@@ -11,10 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :aircraft_class_id, "Aircraft Class" %><br />
-    <%= f.collection_select :aircraft_class_id, AircraftClass.all, :id, :class_type, options = {:prompt => true}, html_options = {:class => "styled-select"} %>
-  </div>
+  <%= f.fields_for :aircraft_classes do |builder| %>
+    <%= render "aircraft_classes", :f => builder %>
+  <% end %>
   <div class="field">
     <%= f.label :aircraft_type_designation %><br />
     <%= f.text_field :aircraft_type_designation %>

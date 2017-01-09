@@ -7,6 +7,8 @@ class AircraftsController < ApplicationController
 
   def index
     @aircrafts = Aircraft.all
+    @aircraft_classes = AircraftClass.all
+#    @bombers = Aircraft.bomber.all
     respond_with(@aircrafts)
   end
 

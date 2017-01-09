@@ -267,6 +267,11 @@ label {
   border: none;
 }
 
+.actions {
+  margin-top: 2em;
+}
+
+
 /* Ludos overwrites */
 
 @media (max-width: 767px) {

@@ -19,60 +19,70 @@ jQuery(function($){
     </div>
   <% end %>
 
-  <div class="field">
+<div class="row">
+  <div class="field col-sm-6">
     <%= f.label :unit_name %><br />
-    <%= f.text_field :unit_name %>
+    <%= f.text_field :unit_name, :class => 'boxsizingBorder' %>
   </div>
-
-  <div class="field">
+  <div class="field col-sm-6">
     <%= f.label :unit_type_id %><br />
-    <%= f.collection_select :unit_type_id, UnitType.all, :id, :type_name, options = {:prompt => true}, html_options = {:class => "styled-select"} %>
+    <%= f.collection_select :unit_type_id, UnitType.all, :id, :type_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
   </div>
-
-  <div class="field">
+</div>
+<div class="row">
+  <div class="field col-sm-6">
     <%= f.label :address_1 %><br />
-    <%= f.text_field :address_1 %>
+    <%= f.text_field :address_1, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+  <div class="field col-sm-6">
     <%= f.label :address_2 %><br />
-    <%= f.text_field :address_2 %>
+    <%= f.text_field :address_2, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+</div>
+<div class="row">
+  <div class="field col-sm-4">
     <%= f.label :city %><br />
-    <%= f.text_field :city %>
+    <%= f.text_field :city, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+  <div class="field col-sm-4">
     <%= f.label :state %><br />
-    <%= f.text_field :state %>
+    <%= f.text_field :state, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+  <div class="field col-sm-4">
     <%= f.label :postal_code %><br />
-    <%= f.text_field :postal_code %>
+    <%= f.text_field :postal_code, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+</div>
+<div class="row">
+  <div class="field col-sm-4">
     <%= f.label :primary_phone %><br />
-    <%= f.text_field :primary_phone %>
+    <%= f.text_field :primary_phone, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+  <div class="field col-sm-4">
     <%= f.label :primary_email %><br />
-    <%= f.text_field :primary_email %>
+    <%= f.text_field :primary_email, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+  <div class="field col-sm-4">
     <%= f.label :website %><br />
-    <%= f.text_field :website %>
+    <%= f.text_field :website, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+</div>
+<div class="row">
+  <div class="field col-sm-12">
     <%= f.label :description %><br />
-    <%= f.text_area :description, :size => '30x4' %>
+    <%= f.text_area :description, :rows => '5', :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+</div>
+<div class="row">
+  <div class="field col-sm-4">
+    <%= f.label :unit_logo %><br />
+    <%= f.text_field :unit_logo, :class => 'boxsizingBorder' %>
+  </div>
+  <div class="field col-sm-4">
     <%= f.label :museum %><br />
     <%= f.check_box :museum %>Unit has museum? (check for yes)
   </div>
-  <div class="field">
-    <%= f.label :unit_logo %><br />
-    <%= f.text_field :unit_logo %>
-  </div>
+</div>
 <hr />
   <div class="fields">
   <%= f.fields_for :social_links do |builder| %>

@@ -1,9 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Aircraft class:</b>
-  <%= @aircraft_type.aircraft_class.class_type %>
-</p>
+<h1>Aircraft Type</h1>
 
 <p>
   <b>Type:</b>
@@ -14,6 +9,13 @@
   <b>Type:</b>
   <%= @aircraft_type.aircraft_name %>
 </p>
+
+<p>Category:</p>
+<ul>
+<% @aircraft_type.aircraft_classes.each do |aircraft_class| %>
+  <li><%= aircraft_class.class_type %></li>
+<% end %>
+</ul>
 
 <p>
   <b>Description:</b>

@@ -1,6 +1,37 @@
 <%= render "layouts/scripts" %>
 
-<h1>CAF Aircraft <%= @aircrafts.count %></h1>
+<h1>Collection / <span>CAF Fleet <%= @aircrafts.count %></span></h1>
+	<div class="typeair">
+	
+	
+	<% @aircraft_classes.each do |aircraft_class| %>
+		<div class="col-xs-12 col-sm-4">
+		<a href="#" class="collection">
+		<%= image_tag aircraft_class.type_picture %><br>
+		<h2><%= aircraft_class.class_type %></h2>
+		</a>
+		</div>
+  <% end %>
+	</div>
+<div class='row'>
+<% @aircrafts.each do |aircraft| %>
+	<div class="col-xs-12 col-sm-4 col-md-3">
+		<a href="aircrafts/<%= aircraft.id %>" class="blocchi-unit">
+			<% if aircraft.profile_photo? %>
+			<img src="<%= aircraft.profile_photo %>">
+			<% else %>
+			<img src="http://polarbeardesign.net/uploads/misc_images/default_2.jpg" />
+			<% end %>
+			<div class="bottone">
+				<h4><%= aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.name %></h4>
+			</div>
+		</a>
+	</div>
+
+<% end %>
+
+</div>
+
 <table>
   <tr>
     <th class="sortable">Aircraft type</th>

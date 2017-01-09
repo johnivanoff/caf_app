@@ -1,0 +1,21 @@
+<h3>Aircraft Class(es)</h3>
+
+<div class='row'>
+  <% @aircraft_classes.each.each_with_index do |aircraft_class, i| %>
+    <% if i == 0 %>
+      <div class="col-sm-4">
+    <% end %>
+      <label><%= check_box_tag('aircraft_class_list[]', aircraft_class.id, @aircraft_type.aircraft_classes.collect {|obj| obj.id}.include?(aircraft_class.id)) %><%= aircraft_class.class_type %></label><br />
+    <% if i == 2 %>
+      </div>
+      <div class="col-sm-4">
+    <% end %>
+    <% if i == 5 %>
+      </div>
+      <div class="col-sm-4">
+    <% end %>
+  <% end %>
+  </div>
+</div>
+      
+      

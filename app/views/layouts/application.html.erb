@@ -31,11 +31,13 @@
 <div id="content">
   <div class="container">
     <div class="row">
+    <div class="col-sm-12">
   
   <% if !notice.blank? %><div id="notice"><%= notice %></div><% end %>
   <% if !alert.blank? %><div class="alert"><%= alert %></div><% end %>
 
   <%= yield %>
+    </div>
     </div>
   </div>
 </div>

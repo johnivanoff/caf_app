@@ -10,48 +10,54 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+<div class="row">
+  <div class="field col-sm-4">
+    <%= f.label :name, 'Aircraft Name' %><br />
+    <%= f.text_field :name, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+  <div class="field col-sm-4">
     <%= f.label :aircraft_type_id, 'Aircraft Type' %><br />
-    <%= f.collection_select :aircraft_type_id, AircraftType.all, :id, :aircraft_type_designation, options = {:prompt => true}, html_options = {:class => "styled-select"} %>
+    <%= f.collection_select :aircraft_type_id, AircraftType.all, :id, :aircraft_type_designation, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
   </div>
-  <div class="field">
-    <%= f.label :n_number %><br />
-    <%= f.text_field :n_number %>
+  <div class="field col-sm-4">
+    <%= f.label :n_number, 'N Number' %><br />
+    <%= f.text_field :n_number, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+</div>
+<div class="row">
+  <div class="field col-sm-12">
     <%= f.label :description %><br />
-    <%= f.text_area :description, :size => '30x4' %>
+    <%= f.text_area :description, :rows => 5, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+</div>
+<div class="row">
+  <div class="field col-sm-4">
     <%= f.label :profile_photo %><br />
-    <%= f.text_field :profile_photo %>
+    <%= f.text_field :profile_photo, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+  <div class="field col-sm-4">
     <%= f.label :nose_art %><br />
-    <%= f.text_field :nose_art %>
+    <%= f.text_field :nose_art, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+  <div class="field col-sm-4">
     <%= f.label :website %><br />
-    <%= f.text_field :website %>
+    <%= f.text_field :website, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+</div>
+<div class="row">
+  <div class="field col-sm-4">
     <%= f.label :tours %><br />
     <%= f.check_box :tours %>Aircraft tours country? (check for yes)
   </div>
-  <div class="field">
+  <div class="field col-sm-4">
     <%= f.label :rides %><br />
     <%= f.check_box :rides %>Aircraft rides available? (check for yes)
   </div>
-  <div class="field">
-    <%= f.label :unit_id %><br />
-    <%= f.collection_select :unit_id, Unit.alpha_order.all, :id, :unit_name, options = {:prompt => true}, html_options = {:class => "styled-select"} %>
-
+  <div class="field col-sm-4">
+    <%= f.label :unit_id, 'Unit Base' %><br />
+    <%= f.collection_select :unit_id, Unit.alpha_order.all, :id, :unit_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
   </div>
+</div>
   <div class="actions">
     <%= f.submit  :data => { :disable_with => "Submitting..." }, :class => 'btn btn-primary' %>
   </div>
