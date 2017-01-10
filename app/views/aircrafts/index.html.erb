@@ -15,7 +15,7 @@
 	</div>
 <div class='row'>
 <% @aircrafts.each do |aircraft| %>
-	<div class="col-xs-12 col-sm-4 col-md-3">
+	<div class="col-xs-12 col-sm-4 col-md-3" style="min-height: 250px;">
 		<a href="aircrafts/<%= aircraft.id %>" class="blocchi-unit">
 			<% if aircraft.profile_photo? %>
 			<img src="<%= aircraft.profile_photo %>">
