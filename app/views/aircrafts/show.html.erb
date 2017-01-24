@@ -17,7 +17,9 @@
 <p>
 <strong>Description:</strong><br>
 
-<%= markdown @aircraft.description %>
+									<% if !@aircraft.description.blank? %>
+									<%= markdown @aircraft.description %>
+								  <% end %>
 </p>
 <p>
 <strong>Website:</strong><br>
@@ -54,7 +56,9 @@
 							<div class="media">
 								
 								<div class="media-body">
+									<% if !@aircraft.aircraft_type.description.blank? %>
 									<%= markdown @aircraft.aircraft_type.description %>
+									<% end %>
 								</div>
 							</div>
 						</div>
@@ -62,8 +66,9 @@
 							<div class="media">
 								
 								<div class="media-body">
+									<% if !@aircraft.description.blank? %>
 									<%= markdown @aircraft.description %>
-								
+								  <% end %>
 								</div>
 							</div>
 						</div>

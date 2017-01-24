@@ -30,11 +30,15 @@ jQuery(function($){
   </div>
 </div>
 <div class="row">
-  <div class="field col-sm-6">
+  <div class="field col-sm-4">
+    <%= f.label :airport_name %><br />
+    <%= f.text_field :airport_name, :class => 'boxsizingBorder' %>
+  </div>
+  <div class="field col-sm-4">
     <%= f.label :address_1 %><br />
     <%= f.text_field :address_1, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field col-sm-6">
+  <div class="field col-sm-4">
     <%= f.label :address_2 %><br />
     <%= f.text_field :address_2, :class => 'boxsizingBorder' %>
   </div>
@@ -53,6 +57,17 @@ jQuery(function($){
     <%= f.text_field :postal_code, :class => 'boxsizingBorder' %>
   </div>
 </div>
+<div class="row">
+  <div class="field col-sm-6">
+    <%= f.label :latitude %><br />
+    <%= f.text_field :latitude, :class => 'boxsizingBorder' %>
+  </div>
+  <div class="field col-sm-6">
+    <%= f.label :longitude %><br />
+    <%= f.text_field :longitude, :class => 'boxsizingBorder' %>
+  </div>
+</div>
+
 <div class="row">
   <div class="field col-sm-4">
     <%= f.label :primary_phone %><br />

@@ -12,6 +12,9 @@
 
 <div class="col-xs-12 col-sm-4">
   <p><strong>Address:</strong><br>
+      <% if !@unit.airport_name.blank? %>
+        <%= @unit.airport_name %><br />
+      <% end %>
       <%= @unit.address_1 %><br />
       <% if !@unit.address_2.blank? %>
         <%= @unit.address_2 %><br />
