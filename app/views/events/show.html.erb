@@ -1,0 +1,40 @@
+<h1><%= @event.event_title %></h1>
+
+<p>
+  <b>Location:</b>
+  <%= @event.location.location_name %>
+</p>
+
+<p>
+  <b>Event start:</b>
+  <%= @event.event_start.strftime('%b %d, %Y %I:%M %p %Z') %>
+</p>
+
+<p>
+  <b>Event end:</b>
+  <%= @event.event_end.strftime('%b %d, %Y %I:%M %p %Z') %>
+</p>
+
+<p>
+  <b>More Info:</b>
+  <%= link_to @event.event_URL, @event.event_URL %>
+</p>
+
+<p>
+  <b>Contact:</b>
+  <%= @event.contact_info %>
+</p>
+
+<p>
+  <b>Details:</b>
+  <%= @event.details %>
+</p>
+
+<p>
+  <b>Graphic address:</b>
+  <%= @event.graphic_address %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

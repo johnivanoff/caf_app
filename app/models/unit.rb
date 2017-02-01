@@ -1,6 +1,7 @@
 class Unit < ActiveRecord::Base
   belongs_to :unit_type
   has_many :aircrafts
+  has_many :events
   has_many :social_links
   has_many :members, :through => :unit_assignments
   has_many :social_links, :dependent => :destroy

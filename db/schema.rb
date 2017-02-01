@@ -11,13 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170106185524) do
+ActiveRecord::Schema.define(:version => 20170201202222) do
 
   create_table "aircraft_classes", :force => true do |t|
     t.string   "class_type"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "type_picture"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "aircraft_classes_aircraft_types", :id => false, :force => true do |t|
+    t.integer "aircraft_class_id"
+    t.integer "aircraft_type_id"
   end
 
   create_table "aircraft_type_versions", :force => true do |t|
@@ -120,6 +126,20 @@ ActiveRecord::Schema.define(:version => 20170106185524) do
 
   add_index "contents", ["user_id", "title", "slug"], :name => "index_contents_on_user_id_and_title_and_slug"
 
+  create_table "events", :force => true do |t|
+    t.datetime "event_start"
+    t.datetime "event_end"
+    t.string   "event_title"
+    t.string   "event_statuses_id"
+    t.integer  "location_id"
+    t.string   "event_URL"
+    t.string   "contact_info"
+    t.text     "details"
+    t.string   "graphic_address"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
   create_table "grants", :force => true do |t|
     t.integer  "right_id"
     t.integer  "role_id"
@@ -129,6 +149,22 @@ ActiveRecord::Schema.define(:version => 20170106185524) do
 
   add_index "grants", ["right_id"], :name => "index_grants_on_right_id"
   add_index "grants", ["role_id"], :name => "index_grants_on_role_id"
+
+  create_table "locations", :force => true do |t|
+    t.string   "location_name_short"
+    t.string   "location_name"
+    t.string   "airport_name"
+    t.string   "icao_identifier"
+    t.text     "description"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postal_code"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
   create_table "member_versions", :force => true do |t|
     t.string   "item_type",       :null => false
@@ -245,11 +281,15 @@ ActiveRecord::Schema.define(:version => 20170106185524) do
 
   create_table "units", :force => true do |t|
     t.string   "unit_name"
+    t.integer  "unit_type_id"
+    t.string   "airport_name"
     t.string   "address_1"
     t.string   "address_2"
     t.string   "city"
     t.string   "state"
     t.string   "postal_code"
+    t.string   "longitude"
+    t.string   "latitude"
     t.string   "primary_phone"
     t.string   "primary_email"
     t.string   "website"
@@ -258,7 +298,6 @@ ActiveRecord::Schema.define(:version => 20170106185524) do
     t.string   "unit_logo"
     t.string   "facebook"
     t.string   "twitter"
-    t.string   "pinterest"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
   end

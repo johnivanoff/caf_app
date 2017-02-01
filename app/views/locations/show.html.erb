@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Location name short:</b>
+  <%= @location.location_name_short %>
+</p>
+
+<p>
+  <b>Location name:</b>
+  <%= @location.location_name %>
+</p>
+
+<p>
+  <b>Airport name:</b>
+  <%= @location.airport_name %>
+</p>
+
+<p>
+  <b>Icao identifier:</b>
+  <%= @location.icao_identifier %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @location.description %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @location.address %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @location.city %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @location.state %>
+</p>
+
+<p>
+  <b>Postal code:</b>
+  <%= @location.postal_code %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @location.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @location.longitude %>
+</p>
+
+
+<%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>

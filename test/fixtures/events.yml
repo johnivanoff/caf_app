@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  event_start: 2017-02-01 14:22:22
+  event_end: 2017-02-01 14:22:22
+  event_title: MyString
+  event_statuses_id: MyString
+  location_id: 
+  event_URL: MyString
+  contact_info: MyString
+  details: MyText
+  graphic_address: MyString
+
+two:
+  event_start: 2017-02-01 14:22:22
+  event_end: 2017-02-01 14:22:22
+  event_title: MyString
+  event_statuses_id: MyString
+  location_id: 
+  event_URL: MyString
+  contact_info: MyString
+  details: MyText
+  graphic_address: MyString

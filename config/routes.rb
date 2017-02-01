@@ -1,4 +1,10 @@
 CafApp::Application.routes.draw do
+  resources :events
+
+
+  resources :locations
+
+
   resources :unit_types
 
 
