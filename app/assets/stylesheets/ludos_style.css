@@ -328,7 +328,7 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
 .navbar_ .navbar-toggle .icon-bar{background: #fff;}
 .navbar-collapse_{padding-left: 0; padding-right: 0; border: none;}
 .navbar_ .nav{position: relative; margin: 0; padding: 0; display: block; float: none;}
-.navbar_ .nav > li{position: relative; display: block; float: left; white-space: nowrap; background: none;background: none; }
+.navbar_ .nav > li{position: relative; display: block; color: #000;float: left; white-space: nowrap; background: none;background: none; }
 .navbar_ .nav > li:first-child{margin-left: 0;}
 .navbar_ .nav > li > a{display: block; text-decoration: none; background: none; font-family: 'Roboto Condensed'; font-weight: 500; font-size: 18px; line-height: 76px; color: #ffffff; text-shadow:none; padding: 0px 18px; border: none; margin: 0; text-align: center; position: relative; z-index: 2; text-transform: uppercase;
 transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-transition: all 0.3s ease-out; -o-transition: all 0.3s ease-out;
@@ -997,7 +997,7 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
 
 	.navbar_ {float: none; height: 48px; margin-bottom: 0; }
 	.navbar-collapse_{clear: both; margin-left: -15px; margin-right: -15px;}
-	.navbar_ .nav{display: block; background: none; border-right: none;background: #fff; border: none;}
+	.navbar_ .nav{display: block; background: #cadbeb; border-right: none;background: #fff; border: none;}
 	.navbar_ .nav > li{float: none;background: none; border-left: none; margin-right: 0; border-top:1px solid #e5e5e5; background: none;}
 	.navbar_ .nav > li > a{margin-bottom: 0; line-height: 35px!important; border: none;}
 	.navbar_ .nav > li > a:hover, .navbar_ .nav > li > a:focus, .navbar_ .nav > li.sfHover > a, .navbar_ .nav > li.sfHover > a:hover{}
