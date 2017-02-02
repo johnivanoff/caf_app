@@ -22,7 +22,7 @@ CafApp::Application.routes.draw do
   match 'contacts' => 'contents#show', :id => 3, :as => :contacts
   match 'admin' => 'contents#show', :id => 4, :as => :admin
   match 'unit_admin' => 'units#unit_admin', :as => :unit_admin
-
+  match 'aircraft_admin' => 'aircrafts#aircraft_admin', :as => :aircraft_admin
 
   post 'preview', :to => 'previews#show', :as => :preview
 

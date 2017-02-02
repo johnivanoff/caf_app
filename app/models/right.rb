@@ -12,7 +12,8 @@ class Right < ActiveRecord::Base
     "show" => "READ",
     "index" => "READ",
     "sort" => "UPDATE",
-    "unit_admin" => "READ"
+    "unit_admin" => "READ",
+    "aircraft_admin" => "READ"
 	}
 
 	scope :ordered, order("rights.resource ASC")

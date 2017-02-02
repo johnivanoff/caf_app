@@ -1,47 +1,33 @@
 <%= render "layouts/scripts" %>
 
-<h1>CAF Units <%= @units.count %></h1>
+<h1>CAF Units Admin <span style="font-size: 0.65em;"><%= @units.count %> units</span></h1>
 
 <table>
   <tr>
     <th>Unit name</th>
     <th>Unit Type</th>
-    <th>Address 1</th>
-    <th>Address 2</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Postal code</th>
-    <th>Primary phone</th>
-    <th>Primary email</th>
-    <th>Website</th>
-    <th>Description</th>
-<% if signed_in?%>
-  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
-      <th></th>
-    <th></th>
-  <% end %>
-<% end %>
+    <th>Address</th>
+    <th>Contact Info</th>
   </tr>
 
 <% @units.each do |unit| %>
   <tr>
-    <td><%= link_to unit.unit_name, unit %></td>
+    <td><%= link_to unit.unit_name, unit %>
+    <% if signed_in?%>
+      <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+          <br /><span style="font-size: 0.65em;"><%= link_to 'Edit', edit_unit_path(unit) %></span>
+      <% end %>
+    <% end %>
+    </td>
     <td><% if !unit.unit_type.blank? %><%= unit.unit_type.type_name %><% end %></td>
-    <td><%= unit.address_1 %></td>
-    <td><%= unit.address_2 %></td>
-    <td><%= unit.city %></td>
-    <td><%= unit.state %></td>
-    <td><%= unit.postal_code %></td>
-    <td><%= unit.primary_phone %></td>
-    <td><%= unit.primary_email %></td>
-    <td><%= unit.website %></td>
-    <td><%= simple_format(truncate(unit.description, :length => 25, :separator => ' ')) %></td>
-<% if signed_in?%>
-  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
-      <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
-    <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  <% end %>
-<% end %>
+    <td><% if !unit.airport_name.blank? %><%= unit.airport_name %><br /><% end %>
+        <%= unit.address_1 %><br />
+        <% if !unit.address_2.blank? %><%= unit.address_2 %><br /><% end %>
+        <%= unit.city %>, <%= unit.state %> <%= unit.postal_code %></td>
+    <td><% if !unit.primary_phone.blank? %>Primary phone: <%= unit.primary_phone %><br /><% end %>
+        <% if !unit.primary_email.blank? %>Primary email: <%= unit.primary_email %><br /><% end %>
+        <% if !unit.website.blank? %>Website: <%= link_to unit.website, unit.website, :target => "_blank" %><br /><% end %> 
+    </td>
   </tr>
 <% end %>
 </table>

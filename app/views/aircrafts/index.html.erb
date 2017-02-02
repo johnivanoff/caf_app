@@ -1,6 +1,6 @@
 <%= render "layouts/scripts" %>
 
-<h1>Collection / <span>CAF Fleet <%= @aircrafts.count %></span></h1>
+<h1>Collection / CAF Fleet <span style="font-size: 0.65em;"><%= @aircrafts.count %> Aircraft</span></h1>
 	<div class="typeair">
 	
 	
@@ -24,6 +24,10 @@
 			<% end %>
 			<div class="bottone">
 				<h4><%= aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.name %></h4>
+				<p><%= aircraft.n_number %></p>
+				<% if !aircraft.unit.blank? %>
+				<p><%= aircraft.unit.unit_name %><br /><%= aircraft.unit.city + ', ' + aircraft.unit.state %></p>
+				<% end %>
 			</div>
 		</a>
 	</div>

@@ -12,6 +12,13 @@ class AircraftsController < ApplicationController
     respond_with(@aircrafts)
   end
 
+  def aircraft_admin
+    @aircrafts = Aircraft.all
+    @aircraft_classes = AircraftClass.all
+#    @bombers = Aircraft.bomber.all
+    respond_with(@aircrafts)
+  end
+
   def show
     respond_with(@aircraft,
     @all_aircrafts = Aircraft.all)
