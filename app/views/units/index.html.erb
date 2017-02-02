@@ -1,6 +1,66 @@
 <%= render "layouts/scripts" %>
 
-<h1>CAF Units <%= @units.count %></h1>
+<h1>CAF Unit Map <%= @units.count %></h1>
+
+    <script>
+      function initMap() {
+        var uluru = {lat: 38.0000, lng: -97.00003};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+<% @units.each_with_index do |unit, i| %>
+
+<% if !unit.latitude.blank? %>
+       var marker<%= i %> = new google.maps.Marker({
+          position: {lat: <%= unit.latitude %>, lng: <%= unit.longitude %>},
+          map: map
+        });
+<% end %>
+<% end %>
+
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2CUo-V9LEi2YuJvh6F_Sf7NkmpXnC4yE&callback=initMap">
+    </script>
+
+<div id="map" style="width: 100%; height: 600px"></div>
+
+<div class="col-sm-12">
+  <form method="GET" action="" class="formfilter">
+  
+    <div class="col-xs-12 col-sm-2" style="padding:5px 8px 0px 8px;">
+    <label>Country</label>
+    <select name="tatuaggi" id="tatuaggi" class="form-control" size="1" cols="4"> 
+    <option value="" selected="selected">All</option><option value="1">Country</option>		</select>
+    </div>	
+
+    <div class="col-xs-12 col-sm-2" style="padding:5px 8px 0px 8px;">
+    <label>State</label>
+    <select name="tatuaggi" id="tatuaggi" class="form-control" size="1" cols="4"> 
+    <option value="" selected="selected">All</option><option value="1">State</option>		</select>
+    </div>	
+
+    <div class="col-xs-12 col-sm-2" style="padding:5px 8px 0px 8px;">
+    <label>Airplane</label>
+    <select name="carnagione" id="carnagione" class="form-control" size="1" cols="4"> 
+    <option value="" selected="selected">All</option><option value="2">Airplane</option>			</select>
+    </div>
+
+    <div class="col-xs-12 col-sm-2" style="padding:5px 8px 0px 8px;">
+    <label>Type</label>
+    <select name="carnagione" id="carnagione" class="form-control" size="1" cols="4"> 
+    <option value="" selected="selected">All</option><option value="2">Type</option>			</select>
+    </div>
+
+    <div class="col-xs-12 col-sm-1" style="padding:5px 8px 0px 8px;">
+    <label class="hidden-xs" style="width: 100%;">&nbsp;</label>
+    <button type="submit" class="btn btn-parti"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search by...</button>
+    </div>
+
+  </form>
+</div>
 
 
 <div class="row"> 

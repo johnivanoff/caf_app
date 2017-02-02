@@ -68,6 +68,7 @@
               <div class="media">
               
                 <div class="media-body">
+                          <% if !@unit.aircrafts.blank? %>
                           <% @unit.aircrafts.each do |aircraft| %>
                              <div class="row">
                                <div class="col-sm-3">
@@ -82,6 +83,9 @@
                                  <p><%= aircraft.aircraft_type.description %></p>
                                </div>
                              </div>
+                          <% end %>
+                          <% else %>
+                          <p>No aircraft currently assigned.</p>
                           <% end %>
                 </div>
               </div>
