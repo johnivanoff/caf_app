@@ -10,6 +10,11 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:index
     respond_with(@units)
   end
 
+  def unit_admin
+    @units = Unit.alpha_order.all
+    respond_with(@units)
+  end
+
   def show
     respond_with(@unit)
   end

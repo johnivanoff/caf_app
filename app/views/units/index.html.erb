@@ -2,49 +2,25 @@
 
 <h1>CAF Units <%= @units.count %></h1>
 
-<table>
-  <tr>
-    <th>Unit name</th>
-    <th>Unit Type</th>
-    <th>Address 1</th>
-    <th>Address 2</th>
-    <th>City</th>
-    <th>State</th>
-    <th>Postal code</th>
-    <th>Primary phone</th>
-    <th>Primary email</th>
-    <th>Website</th>
-    <th>Description</th>
-<% if signed_in?%>
-  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
-      <th></th>
-    <th></th>
-  <% end %>
-<% end %>
-  </tr>
 
+<div class="row"> 
 <% @units.each do |unit| %>
-  <tr>
-    <td><%= link_to unit.unit_name, unit %></td>
-    <td><% if !unit.unit_type.blank? %><%= unit.unit_type.type_name %><% end %></td>
-    <td><%= unit.address_1 %></td>
-    <td><%= unit.address_2 %></td>
-    <td><%= unit.city %></td>
-    <td><%= unit.state %></td>
-    <td><%= unit.postal_code %></td>
-    <td><%= unit.primary_phone %></td>
-    <td><%= unit.primary_email %></td>
-    <td><%= unit.website %></td>
-    <td><%= simple_format(truncate(unit.description, :length => 25, :separator => ' ')) %></td>
-<% if signed_in?%>
-  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
-      <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
-    <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  <% end %>
+
+	<div class="col-xs-12 col-sm-4 col-md-3">
+		<a href="units/<%= unit.id %>" class="blocchi-unit">
+      <% if unit.unit_logo? %>
+      <img src="/uploads/unit_logos/<%= unit.unit_logo %>" style="max-height: 264px;" />
+      <% else %>
+      <img src="http://polarbeardesign.net/uploads/misc_images/unit_logo_generic.jpg" />
+      <% end %>
+			<div class="bottone">
+				<h4><%= unit.unit_name %></h4>
+				<p><%= unit.city + ', ' + unit.state %></p>
+			</div>
+		</a>
+	</div>
 <% end %>
-  </tr>
-<% end %>
-</table>
+</div>
 
 <br />
 
