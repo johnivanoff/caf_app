@@ -1,0 +1,48 @@
+<%= render "layouts/scripts" %>
+
+<h1>Aircraft Admin <span style="font-size: 0.65em;"><%= @aircrafts.count %> Aircraft</span></h1>
+
+
+<table>
+  <tr>
+    <th class="sortable">Aircraft type</th>
+    <th class="sortable">Name</th>
+    <th class="sortable">N-number</th>
+    <th class="sortable">Description</th>
+    <th class="sortable">Unit</th>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <th></th>
+    <th></th>
+  <% end %>
+<% end %>
+  </tr>
+
+<% @aircrafts.each do |aircraft| %>
+  <tr>
+    <td><%= link_to aircraft.aircraft_type.aircraft_type_designation, aircraft %></td>
+    <td><%= aircraft.name %></td>
+    <td><%= aircraft.n_number %></td>
+    <td><%= simple_format(truncate(aircraft.description, :length => 50, :separator => ' ')) %></td>
+    <td><% if !aircraft.unit.nil? %><%= aircraft.unit.unit_name %><% else %>n/a<% end %></td>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <td><%= link_to 'Edit', edit_aircraft_path(aircraft) %></td>
+    <td><%= link_to 'Destroy', aircraft, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+<% end %>
+<% end %>
+</table>
+
+<br />
+
+
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="admin-section" >
+      <h2>Admin</h2>
+        <%= link_to 'New Aircraft', new_aircraft_path %>
+    </div>
+  <% end %>
+<% end %>
