@@ -22,7 +22,8 @@ class ContentsController < ApplicationController
 
   def home
     @content = Content.new
-    respond_with(@content)
+    render :layout => "home"
+#    respond_with(@content)
   end
 
   def edit

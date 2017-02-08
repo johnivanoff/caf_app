@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Commemorative Air Force</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="onepage front" data-spy="scroll" data-target="#top1" data-offset="80">
+
+<div id="main">
+
+  <%= render 'layouts/header' %>
+
+
+<div id="">
+  
+  <% if !notice.blank? %><div id="notice"><%= notice %></div><% end %>
+  <% if !alert.blank? %><div class="alert"><%= alert %></div><% end %>
+
+  <%= yield %>
+
+</div>
+  </div>
+
+  <%= render 'layouts/footer' %>
+
+
+</div>
+
+</body>
+</html>
