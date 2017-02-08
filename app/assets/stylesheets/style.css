@@ -268,7 +268,7 @@ label {
 
 
 .blocchi-unit {
- border: none;
+  border: none;
   height: 264px;
 }
 
@@ -350,3 +350,44 @@ label {
 	}
 	
 	}
+	
+	.flexslider {
+  margin-top: 80px;
+}
+
+.flex-caption {
+  position:relative;
+  width: 100%; 
+  left:0;
+  text-align:center; 
+  margin-top: -400px;
+  margin-bottom: 200px;
+}
+
+.flex-caption > div{}
+.flex-caption .img{padding-bottom: 25px;}
+.flex-caption .img img{width: auto; display: block; margin-left: auto; margin-right: auto;}
+.flex-caption .txt1, .flex-caption .txt2 {
+  line-height: 1.1;
+  color: #fff;
+  text-shadow:1px 1px 3px rgba(0, 0, 0, 0.5);
+  padding-bottom: 10px;
+}
+
+.flex-caption .txt1 {
+  font-weight: 900;
+  font-size: 50px;
+}
+.flex-caption .txt2 {
+  font-weight: 400;
+  font-size: 30px;
+}
+.flex-caption .txt3 {
+  padding-top: 10px;
+  text-align: center;
+}
+
+.flex-caption .txt3 a {
+  color: #fff;
+  font-size: 26px;
+  }

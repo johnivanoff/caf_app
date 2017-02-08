@@ -274,17 +274,17 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
 
 
 
-.bg1 { background-image: url(parallax1.jpg); }
+.bg1 { background-image: url(../uploads/website_images/parallax1.jpg); }
 
-.bg2 { background-image: url(parallax2.jpg); }
+.bg2 { background-image: url(../uploads/website_images/parallax2.jpg); }
 
-.bg3 { background-image: url(parallax3.jpg); }
+.bg3 { background-image: url(../uploads/website_images/parallax3.jpg); }
 
-.bg4 { background-image: url(bg-3.jpg); }
+.bg4 { background-image: url(../uploads/website_images/bg-3.jpg); }
 
-.bg5 { background-image: url(parallax5.jpg); }
-.bg6 { background-image: url(parallax6.jpg); }
-.bg7 { background-image: url(parallax7.jpg); }
+.bg5 { background-image: url(../uploads/website_images/parallax5.jpg); }
+.bg6 { background-image: url(../uploads/website_images/parallax6.jpg); }
+.bg7 { background-image: url(../uploads/website_images/parallax7.jpg); }
 
 
 #parallax1{}

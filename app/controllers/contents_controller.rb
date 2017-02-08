@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
   before_filter :set_content, only: [:show, :edit, :update, :destroy]
 
-  skip_before_filter :check_authorization, :check_authentication, :only => [:show]
+  skip_before_filter :check_authorization, :check_authentication, :only => [:show, :home]
 
 
   respond_to :html
@@ -16,6 +16,11 @@ class ContentsController < ApplicationController
   end
 
   def new
+    @content = Content.new
+    respond_with(@content)
+  end
+
+  def home
     @content = Content.new
     respond_with(@content)
   end
