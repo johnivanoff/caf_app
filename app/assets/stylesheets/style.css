@@ -352,6 +352,10 @@ label {
 	}
 	
 
+.flexslider {
+  border: none;
+}
+
 .flex-caption {
   position:relative;
   width: 100%; 
