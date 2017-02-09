@@ -354,6 +354,7 @@ label {
 
 .flexslider {
   border: none;
+  margin: 0;
 }
 
 .flex-caption {
@@ -392,3 +393,22 @@ label {
   color: #fff;
   font-size: 26px;
   }
+  
+.flex-control-nav{display:inline-block; padding: 0; margin: 0; position: absolute; right: 0; left: 0; /*bottom: 95px;*/ z-index:5; overflow:hidden;list-style:none; text-align: center; line-height: 1;}
+
+.flex-control-nav li{display: inline-block; float:none; width:11px; height:11px; margin: 0 8px;}
+.flex-control-nav li:first-child{}
+.flex-control-nav li a{display:block;width: 100%; height: 100%; background: none; text-indent: -9999%; cursor:pointer; position: relative; overflow: hidden;background: url(../uploads/website_images/pagination.png) left top no-repeat;}
+.flex-control-nav li a:hover, .flex-control-nav li a.flex-active{ background-position: right;}
+.flex-control-nav li .flex-active{cursor:default;pointer-events:none;}
+
+.flex-direction-nav{padding: 0; margin: 0; list-style: none;}
+.flex-direction-nav:before{content: ''; display: block; width: 414px; height: 65px; position: absolute; left: 50%; margin-left: -207px; bottom: 0;}
+.flex-direction-nav li{}
+.flex-direction-nav li a{display: block; width: 17px; height: 22px; position: absolute; left: 50%; margin-left: -30px; bottom: 14px;}
+.flex-direction-nav li a.flex-prev{background: url(../uploads/website_images/prev.png) left top no-repeat;}
+.flex-direction-nav li a.flex-prev:hover{background-position: bottom;}
+.flex-direction-nav li a.flex-next{background: url(../uploads/website_images/next.png) left top no-repeat; margin-left: 13px;}
+.flex-direction-nav li a.flex-next:hover{background-position: bottom;}
+
+
