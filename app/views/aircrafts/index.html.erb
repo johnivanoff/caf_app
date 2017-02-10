@@ -1,36 +1,48 @@
 <%= render "layouts/scripts" %>
 
 <h1>Collection / CAF Fleet <span style="font-size: 0.65em;"><%= @aircrafts.count %> Aircraft</span></h1>
-	<div class="typeair">
-	
-	
-	<% @aircraft_classes.each do |aircraft_class| %>
-		<div class="col-xs-12 col-sm-4">
-		<a href="#" class="collection">
-		<%= image_tag aircraft_class.type_picture %><br>
-		<h2><%= aircraft_class.class_type %></h2>
-		</a>
-		</div>
+  <div class="typeair">
+
+
+  <% @aircraft_classes.each do |aircraft_class| %>
+    <div class="col-xs-12 col-sm-4">
+    <a href="#" class="collection">
+    <%= image_tag aircraft_class.type_picture %><br>
+    <h2><%= aircraft_class.class_type %></h2>
+    </a>
+    </div>
   <% end %>
-	</div>
+  </div>
+  <div class="col-sm-12">
+  <form id="live-search" action="" class="styled formfilter"" method="post">
+
+
+    <fieldset>
+        <input type="text" class="text-input" id="filter" value="" />
+        <label>Search/Filter</label>
+        <span id="filter-count"></span>
+    </fieldset>
+</form>
+</div>
+
 <div class='row'>
 <% @aircrafts.each do |aircraft| %>
-	<div class="col-xs-12 col-sm-4 col-md-3" style="min-height: 250px;">
-		<a href="aircrafts/<%= aircraft.id %>" class="blocchi-unit">
-			<% if aircraft.profile_photo? %>
-			<img src="<%= aircraft.profile_photo %>">
-			<% else %>
-			<img src="http://polarbeardesign.net/uploads/misc_images/default_2.jpg" />
-			<% end %>
-			<div class="bottone">
-				<h4><%= aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.name %></h4>
-				<p><%= aircraft.n_number %></p>
-				<% if !aircraft.unit.blank? %>
-				<p><%= aircraft.unit.unit_name %><br /><%= aircraft.unit.city + ', ' + aircraft.unit.state %></p>
-				<% end %>
-			</div>
-		</a>
-	</div>
+  <div class="col-xs-12 col-sm-4 col-md-3" style="min-height: 250px;">
+    <a href="aircrafts/<%= aircraft.id %>" class="blocchi-unit">
+      <% if aircraft.profile_photo? %>
+      <img src="<%= aircraft.profile_photo %>">
+      <% else %>
+      <img src="http://polarbeardesign.net/uploads/misc_images/default_2.jpg" />
+      <% end %>
+      <div class="bottone">
+        <h4><%= aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.name %></h4>
+        <p><%= aircraft.n_number %></p>
+        <% if !aircraft.unit.blank? %>
+        <p><%= aircraft.unit.unit_name %><br /><%= aircraft.unit.city + ', ' + aircraft.unit.state %></p>
+        <% end %>
+      </div>
+    </a>
+  </div>
 
 <% end %>
 

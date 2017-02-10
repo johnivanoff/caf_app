@@ -326,58 +326,41 @@
 <div id="map" style="width: 100%; height: 600px"></div>
 
 <div class="col-sm-12">
-  <form method="GET" action="" class="formfilter">
-  
-    <div class="col-xs-12 col-sm-2" style="padding:5px 8px 0px 8px;">
-    <label>Country</label>
-    <select name="tatuaggi" id="tatuaggi" class="form-control" size="1" cols="4"> 
-    <option value="" selected="selected">All</option><option value="1">Country</option>		</select>
-    </div>	
+  <form id="live-search" action="" class="styled formfilter"" method="post">
 
-    <div class="col-xs-12 col-sm-2" style="padding:5px 8px 0px 8px;">
-    <label>State</label>
-    <select name="tatuaggi" id="tatuaggi" class="form-control" size="1" cols="4"> 
-    <option value="" selected="selected">All</option><option value="1">State</option>		</select>
-    </div>	
 
-    <div class="col-xs-12 col-sm-2" style="padding:5px 8px 0px 8px;">
-    <label>Airplane</label>
-    <select name="carnagione" id="carnagione" class="form-control" size="1" cols="4"> 
-    <option value="" selected="selected">All</option><option value="2">Airplane</option>			</select>
-    </div>
-
-    <div class="col-xs-12 col-sm-2" style="padding:5px 8px 0px 8px;">
-    <label>Type</label>
-    <select name="carnagione" id="carnagione" class="form-control" size="1" cols="4"> 
-    <option value="" selected="selected">All</option><option value="2">Type</option>			</select>
-    </div>
-
-    <div class="col-xs-12 col-sm-1" style="padding:5px 8px 0px 8px;">
-    <label class="hidden-xs" style="width: 100%;">&nbsp;</label>
-    <button type="submit" class="btn btn-parti"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Search by...</button>
-    </div>
-
-  </form>
+    <fieldset>
+        <input type="text" class="text-input" id="filter" value="" />
+        <label>Search/Filter</label>
+        <span id="filter-count"></span>
+    </fieldset>
+</form>
 </div>
 
 
 <div class="row"> 
 <% @units.each do |unit| %>
 
-	<div class="col-xs-12 col-sm-4 col-md-3">
-		<a href="units/<%= unit.id %>" class="blocchi-unit">
+  <div class="col-xs-12 col-sm-4 col-md-3">
+    <a href="units/<%= unit.id %>" class="blocchi-unit">
       <% if unit.unit_logo? %>
       <img src="/uploads/unit_logos/<%= unit.unit_logo %>" style="max-height: 264px;" />
       <% else %>
       <img src="http://polarbeardesign.net/uploads/misc_images/unit_logo_generic.jpg" />
       <% end %>
-			<div class="bottone">
-				<h4><%= unit.unit_name %></h4>
-				<p><%= unit.city + ', ' + unit.state %></p>
-			</div>
-		</a>
-	</div>
-<% end %>
+      <div class="bottone">
+        <h4><%= unit.unit_name %></h4>
+        <p><%= unit.city + ', ' + unit.state %></p>
+        <% if !unit.aircrafts.blank? %>
+            <% unit.aircrafts.each do |aircraft| %>
+              <div style="display: none;"><%= aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.aircraft_type.aircraft_name + ' ' + aircraft.name %></div>
+            <% end %>
+          <% end %>
+        
+      </div>
+    </a>
+  </div>
+  <% end %>
 </div>
 
 <br />
