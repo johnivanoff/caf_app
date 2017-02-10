@@ -2,6 +2,17 @@
 
 <h1>Aircraft Admin <span style="font-size: 0.65em;"><%= @aircrafts.count %> Aircraft</span></h1>
 
+<div class="col-sm-12">
+  <form id="live-search" action="" class="styled formfilter"" method="post">
+
+
+    <fieldset>
+        <input type="text" class="text-input" id="table-filter" value="" />
+        <label>Search/Filter</label>
+        <span id="filter-count"></span>
+    </fieldset>
+</form>
+</div>
 
 <table>
   <tr>
@@ -19,7 +30,7 @@
   </tr>
 
 <% @aircrafts.each do |aircraft| %>
-  <tr>
+  <tr class='result'>
     <td><%= link_to aircraft.aircraft_type.aircraft_type_designation, aircraft %></td>
     <td><%= aircraft.name %></td>
     <td><%= aircraft.n_number %></td>

@@ -2,6 +2,18 @@
 
 <h1>CAF Units Admin <span style="font-size: 0.65em;"><%= @units.count %> units</span></h1>
 
+<div class="col-sm-12">
+  <form id="live-search" action="" class="styled formfilter"" method="post">
+
+
+    <fieldset>
+        <input type="text" class="text-input" id="table-filter" value="" />
+        <label>Search/Filter</label>
+        <span id="filter-count"></span>
+    </fieldset>
+</form>
+</div>
+
 <table>
   <tr>
     <th>Unit name</th>
@@ -11,7 +23,7 @@
   </tr>
 
 <% @units.each do |unit| %>
-  <tr>
+  <tr class='result'>
     <td><%= link_to unit.unit_name, unit %>
     <% if signed_in?%>
       <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>

@@ -1,5 +1,17 @@
 <h1>Aircraft Types</h1>
 
+<div class="col-sm-12">
+  <form id="live-search" action="" class="styled formfilter"" method="post">
+
+
+    <fieldset>
+        <input type="text" class="text-input" id="table-filter" value="" />
+        <label>Search/Filter</label>
+        <span id="filter-count"></span>
+    </fieldset>
+</form>
+</div>
+
 <table>
   <tr>
     <th>Aircraft class</th>
@@ -36,10 +48,12 @@
     <th></th>
     <th></th>
   </tr>
-
 <% @aircraft_types.each do |aircraft_type| %>
-  <tr>
-    <td><%= aircraft_type.aircraft_class.class_type %></td>
+  <tr class="result">
+    <td><% aircraft_type.aircraft_classes.each do |aircraft_class| %>
+          <%= aircraft_class.class_type %>
+        <% end %>
+    </td>
     <td><%= aircraft_type.aircraft_type_designation %></td>
     <td><%= aircraft_type.aircraft_name %></td>
     <td><%= simple_format(truncate(aircraft_type.description, :length => 25, :separator => ' ')) %></td>
