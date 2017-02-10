@@ -39,6 +39,11 @@
         <p><%= aircraft.n_number %></p>
         <% if !aircraft.unit.blank? %>
         <p><%= aircraft.unit.unit_name %><br /><%= aircraft.unit.city + ', ' + aircraft.unit.state %></p>
+        <% if !aircraft.aircraft_type.aircraft_classes.blank? %>
+            <% aircraft.aircraft_type.aircraft_classes.each do |aircraft_class| %>
+              <div style="display: none"><%= aircraft_class.class_type %></div>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     </a>
