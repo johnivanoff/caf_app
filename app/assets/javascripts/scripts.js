@@ -315,7 +315,7 @@ $(document).ready(function(){
         var filter = $(this).val(), count = 0;
  
         // Loop through the comment list
-        $(".blocchi-unit").each(function(){
+        $(".blocchi-parent").each(function(){
  
             // If the list item does not contain the text phrase fade it out
             if ($(this).text().search(new RegExp(filter, "i")) < 0) {
