@@ -11,125 +11,147 @@
     </div>
   <% end %>
 
+
+<div class="row">
+  <div class="field col-sm-3">
+    <%= f.label :aircraft_type_designation %><br />
+    <%= f.text_field :aircraft_type_designation, :class => 'boxsizingBorder', :autofocus => true %>
+  </div>
+  <div class="field col-sm-3">
+    <%= f.label :aircraft_name %><br />
+    <%= f.text_field :aircraft_name, :class => 'boxsizingBorder' %>
+  </div>
+  <div class="field col-sm-3">
+    <%= f.label :manufacturer %><br />
+    <%= f.text_field :manufacturer, :class => 'boxsizingBorder' %>
+  </div>
+  <div class="field col-sm-3">
+    <%= f.label :role %><br />
+    <%= f.text_field :role, :class => 'boxsizingBorder' %>
+  </div>
+</div>
+<div class="row">
+  <div class="field col-sm-2">
+    <%= f.label :introduced %><br />
+    <%= f.text_field :introduced, :class => 'boxsizingBorder' %>
+  </div>
+  <div class="field col-sm-2">
+    <%= f.label :production_years %><br />
+    <%= f.text_field :production_years, :class => 'boxsizingBorder' %>
+  </div>
+  <div class="field col-sm-2">
+    <%= f.label :qty_produced %><br />
+    <%= f.text_field :qty_produced, :class => 'boxsizingBorder' %>
+  </div>
+  <div class="field col-sm-2">
+    <%= f.label :cost %><br />
+    <%= f.text_field :cost, :class => 'boxsizingBorder' %>
+  </div>
+  <div class="field col-sm-2">
+    <%= f.label :qty_still_flying %><br />
+    <%= f.text_field :qty_still_flying, :class => 'boxsizingBorder' %>
+  </div>
+</div>
+
   <%= f.fields_for :aircraft_classes do |builder| %>
     <%= render "aircraft_classes", :f => builder %>
   <% end %>
-  <div class="field">
-    <%= f.label :aircraft_type_designation %><br />
-    <%= f.text_field :aircraft_type_designation %>
-  </div>
-  <div class="field">
-    <%= f.label :aircraft_name %><br />
-    <%= f.text_field :aircraft_name %>
-  </div>
-  <div class="field">
+
+  <div class="field col-sm-12">
     <%= f.label :description %><br />
-    <%= f.text_area :description, :size => '30x3'%>
+    <%= f.text_area :description, :rows => 8, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
-    <%= f.label :manufacturer %><br />
-    <%= f.text_field :manufacturer %>
-  </div>
-  <div class="field">
-    <%= f.label :introduced %><br />
-    <%= f.text_field :introduced %>
-  </div>
-  <div class="field">
-    <%= f.label :production_years %><br />
-    <%= f.text_field :production_years %>
-  </div>
-  <div class="field">
-    <%= f.label :role %><br />
-    <%= f.text_field :role %>
-  </div>
-  <div class="field">
-    <%= f.label :power %><br />
-    <%= f.text_field :power %>
-  </div>
-  <div class="field">
+
+
+<h3>Aircraft Specs:</h3>
+<div class="row">
+  <div class="field col-sm-2">
     <%= f.label :length %><br />
-    <%= f.text_field :length %>
+    <%= f.text_field :length, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+  <div class="field col-sm-2">
     <%= f.label :height %><br />
-    <%= f.text_field :height %>
+    <%= f.text_field :height, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+  <div class="field col-sm-2">
     <%= f.label :wingspan %><br />
-    <%= f.text_field :wingspan %>
+    <%= f.text_field :wingspan, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+  <div class="field col-sm-2">
     <%= f.label :empty_weight %><br />
-    <%= f.text_field :empty_weight %>
+    <%= f.text_field :empty_weight, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+  <div class="field col-sm-2">
     <%= f.label :gross_weight %><br />
-    <%= f.text_field :gross_weight %>
+    <%= f.text_field :gross_weight, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+  <div class="field col-sm-2">
     <%= f.label :max_weight %><br />
-    <%= f.text_field :max_weight %>
+    <%= f.text_field :max_weight, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
-    <%= f.label :range %><br />
-    <%= f.text_field :range %>
+  <div class="field col-sm-2">
+    <%= f.label :power %><br />
+    <%= f.text_field :power, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
-    <%= f.label :max_speed %><br />
-    <%= f.text_field :max_speed %>
-  </div>
-  <div class="field">
-    <%= f.label :cruise_speed %><br />
-    <%= f.text_field :cruise_speed %>
-  </div>
-  <div class="field">
-    <%= f.label :ceiling %><br />
-    <%= f.text_field :ceiling %>
-  </div>
-  <div class="field">
-    <%= f.label :crew %><br />
-    <%= f.text_field :crew %>
-  </div>
-  <div class="field">
-    <%= f.label :guns %><br />
-    <%= f.text_field :guns %>
-  </div>
-  <div class="field">
-    <%= f.label :hardpoints %><br />
-    <%= f.text_field :hardpoints %>
-  </div>
-  <div class="field">
-    <%= f.label :rockets %><br />
-    <%= f.text_field :rockets %>
-  </div>
-  <div class="field">
-    <%= f.label :bombs %><br />
-    <%= f.text_field :bombs %>
-  </div>
-  <div class="field">
+  <div class="field col-sm-2">
     <%= f.label :fuel_capacity %><br />
-    <%= f.text_field :fuel_capacity %>
+    <%= f.text_field :fuel_capacity, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+  <div class="field col-sm-2">
     <%= f.label :fuel_burn %><br />
-    <%= f.text_field :fuel_burn %>
+    <%= f.text_field :fuel_burn, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
+  <div class="field col-sm-2">
     <%= f.label :oil_capacity %><br />
-    <%= f.text_field :oil_capacity %>
+    <%= f.text_field :oil_capacity, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
-    <%= f.label :qty_produced %><br />
-    <%= f.text_field :qty_produced %>
+  <div class="field col-sm-2">
+    <%= f.label :crew %><br />
+    <%= f.text_field :crew, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
-    <%= f.label :cost %><br />
-    <%= f.text_field :cost %>
+</div>
+
+<h3>Performance:</h3>
+<div class="row">
+  <div class="field col-sm-3">
+    <%= f.label :range %><br />
+    <%= f.text_field :range, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
-    <%= f.label :qty_still_flying %><br />
-    <%= f.text_field :qty_still_flying %>
+  <div class="field col-sm-3">
+    <%= f.label :max_speed %><br />
+    <%= f.text_field :max_speed, :class => 'boxsizingBorder' %>
   </div>
+  <div class="field col-sm-3">
+    <%= f.label :cruise_speed %><br />
+    <%= f.text_field :cruise_speed, :class => 'boxsizingBorder' %>
+  </div>
+  <div class="field col-sm-3">
+    <%= f.label :ceiling %><br />
+    <%= f.text_field :ceiling, :class => 'boxsizingBorder' %>
+  </div>
+</div>
+
+<h3>Armamment:</h3>
+<div class="row">
+  <div class="field col-sm-3">
+    <%= f.label :guns %><br />
+    <%= f.text_field :guns, :class => 'boxsizingBorder' %>
+  </div>
+  <div class="field col-sm-3">
+    <%= f.label :hardpoints %><br />
+    <%= f.text_field :hardpoints, :class => 'boxsizingBorder' %>
+  </div>
+  <div class="field col-sm-3">
+    <%= f.label :rockets %><br />
+    <%= f.text_field :rockets, :class => 'boxsizingBorder' %>
+  </div>
+  <div class="field col-sm-3">
+    <%= f.label :bombs %><br />
+    <%= f.text_field :bombs, :class => 'boxsizingBorder' %>
+  </div>
+</div>
+
+
   <div class="actions">
     <%= f.submit :class => 'btn btn-primary' %>
   </div>
