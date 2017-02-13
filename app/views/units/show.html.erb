@@ -73,9 +73,9 @@
                              <div class="row">
                                <div class="col-sm-3">
                                 <% if aircraft.profile_photo? %>
-                                  <img src="<%= aircraft.profile_photo %>" width="100%" class="profile_photo" />
+                                  <img src="<%= '/uploads/aircraft_profile_photos/' + aircraft.profile_photo %>" width="100%" class="profile_photo" />
                                 <% else %>
-                                  <img src="http://polarbeardesign.net/uploads/misc_images/default_2.jpg" width="250px" class="profile_photo" />
+                                  <img src='/uploads/aircraft_profile_photos/default_2.jpg' width="250px" class="profile_photo" />
                                 <% end %>
                                </div>
                                <div class="col-sm-9">
