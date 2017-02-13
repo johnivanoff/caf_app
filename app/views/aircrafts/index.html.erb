@@ -32,7 +32,7 @@
       <% if aircraft.profile_photo? %>
       <img src="<%= '/uploads/aircraft_profile_photos/' + aircraft.profile_photo %>">
       <% else %>
-      <img src="http://polarbeardesign.net/uploads/misc_images/default_2.jpg" />
+      <img src="/uploads/aircraft_profile_photos/default_2.jpg" />
       <% end %>
       <div class="bottone">
         <h4><%= aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.name %></h4>
