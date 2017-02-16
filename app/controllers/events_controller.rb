@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   before_filter :set_event, only: [:show, :edit, :update, :destroy]
 
+  skip_before_filter :check_authorization, :check_authentication, :only => [:show, :index]
+
   respond_to :html
 
   def index

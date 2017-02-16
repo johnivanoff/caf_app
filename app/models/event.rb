@@ -3,5 +3,8 @@ class Event < ActiveRecord::Base
 
   belongs_to :unit
   belongs_to :location
+
+  has_paper_trail :class_name => 'EventVersion',
+     :meta => { :author_username => :user_name}
   
 end

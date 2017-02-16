@@ -1,6 +1,15 @@
 CafApp::Application.routes.draw do
-  resources :events
 
+
+  resources :events
+  resources :events do
+    resources :versions, :only => [:destroy] do
+      member do
+        get 'diff', :to => 'event_versions#diff'
+        put 'rollback', :to => 'events_versions#rollback'
+      end
+    end
+  end
 
   resources :locations
 

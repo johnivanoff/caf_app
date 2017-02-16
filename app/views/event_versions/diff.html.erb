@@ -1,0 +1,56 @@
+<div class='row mt'>
+  <div class='col-sm-12'>
+    <h2><%= "Diff between Version #{@version.id} and Current Version" %></h2>
+    <style><%= Diffy::CSS %></style>
+    <div class='well diff'>
+      <p>
+        <strong>Title:</strong>
+        <%= diff(@version.reify.event_title, @event.event_title) %>
+      </p>
+
+      <p>
+        <strong>Location:</strong>
+        <%= diff(@version.reify.location.location_name, @event.location.location_name) %>
+      </p>
+
+      <p>
+        <strong>Event start:</strong>
+        <%= diff(@version.reify.event_start, @event.event_start) %>
+      </p>
+
+      <p>
+        <strong>Event end:</strong>
+        <%= diff(@version.reify.event_end, @event.event_end) %>
+      </p>
+
+      <p>
+        <strong>More Info:</strong>
+        <%= diff(@version.reify.event_URL, @event.event_URL) %>
+      </p>
+
+      <p>
+        <strong>Contact:</strong>
+        <%= diff(@version.reify.contact_info, @event.contact_info) %>
+      </p>
+
+      <p>
+        <strong>Details:</strong>
+        <%= diff(@version.reify.details, @event.details) %>
+      </p>
+
+      <p>
+        <strong>Graphic address:</strong>
+        <%= diff(@version.reify.graphic_address, @event.graphic_address) %>
+      </p>
+    </div>
+
+    <p>
+    <%= "Version authored by #{find_version_author_name(@version)} on #{@version.created_at} by '#{@version.event.humanize}'." %>
+    </p>
+  </div>
+</div>
+
+<div class='fr'>
+  <%= link_to 'Back', edit_event_path(@event), :class => 'btn btn-danger' %>
+  <%= link_to 'Rollback', rollback_event_version_path(@event, @version), :class => 'btn btn-primary', :method => 'put' %>
+</div>
