@@ -1,6 +1,12 @@
 CafApp::Application.routes.draw do
 
 
+  resources :hq_position_assignments
+
+
+  resources :hq_positions
+
+
   resources :events
   resources :events do
     resources :versions, :only => [:destroy] do
@@ -31,7 +37,9 @@ CafApp::Application.routes.draw do
   match 'contacts' => 'contents#show', :id => 3, :as => :contacts
   match 'admin' => 'contents#show', :id => 4, :as => :admin
   match 'unit_admin' => 'units#unit_admin', :as => :unit_admin
+  match 'hq_directory' => 'members#hq_directory', :as => :hq_directory
   match 'aircraft_admin' => 'aircrafts#aircraft_admin', :as => :aircraft_admin
+  match 'hq_position_admin' => 'hq_position_assignments#hq_position_admin', :as => :hq_position_admin
   match 'home' => 'contents#home', :as => :home
 
   post 'preview', :to => 'previews#show', :as => :preview

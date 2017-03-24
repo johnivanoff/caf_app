@@ -75,6 +75,14 @@
     <%= f.text_field :caf_join_date %>
   </div>
 </div>
+
+<div class='row'>
+  <div class="field col-sm-6">
+    <%= f.label :photo, 'Photo' %><br />
+    <%= f.text_field :photo %>
+  </div>
+</div>
+
 <%# if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
 
   <%= f.fields_for :roles do |builder| %>
@@ -85,7 +93,10 @@
     <%= render "units", :f => builder %>
   <% end %>
 
-  </div>
+  <%= f.fields_for :hq_positions do |builder| %>
+    <%= render "hq_positions", :f => builder %>
+  <% end %>
+
 <%# end %>
 <br /><br />
   <div class="actions">

@@ -1,0 +1,25 @@
+<h1>Listing hq_positions</h1>
+
+<table>
+  <tr>
+    <th>Position name</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hq_positions.each do |hq_position| %>
+  <tr>
+    <td><%= hq_position.position_name %></td>
+    <td><%= hq_position.members %></td>
+    <td><%= link_to 'Show', hq_position %></td>
+    <td><%= link_to 'Edit', edit_hq_position_path(hq_position) %></td>
+    <td><%= link_to 'Destroy', hq_position, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Hq position', new_hq_position_path %>

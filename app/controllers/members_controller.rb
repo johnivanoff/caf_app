@@ -11,6 +11,11 @@ class MembersController < ApplicationController
     respond_with(@members)
   end
 
+  def hq_directory
+    @hq_positions = HqPosition.all
+    
+  end
+
   def show
     respond_with(@member)
   end
@@ -26,12 +31,14 @@ class MembersController < ApplicationController
   def edit
     @roles = Role.find(:all)
     @units = Unit.alpha_order.find(:all)
+    @hq_positions = HqPosition.alpha_order.find(:all)
   end
 
   def create
     @member = Member.new(params[:member])
     @roles = Role.find(:all)
     @units = Unit.alpha_order.find(:all)
+    @hq_positions = HqPosition.alpha_order.find(:all)
     
     checked_roles = []
     checked_params = params[:role_list] || []
@@ -53,6 +60,15 @@ class MembersController < ApplicationController
       checked_units << unit
     end
 
+    checked_positions = []
+    checked_params_3 = params[:position_list] || []
+    for check_box_id in checked_params_3
+      position = HqPosition.find(check_box_id)
+      if not @member.hq_positions.include?(position)
+        @member.hq_positions << position
+      end
+      checked_positions << position
+    end
     
     @member.save
     respond_with(@member)
@@ -62,7 +78,8 @@ class MembersController < ApplicationController
     @member.update_attributes(params[:member])
     @roles = Role.find(:all)
     @units = Unit.alpha_order.find(:all)
-        
+    @hq_positions = HqPosition.alpha_order.find(:all)
+
     if params[:commit] == "Update Member"
       checked_roles = []
       checked_params = params[:role_list] || []
@@ -95,6 +112,23 @@ class MembersController < ApplicationController
           @member.units.delete(unit)
         end
       end
+
+      checked_positions = []
+      checked_params_3 = params[:position_list] || []
+      for check_box_id in checked_params_3
+        position = HqPosition.find(check_box_id)
+        if not @member.hq_positions.include?(position)
+          @member.hq_positions << position
+        end
+        checked_positions << position
+      end
+      missing_positions = @hq_positions - checked_positions
+      for position in missing_positions
+        if @member.hq_positions.include?(position)
+          @member.hq_positions.delete(position)
+        end
+      end
+
     end
     
     respond_with(@member)

@@ -14,6 +14,8 @@ class Right < ActiveRecord::Base
     "sort" => "UPDATE",
     "unit_admin" => "READ",
     "aircraft_admin" => "READ",
+    "hq_directory" => "READ",
+    "hq_position_admin" => "READ",
     "home" => "READ"
 	}
 

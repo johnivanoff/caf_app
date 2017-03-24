@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Member:</b>
+  <%= @hq_position_assignment.member %>
+</p>
+
+<p>
+  <b>Hq position:</b>
+  <%= @hq_position_assignment.hq_position %>
+</p>
+
+
+<%= link_to 'Edit', edit_hq_position_assignment_path(@hq_position_assignment) %> |
+<%= link_to 'Back', hq_position_assignments_path %>

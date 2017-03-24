@@ -1,0 +1,17 @@
+<h3>Holds HQ position</h3>
+<div class='row'>
+<% @hq_positions.each.each_with_index do |position, i| %>
+<% if i == 0 %>
+  <div class="col-sm-4">
+<% end %>
+  <label><%= check_box_tag('position_list[]', position.id, @member.hq_positions.collect {|obj| obj.id}.include?(position.id)) %><%= position.position_name %></label><br />
+<% if i == 9 %>
+  </div>
+  <div class="col-sm-4">
+<% end %>
+<% if i == 19 %>
+  </div>
+  <div class="col-sm-4">
+<% end %>
+<% end %>
+      </div></div>

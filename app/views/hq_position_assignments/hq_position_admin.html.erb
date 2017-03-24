@@ -1,0 +1,29 @@
+<h1>Listing HQ Position Assignments</h1>
+
+<table>
+  <tr>
+    <th>Member</th>
+    <th>Position</th>
+    <th>email</th>
+    <th>Phone</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hq_position_assignments.each do |hq_position_assignment| %>
+  <tr>
+    <td><%= hq_position_assignment.member.last_name %>, <%= hq_position_assignment.member.first_name %></td>
+    <td><%= hq_position_assignment.hq_position.position_name %></td>
+    <td><%= hq_position_assignment.member.user.email %></td>
+    <td><%= hq_position_assignment.member.work_phone %></td>
+    <td><%= link_to 'Show', hq_position_assignment %></td>
+    <td><%= link_to 'Edit', edit_hq_position_assignment_path(hq_position_assignment) %></td>
+    <td><%= link_to 'Destroy', hq_position_assignment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Hq position assignment', new_hq_position_assignment_path %>

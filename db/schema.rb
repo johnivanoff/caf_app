@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170216160806) do
+ActiveRecord::Schema.define(:version => 20170323200605) do
 
   create_table "aircraft_classes", :force => true do |t|
     t.string   "class_type"
@@ -162,6 +162,23 @@ ActiveRecord::Schema.define(:version => 20170216160806) do
 
   add_index "grants", ["right_id"], :name => "index_grants_on_right_id"
   add_index "grants", ["role_id"], :name => "index_grants_on_role_id"
+
+  create_table "hq_position_assignments", :force => true do |t|
+    t.integer  "member_id"
+    t.integer  "hq_position_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "hq_position_assignments", ["hq_position_id"], :name => "index_hq_position_assignments_on_hq_position_id"
+  add_index "hq_position_assignments", ["member_id"], :name => "index_hq_position_assignments_on_member_id"
+
+  create_table "hq_positions", :force => true do |t|
+    t.string   "position_name"
+    t.text     "description"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "locations", :force => true do |t|
     t.string   "location_name_short"

@@ -1,0 +1,2 @@
+module HqPositionAssignmentsHelper
+end

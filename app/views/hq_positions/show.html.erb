@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Position name:</b>
+  <%= @hq_position.position_name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @hq_position.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_hq_position_path(@hq_position) %> |
+<%= link_to 'Back', hq_positions_path %>

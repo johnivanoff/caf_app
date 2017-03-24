@@ -1,0 +1,3 @@
+<% @hq_positions.each do |hq_position| %>
+  <%= hq_position.position_name %>< - <%= hq_position.hq_position_assignment.member.last_name %>br />
+<% end %>

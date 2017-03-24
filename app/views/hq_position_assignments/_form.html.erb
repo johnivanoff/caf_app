@@ -1,0 +1,25 @@
+<%= form_for(@hq_position_assignment) do |f| %>
+  <% if @hq_position_assignment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hq_position_assignment.errors.count, "error") %> prohibited this hq_position_assignment from being saved:</h2>
+
+      <ul>
+      <% @hq_position_assignment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :member %><br />
+    <%= f.text_field :member %>
+  </div>
+  <div class="field">
+    <%= f.label :hq_position %><br />
+    <%= f.text_field :hq_position %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
