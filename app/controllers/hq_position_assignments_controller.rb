@@ -1,6 +1,8 @@
 class HqPositionAssignmentsController < ApplicationController
   before_filter :set_hq_position_assignment, only: [:show, :edit, :update, :destroy]
 
+  skip_before_filter :check_authorization, :check_authentication, :only => [:index]
+
   respond_to :html
 
   def index
