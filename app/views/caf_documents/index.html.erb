@@ -1,0 +1,16 @@
+<h1>CAF Documents</h1>
+
+<% @caf_documents.each do |caf_document| %>
+<%= link_to caf_document.title, caf_document %>
+<% end %>
+<br />
+
+
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="admin-section" >
+      <h2>Admin</h2>
+        <%= link_to 'New CAF Document', new_caf_document_path %>
+    </div>
+  <% end %>
+<% end %>

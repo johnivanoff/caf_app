@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @caf_document.title %></h1>
+
+<p><strong>Category:</strong> <%= @caf_document.document_category.category_name %></p>
+
+<p><strong>Published date:</strong> <%= @caf_document.published_date.strftime("%b %-d, %Y") %></p>
+
+<p><%= markdown @caf_document.description %></p>
+
+<%= link_to 'View ' + @caf_document.title, '/uploads/documents/' + @caf_document.file_url %>
+
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="row">
+      <div class='col-sm-12' >
+    <div class="admin-section" >
+      <div class='row'>
+        <div class='col-sm-4'>
+          <h2>Admin Document</h2>
+          <%= link_to 'Edit Document', edit_caf_document_path(@caf_document) %> |
+          <%= link_to 'Back to all Documents', caf_documents_path %>
+
+          <%#= render 'versions', :aircraft => @aircraft %>
+        </div>
+        <div class='col-sm-4'>
+          <h2>Admin Categories</h2>
+          <%= link_to 'Edit Categories', edit_document_category_path(@caf_document.document_category) %>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+  <% end %>
+<% end %>
