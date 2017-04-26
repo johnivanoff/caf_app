@@ -4,7 +4,7 @@ class CafDocumentsController < ApplicationController
   respond_to :html
 
   def index
-    @caf_documents = CafDocument.all
+    @caf_documents = CafDocument.order("position").all
     respond_with(@caf_documents)
   end
 
@@ -34,6 +34,14 @@ class CafDocumentsController < ApplicationController
   def destroy
     @caf_document.destroy
     respond_with(@caf_document)
+  end
+
+  def sort
+    params[:caf_document].each_with_index do |id, index|
+      CafDocument.update_all({:position => index+1}, {:id => id})
+    end
+
+    render :nothing => true 
   end
 
   private

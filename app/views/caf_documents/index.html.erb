@@ -1,8 +1,14 @@
 <h1>CAF Documents</h1>
 
+<div id="caf_documents" data-update-url="<%= sort_caf_documents_url %>">
 <% @caf_documents.each do |caf_document| %>
-<%= link_to caf_document.title, caf_document %>
+
+<%= content_tag_for :div, caf_document do %>
+<div><%= link_to caf_document.title, caf_document %></div>
 <% end %>
+
+<% end %>
+</div>
 <br />
 
 

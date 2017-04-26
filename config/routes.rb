@@ -3,6 +3,9 @@ CafApp::Application.routes.draw do
 
   resources :caf_documents
 
+  resources :caf_documents do
+    collection { post :sort}
+  end
 
   resources :document_categories
 
