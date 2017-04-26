@@ -1,6 +1,12 @@
 CafApp::Application.routes.draw do
 
 
+  resources :caf_documents
+
+
+  resources :document_categories
+
+
   resources :hq_position_assignments
 
 
