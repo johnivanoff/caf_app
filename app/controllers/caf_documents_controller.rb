@@ -9,7 +9,7 @@ class CafDocumentsController < ApplicationController
   end
 
   def show
-    respond_with(@caf_document)
+    respond_with(@caf_document, @all_caf_documents = CafDocument.all)
   end
 
   def new

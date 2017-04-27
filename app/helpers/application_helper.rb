@@ -17,4 +17,12 @@ module ApplicationHelper
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
 
+  def button_to_with_icon(text, path, classes)
+    form_tag path, :method => :get do
+      button_tag(classes) do
+        raw text
+      end
+    end
+  end
+
 end

@@ -5,4 +5,12 @@ class CafDocument < ActiveRecord::Base
   scope :category_ordered, joins(:document_category).merge(DocumentCategory.ordered)
   scope :ordered, order("caf_documents.title ASC")
 
+  def previous
+    CafDocument.find_by_position(position - 1, :select => 'title, id')
+  end
+
+  def next
+    CafDocument.find_by_position(position + 1, :select => 'title, id')
+  end
+
 end
