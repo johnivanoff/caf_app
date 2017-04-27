@@ -4,7 +4,7 @@ class CafDocumentsController < ApplicationController
   respond_to :html
 
   def index
-    @caf_documents = CafDocument.order("position").all
+    @caf_documents = CafDocument.category_ordered.order("position").all
     respond_with(@caf_documents)
   end
 

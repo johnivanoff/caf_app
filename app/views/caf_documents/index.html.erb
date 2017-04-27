@@ -1,12 +1,17 @@
+<% lastcategory = "" %>
+
 <h1>CAF Documents</h1>
 
 <div id="caf_documents" data-update-url="<%= sort_caf_documents_url %>">
 <% @caf_documents.each do |caf_document| %>
+  <% if caf_document.document_category.category_name != lastcategory %>
+    <strong><%= caf_document.document_category.category_name %></strong>
+  <% end %>
 
-<%= content_tag_for :div, caf_document do %>
-<div><%= link_to caf_document.title, caf_document %></div>
-<% end %>
-
+  <%= content_tag_for :div, caf_document do %>
+    <div style="margin: 0.5em;"><%= link_to caf_document.title, caf_document %></div>
+  <% end %>
+  <% lastcategory = caf_document.document_category.category_name %>
 <% end %>
 </div>
 <br />

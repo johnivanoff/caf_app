@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :document_category_id, 'Document Category' %><br />
-    <%= f.collection_select  :document_category_id, DocumentCategory.all, :id, :category_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %> %>
+    <%= f.collection_select  :document_category_id, DocumentCategory.all, :id, :category_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
   </div>
   <div class="field">
     <%= f.label :description %><br />
