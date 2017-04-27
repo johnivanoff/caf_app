@@ -340,6 +340,11 @@ label {
   padding: 0.5em;
 }
 
+.show-toc {
+  margin: 0.5em;
+  display: inline-block;
+}
+
 .toc {
   display: none;
     background: #fdf9ef;
@@ -350,7 +355,7 @@ label {
     margin: 0 2em;
 }
 
-a:hover + div.toc {
+.show-toc:hover .toc {
     display: block;
 }
 

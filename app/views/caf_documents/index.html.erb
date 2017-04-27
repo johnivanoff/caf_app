@@ -9,7 +9,7 @@
   <% end %>
 
   <%= content_tag_for :div, caf_document do %>
-    <div style="margin: 0.5em;">
+    <div class='show-toc'>
     <%= link_to caf_document.title, caf_document %>
     <% if !caf_document.toc.blank? %>
     <div class='toc'><strong>Table of Contents</strong><br /><%= markdown caf_document.toc %></div>
