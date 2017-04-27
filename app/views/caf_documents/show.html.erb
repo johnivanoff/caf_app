@@ -6,9 +6,15 @@
 
 <p><strong>Published date:</strong> <%= @caf_document.published_date.strftime("%b %-d, %Y") %></p>
 
-<p><%= markdown @caf_document.description %></p>
+<% if !@caf_document.description.blank? %>
+  <p><%= markdown @caf_document.description %></p>
+<% end %>
 
-<%= link_to 'View ' + @caf_document.title, '/uploads/documents/' + @caf_document.file_url %>
+<% if !@caf_document.toc.blank? %>
+  <p><%= markdown @caf_document.toc %></p>
+<% end %>
+
+<%= link_to 'View ' + @caf_document.title, '/uploads/documents/' + @caf_document.file_url, :target => "_blank" %>
 
 <% if signed_in?%>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>

@@ -340,6 +340,20 @@ label {
   padding: 0.5em;
 }
 
+.toc {
+  display: none;
+    background: #fdf9ef;
+    padding: 0.5em;
+    border: 1px solid #999;
+    border-radius: 3px;
+    width: 80%;
+    margin: 0 2em;
+}
+
+a:hover + div.toc {
+    display: block;
+}
+
 /* Ludos overwrites */
 
 @media (max-width: 767px) {
