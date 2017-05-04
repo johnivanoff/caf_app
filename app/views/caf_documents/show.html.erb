@@ -3,10 +3,16 @@
 <div class="col-xs-12 col-sm-12 moreinfo" style="margin-top: 30px;">
   <div class="btn-group btn-group-justified" role="group" >
     <div class="btn-group" role="group">
-        <%= button_to_with_icon('<i class="fa fa-fighter-jet fa-flip-horizontal"></i> --- ' + @caf_document.previous.title, caf_document_path(@caf_document.previous.id), :class => 'btn btn-default btn-lg', :method => 'get') %>
+        <% if @caf_document.previous.blank? %>       
+        <% else %>
+          <%= button_to_with_icon('<i class="fa fa-fighter-jet fa-flip-horizontal"></i> --- ' + @caf_document.previous.title, caf_document_path(@caf_document.previous.id), :class => 'btn btn-default btn-lg', :method => 'get') %>
+        <% end %>
     </div>
     <div class="btn-group" role="group">
-        <%= button_to_with_icon( @caf_document.next.title + ' --- <i class="fa fa-fighter-jet"></i>', caf_document_path(@caf_document.next.id), :class => 'btn btn-default btn-lg', :method => 'get') %> 
+        <% if @caf_document.next.blank? %>       
+        <% else %>
+          <%= button_to_with_icon( @caf_document.next.title + ' --- <i class="fa fa-fighter-jet"></i>', caf_document_path(@caf_document.next.id), :class => 'btn btn-default btn-lg', :method => 'get') %> 
+        <% end %>
     </div>
   </div>
 </div>

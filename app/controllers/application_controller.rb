@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
    @user = current_user
    if user_signed_in?
-     member_path(resource)
+     member_home_path
    end
   end
 
