@@ -23,9 +23,13 @@
 
 <h1><%= @caf_document.title %></h1>
 
+<%= link_to 'View pdf - ' + @caf_document.title, '/uploads/documents/' + @caf_document.file_url, :target => "_blank" %>
+
 <p><strong>Category:</strong> <%= @caf_document.document_category.category_name %></p>
 
 <p><strong>Published date:</strong> <%= @caf_document.published_date.strftime("%b %-d, %Y") %></p>
+
+
 
 <% if !@caf_document.description.blank? %>
   <p><%= markdown @caf_document.description %></p>
@@ -35,8 +39,9 @@
   <p><%= markdown @caf_document.toc %></p>
 <% end %>
 
-<%= link_to 'View ' + @caf_document.title, '/uploads/documents/' + @caf_document.file_url, :target => "_blank" %>
-
+<% if !@caf_document.body.blank? %>
+  <p><%= markdown @caf_document.body %></p>
+<% end %>
 
 
 <% if signed_in?%>
