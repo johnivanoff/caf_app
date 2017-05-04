@@ -83,7 +83,7 @@ Wellspring.LivePreview.initialize();
       <%= f.datetime_select :published_at %>
     </div>
     <div class="actions">
-      <%= f.submit :class => 'btn btn-primary' %>
+      <%= f.submit:data => { :disable_with => "Submitting ..." }, :class => "btn-default btn1" %>
     </div>
   <% end %>
   </div>
