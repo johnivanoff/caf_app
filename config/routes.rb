@@ -1,6 +1,15 @@
 CafApp::Application.routes.draw do
 
 
+  resources :caf_documents
+
+  resources :caf_documents do
+    collection { post :sort}
+  end
+
+  resources :document_categories
+
+
   resources :hq_position_assignments
 
 
@@ -36,6 +45,7 @@ CafApp::Application.routes.draw do
 
   match 'contacts' => 'contents#show', :id => 3, :as => :contacts
   match 'admin' => 'contents#show', :id => 4, :as => :admin
+  match 'member_home' => 'contents#show', :id => 8, :as => :member_home
   match 'unit_admin' => 'units#unit_admin', :as => :unit_admin
   match 'hq_directory' => 'members#hq_directory', :as => :hq_directory
   match 'aircraft_admin' => 'aircrafts#aircraft_admin', :as => :aircraft_admin

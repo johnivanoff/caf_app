@@ -24,6 +24,6 @@
     <%= f.text_field :brand_url %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit:data => { :disable_with => "Submitting ..." }, :class => "btn-default btn1" %>
   </div>
 <% end %>

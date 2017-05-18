@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170323200605) do
+ActiveRecord::Schema.define(:version => 20170426184322) do
 
   create_table "aircraft_classes", :force => true do |t|
     t.string   "class_type"
@@ -114,6 +114,21 @@ ActiveRecord::Schema.define(:version => 20170323200605) do
   add_index "assignments", ["role_id"], :name => "index_assignments_on_role_id"
   add_index "assignments", ["user_id"], :name => "index_assignments_on_user_id"
 
+  create_table "caf_documents", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.text     "body"
+    t.string   "file_url"
+    t.string   "image_url"
+    t.date     "published_date"
+    t.boolean  "current"
+    t.integer  "document_category_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  add_index "caf_documents", ["document_category_id"], :name => "index_caf_documents_on_document_category_id"
+
   create_table "contents", :force => true do |t|
     t.string   "title"
     t.text     "body"
@@ -125,6 +140,13 @@ ActiveRecord::Schema.define(:version => 20170323200605) do
   end
 
   add_index "contents", ["user_id", "title", "slug"], :name => "index_contents_on_user_id_and_title_and_slug"
+
+  create_table "document_categories", :force => true do |t|
+    t.string   "category_name"
+    t.text     "description"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "event_versions", :force => true do |t|
     t.string   "item_type",       :null => false
@@ -223,6 +245,7 @@ ActiveRecord::Schema.define(:version => 20170323200605) do
     t.string   "email"
     t.integer  "caf_col_no"
     t.date     "caf_join_date"
+    t.string   "photo"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
