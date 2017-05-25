@@ -11,6 +11,11 @@ class ContentsController < ApplicationController
     respond_with(@contents)
   end
 
+  def news_index
+    @contents = Content.news.all
+    respond_with(@contents)
+  end
+
   def show
     respond_with(@content)
   end
@@ -21,7 +26,8 @@ class ContentsController < ApplicationController
   end
 
   def home
-    @content = Content.new
+#    @content = Content.new
+    @recent_news = Content.news.reverse.tease.all
     render :layout => "home"
 #    respond_with(@content)
   end

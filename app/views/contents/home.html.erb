@@ -8,6 +8,8 @@ $(window).load(function() {
 });
   </script>
 
+<% delay = 0 %>
+
     <div class="flexslider">
       <ul class="slides">
         <li>
@@ -249,54 +251,36 @@ $(window).load(function() {
 </div>
 
 
-
-<div id="about">
-  <div class="container">
-
-    <div class="page_title animated" data-animation="fadeInUp" data-animation-delay="200"><strong><span>News</span> Section</strong></div>
-
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="welcome1 animated" data-animation="flipInY" data-animation-delay="200">
-
-		  <img src="/uploads/website_images/blocchi8-01.jpg" style="width: 100%;"><br><br>		<span>20/12/2016</span>
-          <div class="txt1">Ut ultrices non dolor eu consectetur.</div>
-          <div class="txt2">Ut ultrices non dolor eu consectetur. Aliquam vel posuere eros, semper posuere leo. Vestibulum efficitur diam ut nulla egestas malesuada. Sed venenatis feugiat arcu non sollicitudin. Mauris vel laoreet risus. Vestibulum lacinia facilisis est ac tincidunt.</div>
-          <a href="#" class="btn-default btn2">Read more...</a>
-        </div>
+<!-- NEWS -->
+<% if !@recent_news.blank? %>
+  <div id="about">
+    <div class="container">
+      <div class="page_title animated" data-animation="fadeInUp" data-animation-delay="200">
+        <strong><span>News</span> Section</strong>
       </div>
-      <div class="col-sm-3">
-        <div class="welcome1 animated" data-animation="flipInY" data-animation-delay="300">
-
-		  <img src="/uploads/website_images/blocchi8-02.jpg" style="width: 100%;"><br><br>		<span>20/12/2016</span>
-          <div class="txt1">Ut ultrices non dolor eu consectetur.</div>
-          <div class="txt2">Ut ultrices non dolor eu consectetur. Aliquam vel posuere eros, semper posuere leo. Vestibulum efficitur diam ut nulla egestas malesuada. Sed venenatis feugiat arcu non sollicitudin. Mauris vel laoreet risus. Vestibulum lacinia facilisis est ac tincidunt.</div>
-          <a href="#" class="btn-default btn2">Read more...</a>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="welcome1 animated" data-animation="flipInY" data-animation-delay="400">
-
-		  <img src="/uploads/website_images/blocchi8-03.jpg" style="width: 100%;"><br><br>		<span>20/12/2016</span>
-          <div class="txt1">Ut ultrices non dolor eu consectetur.</div>
-          <div class="txt2">Ut ultrices non dolor eu consectetur. Aliquam vel posuere eros, semper posuere leo. Vestibulum efficitur diam ut nulla egestas malesuada. Sed venenatis feugiat arcu non sollicitudin. Mauris vel laoreet risus. Vestibulum lacinia facilisis est ac tincidunt.</div>
-          <a href="#" class="btn-default btn2">Read more...</a>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="welcome1 animated" data-animation="flipInY" data-animation-delay="500">
-
-		  <img src="/uploads/website_images/blocchi8-04.jpg" style="width: 100%;"><br><br>		<span>20/12/2016</span>
-          <div class="txt1">Ut ultrices non dolor eu consectetur.</div>
-          <div class="txt2">Ut ultrices non dolor eu consectetur. Aliquam vel posuere eros, semper posuere leo. Vestibulum efficitur diam ut nulla egestas malesuada. Sed venenatis feugiat arcu non sollicitudin. Mauris vel laoreet risus. Vestibulum lacinia facilisis est ac tincidunt.</div>
-          <a href="#" class="btn-default btn2">Read more...</a>
+        <div class="row">
+          <% @recent_news.reverse.each_with_index do |news, i| %>
+            <div class="col-sm-3">
+            <% delay = ((i + 1)*100) %>
+              <div class="welcome1 animated" data-animation="flipInY" data-animation-delay="<%= delay.to_i %>">
+                <% if !news.feature_image.blank? %>
+                  <img src="<%= news.feature_image %>" style="width: 100%;object-fit: cover;">
+                <% else %>
+                  <img src="/uploads/website_images/blocchi8-01.jpg" style="width: 100%;">
+                <% end %>
+                <br><br>		
+                <span><%= news.published_at.strftime("%b %-d, %Y") %></span>
+              <div class="txt1"><%= news.title %></div>
+              <div class="txt2"><%= markdown truncate(news.body, :length => 220, :separator => ' ') %></div>
+                <a href="/contents/<%= news.id %>" class="btn-default btn2">Read more...</a>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
-
   </div>
-</div>
-
+<% end %>
 
 
 
