@@ -261,7 +261,7 @@ $(window).load(function() {
         <div class="row">
           <% @recent_news.reverse.each_with_index do |news, i| %>
             <div class="col-sm-3">
-            <% delay = ((i + 1)*100) %>
+            <% delay = ((i + 1)*200) %>
               <div class="welcome1 animated" data-animation="flipInY" data-animation-delay="<%= delay.to_i %>">
                 <% if !news.feature_image.blank? %>
                   <img src="<%= news.feature_image %>" style="width: 100%;object-fit: cover;">
