@@ -42,6 +42,7 @@ CafApp::Application.routes.draw do
 
 
   resources :contents
+  match 'news' => 'contents#news_index', :as => :news
 
   match 'contacts' => 'contents#show', :id => 3, :as => :contacts
   match 'admin' => 'contents#show', :id => 4, :as => :admin
