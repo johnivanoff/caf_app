@@ -1,8 +1,16 @@
+<% category = "" %>
+
 <h1>Listing Pages</h1>
 
 
 <% @contents.each do |content| %>
-  <div><%= content.title %> <%= link_to 'Show', content %>|<%= link_to 'Edit', edit_content_path(content) %>|<%= link_to 'Destroy', content, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+  <% if content.content_category_id != category %>
+    <% if !content.content_category.blank? %>
+      <h2><%= content.content_category.category_name %></h2>
+    <% end %>
+  <% end %>
+  <li><%= content.title %> <%= link_to 'Show', content %>|<%= link_to 'Edit', edit_content_path(content) %>|<%= link_to 'Destroy', content, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  <% category = content.content_category_id %>
 <% end %>
 
 
