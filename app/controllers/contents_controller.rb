@@ -7,7 +7,7 @@ class ContentsController < ApplicationController
   respond_to :html
 
   def index
-    @contents = Content.all
+    @contents = Content.pages.categorize.all
     respond_with(@contents)
   end
 

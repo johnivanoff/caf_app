@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170426184322) do
+ActiveRecord::Schema.define(:version => 20170601125703) do
 
   create_table "aircraft_classes", :force => true do |t|
     t.string   "class_type"
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20170426184322) do
 
   create_table "caf_documents", :force => true do |t|
     t.string   "title"
+    t.text     "toc"
     t.text     "description"
     t.text     "body"
     t.string   "file_url"
@@ -123,20 +124,31 @@ ActiveRecord::Schema.define(:version => 20170426184322) do
     t.date     "published_date"
     t.boolean  "current"
     t.integer  "document_category_id"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.integer  "position",             :default => 0, :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
   add_index "caf_documents", ["document_category_id"], :name => "index_caf_documents_on_document_category_id"
 
+  create_table "content_categories", :force => true do |t|
+    t.string   "category_name"
+    t.text     "description"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "contents", :force => true do |t|
+    t.integer  "content_type_id"
+    t.integer  "content_category_id"
     t.string   "title"
     t.text     "body"
     t.string   "slug"
+    t.string   "feature_image"
     t.integer  "user_id"
     t.datetime "published_at"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   add_index "contents", ["user_id", "title", "slug"], :name => "index_contents_on_user_id_and_title_and_slug"
