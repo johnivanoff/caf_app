@@ -1,6 +1,18 @@
 <%= render "scripts" %>
 
+<%= render "layouts/scripts" %>
+
 <h1>Members</h1>
+
+<div class="col-sm-12">
+  <form id="live-search" action="" class="styled formfilter" method="post">
+    <fieldset>
+        <input type="text" class="text-input" id="table-filter" value="" />
+        <label>Search/Filter</label>
+        <span id="filter-count"></span>
+    </fieldset>
+</form>
+</div>
 
 <table>
   <tr>
@@ -8,14 +20,9 @@
     <th class="sortable">Last name</th>
     <th class="sortable">First name</th>
     <th class="sortable">Email/Username</th>
-    <th class="sortable">Street 1</th>
-    <th class="sortable">Street 2</th>
     <th class="sortable">City</th>
     <th class="sortable">State</th>
-    <th class="sortable">Zip</th>
-    <th class="sortable">Home phone</th>
-    <th class="sortable">Work phone</th>
-    <th class="sortable">Cell phone</th>
+    <th class="sortable">Unit Affiliation</th>
     <th class="sortable">CAF Col No</th>
     <th class="sortable">CAF join date</th>
     <th></th>
@@ -23,19 +30,20 @@
   </tr>
 
 <% @members.each do |member| %>
-  <tr>
+  <tr class='result'>
     <td><%= member.user_id %></td>
-    <td><%= link_to member.last_name, member %></td>
+    <td><%= member.last_name %></td>
     <td><%= member.first_name %></td>
     <td><%= member.user.email %></td>
-    <td><%= member.street_1 %></td>
-    <td><%= member.street_2 %></td>
     <td><%= member.city %></td>
     <td><%= member.state %></td>
-    <td><%= member.zip %></td>
-    <td><%= member.home_phone %></td>
-    <td><%= member.work_phone %></td>
-    <td><%= member.cell_phone %></td>
+    <td>
+    <% if !member.units.blank?%>
+      <% member.units.each do |unit| %>
+        <li><%= unit.unit_name %></li>
+      <% end %>
+    <% end %>
+    </td>
     <td><%= member.caf_col_no %></td>
     <td><%= member.caf_join_date %></td>
     <td><%= link_to 'Edit', edit_member_path(member) %></td>

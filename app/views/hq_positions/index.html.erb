@@ -1,25 +1,41 @@
-<h1>Listing hq_positions</h1>
+<%= render "layouts/scripts" %>
+
+<h1>Listing HQ Positions</h1>
+
+<div class="col-sm-12">
+  <form id="live-search" action="" class="styled formfilter" method="post">
+    <fieldset>
+        <input type="text" class="text-input" id="table-filter" value="" />
+        <label>Search/Filter</label>
+        <span id="filter-count"></span>
+    </fieldset>
+</form>
+</div>
 
 <table>
   <tr>
-    <th>Position name</th>
-    <th>Description</th>
+    <th class="sortable">Position name</th>
+    <th class="sortable">Description</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @hq_positions.each do |hq_position| %>
-  <tr>
+  <tr class='result'>
     <td><%= hq_position.position_name %></td>
-    <td><%= hq_position.members %></td>
+    <td><%= hq_position.description %></td>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
     <td><%= link_to 'Show', hq_position %></td>
     <td><%= link_to 'Edit', edit_hq_position_path(hq_position) %></td>
     <td><%= link_to 'Destroy', hq_position, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <% end %>
+<% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Hq position', new_hq_position_path %>
+<%= link_to 'New HQ Position', new_hq_position_path %>

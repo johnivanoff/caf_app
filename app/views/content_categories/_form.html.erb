@@ -1,10 +1,10 @@
-<%= form_for(@hq_position) do |f| %>
-  <% if @hq_position.errors.any? %>
+<%= form_for(@content_category) do |f| %>
+  <% if @content_category.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@hq_position.errors.count, "error") %> prohibited this hq_position from being saved:</h2>
+      <h2><%= pluralize(@content_category.errors.count, "error") %> prohibited this content_category from being saved:</h2>
 
       <ul>
-      <% @hq_position.errors.full_messages.each do |msg| %>
+      <% @content_category.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :position_name %><br />
-    <%= f.text_field :position_name %>
+    <%= f.label :category_name %><br />
+    <%= f.text_field :category_name %>
   </div>
   <div class="field">
     <%= f.label :description %><br />
@@ -23,3 +23,4 @@
     <%= f.submit:data => { :disable_with => "Submitting ..." }, :class => "btn-default btn1" %>
   </div>
 <% end %>
+
