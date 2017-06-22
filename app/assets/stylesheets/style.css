@@ -134,10 +134,23 @@ th.sortable {
 }
 
 td {
-  padding: 3px;
+  padding: 0.4em;
   border: 1px solid #e0debc;
   }
 
+.member-photo {
+  vertical-align: top;
+  background: #000;
+  padding: 0;
+  border: 1px solid #000;
+}
+
+.member-card {
+  font-size: 2em;
+  font-style: italic;
+  text-align: right;
+  padding: 0.3em;
+}
 
 /* =Input Elements
 -------------------------------------------------------------- */
