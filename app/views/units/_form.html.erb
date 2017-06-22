@@ -6,7 +6,7 @@ jQuery(function($){
 });
 </script>
 
-<%= form_for(@unit) do |f| %>
+<%= form_for @unit, :html => {:multipart => true} do |f| %>
   <% if @unit.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
@@ -91,7 +91,10 @@ jQuery(function($){
 <div class="row">
   <div class="field col-sm-4">
     <%= f.label :unit_logo %><br />
-    <%= f.text_field :unit_logo, :class => 'boxsizingBorder' %>
+    <%= f.file_field :unit_logo, :class => 'boxsizingBorder' %>
+    <% if !@unit.unit_logo.blank? %>
+      <%= image_tag @unit.unit_logo.url(:directory_size).to_s %>
+    <% end %>
   </div>
   <div class="field col-sm-4">
     <%= f.label :museum %><br />
