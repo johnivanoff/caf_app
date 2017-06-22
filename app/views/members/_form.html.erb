@@ -81,7 +81,7 @@
     <%= f.label :photo, 'Photo' %><br />
     <%= f.file_field :photo, :title => ' ' %>
     <% if !@member.photo.blank? %>
-      <%= image_tag @member.photo.url.to_s %>
+      <%= image_tag @member.photo.url(:directory_size).to_s %>
     <% end %>
   </div>
 </div>

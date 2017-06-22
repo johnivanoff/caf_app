@@ -3,7 +3,7 @@
 <div class="col-xs-12 col-sm-3">
     <div class="blocchi-unit">
       <% if @unit.unit_logo? %>
-      <img src="/uploads/unit_logos/<%= @unit.unit_logo %>" width="100%" />
+      <img src="<%= @unit.unit_logo %>" />
       <% else %>
       <img src="http://caf.polarbeardesign.net/uploads/unit_logos/default_unit_logo.jpg" />
       <% end %>

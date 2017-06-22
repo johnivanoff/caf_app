@@ -25,12 +25,12 @@ module ApplicationHelper
     end
   end
 
-  def display_photo(member)  
-    unless member.photo.nil? 
-      image_tag(member.photo.file_name) 
-    else
-      image_tag("/uploads/website_iamges/default_member.png")
-     end    
-  end
+#  def display_photo(member)  
+#    unless member.photo.nil? 
+#      image_tag(member.photo.file_name) 
+#    else
+#      image_tag("/uploads/website_iamges/default_member.png")
+#     end    
+#  end
 
 end

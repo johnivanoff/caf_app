@@ -12,6 +12,8 @@ class Unit < ActiveRecord::Base
   has_paper_trail :class_name => 'UnitVersion',
      :meta => { :author_username => :user_name}
 
+  mount_uploader :unit_logo, UnitLogoUploader
+
   scope :alpha_order, order("unit_name ASC")
 
   scope :is_squadron, where("unit_type_id = 3")
