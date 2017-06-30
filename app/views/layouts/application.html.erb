@@ -22,9 +22,8 @@
 <div class="breadcrumbs1_wrapper">
   <div class="container">
     <div class="breadcrumbs1">
-      <a href="/">Home page</a><span>  </span>
-      <a href="<%= request.url %>"><%= request.url %></a><span></span>
-      
+      <a href="/">Home page</a>
+      <%= raw get_bread_crumb(request.url) %>
     </div>
   </div>
 </div>
