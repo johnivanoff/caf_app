@@ -344,7 +344,7 @@
   <div class="col-xs-12 col-sm-4 col-md-3 blocchi-parent">
     <a href="units/<%= unit.id %>" class="blocchi-unit">
       <% if unit.unit_logo? %>
-      <img src="<%= unit.unit_logo %>" style="max-height: 264px;" />
+      <img src="<%= unit.unit_logo.url(:directory_size).to_s %>" style="max-height: 264px;" />
       <% else %>
       <img src="/uploads/website_images/default_unit_logo.jpg" />
       <% end %>

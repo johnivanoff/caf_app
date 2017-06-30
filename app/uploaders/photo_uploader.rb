@@ -35,17 +35,25 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
    version :thumb do
-     # process :resize_to_fill => [50, 50]
-     process :resize_and_pad => [50, 50, background = "#fff"]
+      process :make_square => 50 
    end
    version :directory_size do
-    # process :resize_to_fill => [265, 265]
-     process :resize_and_pad => [265, 265, background = "#fff"]
+      process :make_square => 265 
    end
    version :tiny_thumb do
-     # process :resize_to_fill => [35, 35]
-     process :resize_and_pad => [35, 35, background = "#fff"]
+      process :make_square => 35 
    end
+
+ 
+  def make_square(size)
+    manipulate! do |source|
+       #resize_to_fill - Resize the image to fit within the specified dimensions while retaining the aspect ratio of the original image. If necessary, crop the image in the larger dimension.
+      source = source.resize_to_fill(size, size, gravity = ::Magick::CenterGravity)
+#       source = source.resize_to_fit(size, size)#.quantize(256, Magick::GRAYColorspace).contrast(true)
+#      source = source.resize_and_pad(size, size, background = :transparent, gravity = ::Magick::CenterGravity)
+#source
+    end
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
@@ -55,8 +63,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  #def filename
+  #  "something.jpg" if original_filename
+  #end
 
 end
