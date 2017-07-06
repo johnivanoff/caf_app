@@ -7,7 +7,6 @@ set :user, 'polarbea'
 set :domain, 'ghostsquadron.org'
 
 
-
 set :application, "caf_app"
 set :repository,  "git@github.com:polarbeardesign/caf_app.git"
 set :scm, 'git'
