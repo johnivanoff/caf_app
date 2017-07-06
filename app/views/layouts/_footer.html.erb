@@ -4,7 +4,7 @@
 
   <div class="logo2_wrapper">
     <a href="#home" class="logo2 scroll-to">
-      <%= link_to (image_tag "logo_caf_footer.png", :class => "img-responsive"), "/" %>
+      <%= link_to (image_tag "logo_caf_footer.png", :class => "img-responsive"), "http://commemorativeairforce.org" %>
     </a>
   </div>
 
@@ -12,7 +12,7 @@
     <ul class="social2 clearfix">
     <% if !@hqinfo.last.social_links.blank? %>
       <% @hqinfo.last.social_links.each do |social_link| %>
-        <li><a href="<%= social_link.brand_url %>" ><i class="fa <%= social_link.social_brand.brand_icon %>"></i></a></li>
+        <li>&nbsp;</li>
       <% end %>
     <% end %>
     </ul>
@@ -28,43 +28,19 @@
 	<hr>
       <div class="col-sm-3">
 
-<a href="contents/2" class="titolo1">About the CAF</a>
-
-<a href="#" class="titolo2">History</a>
-<a href="#" class="titolo2">CAF Timeline</a>
-<a href="#" class="titolo2">CAF Hall of Fame</a>
-<a href="#" class="titolo2">Annual Report</a>
-<a href="#" class="titolo2">Financial Info</a>
-
       </div>
 	  
       <div class="col-sm-3">
-
-<a href="units" class="titolo1">Units/Locations</a>
-<a href="aircrafts" class="titolo1">Collection</a>
-
-<a href="#" class="titolo1">Join</a>
-<a href="#" class="titolo1">Shop</a>
 
 
       </div>
 	  
       <div class="col-sm-3">
 
-<a href="#" class="titolo1">News</a>
-<a href="events" class="titolo1">Events</a>
-<a href="contacts" class="titolo1">Contacts</a>
-<a href="#" class="titolo1">Newsletter</a>
-
 
       </div>
 	  
       <div class="col-sm-3">
-
-<a href="#" class="titolo1">COMMEMORATIVE AIR FORCE<br />Dallas Executive Airport<br />P.O. Box 764769<br />Dallas, Texas 75376</a>
-
-<a href="#" class="btn btn-success btn-lg" style="text-decoration: none; margin-top: 10px;">DONATE</a>
-
 
       </div>
 	  
@@ -81,8 +57,7 @@
 <div class="container">
 <div class="bot2_inner clearfix">
 
-Copyright &copy; <%= DateTime.now.strftime('%Y') %>. All rights reserved.  |   <a href="#">Privacy Policy</a>  |   <a href="#">Cookies Policy</a>  |   <%= link_to 'Members Login', login_path %>
-
+Copyright &copy; <%= DateTime.now.strftime('%Y') %>. All rights reserved.
 </div>
 </div>
 </div>
