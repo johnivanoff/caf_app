@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170601125703) do
+ActiveRecord::Schema.define(:version => 20170706152944) do
 
   create_table "aircraft_classes", :force => true do |t|
     t.string   "class_type"
@@ -138,9 +138,16 @@ ActiveRecord::Schema.define(:version => 20170601125703) do
     t.datetime "updated_at",    :null => false
   end
 
+  create_table "content_types", :force => true do |t|
+    t.string   "type_name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "contents", :force => true do |t|
     t.integer  "content_type_id"
-    t.integer  "content_category_id"
+    t.integer  "content_category_id", :null => false
     t.string   "title"
     t.text     "body"
     t.string   "slug"
