@@ -3,9 +3,6 @@
 load 'deploy/assets'
 
 
-#set :user, 'polarbea'
-set :domain, '172.31.13.42'
-
 
 set :application, "caf_app"
 #set :repository,  "git@github.com:polarbeardesign/caf_app.git"
