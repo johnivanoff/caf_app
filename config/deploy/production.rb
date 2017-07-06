@@ -2,9 +2,7 @@
 
 load 'deploy/assets'
 
-#set :user, 'polarbea'
-set :user, 'deploy'
-set :domain, '172.31.13.42'
+
 
 #server '172.31.13.42', user: 'deploy', roles: %w{web app db}
 set :application, "caf_app"
