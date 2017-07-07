@@ -44,7 +44,7 @@ group :production do
   gem 'libv8', '3.3.10.4'
   gem 'therubyracer', '0.10.2'
   gem 'rack-google_analytics', :require => "rack/google_analytics"
-  gem 'activerecord-mysql-adapter'
+#  gem 'activerecord-mysql-adapter'
 end
 
 # To use ActiveModel has_secure_password
