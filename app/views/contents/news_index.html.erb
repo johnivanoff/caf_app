@@ -2,7 +2,25 @@
 
 
 <% @contents.each do |content| %>
-  <div><%= content.title %> <%= link_to 'Show', content %>|<%= link_to 'Edit', edit_content_path(content) %>|<%= link_to 'Destroy', content, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+  <div class="content-summary">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2><%= link_to content.title, content %></h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-5">
+        <%= image_tag content.feature_image %>
+      </div>
+      <div class="col-sm-7">
+        <% if content.body.length > 700 %>
+          <%=  truncate(content.body, :length => 700, :separator => ' ') %> <em><%= link_to "Read More", content %></em>
+        <% else %>
+          <%= markdown content.body %>
+        <% end %>
+      </div>
+    </div>
+    </div>
 <% end %>
 
 
