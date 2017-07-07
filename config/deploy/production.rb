@@ -2,7 +2,7 @@
 
 load 'deploy/assets'
 
-set :user, 'polarbea'
+set :user, 'ghostsqu'
 #set :domain, 'caf.polarbeardesign.net'
 set :domain, 'ghostsquadron.org'
 
