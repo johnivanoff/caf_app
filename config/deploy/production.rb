@@ -2,15 +2,18 @@
 
 load 'deploy/assets'
 
-set :user, 'ghostsqu'
+#set :user, 'polarbea'
+#set :user, 'deploy'
 #set :domain, 'caf.polarbeardesign.net'
-set :domain, 'ghostsquadron.org'
 
+
+server '172.31.13.42', user: 'deploy', roles: %w{web app db}
 
 set :application, "caf_app"
-set :repository,  "git@github.com:polarbeardesign/caf_app.git"
+#set :repository,  "git@github.com:polarbeardesign/caf_app.git"
+set :repo_url,  "git@github.com:polarbeardesign/caf_app.git"
 set :scm, 'git'
-set :branch, "staging"
+
 set :repository_cache, "git_cache"
 set :deploy_via, :remote_cache  #In most cases you want to use this option, otherwise each deploy will do a full repository clone every time.
 set :ssh_options, { :forward_agent => true }
@@ -22,9 +25,33 @@ set :rails_env, :production
 # to overcome the "stdin: is not a tty\n" error
 default_run_options[:pty] = true 
 
-role :web, domain                          # Your HTTP server, Apache/etc
-role :app, domain                          # This may be the same as your `Web` server
-role :db,  domain, :primary => true # This is where Rails migrations will run
+# settings for e2c
+set :linked_files, %w{config/database.yml config/application.yml}
+set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
+set :keep_releases, 5
+set :rvm_type, :user
+set :rvm_ruby_version, 'ruby-2.1.6' # Edit this if you are using MRI Ruby
+
+set :puma_rackup, -> { File.join(current_path, 'config.ru') }
+set :puma_state, "#{shared_path}/tmp/pids/puma.state"
+set :puma_pid, "#{shared_path}/tmp/pids/puma.pid"
+set :puma_bind, "unix://#{shared_path}/tmp/sockets/puma.sock"    #accept array for multi-bind
+set :puma_conf, "#{shared_path}/puma.rb"
+set :puma_access_log, "#{shared_path}/log/puma_error.log"
+set :puma_error_log, "#{shared_path}/log/puma_access.log"
+set :puma_role, :app
+set :puma_env, fetch(:rack_env, fetch(:rails_env, 'production'))
+set :puma_threads, [0, 8]
+set :puma_workers, 0
+set :puma_worker_timeout, nil
+set :puma_init_active_record, true
+set :puma_preload_app, false
+
+
+
+#role :web, domain                          # Your HTTP server, Apache/etc
+#role :app, domain                          # This may be the same as your `Web` server
+#role :db,  domain, :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
 
 # If you are using Passenger mod_rails uncomment this:
