@@ -2,10 +2,10 @@
 
 load 'deploy/assets'
 
-
 set :user, 'polarbea'
 #set :domain, 'caf.polarbeardesign.net'
 set :domain, 'ghostsquadron.org'
+
 
 
 set :application, "caf_app"
