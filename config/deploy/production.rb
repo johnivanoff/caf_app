@@ -3,7 +3,6 @@
 load 'deploy/assets'
 
 
-
 set :application, "caf_app"
 #set :repository,  "git@github.com:polarbeardesign/caf_app.git"
 set :repo_url,  "git@github.com:polarbeardesign/caf_app.git"
