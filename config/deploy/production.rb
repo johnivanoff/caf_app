@@ -9,7 +9,7 @@ set :domain, '34.210.98.101/'
 set :application, "caf_app"
 set :repository,  "git@github.com:polarbeardesign/caf_app.git"
 set :scm, 'git'
-set :branch, "master"
+set :branch, "staging"
 set :repository_cache, "git_cache"
 set :deploy_via, :remote_cache  #In most cases you want to use this option, otherwise each deploy will do a full repository clone every time.
 set :ssh_options, { :forward_agent => true }
