@@ -11,5 +11,7 @@ class Aircraft < ActiveRecord::Base
 
   scope :bomber, joins(:aircraft_classes).merge(AircraftClass.bomber)
 
+  mount_uploader :profile_photo, AircraftProfileUploader
+
 #  scope :dues_current, joins(:dues_payments).merge(DuesPayment.current)
 end
