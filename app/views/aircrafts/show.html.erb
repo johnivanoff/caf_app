@@ -5,7 +5,7 @@
 <div class="col-xs-12 col-sm-6">
 		<div class="blocchi-unit">
 			<% if @aircraft.profile_photo? %>
-      <img src="<%= @aircraft.profile_photo.url(:medium_size).to_s %>" />
+        <img src="<%= @aircraft.profile_photo.url(:medium_size).to_s %>" />
       <% else %>
 			  <img src="http://polarbeardesign.net/uploads/misc_images/default_2.jpg" />
 			<% end %>
