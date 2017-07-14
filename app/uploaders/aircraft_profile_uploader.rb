@@ -38,11 +38,25 @@ class AircraftProfileUploader < CarrierWave::Uploader::Base
       process :resize_and_pad => [50, 50,  background = :transparent, gravity = ::Magick::NorthGravity]
    end
    version :directory_size do
-      process :resize_and_pad => [265, 265,  background = :transparent, gravity = ::Magick::NorthGravity]
+     # process :resize_and_pad => [265, 265,  background = :transparent, gravity = ::Magick::CenterGravity]
+     process :make_square => 265
+   end
+   version :medium_size do
+     process :make_square => 500
    end
    version :tiny_thumb do
       process :resize_and_pad => [35, 35,  background = :transparent, gravity = ::Magick::NorthGravity] 
    end
+
+  def make_square(size)
+    manipulate! do |source|
+       #resize_to_fill - Resize the image to fit within the specified dimensions while retaining the aspect ratio of the original image. If necessary, crop the image in the larger dimension.
+      source = source.resize_to_fill(size, size, gravity = ::Magick::CenterGravity)
+#       source = source.resize_to_fit(size, size)#.quantize(256, Magick::GRAYColorspace).contrast(true)
+#      source = source.resize_and_pad(size, size, background = :transparent, gravity = ::Magick::CenterGravity)
+#source
+    end
+  end
 
  
   # Add a white list of extensions which are allowed to be uploaded.

@@ -303,9 +303,10 @@
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 38.0000, lng: -97.00003},
           zoom: 5,
+            scrollwheel: false,
           mapTypeControlOptions: {
             mapTypeIds: ['Vintage','roadmap', 'satellite', 'hybrid', 
-            'terrain']
+            'terrain'],
           }
         });
 <% @units.each_with_index do |unit, i| %>

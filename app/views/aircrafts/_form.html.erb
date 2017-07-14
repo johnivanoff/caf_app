@@ -34,10 +34,13 @@
   <div class="field col-sm-4">
     <%= f.label :profile_photo %><br />
     <%= f.file_field :profile_photo, :class => 'boxsizingBorder' %>
+    <% if @aircraft.profile_photo? %>
+      <img src="<%= @aircraft.profile_photo.url(:directory_size).to_s %>" width="100%" class="profile_photo" />
+    <% end %>
   </div>
   <div class="field col-sm-4">
-    <%= f.label :nose_art %><br />
-    <%= f.text_field :nose_art, :class => 'boxsizingBorder' %>
+    <%#= f.label :nose_art %><br />
+    <%#= f.text_field :nose_art, :class => 'boxsizingBorder' %>
   </div>
   <div class="field col-sm-4">
     <%= f.label :website %><br />

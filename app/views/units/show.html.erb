@@ -87,14 +87,19 @@
                              <div class="row">
                                <div class="col-sm-3">
                                 <% if aircraft.profile_photo? %>
-                                  <img src="<%= '/uploads/aircraft_profile_photos/' + aircraft.profile_photo %>" width="100%" class="profile_photo" />
+                                  <img src="<%= aircraft.profile_photo.url(:directory_size).to_s %>" width="250px" class="profile_photo" />
                                 <% else %>
                                   <img src='/uploads/aircraft_profile_photos/default_2.jpg' width="250px" class="profile_photo" />
                                 <% end %>
                                </div>
                                <div class="col-sm-9">
                                  <h2><%= aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.aircraft_type.aircraft_name + ' ' + aircraft.name %></h2>
-                                 <p><%= aircraft.aircraft_type.description %></p>
+                                 <p><%= aircraft.description %></p>
+                                   <% if signed_in?%>
+                                     <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+                                       <br /><%= link_to 'Edit Aircraft', edit_aircraft_path(aircraft) %>
+                                     <% end %>
+                                   <% end %>
                                </div>
                              </div>
                           <% end %>
