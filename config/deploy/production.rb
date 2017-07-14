@@ -6,7 +6,7 @@ load 'deploy/assets'
 set :user, 'deploy'
 set :domain, '172.31.13.42'
 
-
+#server '172.31.13.42', user: 'deploy', roles: %w{web app db}
 set :application, "caf_app"
 #set :repository,  "git@github.com:polarbeardesign/caf_app.git"
 set :repo_url,  "git@github.com:polarbeardesign/caf_app.git"
