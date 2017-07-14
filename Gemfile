@@ -29,7 +29,7 @@ gem 'aasm'
 gem 'i18n', '0.6.11'
 
 # Deploy with Capistrano
-# gem 'capistrano', '< 2.15.5'
+ gem 'capistrano', '< 2.15.5'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -39,22 +39,12 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'figaro'
-gem 'puma'
-group :development do
-  gem 'capistrano'
-  gem 'capistrano3-puma'
-  gem 'capistrano-rails', require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano-rvm'
+group :production do
+  gem 'execjs', '2.0.2'
+  gem 'libv8', '3.3.10.4'
+  gem 'therubyracer', '0.10.2'
+  gem 'rack-google_analytics', :require => "rack/google_analytics"
 end
-
-#group :production do
-#  gem 'execjs', '2.0.2'
-#  gem 'libv8', '3.3.10.4'
-#  gem 'therubyracer', '0.10.2'
-#  gem 'rack-google_analytics', :require => "rack/google_analytics"
-#end
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.0.0'
