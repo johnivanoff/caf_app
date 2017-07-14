@@ -1,5 +1,7 @@
 <%= render "layouts/scripts" %>
 
+
+<%= button_to 'Back to CAF Headquarters website', 'https://commemorativeairforce.org/', :class => 'btn btn-info btn-lg', :method => 'get' %>
 <h1>CAF Unit Map <span style="font-size: 0.65em;"><%= @units.count %> units</span></h1>
 
     <script>
@@ -301,9 +303,10 @@
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 38.0000, lng: -97.00003},
           zoom: 5,
+            scrollwheel: false,
           mapTypeControlOptions: {
             mapTypeIds: ['Vintage','roadmap', 'satellite', 'hybrid', 
-            'terrain']
+            'terrain'],
           }
         });
 <% @units.each_with_index do |unit, i| %>

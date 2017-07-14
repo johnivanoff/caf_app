@@ -9,6 +9,8 @@ class Aircraft < ActiveRecord::Base
   has_paper_trail :class_name => 'AircraftVersion',
      :meta => { :author_username => :user_name}
 
+  mount_uploader :profile_photo, AircraftProfileUploader
+
   scope :bomber, joins(:aircraft_classes).merge(AircraftClass.bomber)
 
 #  scope :dues_current, joins(:dues_payments).merge(DuesPayment.current)
