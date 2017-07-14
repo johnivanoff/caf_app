@@ -1,3 +1,24 @@
+<div class="moreinfo" style="margin-bottom: 30px;">
+
+<div class="btn-group btn-group-justified" role="group" >
+  <div class="btn-group" role="group">
+    <% if @unit.id - 1 >= 1 %>
+      <%= button_to 'Previous unit', unit_path(@unit.id - 1), :class => 'btn btn-default btn-lg', :method => 'get' %> 
+    <% else %>
+      <%= button_to 'Previous unit', unit_path(@unit.id - 1), :class => 'btn btn-default btn-lg disabled', :method => 'get' %>
+    <% end %>
+  </div>
+  <div class="btn-group" role="group">
+    <% if @unit.id + 1 <= @all_units.last.id %>
+      <%= button_to 'Next unit', unit_path(@unit.id + 1), :class => 'btn btn-default btn-lg', :method => 'get' %> 
+    <% else %>
+      <em> <- end</em>
+    <% end %>
+  </div>
+</div>
+
+</div> 
+
 <h1><%= @unit.unit_name %> <span><%= @unit.city %>, <%= @unit.state %></span></h1>
   
 <div class="col-xs-12 col-sm-3">
@@ -40,11 +61,6 @@
   
     <% end %>
   
-
-
-
-
-
   </div>
 </div>
 
@@ -52,8 +68,6 @@
           <ul class="nav nav-tabs">
             <li class="active"><a href="#aboutus" data-toggle="tab"><i class="fa fa-info-circle"></i> About</a></li>
             <li><a href="#aircraft" data-toggle="tab"><i class="fa fa-plane"></i> Aircraft  x<%= @unit.aircrafts.count %></a></li>
-            <li><a href="#events" data-toggle="tab"><i class="fa fa-calendar"></i> Events  x<%= @unit.events.count %></a></li>
-            <li><a href="#more" data-toggle="tab"><i class="fa fa-plus-square-o"></i> More</a></li>
           </ul>
           <div class="tab-content">
             <div class="tab-pane fade in active" id="aboutus">
@@ -73,14 +87,19 @@
                              <div class="row">
                                <div class="col-sm-3">
                                 <% if aircraft.profile_photo? %>
-                                  <img src="<%= '/uploads/aircraft_profile_photos/' + aircraft.profile_photo %>" width="100%" class="profile_photo" />
+                                  <img src="<%= aircraft.profile_photo.url(:directory_size).to_s %>" width="250px" class="profile_photo" />
                                 <% else %>
                                   <img src='/uploads/aircraft_profile_photos/default_2.jpg' width="250px" class="profile_photo" />
                                 <% end %>
                                </div>
                                <div class="col-sm-9">
-                                 <h2><%= link_to aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.aircraft_type.aircraft_name + ' ' + aircraft.name, aircraft_path(aircraft) %></h2>
-                                 <p><%= aircraft.aircraft_type.description %></p>
+                                 <h2><%= aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.aircraft_type.aircraft_name + ' ' + aircraft.name %></h2>
+                                 <p><%= aircraft.description %></p>
+                                   <% if signed_in?%>
+                                     <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+                                       <br /><%= link_to 'Edit Aircraft', edit_aircraft_path(aircraft) %>
+                                     <% end %>
+                                   <% end %>
                                </div>
                              </div>
                           <% end %>
@@ -90,160 +109,14 @@
                 </div>
               </div>
             </div>
-            <div class="tab-pane fade" id="events">
-              <div class="media">
-              
-                <div class="media-body">
-                  <% if !@unit.events.blank? %>
-                  <% @unit.events.each do |event| %>
-                   <div class="row event-row">
-                     <div class="col-sm-3">
-                      <% if event.event_start.strftime("%b %d" ) == event.event_end.strftime("%b %d") %>
-                        <div class="calendar-css">
-                          <div class="calendar_month">
-                            <%= event.event_start.strftime("%b") %>
-                          </div>
-                          <div class="calendar_date">
-                            <%= event.event_start.strftime("%d") %>
-                          </div>
-                        </div>
-                        <% else %>
-                        <div class="calendar-css">
-                          <div class="calendar_month">
-                            <%= event.event_start.strftime("%b") %>
-                          </div>
-                          <div class="calendar_date">
-                            <%= event.event_start.strftime("%d") %>
-                          </div>
-                        </div>
-                        <span style="display: inline-block; font-size: 3em; margin: 0 0 0 0;">&#8211; </span>
-                        <div class="calendar-css">
-                          <div class="calendar_month">
-                            <%= event.event_end.strftime("%b") %>
-                          </div>
-                          <div class="calendar_date">
-                            <%= event.event_end.strftime("%d") %>
-                          </div>
-                        </div>
-                      <% end %>
-                    </div>
-                    <div class="col-sm-9">
-                     <h2><%= link_to event.event_title, event_path(event) %></h2>
-                     <p><%= event.details %></p>
-                    </div>
-                    </div>
-                  <% end %>
-                  <% else %>
-                    <p>No events currently scheduled.</p>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade" id="more">
-              <div class="media">
-              
-                <div class="media-body">
-                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. </p>
-                </div>
-              </div>
-            </div>
-          </div>
   
 </div>	  
 
-<div class="col-xs-12 col-sm-12 moreinfo" style="margin-top: 30px;">
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#photogallery" data-toggle="tab"><i class="fa fa-chain-broken"></i> Photo Gallery</a></li>
-  </ul>
-  <div class="tab-content">
-    <div class="tab-pane fade in active" id="photogallery">
-      <div class="media">
-        <div class="media-body">
-          <div id="gallery">
-
-    <div class="gallery_inner2">
-    <div class="">
-
-      <div class="isotope-box">
-        <div id="container" class="clearfix">
-          <ul class="thumbnails" id="isotope-items">
-    
-            <li class="element">
-              <div class="thumb-isotope">
-                <div class="thumbnail clearfix">
-                  <a href="images/blocchi8-01.jpg" rel="prettyPhoto[mix]" title="Photo" class="p">
-                    <figure>
-                      <img src="images/blocchi8-01.jpg" alt="" class="img1">
-                      <em></em>
-                    </figure>
-                  </a>
-                </div>
-              </div>
-            </li>
-    
-            <li class="element">
-              <div class="thumb-isotope">
-                <div class="thumbnail clearfix">
-                  <a href="images/blocchi8-02.jpg" rel="prettyPhoto[mix]" title="Photo" class="p">
-                    <figure>
-                      <img src="images/blocchi8-02.jpg" alt="" class="img1">
-                      <em></em>
-                    </figure>
-                  </a>
-                </div>
-              </div>
-            </li>
-    
-            <li class="element">
-              <div class="thumb-isotope">
-                <div class="thumbnail clearfix">
-                  <a href="images/blocchi8-03.jpg" rel="prettyPhoto[mix]" title="Photo" class="p">
-                    <figure>
-                      <img src="images/blocchi8-03.jpg" alt="" class="img1">
-                      <em></em>
-                    </figure>
-                  </a>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-              
-              
-              
-                </div>
-              </div>
-            </div>
-          </div>
-  
-</div>	
-
-
-
-<div class="col-xs-12 col-sm-12 moreinfo" style="margin-top: 30px;">
-
-  <div class="btn-group btn-group-justified bt-vermobile" role="group" >
-    <div class="btn-group" role="group">
-      <a href="#" class="btn btn-default btn-buy"><strong>Buy</strong> a Ride</a>
-    </div>
-    <div class="btn-group" role="group">
-      <a href="#" class="btn btn-default btn-donate"><strong>Donate</strong> to Unit</a>
-    </div>
-    <div class="btn-group" role="group">
-      <a href="#" class="btn btn-default btn-join"><strong>Join</strong> Unit</a>
-    </div>
-  </div>
-
-</div>
 
 
   
   
-  
+
   
   
 
@@ -266,4 +139,3 @@
     </div>
   <% end %>
 <% end %>
-

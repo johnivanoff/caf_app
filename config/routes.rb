@@ -1,6 +1,9 @@
 CafApp::Application.routes.draw do
 
 
+  resources :content_types
+
+
   resources :content_categories
 
 

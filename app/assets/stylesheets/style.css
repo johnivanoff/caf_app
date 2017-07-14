@@ -285,6 +285,14 @@ label {
   height: 264px;
 }
 
+.blocchi-unit img {  display: block;
+  max-width: 400px;
+  max-height: 400px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  }
+
 .actions {
   margin-top: 2em;
 }
@@ -391,9 +399,12 @@ box-shadow: 0px 0px 18px 0px rgba(125,125,125,1);
 	.navbar_ .nav > li > a{
 	background: #284b71;
 	}
+
+.blocchi-unit img {
+  width: auto;
+  }
 	
 	}
-	
 
 .flexslider {
   border: none;

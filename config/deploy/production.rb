@@ -19,6 +19,9 @@ set :rails_env, :production
 
 # to overcome the "stdin: is not a tty\n" error
 default_run_options[:pty] = true 
+ssh_options[:forward_agent] = true
+ssh_options[:auth_methods] = ["publickey"]
+ssh_options[:keys] = ["~/second_instance.pem"]
 
 role :web, domain                          # Your HTTP server, Apache/etc
 role :app, domain                          # This may be the same as your `Web` server
