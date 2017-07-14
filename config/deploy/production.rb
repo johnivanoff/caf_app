@@ -3,6 +3,16 @@
 load 'deploy/assets'
 
 
+#set :user, 'polarbea'
+set :user, 'deploy'
+set :domain, '172.31.13.42'
+
+#server '172.31.13.42', user: 'deploy', roles: %w{web app db}
+set :application, "caf_app"
+#set :repository,  "git@github.com:polarbeardesign/caf_app.git"
+set :repo_url,  "git@github.com:polarbeardesign/caf_app.git"
+set :scm, 'git'
+
 set :repository_cache, "git_cache"
 set :deploy_via, :remote_cache  #In most cases you want to use this option, otherwise each deploy will do a full repository clone every time.
 set :ssh_options, { :forward_agent => true }

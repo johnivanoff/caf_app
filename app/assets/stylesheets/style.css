@@ -282,7 +282,7 @@ label {
 
 .blocchi-unit {
   border: none;
-  height: 264px;
+  /* height: 264px; */
 }
 
 .blocchi-unit img {  display: block;

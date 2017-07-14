@@ -58,7 +58,6 @@ class AircraftProfileUploader < CarrierWave::Uploader::Base
     end
   end
 
-
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_white_list
@@ -74,5 +73,4 @@ class AircraftProfileUploader < CarrierWave::Uploader::Base
 
 
 end
-
 
