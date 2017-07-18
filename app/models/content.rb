@@ -1,6 +1,6 @@
 class Content < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :body, :content_category_id, :published_at, :slug, :title, :user_id
+  attr_accessible :body, :content_type_id, :content_category_id, :feature_image, :published_at, :slug, :title, :user_id
 
   belongs_to :content_category
 
