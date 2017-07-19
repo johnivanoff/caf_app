@@ -65,15 +65,28 @@ Wellspring.LivePreview.initialize();
   <div class='col-sm-6'>
     <div class="field">
       <%= f.label :title %><br />
-      <%= f.text_field :title %>
+      <%= f.text_field :title, :class => 'boxsizingBorder' %>
+    </div>
+    <div class="field">
+    <%= f.label :content_type_id %><br />
+    <%= f.collection_select :content_type_id, ContentType.all, :id, :type_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
+    </div>
+    <div class="field">
+      <%= f.label :content_category_id %><br />
+      <%= f.collection_select :content_category_id, ContentCategory.all, :id, :category_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
     </div>
     <div class="field">
       <%= f.label :body %><br />
       <%= f.text_area :body, :class => 'boxsizingBorder' %>
     </div>
     <div class="field">
+      <%= f.label :feature_image %><br />
+      <%= f.text_field :feature_image, :class => 'boxsizingBorder' %>
+    </div>
+
+    <div class="field">
       <%= f.label :slug %><br />
-      <%= f.text_field :slug %>
+      <%= f.text_field :slug, :class => 'boxsizingBorder' %>
     </div>
     <div class="field">
       <%= f.hidden_field :user_id, :value => current_user %>

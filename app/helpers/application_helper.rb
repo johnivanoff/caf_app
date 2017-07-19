@@ -25,4 +25,39 @@ module ApplicationHelper
     end
   end
 
+
+def get_bread_crumb(url)
+  begin
+    breadcrumb = ''
+    sofar = '/'
+    elements = url.split('/')
+    for i in 1...elements.size
+      sofar += elements[i] + '/'
+      if i%2 == 0
+        begin
+         # breadcrumb += "<a href='#{sofar}'>"  + eval("#{elements[i - 1].singularize.camelize}.find(#{elements[i]}).name").to_s + '</a>'
+          breadcrumb += "<a href='#{sofar.chomp("/")}'>"  + eval("#{elements[i - 1].singularize.camelize}").to_s + '</a>'
+
+        rescue
+          breadcrumb += elements[i]
+        end
+      else
+        breadcrumb += "<a href='#{sofar.chomp("/")}'>#{elements[i].pluralize}</a>"
+      end
+      breadcrumb += '<span></span>' if i != elements.size - 1
+    end
+    breadcrumb
+  rescue
+    'Not available'
+  end
+end
+
+#  def display_photo(member)  
+#    unless member.photo.nil? 
+#      image_tag(member.photo.file_name) 
+#    else
+#      image_tag("/uploads/website_iamges/default_member.png")
+#     end    
+#  end
+
 end

@@ -16,6 +16,7 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Unit name</th>
     <th>Unit Type</th>
     <th>Address</th>
@@ -24,6 +25,11 @@
 
 <% @units.each do |unit| %>
   <tr class='result'>
+    <td>
+      <% if unit.unit_logo? %>
+        <img src="<%= unit.unit_logo.url(:thumb).to_s %>" />
+      <% end %>
+    </td>    
     <td><%= link_to unit.unit_name, unit %>
     <% if signed_in?%>
       <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>

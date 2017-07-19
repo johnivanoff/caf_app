@@ -11,6 +11,8 @@ class Member < ActiveRecord::Base
      :meta => { :author_username => :user_name}
   #   meta: { author_username: :user_name}
 
+  mount_uploader :photo, PhotoUploader
+
 #  scope :active, where("members.active = 1")
 #  scope :inactive, where("members.active = 0")
 

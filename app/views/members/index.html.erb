@@ -17,6 +17,7 @@
 <table>
   <tr>
     <th class="sortable">User</th>
+    <th></th>
     <th class="sortable">Last name</th>
     <th class="sortable">First name</th>
     <th class="sortable">Email/Username</th>
@@ -32,6 +33,7 @@
 <% @members.each do |member| %>
   <tr class='result'>
     <td><%= member.user_id %></td>
+    <td class='member-photo'><% if !member.photo.blank? %><%= link_to (image_tag member.photo.url(:tiny_thumb).to_s), member_path(member) %><% end %></td>
     <td><%= member.last_name %></td>
     <td><%= member.first_name %></td>
     <td><%= member.user.email %></td>

@@ -1,6 +1,6 @@
-class CreateContentCategories < ActiveRecord::Migration
+class CreateDocumentCatagories < ActiveRecord::Migration
 #  def change
-#    create_table :content_categories do |t|
+#    create_table :document_categories do |t|
 #      t.string :category_name
 #      t.text :description
 #

@@ -134,10 +134,23 @@ th.sortable {
 }
 
 td {
-  padding: 3px;
+  padding: 0.4em;
   border: 1px solid #e0debc;
   }
 
+.member-photo {
+  vertical-align: top;
+  background: #000;
+  padding: 0;
+  border: 1px solid #000;
+}
+
+.member-card {
+  font-size: 2em;
+  font-style: italic;
+  text-align: right;
+  padding: 0.3em;
+}
 
 /* =Input Elements
 -------------------------------------------------------------- */
@@ -272,6 +285,14 @@ label {
   height: 264px;
 }
 
+.blocchi-unit img {  display: block;
+  max-width: 400px;
+  max-height: 400px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  }
+
 .actions {
   margin-top: 2em;
 }
@@ -378,9 +399,12 @@ box-shadow: 0px 0px 18px 0px rgba(125,125,125,1);
 	.navbar_ .nav > li > a{
 	background: #284b71;
 	}
+
+.blocchi-unit img {
+  width: auto;
+  }
 	
 	}
-	
 
 .flexslider {
   border: none;
