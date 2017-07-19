@@ -2,11 +2,9 @@
 
 load 'deploy/assets'
 
-#set :user, 'polarbea'
-#set :domain, 'caf.polarbeardesign.net'
+set :user, 'polarbea'
+set :domain, 'caf.polarbeardesign.net'
 
-set :user, 'deploy'
-set :domain, 'ec2-34-210-98-101.us-west-2.compute.amazonaws.com'
 
 set :application, "caf_app"
 set :repository,  "git@github.com:polarbeardesign/caf_app.git"
