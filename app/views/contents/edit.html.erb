@@ -1,6 +1,14 @@
-<h1>Editing Content</h1>
 
-<%= render 'form' %>
+
+<%#= render 'form' %>
+
+
+  <% if @content.content_type_id == 1 %>
+    <%= render 'page_form' %>
+  <% elsif  @content.content_type_id == 2 %>
+    <%= render 'news_form' %>
+  <% end %>
+
 
 <div style="clear: both;"></div>
 <%= link_to 'Show', @content %> |
