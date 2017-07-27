@@ -71,7 +71,12 @@
               <%= diff(@version.reify.description, @unit.description) %>
             </p>
       <% end %>
-
+      <% if diff(@version.reify.website, @unit.rides_url) != 'No Changes' %>
+            <p>
+              <strong>Rides URL:</strong>
+              <%= diff(@version.reify.rides_url, @unit.rides_url) %>
+            </p>
+      <% end %>
 </div>
 
     <p>

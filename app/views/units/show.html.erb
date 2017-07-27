@@ -65,6 +65,29 @@
 </div>
 
 <div class="col-xs-12 col-sm-12 moreinfo">
+
+<div class="btn-group btn-group-justified bt-vermobile" role="group" >
+  <% if !@unit.rides_url.blank? %>
+  <div class="btn-group" role="group">
+    <a href="<%= @unit.rides_url %>" class="btn btn-default btn-buy" target="_blank"><strong>Buy</strong> a Ride</a>
+  </div>
+  <% end %>
+  <% if !@unit.donate_url.blank? %>
+  <div class="btn-group" role="group">
+    <a href="<%= @unit.donate_url %>" class="btn btn-default btn-donate" target="_blank"><strong>Donate</strong> to Unit</a>
+  </div>
+  <% end %>
+  <% if !@unit.join_url.blank? %>
+  <div class="btn-group" role="group">
+    <a href="<%= @unit.join_url %>" class="btn btn-default btn-join" target="_blank"><strong>Join</strong> Unit</a>
+  </div>
+  <% end %>
+</div>
+
+</div>
+
+
+<div class="col-xs-12 col-sm-12 moreinfo">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#aboutus" data-toggle="tab"><i class="fa fa-info-circle"></i> About</a></li>
             <li><a href="#aircraft" data-toggle="tab"><i class="fa fa-plane"></i> Aircraft  x<%= @unit.aircrafts.count %></a></li>
@@ -128,3 +151,7 @@
     </div>
   <% end %>
 <% end %>
+
+
+<%= @unit.donate_url %><br />
+<%= @unit.rides_url %>
