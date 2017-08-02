@@ -32,11 +32,14 @@
 </div>
 <div class="row">
   <div class="field col-sm-4">
-    <%= f.label :profile_photo %><br />
+    <%= f.label :profile_photo %>
+    <p class="form-tip">for best result use an image in 5:3 ratio, min size 540px X 360px<br />
+    upload will create square and thumbnail images in addition to original.</p>
     <%= f.file_field :profile_photo, :class => 'boxsizingBorder' %>
     <% if @aircraft.profile_photo? %>
       <img src="<%= @aircraft.profile_photo.url(:directory_size).to_s %>" width="100%" class="profile_photo" />
     <% end %>
+  
   </div>
   <div class="field col-sm-4">
     <%#= f.label :nose_art %><br />
