@@ -58,6 +58,8 @@ CafApp::Application.routes.draw do
   match 'aircraft_admin' => 'aircrafts#aircraft_admin', :as => :aircraft_admin
   match 'hq_position_admin' => 'hq_position_assignments#hq_position_admin', :as => :hq_position_admin
   match 'home' => 'contents#home', :as => :home
+  match 'content/:id/news_edit'
+
 
   post 'preview', :to => 'previews#show', :as => :preview
 
