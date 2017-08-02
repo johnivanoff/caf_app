@@ -47,8 +47,16 @@ class AircraftProfileUploader < CarrierWave::Uploader::Base
    version :tiny_thumb do
       process :resize_and_pad => [35, 35,  background = :transparent, gravity = ::Magick::NorthGravity] 
    end
-
+   version :landscape_profile do
+      process :resize_and_pad => [540, 360,  background = :transparent, gravity = ::Magick::CenterGravity] 
+   end
   def make_square(size)
+    manipulate! do |source|
+       #resize_to_fill - Resize the image to fit within the specified dimensions while retaining the aspect ratio of the original image. If necessary, crop the image in the larger dimension.
+      source = source.resize_to_fill(size, size, gravity = ::Magick::CenterGravity)
+    end
+  end
+  def make_5by3(size)
     manipulate! do |source|
        #resize_to_fill - Resize the image to fit within the specified dimensions while retaining the aspect ratio of the original image. If necessary, crop the image in the larger dimension.
       source = source.resize_to_fill(size, size, gravity = ::Magick::CenterGravity)
@@ -58,6 +66,8 @@ class AircraftProfileUploader < CarrierWave::Uploader::Base
     end
   end
 
+
+ 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_white_list
@@ -69,7 +79,5 @@ class AircraftProfileUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
-
 
 end
