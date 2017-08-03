@@ -62,23 +62,30 @@
 
 </div>
 <a name="aircraft_info"></a>
+
 <div class="col-xs-12 col-sm-12 moreinfo">
 
 <div class="btn-group btn-group-justified bt-vermobile" role="group" >
+  <% if !@aircraft.unit.rides_url.blank? %>
   <div class="btn-group" role="group">
-    <a href="#" class="btn btn-default btn-buy"><strong>Buy</strong> a Ride</a>
+    <a href="<%= @aircraft.unit.rides_url %>" class="btn btn-default btn-buy" target="_blank"><strong>Buy</strong> a Ride</a>
   </div>
+  <% end %>
+  <% if !@aircraft.unit.donate_url.blank? %>
   <div class="btn-group" role="group">
-    <a href="#" class="btn btn-default btn-donate"><strong>Donate</strong> to Aircraft</a>
+    <a href="<%= @aircraft.unit.donate_url %>" class="btn btn-default btn-donate" target="_blank"><strong>Donate</strong> to Unit</a>
   </div>
+  <% end %>
+  <% if !@aircraft.unit.join_url.blank? %>
   <div class="btn-group" role="group">
-    <a href="#" class="btn btn-default btn-join"><strong>Join</strong> Unit</a>
+    <a href="<%= @aircraft.unit.join_url %>" class="btn btn-default btn-join" target="_blank"><strong>Join</strong> Unit</a>
   </div>
+  <% end %>
 </div>
 
 </div>
 
-<div class="col-xs-12 col-sm-12 moreinfo" style="margin-top: 30px;">
+<div class="col-xs-12 col-sm-12 moreinfo" style="margin-top: 2em;">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#aircraft" data-toggle="tab"><i class="fa fa-plane"></i> Our Aircraft</a></li>
             <li><a href="#history" data-toggle="tab"><i class="fa fa-university"></i> History</a></li>
