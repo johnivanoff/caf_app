@@ -92,6 +92,10 @@ p {
   margin: 1.12em 0;
 }
 
+p.tight-top {
+  margin: 0.4em 0;
+}
+
 ul {
   list-style: disc;
   margin: 1.12em 2em;
@@ -283,6 +287,10 @@ input:focus, select:focus, textarea:focus /*, input[type=submit]:hover */ {
 
 label {
   padding-left: 30px; text-indent: -30px;
+}
+
+.indent {
+  padding-left: 30px;
 }
 
 .profile_photo {
