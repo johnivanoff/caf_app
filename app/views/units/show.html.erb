@@ -109,7 +109,7 @@
                              <div class="row">
                                <div class="col-sm-3">
                                 <% if aircraft.profile_photo? %>
-                                  <%= link_to (image_tag aircraft.profile_photo.url(:directory_size).to_s, :class => "profile_photo", :width => "250px"), aircraft_path(aircraft)  %>
+                                  <%= image_tag aircraft.profile_photo.url(:directory_size).to_s, :class => "profile_photo", :width => "250px")  %>
                                 <% else %>
                                   <img src='/uploads/aircraft_profile_photos/default_2.jpg' width="250px" class="profile_photo" />
                                 <% end %>
@@ -118,7 +118,7 @@
                                  <h2><%= link_to aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.aircraft_type.aircraft_name + ' ' + aircraft.name, aircraft_path(aircraft) %></h2>
                                        <% if aircraft.description? %>
                                          <% if aircraft.description.length > 700 %>
-                                            <%= truncate(aircraft.description, :length => 700, :separator => ' ') %> <em><%= link_to "Read More", aircraft_path(aircraft) %></em>
+                                            <%= truncate(aircraft.description, :length => 700, :separator => ' ') %> <em>...</em>
                                           <% else %>
                                             <%= markdown aircraft.description %>
                                           <% end %>
