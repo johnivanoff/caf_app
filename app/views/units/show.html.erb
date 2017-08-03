@@ -129,10 +129,15 @@
     <div class="row">
       <div class='col-sm-12' >
         <div class="admin-section" >
-          <h2>Admin Unit</h2>
-          <%= link_to 'Edit Unit', edit_unit_path(@unit) %> |
-          <%= link_to 'Back to all Units', units_path %>
-
+          <h2 class="space">Admin Unit</h2>
+            <div class="row">
+              <div class='col-sm-2' style="border-right: 1px solid #ccc;" >
+                <%= button_to 'Edit Unit', edit_unit_path(@unit), method: :get, :class => "btn-default btn1" %>
+              </div>
+              <div class='col-sm-10'>
+                <%= button_to 'Back to all Units', units_path, method: :get, :class => "btn-default btn1" %>
+              </div>
+            </div>
           <%= render 'versions', :unit => @unit %>
         </div>
       </div>

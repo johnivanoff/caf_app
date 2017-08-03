@@ -50,6 +50,10 @@ table {
 
 #ui-datepicker-div {display: none;}
 
+table * ul {
+    margin: 0 2em;
+}
+
 /* =Fonts
 -------------------------------------------------------------- */
 body,
@@ -109,6 +113,12 @@ em {
 strong {
   font-weight: bold;
 }
+
+.space {
+  margin: 1.12em 0;
+}
+
+
 /* =Table Elements
 -------------------------------------------------------------- */
 
