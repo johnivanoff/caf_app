@@ -1,12 +1,12 @@
-<h2>Revisions</h2>
+<h2 class="space">Revision History</h2>
 
-<table class="table_border">
+<table>
   <thead>
     <tr>
-      <th>Index</th>
       <th>Date</th>
-      <th>Author</th>
       <th>Event</th>
+      <th>Change(s)</th>
+      <th>Author</th>
       <th></th>
       <th></th>
     </tr>
@@ -14,11 +14,14 @@
 
   <tbody>
     <%- @unit.versions.reverse.each do |version| %>
-      <tr class="<%= cycle('odd_row', 'even_row') %>">
-        <td><%= version.index %></td>
+      <tr>
         <td><%= version.created_at.strftime("%b %d, %Y") %></td>
-        <td><%= find_version_author_name(version) %></td>
         <td><%= version.event.humanize %></td>
+        <td><ul><% version.changeset.each do |k, v| %>
+          <li><%= k %></li>
+        <% end %></ul>
+        </td>
+        <td><%= find_version_author_name(version) %></td>
         <td><%= link_to 'Diff', diff_unit_version_path(@unit, version) %></td>
         <td><%= link_to 'Rollback', rollback_unit_version_path(@unit, version), :method => 'put' %></td>
       </tr>

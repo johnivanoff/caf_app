@@ -65,29 +65,6 @@
 </div>
 
 <div class="col-xs-12 col-sm-12 moreinfo">
-
-<div class="btn-group btn-group-justified bt-vermobile" role="group" >
-  <% if !@unit.rides_url.blank? %>
-  <div class="btn-group" role="group">
-    <a href="<%= @unit.rides_url %>" class="btn btn-default btn-buy" target="_blank"><strong>Buy</strong> a Ride</a>
-  </div>
-  <% end %>
-  <% if !@unit.donate_url.blank? %>
-  <div class="btn-group" role="group">
-    <a href="<%= @unit.donate_url %>" class="btn btn-default btn-donate" target="_blank"><strong>Donate</strong> to Unit</a>
-  </div>
-  <% end %>
-  <% if !@unit.join_url.blank? %>
-  <div class="btn-group" role="group">
-    <a href="<%= @unit.join_url %>" class="btn btn-default btn-join" target="_blank"><strong>Join</strong> Unit</a>
-  </div>
-  <% end %>
-</div>
-
-</div>
-
-
-<div class="col-xs-12 col-sm-12 moreinfo">
           <ul class="nav nav-tabs">
             <li class="active"><a href="#aboutus" data-toggle="tab"><i class="fa fa-info-circle"></i> About</a></li>
             <li><a href="#aircraft" data-toggle="tab"><i class="fa fa-plane"></i> Aircraft  x<%= @unit.aircrafts.count %></a></li>
@@ -136,15 +113,31 @@
 </div>	  
 
 
+
+  
+  
+
+  
+  
+
+
+
+
+
 <% if signed_in?%>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
     <div class="row">
       <div class='col-sm-12' >
         <div class="admin-section" >
-          <h2>Admin Unit</h2>
-          <%= link_to 'Edit Unit', edit_unit_path(@unit) %> |
-          <%= link_to 'Back to all Units', units_path %>
-
+          <h2 class="space">Admin Unit</h2>
+            <div class="row">
+              <div class='col-sm-2' style="border-right: 1px solid #ccc;" >
+                <%= button_to 'Edit Unit', edit_unit_path(@unit), method: :get, :class => "btn-default btn1" %>
+              </div>
+              <div class='col-sm-10'>
+                <%= button_to 'Back to all Units', units_path, method: :get, :class => "btn-default btn1" %>
+              </div>
+            </div>
           <%= render 'versions', :unit => @unit %>
         </div>
       </div>
