@@ -87,14 +87,21 @@
                              <div class="row">
                                <div class="col-sm-3">
                                 <% if aircraft.profile_photo? %>
-                                  <img src="<%= aircraft.profile_photo.url(:directory_size).to_s %>" width="250px" class="profile_photo" />
+                                  <%= link_to (image_tag aircraft.profile_photo.url(:directory_size).to_s, :class => "profile_photo", :width => "250px"), aircraft_path(aircraft)  %>
                                 <% else %>
                                   <img src='/uploads/aircraft_profile_photos/default_2.jpg' width="250px" class="profile_photo" />
                                 <% end %>
                                </div>
                                <div class="col-sm-9">
-                                 <h2><%= aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.aircraft_type.aircraft_name + ' ' + aircraft.name %></h2>
-                                 <p><%= aircraft.description %></p>
+                                 <h2><%= link_to aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.aircraft_type.aircraft_name + ' ' + aircraft.name, aircraft_path(aircraft) %></h2>
+                                       <% if aircraft.description? %>
+                                         <% if aircraft.description.length > 700 %>
+                                            <%= truncate(aircraft.description, :length => 700, :separator => ' ') %> <em><%= link_to "Read More", aircraft_path(aircraft) %></em>
+                                          <% else %>
+                                            <%= markdown aircraft.description %>
+                                          <% end %>
+                                        <% end %>                                 
+                                 
                                    <% if signed_in?%>
                                      <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
                                        <br /><%= link_to 'Edit Aircraft', edit_aircraft_path(aircraft) %>
