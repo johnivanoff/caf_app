@@ -9,6 +9,9 @@
     <% end %>
   </div>
   <div class="btn-group" role="group">
+  <%= button_to 'Back to all units', units_path, :class => 'btn btn-default btn-lg', :method => 'get' %> 
+  </div>
+  <div class="btn-group" role="group">
     <% if @unit.id + 1 <= @all_units.last.id %>
       <%= button_to 'Next unit', unit_path(@unit.id + 1), :class => 'btn btn-default btn-lg', :method => 'get' %> 
     <% else %>
