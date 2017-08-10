@@ -83,8 +83,8 @@ class MembersController < ApplicationController
     if params[:commit] == "Update Member"
       checked_roles = []
       checked_params = params[:role_list] || []
-      for check_box_id in checked_params
-        role = Role.find(check_box_id)
+      for role_check_box_id in checked_params
+        role = Role.find(role_check_box_id)
         if not @member.user.roles.include?(role)
           @member.user.roles << role
         end
