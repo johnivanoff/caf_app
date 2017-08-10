@@ -9,6 +9,9 @@
     <% end %>
   </div>
   <div class="btn-group" role="group">
+  <%= button_to 'Back to all units', units_path, :class => 'btn btn-default btn-lg', :method => 'get' %> 
+  </div>
+  <div class="btn-group" role="group">
     <% if @unit.id + 1 <= @all_units.last.id %>
       <%= button_to 'Next unit', unit_path(@unit.id + 1), :class => 'btn btn-default btn-lg', :method => 'get' %> 
     <% else %>
@@ -109,16 +112,16 @@
                              <div class="row">
                                <div class="col-sm-3">
                                 <% if aircraft.profile_photo? %>
-                                  <%= link_to (image_tag aircraft.profile_photo.url(:directory_size).to_s, :class => "profile_photo", :width => "250px"), aircraft_path(aircraft)  %>
+                                  <img src='<%= aircraft.profile_photo.url(:directory_size).to_s %>' width="250px" class="profile_photo" />
                                 <% else %>
                                   <img src='/uploads/aircraft_profile_photos/default_2.jpg' width="250px" class="profile_photo" />
                                 <% end %>
                                </div>
                                <div class="col-sm-9">
-                                 <h2><%= link_to aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.aircraft_type.aircraft_name + ' ' + aircraft.name, aircraft_path(aircraft) %></h2>
+                                 <h2><%= aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.aircraft_type.aircraft_name + ' ' + aircraft.name %></h2>
                                        <% if aircraft.description? %>
                                          <% if aircraft.description.length > 700 %>
-                                            <%= truncate(aircraft.description, :length => 700, :separator => ' ') %> <em><%= link_to "Read More", aircraft_path(aircraft) %></em>
+                                            <%= truncate(aircraft.description, :length => 700, :separator => ' ') %> <em>...</em>
                                           <% else %>
                                             <%= markdown aircraft.description %>
                                           <% end %>
