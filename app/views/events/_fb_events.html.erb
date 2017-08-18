@@ -1,0 +1,73 @@
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1351035148316092',
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+    FB.AppEvents.logPageView();
+
+FB.api(
+  '/263893947509/events',
+  'GET',
+  {"access_token":"1351035148316092|i01QSP0TKA9wj6F5_HRMYT6sVv8"},
+  function(response) {
+      // Insert your code here
+      console.log(response);
+      //alert(response.data[0].name);
+
+  var monthNames = [
+    "Jan", "Feb", "Mar",
+    "Apr", "May", "Jun", "Jul",
+    "Aug", "Sep", "Oct",
+    "Nov", "Dec"
+  ];
+
+    var html = '';
+    for (var e in response.data) {
+  //format start date
+        var Currdate = new Date(response.data[e].start_time);
+        var day = Currdate.getDate();
+        var monthIndex = Currdate.getMonth();
+        var year = Currdate.getFullYear();
+        
+        html += '<div class="calendar_row"><div class="cell" style="width: 25%;">';
+        html += '<div class="date-range">';
+        html += '<div class="calendar-ii">';
+        html += '<div class="calendar_month-ii">'+ monthNames[monthIndex] +'</div>';
+        html += '<div class="calendar_date-ii">'+ day +'</div>';
+        html += '</div>';
+        html += '</div>';
+        html += '<div class="location">City, ST  </div>';
+        html += '</div>';
+        html += '<div class="cell" style="width: 70%;">';
+        html += '<strong><em>'+response.data[e].name+'</em></strong>';
+        html += '<br />';
+        html += response.data[e].description;
+
+
+
+        html += '</div></div>';
+    }
+    $('#results').html(html);
+
+  }
+);
+
+
+
+  };
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+
+</script>
+
+<!-- {"access_token":"1351035148316092|i01QSP0TKA9wj6F5_HRMYT6sVv8","token_type":"bearer"} -->
+
