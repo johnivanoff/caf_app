@@ -90,6 +90,20 @@ jQuery(function($){
 </div>
 <div class="row">
   <div class="field col-sm-4">
+    <%= f.label :donate_url, "Donate URL" %><br />
+    <%= f.text_field :donate_url, :class => 'boxsizingBorder' %>
+  </div>
+  <div class="field col-sm-4">
+    <%= f.label :join_url, "Join URL" %><br />
+    <%= f.text_field :join_url, :class => 'boxsizingBorder' %>
+  </div>
+  <div class="field col-sm-4">
+    <%= f.label :rides_url, "Rides URL" %><br />
+    <%= f.text_field :rides_url, :class => 'boxsizingBorder' %>
+  </div>
+</div>
+<div class="row">
+  <div class="field col-sm-4">
     <%= f.label :unit_logo %><br />
     <%= f.file_field :unit_logo, :class => 'boxsizingBorder' %>
     <% if !@unit.unit_logo.blank? %>

@@ -312,10 +312,14 @@
 <% @units.each_with_index do |unit, i| %>
 
 <% if !unit.latitude.blank? %>
+
        var marker<%= i %> = new google.maps.Marker({
+          animation: google.maps.Animation.DROP,
           position: {lat: <%= unit.latitude %>, lng: <%= unit.longitude %>},
-          map: map
+          map: map,
+          title: "<%= unit.unit_name %>"
         });
+
 <% end %>
 <% end %>
         map.mapTypes.set('Vintage', styledMapType);
@@ -334,7 +338,7 @@
 
     <fieldset>
         <input type="text" class="text-input" id="filter" value="" />
-        <label>Search/Filter</label>
+        <label> <i class="fa fa-search" aria-hidden="true"></i> Search/Filter</label>
         <span id="filter-count"></span>
     </fieldset>
 </form>
