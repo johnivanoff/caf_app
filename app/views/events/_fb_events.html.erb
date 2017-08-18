@@ -15,6 +15,7 @@ FB.api(
       // Insert your code here
       console.log(response);
       //alert(response.data[0].name);
+  response.data.reverse();
 
   var monthNames = [
     "Jan", "Feb", "Mar",
@@ -31,7 +32,7 @@ FB.api(
         var monthIndex = Currdate.getMonth();
         var year = Currdate.getFullYear();
         
-        html += '<div class="calendar_row"><div class="cell" style="width: 25%;">';
+        html += '<div class="calendar_row"><div class="cell" style="width: 25%; margin-right: 2em;">';
         html += '<div class="date-range">';
         html += '<div class="calendar-ii">';
         html += '<div class="calendar_month-ii">'+ monthNames[monthIndex] +'</div>';
@@ -42,6 +43,7 @@ FB.api(
         html += '</div>';
         html += '<div class="cell" style="width: 70%;">';
         html += '<strong><em>'+response.data[e].name+'</em></strong>';
+        html += '<img src="http://graph.facebook.com/'+response.data[e].id+'/picture?type=normal" style="float: right;margin: 1em 0 2em 2em;"/>';
         html += '<br />';
         html += response.data[e].description;
 
@@ -70,4 +72,5 @@ FB.api(
 </script>
 
 <!-- {"access_token":"1351035148316092|i01QSP0TKA9wj6F5_HRMYT6sVv8","token_type":"bearer"} -->
+<!-- need to handle no city exception, sort in date order, can you pull an image? details "More", link to facebook event -->
 
