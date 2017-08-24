@@ -309,15 +309,78 @@
             'terrain'],
           }
         });
+
+var prev_infowindow =false;
+
 <% @units.each_with_index do |unit, i| %>
 
 <% if !unit.latitude.blank? %>
+
+        var contentString<%= i %> = '<h2><%= unit.unit_name %></h2>'+
+            '<div class="row" style="margin: 15px;">'+
+            '<div class="col-xs-12 col-sm-4">'+
+            '<div class="blocchi-unit" style="min-height: 0;">'+
+            '<% if unit.unit_logo? %>'+
+            '<img src="<%= unit.unit_logo.url(:directory_size).to_s %>" />'+
+            '<% else %>'+
+            '<img src="http://caf.polarbeardesign.net/uploads/unit_logos/default_unit_logo.jpg" />'+
+            '<% end %>'+
+            '</div>'+
+            '</div>'+
+            '<div id="bodyContent">'+
+            '<div class="col-xs-12 col-sm-8">'+
+            '<p><strong>Address:</strong><br>'+
+            '<% if !unit.airport_name.blank? %>'+
+            '<%= unit.airport_name %><br />'+
+            '<% end %>'+
+            '<%= unit.address_1 %><br />'+
+            '<% if !unit.address_2.blank? %>'+
+            '<%= unit.address_2 %><br />'+
+            '<% end %>'+
+            '<%= unit.city %>, <%= unit.state %> <%= unit.postal_code %>'+
+            '</p>'+
+            '<p><strong>Phone:</strong><br>'+
+            '<%= unit.primary_phone %>'+
+            '</p>'+
+            '<p><strong>Website:</strong><br>'+
+            '<%= link_to unit.website, unit.website, :target => "_blank" %>'+
+            '</p>'+
+            '<p><i class="fa fa-info-circle" aria-hidden="true"></i> <strong><%= link_to "More Unit Info", unit %></strong></p>'+
+            '<hr />'+
+            '<h4>Unit Aircraft</h4>'+
+            '<% if !unit.aircrafts.blank? %>'+
+            '<ul>'+
+            '<% unit.aircrafts.each do |aircraft| %>'+
+            '<li><%= aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.aircraft_type.aircraft_name + ' ' + aircraft.name %></li>'+
+            '<% end %>'+
+            '</ul>'+
+            '<% else %>'+
+            '<p>No aircraft currently assigned.</p>'+
+            '<% end %>'+
+            '</div>'+
+            '</div>'+
+            '</div>';
+
+        var infowindow<%= i %> = new google.maps.InfoWindow({
+          content: contentString<%= i %>,
+          width: 500
+        });
+
+      prev_infowindow = infowindow<%= i %>;
 
        var marker<%= i %> = new google.maps.Marker({
           animation: google.maps.Animation.DROP,
           position: {lat: <%= unit.latitude %>, lng: <%= unit.longitude %>},
           map: map,
           title: "<%= unit.unit_name %>"
+        });
+        marker<%= i %>.addListener('click', function() {
+        if( prev_infowindow ) {
+           prev_infowindow.close();
+        }
+
+        prev_infowindow = infowindow<%= i %>;
+          infowindow<%= i %>.open(map, marker<%= i %>);
         });
 
 <% end %>
