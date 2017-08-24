@@ -88,6 +88,16 @@ h2 {
   font-size: 1.4em;
 }
 
+h2 span {
+  text-transform: lowercase;
+  font-weight: normal;
+  font-size: 0.75em;
+}
+
+h2 span:after {
+
+}
+
 p {
   margin: 1.12em 0;
 }

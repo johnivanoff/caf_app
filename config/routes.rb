@@ -55,7 +55,7 @@ CafApp::Application.routes.draw do
   match 'member_home' => 'contents#show', :id => 8, :as => :member_home
   match 'unit_admin' => 'units#unit_admin', :as => :unit_admin
   match 'hq_directory' => 'members#hq_directory', :as => :hq_directory
-  match 'aircraft_admin' => 'aircrafts#aircraft_admin', :as => :aircraft_admin
+  match 'aircraft_admin' => 'aircraft#aircraft_admin', :as => :aircraft_admin
   match 'hq_position_admin' => 'hq_position_assignments#hq_position_admin', :as => :hq_position_admin
   match 'home' => 'contents#home', :as => :home
   match 'content/:id/news_edit'
@@ -87,12 +87,12 @@ CafApp::Application.routes.draw do
     end
   end
 
-#  resources :aircrafts
-  resources :aircrafts do
+#  resources :aircraft
+  resources :aircraft do
     resources :versions, :only => [:destroy] do
       member do
-        get 'diff', :to => 'aircrafts_versions#diff'
-        put 'rollback', :to => 'aircrafts_versions#rollback'
+        get 'diff', :to => 'aircraft_versions#diff'
+        put 'rollback', :to => 'aircraft_versions#rollback'
       end
     end
   end
