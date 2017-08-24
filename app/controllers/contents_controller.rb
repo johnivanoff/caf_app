@@ -34,6 +34,12 @@ class ContentsController < ApplicationController
 
   def edit
   end
+  
+  def news_edit
+  end
+  
+  def page_edit
+  end
 
   def create
     @content = Content.new(params[:content])

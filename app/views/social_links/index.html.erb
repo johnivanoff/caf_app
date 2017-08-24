@@ -14,9 +14,9 @@
   <tr>
     <td><%= social_link.unit.unit_name %></td>
     <td>
-    <% if !social_link.social_brand.blank? %>
-    <%= social_link.social_brand.social_brand_name %>
-    <% end %>
+      <% if !social_link.social_brand.blank? %>
+        <%= social_link.social_brand.social_brand_name %>
+      <% end %>
     </td>
     <td><%= social_link.brand_url %></td>
     <td><%= link_to 'Show', social_link %></td>

@@ -7,7 +7,9 @@
     <%= render 'form' %>
 
     <%= link_to 'Show', @aircraft %> |
-    <%= link_to 'Back', aircrafts_path %>
+    <%= link_to 'Back', aircraft_index_path %>
+
+<%= render 'versions', :aircraft => @aircraft %>
 
     </div>
   </div>

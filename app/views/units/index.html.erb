@@ -361,6 +361,7 @@ var prev_infowindow =false;
             '</div>'+
             '</div>';
 
+
         var infowindow<%= i %> = new google.maps.InfoWindow({
           content: contentString<%= i %>,
           width: 500
@@ -382,6 +383,7 @@ var prev_infowindow =false;
         prev_infowindow = infowindow<%= i %>;
           infowindow<%= i %>.open(map, marker<%= i %>);
         });
+
 
 <% end %>
 <% end %>
