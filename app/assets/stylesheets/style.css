@@ -91,15 +91,24 @@ h2 {
 h2 span {
   text-transform: lowercase;
   font-weight: normal;
-  font-size: 0.75em;
+  font-size: 0.65em;
 }
 
 h2 span a {
   text-decoration: none;
 }
 
-h2 span:after {
+h2 span a:hover {
+  text-decoration: underline;
+}
 
+h2 span a:before {
+    font-family: FontAwesome;
+    content: "\f05a";
+    display: inline-block;
+    padding: 0 5px 0 8px;
+    vertical-align: middle;
+    font-size: 1.25em;
 }
 
 p {
