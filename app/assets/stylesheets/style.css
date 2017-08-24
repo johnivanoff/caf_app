@@ -94,6 +94,10 @@ h2 span {
   font-size: 0.75em;
 }
 
+h2 span a {
+  text-decoration: none;
+}
+
 h2 span:after {
 
 }
