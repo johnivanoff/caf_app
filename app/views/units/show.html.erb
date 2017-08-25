@@ -118,7 +118,7 @@
                                 <% end %>
                                </div>
                                <div class="col-sm-9">
-                                 <h2><%= aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.aircraft_type.aircraft_name + ' ' + aircraft.name %></h2>
+                                 <h2><%= aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.aircraft_type.aircraft_name + ' ' + aircraft.name %> <span><%= link_to 'More Info', aircraft_path(aircraft) %></span></h2>
                                        <% if aircraft.description? %>
                                          <% if aircraft.description.length > 700 %>
                                             <%= truncate(aircraft.description, :length => 700, :separator => ' ') %> <em>...</em>

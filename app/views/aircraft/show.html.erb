@@ -7,6 +7,9 @@
         <%= button_to 'Previous Aircraft', aircraft_path(@aircraft.id - 1), :class => 'btn btn-default btn-lg disabled', :method => 'get' %>
       <% end %>
     </div>
+  <div class="btn-group" role="group">
+  <%= button_to 'Back to all aircraft', aircraft_index_path, :class => 'btn btn-default btn-lg', :method => 'get' %> 
+  </div>
     <div class="btn-group" role="group">
       <% if @aircraft.id + 1 <= @all_aircrafts.last.id %>
         <%= button_to 'Next Aircraft', aircraft_path(@aircraft.id + 1), :class => 'btn btn-default btn-lg', :method => 'get' %> 
@@ -182,7 +185,7 @@
                 <%= button_to 'Edit Aircraft', edit_aircraft_path(@aircraft), method: :get, :class => "btn-default btn1" %>
               </div>
               <div class='col-sm-8'>
-                <%= button_to 'Back to all Aircraft', aircrafts_path, method: :get, :class => "btn-default btn1" %>
+                <%= button_to 'Back to all Aircraft', aircraft_index_path, method: :get, :class => "btn-default btn1" %>
               </div>
             </div>
           <%= render 'versions', :aircraft => @aircraft %>

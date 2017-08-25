@@ -1,6 +1,13 @@
+
+
 <script type="text/javascript">
 
-
+  $(function() {
+    $( "#content_published_at" ).datetimepicker({
+     format:'Y-m-d H:i:s',
+     step:15
+    });
+	});
 var Wellspring = Wellspring || {};
 
 Wellspring.Utils = {
@@ -69,11 +76,13 @@ Wellspring.LivePreview.initialize();
       <%= f.text_field :title, :class => 'boxsizingBorder' %>
     </div>
     <div class="field">
-    <%= f.label :content_type_id %><br />
-    <%= f.collection_select :content_type_id, ContentType.all, :id, :type_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
+			<%# this is a page edit form so set content type to 'pages' %>
+			<%#= f.label :content_type_id %>
+			<%#= f.collection_select :content_type_id, ContentType.all, :id, :type_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
+			<%= f.hidden_field :content_category_id, :value => 1 %>
     </div>
     <div class="field">
-      <%= f.label :content_category_id %><br />
+      <%= f.label :content_category_id %>
       <%= f.collection_select :content_category_id, ContentCategory.all, :id, :category_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
     </div>
     <div class="field">
@@ -81,8 +90,8 @@ Wellspring.LivePreview.initialize();
       <%= f.text_area :body, :class => 'boxsizingBorder' %>
     </div>
     <div class="field">
-      <%= f.label :feature_image %><br />
-      <%= f.text_field :feature_image, :class => 'boxsizingBorder' %>
+      <%#= f.label :feature_image %><br />
+      <%#= f.text_field :feature_image, :class => 'boxsizingBorder' %>
     </div>
 
     <div class="field">
@@ -94,7 +103,7 @@ Wellspring.LivePreview.initialize();
     </div>
     <div class="field">
       <%= f.label :published_at %><br />
-      <%= f.datetime_select :published_at %>
+      <%= f.text_field :published_at %>
     </div>
     <div class="actions">
       <%= f.submit:data => { :disable_with => "Submitting ..." }, :class => "btn-default btn1" %>
