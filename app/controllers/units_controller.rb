@@ -17,7 +17,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:index
 
   def show
     respond_with(@unit,
-    @all_units = Unit.all)
+    @all_units = Unit.alpha_order.all)
   end
 
   def new
