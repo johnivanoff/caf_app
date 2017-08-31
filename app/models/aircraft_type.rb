@@ -8,4 +8,6 @@ class AircraftType < ActiveRecord::Base
 
   mount_uploader :silhouette, PhotoUploader
 
+  scope :type_order, order("type ASC")
+
 end
