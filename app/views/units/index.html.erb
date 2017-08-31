@@ -345,7 +345,7 @@ var prev_infowindow =false;
             '<p><strong>Website:</strong><br>'+
             '<%= link_to unit.website, unit.website, :target => "_blank" %>'+
             '</p>'+
-            '<p><i class="fa fa-info-circle" aria-hidden="true"></i> <strong><%= link_to "More Unit Info", unit %></strong></p>'+
+            '<p><i class="fa fa-info-circle" aria-hidden="true"></i> <strong><%= link_to "More " + unit.unit_name + " Info", unit %></strong></p>'+
             '<hr />'+
             '<h4>Unit Aircraft</h4>'+
             '<% if !unit.aircrafts.blank? %>'+
