@@ -1,53 +1,4 @@
-<script type="text/javascript">
 
-
-var Wellspring = Wellspring || {};
-
-Wellspring.Utils = {
-  // Source: https://remysharp.com/2010/07/21/throttling-function-calls
-  debounce: function(fn, delay) {
-    var timer = null;
-    return function () {
-      var context = this, args = arguments;
-      clearTimeout(timer);
-      timer = setTimeout(function () {
-        fn.apply(context, args);
-      }, delay);
-    };
-  }
-};
-
-Wellspring.LivePreview = {
-  selectors: {
-    textarea: 'form textarea',
-    preview:  '#live-preview'
-  },
-
-  initialize: function() {
-    $(document).on('keyup', this.selectors.textarea, Wellspring.Utils.debounce(this.generatePreview.bind(this), 200));
-  },
-
-  generatePreview: function(event) {
-    var preview = $(this.selectors.preview);
-    var previewUrl = preview.attr('data-preview-url');
-
-    $.ajax({
-      type: 'POST',
-      url: previewUrl,
-      data: {
-        text: event.target.value
-      },
-
-      success: function(data) {
-        preview.html(data);
-      }
-    });
-  }
-};
-
-Wellspring.LivePreview.initialize();
-
-</script>
 
 <%= form_for(@content) do |f| %>
   <% if @content.errors.any? %>
@@ -61,6 +12,8 @@ Wellspring.LivePreview.initialize();
       </ul>
     </div>
   <% end %>
+
+
 <div class='row'>
   <div class='col-sm-6'>
     <div class="field">
@@ -75,9 +28,11 @@ Wellspring.LivePreview.initialize();
       <%= f.label :content_category_id %><br />
       <%= f.collection_select :content_category_id, ContentCategory.all, :id, :category_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
     </div>
+
+
     <div class="field">
       <%= f.label :body %><br />
-      <%= f.text_area :body, :class => 'boxsizingBorder' %>
+      <%= f.text_area :body %>
     </div>
     <div class="field">
       <%= f.label :feature_image %><br />
