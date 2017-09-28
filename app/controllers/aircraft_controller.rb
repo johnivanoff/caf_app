@@ -21,7 +21,7 @@ class AircraftController < ApplicationController
 
   def show
     respond_with(@aircraft,
-    @all_aircrafts = Aircraft.all)
+    @all_aircraft = Aircraft.all)
   end
 
   def new

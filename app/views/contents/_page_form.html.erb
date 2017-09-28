@@ -1,60 +1,7 @@
-
-
-<script type="text/javascript">
-
-  $(function() {
-    $( "#content_published_at" ).datetimepicker({
-     format:'Y-m-d H:i:s',
-     step:15
-    });
-	});
-var Wellspring = Wellspring || {};
-
-Wellspring.Utils = {
-  // Source: https://remysharp.com/2010/07/21/throttling-function-calls
-  debounce: function(fn, delay) {
-    var timer = null;
-    return function () {
-      var context = this, args = arguments;
-      clearTimeout(timer);
-      timer = setTimeout(function () {
-        fn.apply(context, args);
-      }, delay);
-    };
-  }
-};
-
-Wellspring.LivePreview = {
-  selectors: {
-    textarea: 'form textarea',
-    preview:  '#live-preview'
-  },
-
-  initialize: function() {
-    $(document).on('keyup', this.selectors.textarea, Wellspring.Utils.debounce(this.generatePreview.bind(this), 200));
-  },
-
-  generatePreview: function(event) {
-    var preview = $(this.selectors.preview);
-    var previewUrl = preview.attr('data-preview-url');
-
-    $.ajax({
-      type: 'POST',
-      url: previewUrl,
-      data: {
-        text: event.target.value
-      },
-
-      success: function(data) {
-        preview.html(data);
-      }
-    });
-  }
-};
-
-Wellspring.LivePreview.initialize();
-
+<script>
+var simplemde = new SimpleMDE({ element: document.getElementById("content_body") });
 </script>
+
 <h1>Editing Page Content</h1>
 
 <%= form_for(@content) do |f| %>
@@ -70,7 +17,7 @@ Wellspring.LivePreview.initialize();
     </div>
   <% end %>
 <div class='row'>
-  <div class='col-sm-6'>
+  <div class='col-sm-12'>
     <div class="field">
       <%= f.label :title %><br />
       <%= f.text_field :title, :class => 'boxsizingBorder' %>
@@ -87,7 +34,7 @@ Wellspring.LivePreview.initialize();
     </div>
     <div class="field">
       <%= f.label :body %><br />
-      <%= f.text_area :body, :class => 'boxsizingBorder' %>
+      <%= f.text_area :body %>
     </div>
     <div class="field">
       <%#= f.label :feature_image %><br />
@@ -110,8 +57,8 @@ Wellspring.LivePreview.initialize();
     </div>
   <% end %>
   </div>
-  <div class='col-sm-6'>
-    Preview:
-     <div id="live-preview" data-preview-url="<%= preview_path %>"></div>
-  </div>
 </div>
+
+<script>
+var simplemde = new SimpleMDE({ element: document.getElementById("content_body") });
+</script>

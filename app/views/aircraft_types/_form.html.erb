@@ -1,4 +1,4 @@
-<%= form_for(@aircraft_type) do |f| %>
+<%= form_for @aircraft_type, :html => {:multipart => true} do |f| %>
   <% if @aircraft_type.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@aircraft_type.errors.count, "error") %> prohibited this aircraft_type from being saved:</h2>
@@ -150,8 +150,10 @@
     <%= f.text_field :bombs, :class => 'boxsizingBorder' %>
   </div>
 </div>
-
-
+<%= f.file_field :silhouette %>
+    <% if @aircraft_type.silhouette? %>
+      <img src="<%= @aircraft_type.silhouette.url(:directory_size).to_s %>" width="100%" class="profile_photo" />
+    <% end %>
   <div class="actions">
     <%= f.submit:data => { :disable_with => "Submitting ..." }, :class => "btn-default btn1" %>
   </div>
