@@ -15,6 +15,7 @@
 <table>
   <tr>
     <th class="sortable">Aircraft type</th>
+    <th class="sortable">Image</th>
     <th class="sortable">Name</th>
     <th class="sortable">N-number</th>
     <th class="sortable">Description</th>
@@ -29,9 +30,10 @@
 
 <% @aircrafts.each do |aircraft| %>
   <tr class='result'>
-    <td><%= link_to aircraft.aircraft_type.aircraft_type_designation, aircraft %></td>
+    <td><%= aircraft.aircraft_type.aircraft_type_designation %></td>
+    <td><img src="<%= aircraft.profile_photo.url(:thumb).to_s %>"></td>
     <td><%= aircraft.name %></td>
-    <td><%= aircraft.n_number %></td>
+    <td><%= link_to aircraft.n_number, aircraft %></td>
     <td><%= simple_format(truncate(aircraft.description, :length => 50, :separator => ' ')) %></td>
     <td><% if !aircraft.unit.nil? %><%= aircraft.unit.unit_name %><% else %>n/a<% end %></td>
 <% if signed_in?%>

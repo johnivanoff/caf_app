@@ -1,9 +1,6 @@
-<h1>Aircraft Type</h1>
+<h1>Aircraft Type - <%= @aircraft_type.aircraft_type_designation %></h1>
 
-<p>
-  <b>Type:</b>
-  <%= @aircraft_type.aircraft_type_designation %>
-</p>
+<%= image_tag @aircraft_type.silhouette.url(:directory_size).to_s %>
 
 <p>
   <b>Type:</b>

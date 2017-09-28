@@ -1,11 +1,13 @@
+<% @units_array = @all_units.map{|x| x[:id]} %>
+
 <div class="moreinfo" style="margin-bottom: 30px;">
 
 <div class="btn-group btn-group-justified" role="group" >
   <div class="btn-group" role="group">
     <% if @unit.id - 1 >= 1 %>
-      <%= button_to 'Previous unit', unit_path(@unit.id - 1), :class => 'btn btn-default btn-lg', :method => 'get' %> 
+      <%= button_to 'Previous unit', unit_path(@units_array[@units_array.index(@unit.id).to_i - 1]), :class => 'btn btn-default btn-lg', :method => 'get' %> 
     <% else %>
-      <%= button_to 'Previous unit', unit_path(@unit.id - 1), :class => 'btn btn-default btn-lg disabled', :method => 'get' %>
+      <%= button_to 'Previous unit', unit_path(@units_array[@units_array.index(@unit.id).to_i - 1]), :class => 'btn btn-default btn-lg disabled', :method => 'get' %>
     <% end %>
   </div>
   <div class="btn-group" role="group">
@@ -13,9 +15,9 @@
   </div>
   <div class="btn-group" role="group">
     <% if @unit.id + 1 <= @all_units.last.id %>
-      <%= button_to 'Next unit', unit_path(@unit.id + 1), :class => 'btn btn-default btn-lg', :method => 'get' %> 
+      <%= button_to 'Next unit', unit_path(@units_array[@units_array.index(@unit.id).to_i + 1]), :class => 'btn btn-default btn-lg', :method => 'get' %> 
     <% else %>
-      <em> <- end</em>
+      <%= button_to 'Last unit', unit_path(@units_array[0]), :class => 'btn btn-default btn-lg disabled', :method => 'get' %> 
     <% end %>
   </div>
 </div>
@@ -118,7 +120,7 @@
                                 <% end %>
                                </div>
                                <div class="col-sm-9">
-                                 <h2><%= aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.aircraft_type.aircraft_name + ' ' + aircraft.name %> <span><%= link_to 'More Info', aircraft_path(aircraft) %></span></h2>
+                                 <h2><%= aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.aircraft_type.aircraft_name + ' ' + aircraft.name %> <span><%= link_to 'More '  + aircraft.name + ' Info', aircraft_path(aircraft) %></span></h2>
                                        <% if aircraft.description? %>
                                          <% if aircraft.description.length > 700 %>
                                             <%= truncate(aircraft.description, :length => 700, :separator => ' ') %> <em>...</em>
