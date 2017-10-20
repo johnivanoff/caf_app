@@ -31,6 +31,8 @@ FB.api(
         var day = Currdate.getDate();
         var monthIndex = Currdate.getMonth();
         var year = Currdate.getFullYear();
+        if (response.data[e].place.location == undefined) {var location = response.data[e].place.name;} else {var location = response.data[e].place.location.city + ', ' + response.data[e].place.location.state;}
+        var place = response.data[e].place.name;
         
         html += '<div class="calendar_row"><div class="cell" style="width: 25%; margin-right: 2em;">';
         html += '<div class="date-range">';
@@ -39,7 +41,7 @@ FB.api(
         html += '<div class="calendar_date-ii">'+ day +'</div>';
         html += '</div>';
         html += '</div>';
-        html += '<div class="location">City, ST  </div>';
+        html += '<div class="location">' + location + '</div>';
         html += '</div>';
         html += '<div class="cell" style="width: 70%;">';
         html += '<strong><em>'+response.data[e].name+'</em></strong>';
