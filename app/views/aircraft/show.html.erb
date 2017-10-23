@@ -55,11 +55,13 @@
 
 
 <p class="tight-top" ><strong>Base:</strong><br>
-  <div class="indent"><% if @aircraft.unit.airport_name? %>
-<%= @aircraft.unit.airport_name + ', ' %>
-<% end %>
-<%= @aircraft.unit.city + ', ' + @aircraft.unit.state %></h2>
-</div>
+<div class="indent">
+  <%= link_to @aircraft.unit.unit_name, @aircraft.unit %><br />
+  <% if @aircraft.unit.airport_name? %>
+    <%= @aircraft.unit.airport_name + ', ' %>
+  <% end %>
+    <%= @aircraft.unit.city + ', ' + @aircraft.unit.state %></h2>
+  </div>
 </p>
 
 <p class="tight-top" ><strong>Website:</strong><br>
@@ -126,18 +128,24 @@
             <td>Manufacturer</td>
             <td><%= @aircraft.aircraft_type.manufacturer %></td>
           </tr>
-          <tr>
-            <td>Introduced</td>
-            <td><%= @aircraft.aircraft_type.introduced %></td>
-          </tr>
-          <tr>
-            <td>Produced</td>
-            <td><%= @aircraft.aircraft_type.production_years %></td>
-          </tr>
-          <tr>
-            <td>Power</td>
-            <td><%= @aircraft.aircraft_type.power %></td>
-          </tr>
+          <% if @aircraft.aircraft_type.introduced? %>
+            <tr>
+              <td>Introduced</td>
+              <td><%= @aircraft.aircraft_type.introduced %></td>
+            </tr>
+          <% end %>
+          <% if @aircraft.aircraft_type.production_years? %>
+            <tr>
+              <td>Produced</td>
+              <td><%= @aircraft.aircraft_type.production_years %></td>
+            </tr>
+          <% end %>
+          <% if @aircraft.aircraft_type.power? %>
+            <tr>
+              <td>Power</td>
+              <td><%= @aircraft.aircraft_type.power %></td>
+            </tr>
+          <% end %>
           <tr>
             <td>Length</td>
             <td><%= @aircraft.aircraft_type.length %></td>
