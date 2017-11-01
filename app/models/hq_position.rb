@@ -4,4 +4,5 @@ class HqPosition < ActiveRecord::Base
   has_many :members, :through => :hq_position_assignments
 
   scope :alpha_order, order("position_name ASC")
+
 end

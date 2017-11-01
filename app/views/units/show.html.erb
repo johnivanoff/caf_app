@@ -158,7 +158,7 @@
 
 
 <% if signed_in?%>
-  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" or ((role.name == "unit admin") && (current_user.member.units.any? {|unit| unit == @unit}))} %>
     <div class="row">
       <div class='col-sm-12' >
         <div class="admin-section" >

@@ -25,6 +25,7 @@ class MembersController < ApplicationController
     user = @member.build_user
     @roles = Role.find(:all)
     @units = Unit.alpha_order.find(:all)
+    @hq_positions = HqPosition.alpha_order.find(:all)
     respond_with(@member)
   end
 
@@ -39,7 +40,7 @@ class MembersController < ApplicationController
     @roles = Role.find(:all)
     @units = Unit.alpha_order.find(:all)
     @hq_positions = HqPosition.alpha_order.find(:all)
-    
+
     checked_roles = []
     checked_params = params[:role_list] || []
     for check_box_id in checked_params
