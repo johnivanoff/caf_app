@@ -26,6 +26,8 @@ FB.api(
 
     var html = '';
     for (var e in response.data) {
+  //set today
+        var today = new Date();
   //format start date
         var Currdate = new Date(response.data[e].start_time);
         var day = Currdate.getDate();
@@ -33,6 +35,8 @@ FB.api(
         var year = Currdate.getFullYear();
         if (response.data[e].place.location == undefined) {var location = response.data[e].place.name;} else {var location = response.data[e].place.location.city + ', ' + response.data[e].place.location.state;}
         var place = response.data[e].place.name;
+  //look back five days from today        
+        if (Currdate > today.setDate(today.getDate() - 5) ) {
         
         html += '<div class="calendar_row"><div class="cell" style="width: 25%; margin-right: 2em;">';
         html += '<div class="date-range">';
@@ -52,6 +56,7 @@ FB.api(
 
 
         html += '</div></div>';
+    }
     }
     $('#results').html(html);
 
