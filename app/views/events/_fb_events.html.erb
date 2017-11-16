@@ -40,19 +40,20 @@ FB.api(
         
         html += '<div class="calendar_row"><div class="cell" style="width: 25%; margin-right: 2em;">';
         html += '<div class="date-range">';
-        html += '<div class="calendar-ii">';
-        html += '<div class="calendar_month-ii">'+ monthNames[monthIndex] +'</div>';
-        html += '<div class="calendar_date-ii">'+ day +'</div>';
+        html += '<div class="calendar-css">';
+        html += '<div class="calendar_month">'+ monthNames[monthIndex] +'</div>';
+        html += '<div class="calendar_date">'+ day +'</div>';
         html += '</div>';
         html += '</div>';
         html += '<div class="location">' + location + '</div>';
         html += '</div>';
         html += '<div class="cell" style="width: 70%;">';
-        html += '<strong><em>'+response.data[e].name+'</em></strong>';
-        html += '<img src="http://graph.facebook.com/'+response.data[e].id+'/picture?type=normal" style="float: right;margin: 1em 0 2em 2em;"/>';
+        html += '<h2>'+response.data[e].name+'</h2>';
+        html += '<img src="http://graph.facebook.com/'+response.data[e].id+'/picture?type=large" style="float: right;margin: 1em 0 2em 2em;"/>';
         html += '<br />';
         html += response.data[e].description;
-
+        html += '<br /><br />';
+        html += '<a href="https://www.facebook.com/events/'+response.data[e].id+'" target="_blank" >See more details on Facebook Event Page</a>'
 
 
         html += '</div></div>';
