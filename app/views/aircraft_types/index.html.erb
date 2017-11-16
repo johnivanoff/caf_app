@@ -1,3 +1,26 @@
+<script>
+
+
+$(function() {
+  $('th').click(function(){
+      var table = $(this).parents('table').eq(0)
+      var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+      this.asc = !this.asc
+      if (!this.asc){rows = rows.reverse()}
+      for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+  })
+function comparer(index) {
+    return function(a, b) {
+        var valA = getCellValue(a, index), valB = getCellValue(b, index)
+        return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB)
+    }
+}
+function getCellValue(row, index){ return $(row).children('td').eq(index).html() }
+  });
+
+</script>
+
+
 <h1>Aircraft Types</h1>
 
 <div class="col-sm-12">
@@ -22,28 +45,6 @@
     <th>Introduced</th>
     <th>Production years</th>
     <th>Role</th>
-<!--        <th>Power</th>
-    <th>Length</th>
-    <th>Height</th>
-    <th>Wingspan</th>
-    <th>Empty weight</th>
-    <th>Gross weight</th>
-    <th>Max weight</th>
-    <th>Range</th>
-    <th>Max speed</th>
-    <th>Cruise speed</th>
-    <th>Ceiling</th>
-    <th>Crew</th>
-    <th>Guns</th>
-    <th>Hardpoints</th>
-    <th>Rockets</th>
-    <th>Bombs</th>
-    <th>Fuel capacity</th>
-    <th>Fuel burn</th>
-    <th>Oil capacity</th>
-    <th>Qty produced</th>
-    <th>Cost</th>
-    <th>Qty still flying</th> -->
     <th></th>
     <th></th>
     <th></th>
@@ -61,28 +62,6 @@
     <td><%= aircraft_type.introduced %></td>
     <td><%= aircraft_type.production_years %></td>
     <td><%= aircraft_type.role %></td>
-<!--    <td><%= aircraft_type.power %></td>
-    <td><%= aircraft_type.length %></td>
-    <td><%= aircraft_type.height %></td>
-    <td><%= aircraft_type.wingspan %></td>
-    <td><%= aircraft_type.empty_weight %></td>
-    <td><%= aircraft_type.gross_weight %></td>
-    <td><%= aircraft_type.max_weight %></td>
-    <td><%= aircraft_type.range %></td>
-    <td><%= aircraft_type.max_speed %></td>
-    <td><%= aircraft_type.cruise_speed %></td>
-    <td><%= aircraft_type.ceiling %></td>
-    <td><%= aircraft_type.crew %></td>
-    <td><%= aircraft_type.guns %></td>
-    <td><%= aircraft_type.hardpoints %></td>
-    <td><%= aircraft_type.rockets %></td>
-    <td><%= aircraft_type.bombs %></td>
-    <td><%= aircraft_type.fuel_capacity %></td>
-    <td><%= aircraft_type.fuel_burn %></td>
-    <td><%= aircraft_type.oil_capacity %></td>
-    <td><%= aircraft_type.qty_produced %></td>
-    <td><%= aircraft_type.cost %></td>
-    <td><%= aircraft_type.qty_still_flying %></td> -->
     <td><%= link_to 'Show', aircraft_type %></td>
     <td><%= link_to 'Edit', edit_aircraft_type_path(aircraft_type) %></td>
     <td><%= link_to 'Destroy', aircraft_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>

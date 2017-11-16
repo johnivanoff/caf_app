@@ -1,7 +1,7 @@
 class AircraftController < ApplicationController
   before_filter :set_aircraft, only: [:show, :edit, :update, :destroy]
 
-  skip_before_filter :check_authorization, :check_authentication, :only => [:index, :show]
+  skip_before_filter :check_authorization, :check_authentication, :only => [:index, :show, :aircraft_admin, ]
 
   respond_to :html
 
