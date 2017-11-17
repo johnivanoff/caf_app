@@ -1,19 +1,19 @@
 <%= render "layouts/scripts" %>
 
 <h1>Collection / CAF Fleet <span style="font-size: 0.65em;"><%= @aircrafts.count %> Aircraft</span></h1>
-  <div class="typeair">
+  <div class="typeair" id="ac-class">
 
 
   <% @aircraft_classes.each do |aircraft_class| %>
-    <div class="col-xs-12 col-sm-4">
-    <a href="#" class="collection">
+    <div id="<%= aircraft_class.class_type %>" class="col-xs-12 col-sm-4">
+    <a class="collection">
     <%= image_tag aircraft_class.type_picture %><br>
     <h2><%= aircraft_class.class_type %> x<%= aircraft_class.aircraft.count %></h2>
     </a>
     </div>
   <% end %>
   </div>
-  <div class="col-sm-12">
+  <div class="col-sm-12" id="search-area">
   <form id="live-search" action="" class="styled formfilter"" method="post">
 
 
