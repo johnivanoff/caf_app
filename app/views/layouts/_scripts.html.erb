@@ -1,5 +1,14 @@
 <script>
 
+$.fn.scrollView = function () {
+    return this.each(function () {
+        $('html, body').animate({
+            scrollTop: $(this).offset().top
+        }, 1000);
+    });
+}
+
+
 $(function() {
   $('th').click(function(){
       var table = $(this).parents('table').eq(0)
@@ -17,4 +26,42 @@ function comparer(index) {
 function getCellValue(row, index){ return $(row).children('td').eq(index).html() }
   });
 
+
+// filter clicks
+
+$(function() {
+  $('#Bomber').click(function(){
+        document.getElementById("filter").value = "Bomber";
+				$("#filter").keyup();
+//				var elem = document.getElementById("ac-class");
+//				elem.style.marginBottom = "500px";
+				$("#live-search").scrollView();
+    });
+  $('#Fighter').click(function(){
+        document.getElementById("filter").value = "Fighter";
+				$("#filter").keyup();
+				$("#live-search").scrollView();
+    });
+  $('#Trainer').click(function(){
+        document.getElementById("filter").value = "Trainer";
+				$("#filter").keyup();
+				$("#live-search").scrollView();
+    });
+  $('#Transport').click(function(){
+        document.getElementById("filter").value = "Transport";
+				$("#filter").keyup();
+				$("#live-search").scrollView();
+    });
+  $('#Liason').click(function(){
+        document.getElementById("filter").value = "Liason";
+				$("#filter").keyup();
+				$("#live-search").scrollView();
+    });
+  $('#Foreign').click(function(){
+        document.getElementById("filter").value = "Foreign";
+				$("#filter").keyup();
+				$("#live-search").scrollView();
+    });
+  });
+  
 </script>
