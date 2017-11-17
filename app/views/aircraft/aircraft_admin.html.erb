@@ -14,7 +14,8 @@
 
 <table>
   <tr>
-    <th class="sortable">Aircraft type</th>
+    <th class="sortable">Aircraft Class</th>
+    <th class="sortable">Aircraft Type</th>
     <th class="sortable">Image</th>
     <th class="sortable">Name</th>
     <th class="sortable">N-number</th>
@@ -30,6 +31,11 @@
 
 <% @aircrafts.each do |aircraft| %>
   <tr class='result'>
+    <td><% aircraft.aircraft_type.aircraft_classes.each do |ac_class| %>
+          <%= ac_class. class_type %>
+        <% end %>
+    
+    </td>
     <td><%= aircraft.aircraft_type.aircraft_type_designation %></td>
     <td><img src="<%= aircraft.profile_photo.url(:thumb).to_s %>"></td>
     <td><%= aircraft.name %></td>

@@ -2,7 +2,7 @@ class Aircraft < ActiveRecord::Base
   belongs_to :aircraft_type
   belongs_to :unit
 
-#  has_many :aicraft_classes, :through => :aircraft_type
+  has_many :aicraft_classes, :through => :aircraft_type
 
   attr_accessible :aircraft_type_id, :description, :n_number, :name, :nose_art, :profile_photo, :website, :tours, :rides, :unit_id
 
