@@ -14,6 +14,7 @@ class AircraftTypesController < ApplicationController
 
   def new
     @aircraft_type = AircraftType.new
+    @aircraft_classes = AircraftClass.find(:all)
     respond_with(@aircraft_type)
   end
 
