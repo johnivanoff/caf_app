@@ -86,21 +86,21 @@
   </div>
 </div>
 
-<%# if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
+<% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" } %>
 
   <%= f.fields_for :roles do |builder| %>
     <%= render "roles", :f => builder %>
   <% end %>
 
-  <%#= f.fields_for :units do |builder| %>
-    <%#= render "units", :f => builder %>
-  <%# end %>
+  <%= f.fields_for :units do |builder| %>
+    <%= render "units", :f => builder %>
+  <% end %>
 
-  <%#= f.fields_for :hq_positions do |builder| %>
-    <%#= render "hq_positions", :f => builder %>
-  <%# end %>
+  <%= f.fields_for :hq_positions do |builder| %>
+    <%= render "hq_positions", :f => builder %>
+  <% end %>
 
-<%# end %>
+<% end %>
 <br /><br />
   <div class="actions">
     <%= f.submit:data => { :disable_with => "Submitting ..." }, :class => "btn-default btn1" %>
