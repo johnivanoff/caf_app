@@ -12,7 +12,7 @@ class ContentsController < ApplicationController
   end
 
   def news_index
-    @contents = Content.news.all
+    @contents = Content.news.reverse.all
     respond_with(@contents)
   end
 
@@ -21,6 +21,16 @@ class ContentsController < ApplicationController
   end
 
   def new
+    @content = Content.new
+    respond_with(@content)
+  end
+
+  def new_page
+    @content = Content.new
+    respond_with(@content)
+  end
+
+  def add_news
     @content = Content.new
     respond_with(@content)
   end

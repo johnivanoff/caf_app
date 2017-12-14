@@ -21,12 +21,15 @@
       <%= f.text_field :title, :class => 'boxsizingBorder' %>
     </div>
     <div class="field">
-    <%#= f.label :content_type_id %><br />
-    <%#= f.collection_select :content_type_id, ContentType.all, :id, :type_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
+			<%# this is a page edit form so set content type to 'pages' %>
+			<%#= f.label :content_type_id %>
+			<%#= f.collection_select :content_type_id, ContentType.all, :id, :type_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
+			<%= f.hidden_field :content_type_id, :value => 2 %>
     </div>
     <div class="field">
       <%#= f.label :content_category_id %><br />
       <%#= f.collection_select :content_category_id, ContentCategory.all, :id, :category_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
+			<%= f.hidden_field :content_category_id, :value => 1 %>
     </div>
     <div class="field">
       <%= f.label :body %><br />

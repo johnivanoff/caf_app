@@ -487,6 +487,23 @@ box-shadow: 0px 0px 18px 0px rgba(125,125,125,1);
   font-size: 0.65em;
 }
 
+.news-summary-item {
+  margin: 2em 0;
+  display: block;
+  width: 100%;
+  overflow:hidden; 
+}
+
+.news-summary-item img {
+  margin: 0 1em 1em 0;
+  border: 1px solid #000;
+}
+
+figcaption {
+  text-align: center;
+  font-style: italic;
+}
+
 /* Ludos overwrites */
 
 @media (max-width: 767px) {
