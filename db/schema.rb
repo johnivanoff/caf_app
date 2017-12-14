@@ -11,7 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20170706152944) do
+ActiveRecord::Schema.define(:version => 20171214162028) do
+
+  create_table "aircraft", :force => true do |t|
+    t.string   "name"
+    t.string   "n_number"
+    t.text     "description"
+    t.string   "website"
+    t.boolean  "tours",            :default => false, :null => false
+    t.boolean  "rides",            :default => false, :null => false
+    t.string   "profile_photo"
+    t.string   "nose_art"
+    t.integer  "aircraft_type_id"
+    t.integer  "unit_id"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  add_index "aircraft", ["aircraft_type_id"], :name => "index_aircrafts_on_aircraft_type_id_id"
 
   create_table "aircraft_classes", :force => true do |t|
     t.string   "class_type"
@@ -32,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20170706152944) do
     t.string   "event",           :null => false
     t.string   "whodunnit"
     t.text     "object"
+    t.text     "object_changes"
     t.string   "author_username"
     t.datetime "created_at"
   end
@@ -69,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20170706152944) do
     t.string   "qty_produced"
     t.string   "cost"
     t.string   "qty_still_flying"
+    t.string   "silhouette"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
@@ -81,28 +100,12 @@ ActiveRecord::Schema.define(:version => 20170706152944) do
     t.string   "event",           :null => false
     t.string   "whodunnit"
     t.text     "object"
+    t.text     "object_changes"
     t.string   "author_username"
     t.datetime "created_at"
   end
 
   add_index "aircraft_versions", ["item_type", "item_id"], :name => "index_aircraft_versions_on_item_type_and_item_id"
-
-  create_table "aircrafts", :force => true do |t|
-    t.string   "name"
-    t.string   "n_number"
-    t.text     "description"
-    t.string   "website"
-    t.boolean  "tours",            :default => false, :null => false
-    t.boolean  "rides",            :default => false, :null => false
-    t.string   "profile_photo"
-    t.string   "nose_art"
-    t.integer  "aircraft_type_id"
-    t.integer  "unit_id"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
-  end
-
-  add_index "aircrafts", ["aircraft_type_id"], :name => "index_aircrafts_on_aircraft_type_id_id"
 
   create_table "assignments", :force => true do |t|
     t.integer  "user_id"
@@ -145,6 +148,18 @@ ActiveRecord::Schema.define(:version => 20170706152944) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "content_versions", :force => true do |t|
+    t.string   "item_type",       :null => false
+    t.integer  "item_id",         :null => false
+    t.string   "event",           :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.string   "author_username"
+    t.datetime "created_at"
+  end
+
+  add_index "content_versions", ["item_type", "item_id"], :name => "index_content_versions_on_item_type_and_item_id"
+
   create_table "contents", :force => true do |t|
     t.integer  "content_type_id"
     t.integer  "content_category_id", :null => false
@@ -173,6 +188,7 @@ ActiveRecord::Schema.define(:version => 20170706152944) do
     t.string   "event",           :null => false
     t.string   "whodunnit"
     t.text     "object"
+    t.text     "object_changes"
     t.string   "author_username"
     t.datetime "created_at"
   end
@@ -243,6 +259,7 @@ ActiveRecord::Schema.define(:version => 20170706152944) do
     t.string   "event",           :null => false
     t.string   "whodunnit"
     t.text     "object"
+    t.text     "object_changes"
     t.string   "author_username"
     t.datetime "created_at"
   end
@@ -277,6 +294,7 @@ ActiveRecord::Schema.define(:version => 20170706152944) do
     t.string   "event",           :null => false
     t.string   "whodunnit"
     t.text     "object"
+    t.text     "object_changes"
     t.string   "author_username"
     t.datetime "created_at"
   end
@@ -345,6 +363,7 @@ ActiveRecord::Schema.define(:version => 20170706152944) do
     t.string   "event",           :null => false
     t.string   "whodunnit"
     t.text     "object"
+    t.text     "object_changes"
     t.string   "author_username"
     t.datetime "created_at"
   end
@@ -370,6 +389,9 @@ ActiveRecord::Schema.define(:version => 20170706152944) do
     t.string   "unit_logo"
     t.string   "facebook"
     t.string   "twitter"
+    t.string   "donate_url"
+    t.string   "join_url"
+    t.string   "rides_url"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
   end
@@ -380,6 +402,7 @@ ActiveRecord::Schema.define(:version => 20170706152944) do
     t.string   "event",           :null => false
     t.string   "whodunnit"
     t.text     "object"
+    t.text     "object_changes"
     t.string   "author_username"
     t.datetime "created_at"
   end

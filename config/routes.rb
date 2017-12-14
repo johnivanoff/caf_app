@@ -48,6 +48,17 @@ CafApp::Application.routes.draw do
 
 
   resources :contents
+    resources :contents do
+    resources :versions, :only => [:destroy] do
+      member do
+        get 'diff', :to => 'content_versions#diff'
+        put 'rollback', :to => 'content_versions#rollback'
+      end
+    end
+  end
+  
+  
+  
   match 'news' => 'contents#news_index', :as => :news
 
   match 'contacts' => 'contents#show', :id => 3, :as => :contacts
