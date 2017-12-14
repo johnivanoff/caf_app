@@ -323,7 +323,7 @@ var prev_infowindow =false;
             '<% if unit.unit_logo? %>'+
             '<img src="<%= unit.unit_logo.url(:directory_size).to_s %>" />'+
             '<% else %>'+
-            '<img src="http://caf.polarbeardesign.net/uploads/unit_logos/default_unit_logo.jpg" />'+
+            '<img src="/uploads/unit_logos/default_unit_logo.jpg" />'+
             '<% end %>'+
             '</div>'+
             '</div>'+
@@ -406,10 +406,11 @@ var prev_infowindow =false;
 
 
     <fieldset>
-        <input type="text" class="text-input" id="filter" value="" />
         <label> <i class="fa fa-search" aria-hidden="true"></i> Search/Filter</label>
+        <input type="text" class="text-input" id="filter" value="" />
         <span id="filter-count"></span>
     </fieldset>
+    <div class="form-tip">examples include: unit name like "red tail", aircraft type like "b-17", state like "tx" </div>
 </form>
 </div>
 
