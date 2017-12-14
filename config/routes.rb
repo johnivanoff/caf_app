@@ -60,6 +60,8 @@ CafApp::Application.routes.draw do
   
   
   match 'news' => 'contents#news_index', :as => :news
+	match 'new_page' => 'contents#new_page', :as => :new_page
+	match 'add_news' => 'contents#add_news', :as => :add_news
 
   match 'contacts' => 'contents#show', :id => 3, :as => :contacts
   match 'admin' => 'contents#show', :id => 4, :as => :admin
