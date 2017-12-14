@@ -4,6 +4,9 @@ class Content < ActiveRecord::Base
 
   belongs_to :content_category
 
+  has_paper_trail :class_name => 'ContentVersion',
+     :meta => { :author_username => :user_name}
+
 #  validates_presence_of :slug
 
 #  def to_param
