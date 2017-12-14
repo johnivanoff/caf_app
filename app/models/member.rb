@@ -7,6 +7,7 @@ class Member < ActiveRecord::Base
   belongs_to :user
   accepts_nested_attributes_for :user, :allow_destroy => true
 
+  validates :first_name, :last_name, :presence => true, :on => :create
 
   has_paper_trail :class_name => 'MemberVersion',
      :meta => { :author_username => :user_name}
