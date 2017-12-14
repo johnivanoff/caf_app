@@ -6,6 +6,8 @@ class Aircraft < ActiveRecord::Base
 
   attr_accessible :aircraft_type_id, :description, :n_number, :name, :nose_art, :profile_photo, :website, :tours, :rides, :unit_id
 
+  validates :n_number, :aircraft_type_id, :unit_id, :presence => true, :on => :create
+
   has_paper_trail :class_name => 'AircraftVersion',
      :meta => { :author_username => :user_name}
 
