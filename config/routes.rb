@@ -1,6 +1,9 @@
 CafApp::Application.routes.draw do
 
 
+  resources :document_files
+
+
   resources :content_types
 
 
