@@ -5,13 +5,13 @@
     <div class="btn-group" role="group">
         <% if @caf_document.previous.blank? %>       
         <% else %>
-          <%= button_to_with_icon('<i class="fa fa-fighter-jet fa-flip-horizontal"></i> --- ' + @caf_document.previous.title, caf_document_path(@caf_document.previous.id), :class => 'btn btn-default btn-lg', :method => 'get') %>
+          <%= button_to_with_icon( ' --- ' + @caf_document.previous.title, caf_document_path(@caf_document.previous.id), :class => 'btn btn-default btn-lg btn-previous', :method => 'get') %>
         <% end %>
     </div>
     <div class="btn-group" role="group">
         <% if @caf_document.next.blank? %>       
         <% else %>
-          <%= button_to_with_icon( @caf_document.next.title + ' --- <i class="fa fa-fighter-jet"></i>', caf_document_path(@caf_document.next.id), :class => 'btn btn-default btn-lg', :method => 'get') %> 
+          <%= button_to_with_icon(@caf_document.next.title +  ' --- ', caf_document_path(@caf_document.next.id), :class => 'btn btn-default btn-lg btn-next', :method => 'get') %> 
         <% end %>
     </div>
   </div>
@@ -23,7 +23,9 @@
 
 <h1><%= @caf_document.title %></h1>
 
-<%= link_to 'View pdf - ' + @caf_document.title, '/uploads/documents/' + @caf_document.file_url, :target => "_blank" %>
+<% if !@caf_document.pdf.blank? %>
+   <%= button_to_with_icon('View pdf of ' + @caf_document.title, '../' + @caf_document.pdf.to_s, :target => "_blank", :class => 'btn btn-default btn-lg btn-pdf', :method => 'get') %> 
+<% end %>
 
 <p><strong>Category:</strong> <%= @caf_document.document_category.category_name %></p>
 

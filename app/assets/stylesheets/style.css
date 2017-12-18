@@ -272,10 +272,33 @@ input:focus, select:focus, textarea:focus /*, input[type=submit]:hover */ {
 }
 
 
-.btn-lg:after {
+.btn-previous:before {
   font-family: FontAwesome;
   content: "\f0fb"; /* fa-fighter-jet */
+  display: inline-block;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(180deg);
+
 }
+ 
+
+.btn-next:after {
+  font-family: FontAwesome;
+  content: "\f0fb"; /* fa-fighter-jet */
+	display: inline-block;
+}
+
+.btn-pdf:before {
+  font-family: FontAwesome;
+  content: "\f1c1"; /* fa-fighter-jet */
+  display: inline-block;
+  margin-right: 10px;
+  color: red;
+}
+
 
 .boxsizingBorder {
   width: 100%;
@@ -502,6 +525,12 @@ box-shadow: 0px 0px 18px 0px rgba(125,125,125,1);
 figcaption {
   text-align: center;
   font-style: italic;
+}
+
+
+.pdf-icon {
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
 /* Ludos overwrites */
