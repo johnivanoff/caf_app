@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20171214162028) do
+ActiveRecord::Schema.define(:version => 20171217191537) do
 
   create_table "aircraft", :force => true do |t|
     t.string   "name"
@@ -181,6 +181,16 @@ ActiveRecord::Schema.define(:version => 20171214162028) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  create_table "document_files", :force => true do |t|
+    t.string   "title"
+    t.string   "filename"
+    t.integer  "caf_documents_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "document_files", ["caf_documents_id"], :name => "index_document_files_on_caf_documents_id"
 
   create_table "event_versions", :force => true do |t|
     t.string   "item_type",       :null => false
