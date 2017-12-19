@@ -35,8 +35,8 @@
       <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
           <br />
           <span style="font-size: 0.65em;">
-            <%= link_to 'Edit', edit_unit_path(unit) %>
-            <%= link_to 'Show', unit_path(unit) %>
+            <%= link_to 'Edit', edit_unit_path(unit) %> | 
+            <%= link_to 'Show', unit_path(unit) %> | 
             <%= link_to 'Delete', unit, method: :delete, data: { confirm: 'Are you sure?' } %>
            </span>
       <% end %>
