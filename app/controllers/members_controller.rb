@@ -98,37 +98,37 @@ class MembersController < ApplicationController
         end
       end
 
-#      checked_units = []
-#      checked_params_2 = params[:unit_list] || []
-#      for check_box_id in checked_params_2
-#        unit = Unit.find(check_box_id)
-#        if not @member.units.include?(unit)
-#          @member.units << unit
-#        end
-#        checked_units << unit
-#      end
-#      missing_units = @units - checked_units
-#      for unit in missing_units
-#        if @member.units.include?(unit)
-#          @member.units.delete(unit)
-#        end
-#      end
-#
-#      checked_positions = []
-#      checked_params_3 = params[:position_list] || []
-#      for check_box_id in checked_params_3
-#        position = HqPosition.find(check_box_id)
-#        if not @member.hq_positions.include?(position)
-#          @member.hq_positions << position
-#        end
-#        checked_positions << position
-#      end
-#      missing_positions = @hq_positions - checked_positions
-#      for position in missing_positions
-#        if @member.hq_positions.include?(position)
-#          @member.hq_positions.delete(position)
-#        end
-#      end
+      checked_units = []
+      checked_params_2 = params[:unit_list] || []
+      for check_box_id in checked_params_2
+        unit = Unit.find(check_box_id)
+        if not @member.units.include?(unit)
+          @member.units << unit
+        end
+        checked_units << unit
+      end
+      missing_units = @units - checked_units
+      for unit in missing_units
+        if @member.units.include?(unit)
+          @member.units.delete(unit)
+        end
+      end
+
+      checked_positions = []
+      checked_params_3 = params[:position_list] || []
+      for check_box_id in checked_params_3
+        position = HqPosition.find(check_box_id)
+        if not @member.hq_positions.include?(position)
+          @member.hq_positions << position
+        end
+        checked_positions << position
+      end
+      missing_positions = @hq_positions - checked_positions
+      for position in missing_positions
+        if @member.hq_positions.include?(position)
+          @member.hq_positions.delete(position)
+        end
+      end
 
     end
     
