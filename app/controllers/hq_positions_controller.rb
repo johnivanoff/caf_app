@@ -4,7 +4,7 @@ class HqPositionsController < ApplicationController
   respond_to :html
 
   def index
-    @hq_positions = HqPosition.all
+    @hq_positions = HqPosition.alpha_order.all
     respond_with(@hq_positions)
   end
 

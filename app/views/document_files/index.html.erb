@@ -1,0 +1,27 @@
+<h1>Listing document_files</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Filename</th>
+    <th>Caf documents</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @document_files.each do |document_file| %>
+  <tr>
+    <td><%= document_file.title %></td>
+    <td><%= document_file.filename %></td>
+    <td><%= document_file.caf_documents %></td>
+    <td><%= link_to 'Show', document_file %></td>
+    <td><%= link_to 'Edit', edit_document_file_path(document_file) %></td>
+    <td><%= link_to 'Destroy', document_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Document file', new_document_file_path %>

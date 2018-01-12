@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  position: 
+  member: 
+  assignment_start: 2018-01-11
+  assignment_end: 2018-01-11
+  notes: MyText
+
+two:
+  position: 
+  member: 
+  assignment_start: 2018-01-11
+  assignment_end: 2018-01-11
+  notes: MyText
