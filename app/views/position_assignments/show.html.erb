@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  Position:
+  <%= @position_assignment.hq_position.position_name %>
+</p>
+
+<p>
+  Member:
+  <%= @position_assignment.member.first_name + ' ' + @position_assignment.member.last_name %>
+</p>
+
+<p>
+  Assignment start:
+  <%= @position_assignment.assignment_start %>
+</p>
+
+<p>
+  Assignment end:
+  <%= @position_assignment.assignment_end %>
+</p>
+
+<p>
+  Notes:
+  <%= @position_assignment.notes %>
+</p>
+
+
+<%= link_to 'Edit', edit_position_assignment_path(@position_assignment) %> |
+<%= link_to 'Back', position_assignments_path %>

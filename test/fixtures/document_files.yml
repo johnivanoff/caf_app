@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  filename: MyString
+  caf_documents: 
+
+two:
+  title: MyString
+  filename: MyString
+  caf_documents: 

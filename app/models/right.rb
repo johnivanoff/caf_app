@@ -16,6 +16,8 @@ class Right < ActiveRecord::Base
     "aircraft_admin" => "READ",
     "hq_directory" => "READ",
     "hq_position_admin" => "READ",
+    "headquarters_staff" => "READ",
+    "general_staff" => "READ",
     "home" => "READ",
     "news_index" => "READ",
     "new_page" => "READ",

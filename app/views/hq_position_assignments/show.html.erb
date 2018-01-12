@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Member:</b>
-  <%= @hq_position_assignment.member %>
+ Member:
+  <%= @hq_position_assignment.member.first_name + ' ' + @hq_position_assignment.member.last_name %>
 </p>
 
 <p>
-  <b>Hq position:</b>
-  <%= @hq_position_assignment.hq_position %>
+  HQ position:
+  <%= @hq_position_assignment.hq_position.position_name %>
 </p>
 
 

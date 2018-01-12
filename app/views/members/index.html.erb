@@ -2,6 +2,8 @@
 
 <h1>Members</h1>
 
+
+
 <div class="col-sm-12">
   <form id="live-search" action="" class="styled formfilter" method="post">
     <fieldset>
@@ -11,7 +13,11 @@
     </fieldset>
 </form>
 </div>
-
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+        <%= link_to 'Add New Member', new_member_path, :class => "btn-default btn1" %>
+  <% end %>
+<% end %>
 <table>
   <tr>
     <th class="sortable">User</th>
@@ -58,7 +64,7 @@
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
     <div class="admin-section" >
       <h2>Admin</h2>
-        <%= link_to 'New Member', new_member_path %>
+        <%= link_to 'New Member', new_member_path, :class => "btn-default btn1" %>
     </div>
   <% end %>
 <% end %>

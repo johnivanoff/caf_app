@@ -1,0 +1,50 @@
+<h1>HQ Staff Contacts</h1>
+
+  <div class="col-sm-12">
+  <form id="live-search" action="" class="styled formfilter"" method="post">
+
+
+    <fieldset>
+        <input type="text" class="text-input" id="filter" value="" />
+        <label>Search/Filter</label>
+        <span id="filter-count"></span>
+    </fieldset>
+</form>
+</div>
+
+
+<div class="row"> 
+<% @hq_position_assignments.each do |hq_position_assignment| %>
+
+  <div class="col-xs-12 col-sm-4 col-md-3 blocchi-parent" style="height: 436px;">
+      <% if hq_position_assignment.member.photo? %>
+      <img src="<%= hq_position_assignment.member.photo.url(:directory_size).to_s %>" style="width:100%;max-height: 264px;" />
+      <% else %>
+      <img src="/uploads/website_images/default_member.png" style="width:100%;max-height: 264px;" />
+      <% end %>
+
+        
+        <h4><%= hq_position_assignment.hq_position.position_name %></h4>
+        <p><%= hq_position_assignment.member.first_name %> <%= hq_position_assignment.member.last_name %>
+                  <% if signed_in?%>
+            <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+            <span class="small"><%= link_to 'edit', edit_member_path(hq_position_assignment.member) %></span>
+            <% end %>
+          <% end %>
+        <br />
+           <%= hq_position_assignment.member.user.email %><br />
+          <%= hq_position_assignment.member.work_phone %></p>
+
+
+  </div>
+  <% end %>
+</div>
+
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="admin-section" >
+      <h2>Admin</h2>
+        <%= link_to 'New Hq position assignment', new_hq_position_assignment_path %>
+    </div>
+  <% end %>
+<% end %>
