@@ -4,8 +4,8 @@ class PositionAssignment < ActiveRecord::Base
   attr_accessible :member_id, :hq_position_id, :assignment_end, :assignment_start, :notes
 
 
-  scope :hq_staff, where('hq_position_id != "33"') 
+  scope :hq_staff, where('hq_position_id != "35"') 
 
-  scope :general_staff, where('hq_position_id = "33"')
+  scope :general_staff, where('hq_position_id = "35"')
 
 end
