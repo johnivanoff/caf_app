@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20171217191537) do
+ActiveRecord::Schema.define(:version => 20180112013642) do
 
   create_table "aircraft", :force => true do |t|
     t.string   "name"
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(:version => 20171217191537) do
     t.text     "description"
     t.text     "body"
     t.string   "file_url"
+    t.string   "pdf"
     t.string   "image_url"
     t.date     "published_date"
     t.boolean  "current"
@@ -319,6 +320,19 @@ ActiveRecord::Schema.define(:version => 20171217191537) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "position_assignments", :force => true do |t|
+    t.integer  "position_id"
+    t.integer  "member_id"
+    t.date     "assignment_start"
+    t.date     "assignment_end"
+    t.text     "notes"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "position_assignments", ["member_id"], :name => "index_position_assignments_on_member_id"
+  add_index "position_assignments", ["position_id"], :name => "index_position_assignments_on_position_id"
 
   create_table "rights", :force => true do |t|
     t.string   "resource"

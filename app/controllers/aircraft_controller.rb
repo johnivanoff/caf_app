@@ -5,6 +5,18 @@ class AircraftController < ApplicationController
 
   respond_to :html
 
+  class NotActivated < StandardError
+  end
+
+  rescue_from NotActivated, :with => :not_activated
+
+  def not_activated(exception)
+    flash[:notice] = "You do not have permission to edit this Aircraft."
+ #   Event.new_event "Exception: #{exception.message}", current_user, request.remote_ip
+    redirect_to @aircraft
+  end
+
+
   def index
     @aircrafts = Aircraft.all
     @aircraft_classes = AircraftClass.all
@@ -30,6 +42,9 @@ class AircraftController < ApplicationController
   end
 
   def edit
+  
+		raise NotActivated unless current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" or ((role.name == "unit admin") && (current_user.member.units.any? {|unit| unit == @aircraft.unit}))}
+
   end
 
   def create

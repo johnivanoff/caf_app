@@ -5,4 +5,6 @@ class HqPosition < ActiveRecord::Base
 
   scope :alpha_order, order("position_name ASC")
 
+
+
 end

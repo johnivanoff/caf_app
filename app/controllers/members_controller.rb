@@ -7,7 +7,7 @@ class MembersController < ApplicationController
   respond_to :html
 
   def index
-    @members = Member.all
+    @members = Member.ordered.all
     respond_with(@members)
   end
 
