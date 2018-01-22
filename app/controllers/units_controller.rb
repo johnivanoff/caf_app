@@ -5,6 +5,18 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:index
 
   respond_to :html
 
+  class NotActivated < StandardError
+  end
+
+  rescue_from NotActivated, :with => :not_activated
+
+  def not_activated(exception)
+    flash[:notice] = "You do not have permission to edit this Unit."
+ #   Event.new_event "Exception: #{exception.message}", current_user, request.remote_ip
+    redirect_to @unit
+  end
+
+
   def index
     @units = Unit.alpha_order.all
     respond_with(@units)
@@ -29,6 +41,9 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:index
   end
 
   def edit
+
+		raise NotActivated unless current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin" or ((role.name == "unit admin") && (current_user.member.units.any? {|unit| unit == @unit}))}
+
   end
 
   def create
