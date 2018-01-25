@@ -1,267 +1,49 @@
-  <script type="text/javascript">
-$(window).load(function() {
-  $('.flexslider').flexslider({
-    animation: "slide",
-    controlsContainer: $(".custom-controls-container"),
-    customDirectionNav: $(".custom-navigation a")
-  });
-});
-  </script>
-
-<% delay = 0 %>
-
-
-
-<div id="home">
-<div id="slider_wrapper">
-  <div id="slider">
-    <div id="flexslider">
-      <ul class="slides clearfix">
-        <li>
-          <img src="/uploads/website_images/slide01.jpg" alt="">
-          <div class="flex-caption">
-            <div class="flex-caption_inner">
-              <div class="txt1">World's Largest Flying Museum</div>
-              <div class="txt2">See, feel, hear and experience the past</div>
-              <div class="txt3"><a href="/aircraft" class="btn-default btn1">See the Collection</a></div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <img src="/uploads/website_images/slide02.jpg" alt="">
-          <div class="flex-caption">
-            <div class="flex-caption_inner">
-              <div class="txt1">Educational Programs</div>
-              <div class="txt2">Giving history a future</div>
-              <div class="txt3"><a href="#" class="btn-default btn1">Learn More</a></div>
-            </div>
-          </div>
-        </li>
-
-      </ul>
+<% if !@slider.nil? %>
+<%= markdown @slider.body %>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+        <div class="hp-admin-link"><%= link_to 'Edit slider', edit_content_path(@slider) %> </div>
     </div>
-  </div>
-</div>
-</div>
+  <% end %>
+<% end %>
+<% end %>
 
-
-
-  <div class="container">
-
-  
-
-	<br>
-
-    <div class="page_title animated" data-animation="fadeInUp" data-animation-delay="200"><strong>The Commemorative Air Force <span>( CAF )</span></strong></div>
-
-    <p class="text-center h5 animated" data-animation="fadeInUp" data-animation-delay="400">
-      <strong>is the nation's leading organization devoted to preserving American military aviation history  through education, flying and exhibition</strong>
-    </p>
-
-	<br>
-	<br>
-
-
-  </div>
-
-
-
-  
-<div class="row">
-  
-  
-<div class="blocchi6" style="background-image: url(../uploads/website_images/blocchi6-01.jpg);">
-  
-<div class="testo">
- <img src="/uploads/website_images/icon1.png"><br><br>
- <h4>LOCATIONS</h4>
- <i class="fa fa-caret-down" aria-hidden="true"></i>
-</div>
- <div class="bottone">
- <p>The Commemorative Air Force is made up of 71 airbases, wings, squadrons and other unit types.</p>
- <br> <br>
-<a href="/units" class="btn-default btn1">Learn More</a>
- </div>
-  
-</div>
-
-
-
-<div class="blocchi6" style="background-image: url(../uploads/website_images/blocchi6-02.jpg);">
-  
-<div class="testo">
- <img src="/uploads/website_images/icon1.png"><br><br>
- <h4>AIRCRAFT</h4>
- <i class="fa fa-caret-down" aria-hidden="true"></i>
-</div>
- <div class="bottone">
- <p>Learn more about one of them most comprehensive warbird collections in the world.</p>
- <br> <br>
-<a href="aircraft" class="btn-default btn1">See the Collection</a>
- </div>
-  
-</div>
-
-
-
-<div class="blocchi6" style="background-image: url(../uploads/website_images/blocchi6-03.jpg);">
-  
-<div class="testo">
- <img src="/uploads/website_images/icon1.png"><br><br>
- <h4>JOIN</h4>
- <i class="fa fa-caret-down" aria-hidden="true"></i>
-</div>
- <div class="bottone">
- <p>You need not be a pilot or veteran to join the CAF. Colonel Membership is open to all men and women, ages 18 and older. Cadet membership is open to ages 12-23.</p>
- <br> <br>
-<a href="https://17700.thankyou4caring.org/Join" class="btn-default btn1">Sign Up</a>
- </div>
-  
-</div>
-
-
-<div class="blocchi6" style="background-image: url(../uploads/website_images/blocchi6-04.jpg);">
-  
-<div class="testo">
- <img src="/uploads/website_images/icon1.png"><br><br>
- <h4>EVENTS</h4>
- <i class="fa fa-caret-down" aria-hidden="true"></i>
-</div>
- <div class="bottone">
- <p>Synch your watches and prepare for upcoming CAF events.</p>
- <br> <br>
-<a href="/events" class="btn-default btn1">Go to Events</a>
- </div>
-  
-</div>
-
-
-
-<div class="blocchi6" style="background-image: url(../uploads/website_images/blocchi6-05.jpg);">
-  
-<div class="testo">
- <img src="/uploads/website_images/icon1.png"><br><br>
- <h4>RIDES</h4>
- <i class="fa fa-caret-down" aria-hidden="true"></i>
-</div>
- <div class="bottone">
- <p>Many of our aircraft are available for a Living History Flight Experience</p>
- <br> <br>
-<a href="#" class="btn-default btn1">GO BUTTON</a>
- </div>
-  
-</div>
-
-
-<div class="blocchi6" style="background-image: url(../uploads/website_images/blocchi6-06.jpg);">
-  
-<div class="testo">
- <img src="/uploads/website_images/icon1.png"><br><br>
- <h4>EDUCATION</h4>
- <i class="fa fa-caret-down" aria-hidden="true"></i>
-</div>
- <div class="bottone">
- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean malesuada nibh dui</p>
- <br> <br>
-<a href="events" class="btn-default btn1">GO BUTTON</a>
- </div>
-  
-</div>
-
-  
-</div>
-
-
-<div class="container">
-
-<div class="tabhome">
-					
-					
-					
-    <div class="page_title animated" data-animation="fadeInUp" data-animation-delay="200"><strong>Special <span>Events</span> section</strong></div>
-					
-					
-					<div class="col-xs-12 col-sm-3">
-					<ul class="nav nav-tabs">
-						<li class="active"><a href="#nav01" data-toggle="tab"><i class="fa fa-calendar"></i> Upcoming events</a></li>
-						<li><a href="#nav02" data-toggle="tab"><i class="fa fa-bullhorn"></i> Fundraising campaigns</a></li>
-						<li><a href="#nav03" data-toggle="tab"><i class="fa fa-users"></i> That's All, Brother</a></li>
-						<li><a href="#nav04" data-toggle="tab"><i class="fa fa-desktop"></i> WASP program</a></li>
-						<li><a href="#nav05" data-toggle="tab"><i class="fa fa-plane"></i> 12 Planes</a></li>
-					</ul>
-					</div>
-					<div class="col-xs-12 col-sm-9">
-					<div class="tab-content">
-						<div class="tab-pane fade in active" id="nav01">
-							<div class="media">
-								
-								<div class="media-body">
-								<img src="/uploads/website_images/event-01.jpg" style="width: 100%">
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="nav02">
-							<div class="media">
-								<div class="media-body">
-								<img src="/uploads/website_images/event-01.jpg" style="width: 100%">								
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="nav03">
-							<div class="media">
-								<div class="media-body">
-								<img src="/uploads/website_images/event-01.jpg" style="width: 100%">								
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="nav04">
-							<div class="media">
-								<div class="media-body">
-								<img src="/uploads/website_images/event-01.jpg" style="width: 100%">								
-								</div>
-							</div>
-						</div>
-						<div class="tab-pane fade" id="nav05">
-							<div class="media">
-								<div class="media-body">
-								<img src="/uploads/website_images/event-01.jpg" style="width: 100%">								
-								</div>
-							</div>
-						</div>
-					</div>
-					</div>
-					
-</div>
-
-</div>
-
-
-
-<div id="parallax1" class="parallax">
-  <div class="bg1 parallax-bg bg-fixed" style="background-position: 50% 98px;"></div>
-  <div class="oblique parallax-bg"></div>
-  <div class="parallax-content">
-    <div class="container">
-
-    
-      <div class="txt1 animated fadeIn visible" data-animation="fadeIn" data-animation-delay="100">SUPPORT THE CAF</div>
-
-      <div class="txt2 animated fadeIn visible" data-animation="fadeIn" data-animation-delay="300">DONATE TO KEEP' EM FLYING</div>
-
-      <div class="button_wrapper animated fadeIn visible" data-animation="fadeIn" data-animation-delay="500"><a href="/contents/5" class="btn-default btn1">MORE INFO</a></div>
-	  
-	  
+<% if !@info_blocks.nil? %>
+<%= markdown @info_blocks.body %>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+        <div class="hp-admin-link"><%= link_to 'Edit info blocks', edit_content_path(@info_blocks) %> </div>
     </div>
-  </div>
-</div>
+  <% end %>
+<% end %>
+<% end %>
 
+<% if !@special_events.nil? %>
+<%= markdown @special_events.body %>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+        <div class="hp-admin-link"><%= link_to 'Edit special events', edit_content_path(@special_events) %></div>
+    </div>
+  <% end %>
+<% end %>
+<% end %>
+
+<% if !@support.nil? %>
+<%= markdown @support.body %>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+        <div class="hp-admin-link"><%= link_to 'Edit support', edit_content_path(@support) %></div>
+    </div>
+  <% end %>
+<% end %>
+<% end %>
 
 <!-- NEWS -->
 <% if !@recent_news.blank? %>
   <div id="about">
     <div class="container">
       <div class="page_title animated" data-animation="fadeInUp" data-animation-delay="200">
-        <strong><span>News</span> Section</strong>
+        <strong><span>News</span></strong>
       </div>
         <div class="row">
           <% @recent_news.reverse.each_with_index do |news, i| %>
@@ -287,103 +69,22 @@ $(window).load(function() {
   </div>
 <% end %>
 
-
-
-
-
-
-<div id="parallax2" class="parallax">
-  <div class="bg2 parallax-bg bg-fixed" style="background-position: 50% 98px;"></div>
-  <div class="oblique parallax-bg"></div>
-  <div class="parallax-content">
-    <div class="container">
-
-    
-      <div class="txt1 animated fadeIn visible" data-animation="fadeIn" data-animation-delay="100">CAF GIFT SHOP</div>
-
-
-      <div class="button_wrapper animated fadeIn visible" data-animation="fadeIn" data-animation-delay="500"><a href="signup-switch.php" class="btn-default btn1">BUY NOW</a></div>
-	  
-	  
+<% if !@gift_shop.nil? %>
+<%= markdown @gift_shop.body %>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+        <div class="hp-admin-link"><%= link_to 'Edit Gift Shop', edit_content_path(@gift_shop) %></div>
     </div>
-  </div>
-</div>
+  <% end %>
+<% end %>
+<% end %>
 
-
-
-<div id="about">
-  <div class="container">
-
-    <div class="page_title animated" data-animation="fadeInUp" data-animation-delay="200"><strong>Get our last <span>News & Updates</span></strong></div>
-
-    <div class="row">
-
-
+<% if !@bottom_info_blocks.nil? %>
+<%= markdown @bottom_info_blocks.body %>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+        <div class="hp-admin-link"><%= link_to 'Edit bottom info blocks', edit_content_path(@bottom_info_blocks) %></div>
     </div>
-
-  </div>
-</div>
-
-
-  
-<div class="container" style="padding: 30px 0px;">
-  
-  
-<div class="blocchi8">
-<img src="/uploads/website_images/blocchi8-03.jpg">
-<a href="/contents/1" class="testo">
- <h4>Be a Pilot</h4>
-</a>
-</div>
-
-<div class="blocchi8">
-<img src="/uploads/website_images/blocchi8-01.jpg">
-<a href="contents/5" class="testo">
- <h4>Aircraft Appearance</h4>
-</a>
-</div>
-  
-<div class="blocchi8">
-<img src="/uploads/website_images/blocchi8-02.jpg">
-<a href="contents/6" class="testo">
- <h4>Financials</h4>
-</a>
-</div>
-  
-<div class="blocchi8">
-<img src="/uploads/website_images/blocchi8-04.jpg">
-<a href="#" class="testo">
- <h4>Support the CAF</h4>
-</a>
-</div>
-  
-<div class="blocchi8">
-<img src="/uploads/website_images/blocchi8-05.jpg">
-<a href="/login" class="testo">
- <h4>Member Login</h4>
-</a>
-</div>
-  
-<div class="blocchi8">
-<img src="/uploads/website_images/blocchi8-01.jpg">
-<a href="#" class="testo">
- <h4>News</h4>
-</a>
-</div>
-  
-<div class="blocchi8">
-<img src="/uploads/website_images/blocchi8-02.jpg">
-<a href="/contacts" class="testo">
- <h4>Volunteer</h4>
-</a>
-</div>
-  
-<div class="blocchi8">
-<img src="/uploads/website_images/blocchi8-03.jpg">
-<a href="/contents/2" class="testo">
- <h4>Find a Unit</h4>
-</a>
-</div>
-
-
-</div>
+  <% end %>
+<% end %>
+<% end %>
