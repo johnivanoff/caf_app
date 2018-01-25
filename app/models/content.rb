@@ -14,7 +14,7 @@ class Content < ActiveRecord::Base
 #  end
   
   scope :pages, where("content_type_id = 1")
-  scope :home, where("contents.content_category_id = 8")
+  scope :home, where("contents.content_category_id = 11")
   scope :categorize, order("contents.content_category_id ASC")
   
   scope :news, where("content_type_id = 2")
