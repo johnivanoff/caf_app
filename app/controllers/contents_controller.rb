@@ -36,8 +36,16 @@ class ContentsController < ApplicationController
   end
 
   def home
-#    @content = Content.new
+    @slider = Content.home.find_by_slug('slider')
+    @info_blocks = Content.home.find_by_slug('info_blocks')
+    @special_events = Content.home.find_by_slug('special_events')
+    @support = Content.home.find_by_slug('support_caf')      
     @recent_news = Content.news.reverse.tease.all
+    @gift_shop = Content.home.find_by_slug('gift_shop')
+    @bottom_info_blocks = Content.home.find_by_slug('bottom_info_blocks')
+
+
+
     render :layout => "home"
 #    respond_with(@content)
   end
