@@ -1,6 +1,10 @@
 <% if @content.content_type_id == 2 %>
   <%= link_to "<< Back to News", news_path %>
 <% end %>
+<% if @content.content_type_id == 3 %>
+  <%= link_to "<< Back to Blogs", blogs_path %>
+<% end %>
+
 
 <h1><%= @content.title %></h1>
 

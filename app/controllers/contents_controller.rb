@@ -16,6 +16,11 @@ class ContentsController < ApplicationController
     respond_with(@contents)
   end
 
+  def blogs_index
+    @contents = Content.blogs.reverse.all
+    respond_with(@contents)
+  end
+
   def show
     respond_with(@content)
   end
@@ -35,6 +40,11 @@ class ContentsController < ApplicationController
     respond_with(@content)
   end
 
+  def add_blog
+    @content = Content.new
+    respond_with(@content)
+  end
+
   def home
     @slider = Content.home.find_by_slug('slider')
     @info_blocks = Content.home.find_by_slug('info_blocks')
@@ -44,10 +54,18 @@ class ContentsController < ApplicationController
     @gift_shop = Content.home.find_by_slug('gift_shop')
     @bottom_info_blocks = Content.home.find_by_slug('bottom_info_blocks')
 
-
-
     render :layout => "home"
 #    respond_with(@content)
+  end
+
+  def member_home
+    @info_blocks = Content.member_home.find_by_slug('member_intro')
+    @recent_news = Content.news.reverse.tease.all
+    @bottom_info_blocks = Content.member_home.find_by_slug('member_bottom_info_blocks')
+    @recent_blogs = Content.blogs.reverse.tease.all
+
+    render :layout => "home"
+
   end
 
   def edit
