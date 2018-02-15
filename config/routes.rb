@@ -69,9 +69,12 @@ CafApp::Application.routes.draw do
 	match 'new_page' => 'contents#new_page', :as => :new_page
 	match 'add_news' => 'contents#add_news', :as => :add_news
 
+  match 'blogs' => 'contents#blogs_index', :as => :blogs
+	match 'add_blog' => 'contents#add_blog', :as => :add_blog
+
   match 'contacts' => 'contents#show', :id => 3, :as => :contacts
   match 'admin' => 'contents#show', :id => 4, :as => :admin
-  match 'member_home' => 'contents#show', :id => 8, :as => :member_home
+  match 'member_home' => 'contents#member_home', :as => :member_home
   match 'unit_admin' => 'units#unit_admin', :as => :unit_admin
   match 'hq_directory' => 'members#hq_directory', :as => :hq_directory
   match 'aircraft_admin' => 'aircraft#aircraft_admin', :as => :aircraft_admin
