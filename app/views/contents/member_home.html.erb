@@ -1,0 +1,80 @@
+<% if !@info_blocks.nil? %>
+<%= markdown @info_blocks.body %>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+        <div class="hp-admin-link"><%= link_to 'Edit info blocks', edit_content_path(@info_blocks) %> </div>
+  <% end %>
+<% end %>
+<% end %>
+
+<!-- NEWS -->
+<% if !@recent_news.blank? %>
+  <div id="about">
+    <div class="container">
+      <div class="page_title animated" data-animation="fadeInUp" data-animation-delay="200">
+        <strong><span>Colonel News</span></strong>
+      </div>
+        <div class="row">
+          <% @recent_news.reverse.each_with_index do |news, i| %>
+            <div class="col-sm-3">
+            <% delay = ((i + 1)*200) %>
+              <div class="welcome1 animated" data-animation="flipInY" data-animation-delay="<%= delay.to_i %>">
+                <% if !news.feature_image.blank? %>
+                  <img src="<%= news.feature_image %>" style="width: 100%;object-fit: cover;">
+                <% else %>
+                  <img src="/uploads/website_images/blocchi8-01.jpg" style="width: 100%;">
+                <% end %>
+                <br><br>		
+                <span><%= news.published_at.strftime("%b %-d, %Y") %></span>
+              <div class="txt1"><%= news.title %></div>
+              <div class="txt2"><%= markdown truncate(news.body, :length => 220, :separator => ' ') %></div>
+                <a href="/contents/<%= news.id %>" class="btn-default btn2">Read more...</a>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<% if !@bottom_info_blocks.nil? %>
+<%= markdown @bottom_info_blocks.body %>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+        <div class="hp-admin-link"><%= link_to 'Edit bottom info blocks', edit_content_path(@bottom_info_blocks) %></div>
+    </div>
+  <% end %>
+<% end %>
+<% end %>
+
+<!-- NEWS -->
+<% if !@recent_blogs.blank? %>
+  <div id="about">
+    <div class="container">
+      <div class="page_title animated" data-animation="fadeInUp" data-animation-delay="200">
+        <strong><span>CAF Blogs</span></strong>
+      </div>
+        <div class="row">
+          <% @recent_blogs.reverse.each_with_index do |blog, i| %>
+            <div class="col-sm-3">
+            <% delay = ((i + 1)*200) %>
+              <div class="welcome1 animated" data-animation="flipInY" data-animation-delay="<%= delay.to_i %>">
+                <% if !blog.feature_image.blank? %>
+                  <img src="<%= blog.feature_image %>" style="width: 100%;object-fit: cover;">
+                <% else %>
+                  <img src="/uploads/website_images/blocchi8-01.jpg" style="width: 100%;">
+                <% end %>
+                <br><br>		
+                <span><%= blog.published_at.strftime("%b %-d, %Y") %></span>
+              <div class="txt1"><%= blog.title %></div>
+              <div class="txt2"><%= markdown truncate(blog.body, :length => 220, :separator => ' ') %></div>
+                <a href="/contents/<%= blog.id %>" class="btn-default btn2">Read more...</a>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,63 @@
+
+
+<h1>Editing News Content</h1>
+
+<%= form_for(@content) do |f| %>
+  <% if @content.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@content.errors.count, "error") %> prohibited this content from being saved:</h2>
+
+      <ul>
+      <% @content.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class='row'>
+  <div class='col-sm-12'>
+    <div class="field">
+      <%= f.label :title %><br />
+      <%= f.text_field :title, :class => 'boxsizingBorder' %>
+    </div>
+    <div class="field">
+			<%# this is a page edit form so set content type to 'pages' %>
+			<%#= f.label :content_type_id %>
+			<%#= f.collection_select :content_type_id, ContentType.all, :id, :type_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
+			<%= f.hidden_field :content_type_id, :value => 2 %>
+    </div>
+    <div class="field">
+      <%#= f.label :content_category_id %><br />
+      <%#= f.collection_select :content_category_id, ContentCategory.all, :id, :category_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
+			<%= f.hidden_field :content_category_id, :value => 3 %>
+    </div>
+    <div class="field">
+      <%= f.label :body %><br />
+      <%= f.text_area :body, :class => 'boxsizingBorder' %>
+    </div>
+    <div class="field">
+      <%= f.label :feature_image %><br />
+      <%= f.text_field :feature_image, :class => 'boxsizingBorder' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :slug %><br />
+      <%= f.text_field :slug, :class => 'boxsizingBorder' %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :user_id, :value => current_user %>
+    </div>
+    <div class="field">
+      <%= f.label :published_at %><br />
+      <%= f.datetime_select :published_at %>
+    </div>
+    <div class="actions">
+      <%= f.submit:data => { :disable_with => "Submitting ..." }, :class => "btn-default btn1" %>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+<script>
+var simplemde = new SimpleMDE({ element: document.getElementById("content_body") });
+</script>

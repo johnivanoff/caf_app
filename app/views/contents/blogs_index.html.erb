@@ -1,0 +1,26 @@
+<h1>Blogs</h1>
+
+<% @contents.each do |content| %>
+<div class="news-summary-item">
+  <h2 style="margin: 1.4em 0;"><%= link_to content.title, content_path(content) %></h2>
+
+		<% if !content.feature_image.blank? %>
+			<img src="<%= content.feature_image %>" style="float: left;">
+		<% end %>
+
+		<div class="txt2"><%= markdown truncate(content.body, :length => 600, :separator => ' ') %></div>
+		<a href="/contents/<%= content.id %>" class="btn-default btn2">Read more...</a>
+
+</div> 
+ <hr />  
+  
+<% end %>
+
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="admin-section" >
+      <h2>Admin</h2>
+        <%= button_to 'Add Blog', add_news_path, method: :get, :class => "btn-default btn1" %>
+    </div>
+  <% end %>
+<% end %>

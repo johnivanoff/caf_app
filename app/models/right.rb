@@ -19,9 +19,12 @@ class Right < ActiveRecord::Base
     "headquarters_staff" => "READ",
     "general_staff" => "READ",
     "home" => "READ",
+    "member_home" => "READ",
     "news_index" => "READ",
     "new_page" => "READ",
-    "add_news" => "READ"
+    "add_news" => "READ",
+    "blogs_index" => "READ",
+    "add_blog" => "READ"
 	}
 
 	scope :ordered, order("rights.resource ASC")
