@@ -27,7 +27,8 @@ class Content < ActiveRecord::Base
   scope :tease, :limit => 4
   scope :reverse, order("contents.published_at DESC")
 
-
+  mount_uploader :feature_image, ImageUploader
+  
 # Content category ids
 #
 # 1 = About

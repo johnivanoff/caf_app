@@ -5,7 +5,7 @@
   <h2 style="margin: 1.4em 0;"><%= link_to content.title, content_path(content) %></h2>
 
 		<% if !content.feature_image.blank? %>
-			<img src="<%= content.feature_image %>" style="float: left;">
+			<img src="<%= content.feature_image.url(:landscape_profile).to_s %>" style="float: left;">
 		<% end %>
 
 		<div class="txt2"><%= markdown truncate(content.body, :length => 600, :separator => ' ') %></div>
