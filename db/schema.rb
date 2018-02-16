@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180112013642) do
+ActiveRecord::Schema.define(:version => 20180215233609) do
 
   create_table "aircraft", :force => true do |t|
     t.string   "name"
@@ -142,6 +142,14 @@ ActiveRecord::Schema.define(:version => 20180112013642) do
     t.datetime "updated_at",    :null => false
   end
 
+  create_table "content_galleries", :force => true do |t|
+    t.string   "image"
+    t.text     "caption"
+    t.string   "photographer"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "content_types", :force => true do |t|
     t.string   "type_name"
     t.text     "description"
@@ -182,16 +190,6 @@ ActiveRecord::Schema.define(:version => 20180112013642) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
-
-  create_table "document_files", :force => true do |t|
-    t.string   "title"
-    t.string   "filename"
-    t.integer  "caf_documents_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
-  add_index "document_files", ["caf_documents_id"], :name => "index_document_files_on_caf_documents_id"
 
   create_table "event_versions", :force => true do |t|
     t.string   "item_type",       :null => false
@@ -322,7 +320,7 @@ ActiveRecord::Schema.define(:version => 20180112013642) do
   end
 
   create_table "position_assignments", :force => true do |t|
-    t.integer  "position_id"
+    t.integer  "hq_position_id"
     t.integer  "member_id"
     t.date     "assignment_start"
     t.date     "assignment_end"
@@ -331,8 +329,8 @@ ActiveRecord::Schema.define(:version => 20180112013642) do
     t.datetime "updated_at",       :null => false
   end
 
+  add_index "position_assignments", ["hq_position_id"], :name => "index_position_assignments_on_position_id"
   add_index "position_assignments", ["member_id"], :name => "index_position_assignments_on_member_id"
-  add_index "position_assignments", ["position_id"], :name => "index_position_assignments_on_position_id"
 
   create_table "rights", :force => true do |t|
     t.string   "resource"

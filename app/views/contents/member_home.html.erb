@@ -20,7 +20,7 @@
             <% delay = ((i + 1)*200) %>
               <div class="welcome1 animated" data-animation="flipInY" data-animation-delay="<%= delay.to_i %>">
                 <% if !news.feature_image.blank? %>
-                  <img src="<%= news.feature_image %>" style="width: 100%;object-fit: cover;">
+                  <img src="<%= news.feature_image.url(:landscape_profile).to_s %>" style="width: 100%;object-fit: cover;">
                 <% else %>
                   <img src="/uploads/website_images/blocchi8-01.jpg" style="width: 100%;">
                 <% end %>
@@ -61,7 +61,7 @@
             <% delay = ((i + 1)*200) %>
               <div class="welcome1 animated" data-animation="flipInY" data-animation-delay="<%= delay.to_i %>">
                 <% if !blog.feature_image.blank? %>
-                  <img src="<%= blog.feature_image %>" style="width: 100%;object-fit: cover;">
+                  <img src="<%= blog.feature_image.url(:landscape_profile).to_s %>" style="width: 100%;object-fit: cover;">
                 <% else %>
                   <img src="/uploads/website_images/blocchi8-01.jpg" style="width: 100%;">
                 <% end %>
