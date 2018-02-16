@@ -1,0 +1,29 @@
+<%= form_for @content_gallery, :html => {:multipart => true} do |f| %>
+  <% if @content_gallery.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@content_gallery.errors.count, "error") %> prohibited this content_gallery from being saved:</h2>
+
+      <ul>
+      <% @content_gallery.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :caption %><br />
+    <%= f.text_area :caption, :rows => 5, :class => 'boxsizingBorder' %>
+  </div>
+  <div class="field">
+    <%= f.label :photographer %><br />
+    <%= f.text_field :photographer %>
+  </div>
+  <div class="actions">
+    <%= f.submit:data => { :disable_with => "Submitting ..." }, :class => "btn-default btn1" %>
+  </div>
+<% end %>

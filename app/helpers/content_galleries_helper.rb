@@ -1,0 +1,2 @@
+module ContentGalleriesHelper
+end

@@ -1,6 +1,9 @@
 CafApp::Application.routes.draw do
 
 
+  resources :content_galleries
+
+
   resources :position_assignments
 
 

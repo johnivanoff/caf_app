@@ -1,0 +1,42 @@
+<h1>Listing content_galleries</h1>
+
+  <div class="col-sm-12">
+  <form id="live-search" action="" class="styled formfilter"" method="post">
+
+
+    <fieldset>
+        <input type="text" class="text-input" id="filter" value="" />
+        <label>Search/Filter</label>
+        <span id="filter-count"></span>
+    </fieldset>
+</form>
+</div>
+
+
+<div class="row"> 
+<% @content_galleries.each do |content_gallery| %>
+
+  <div class="col-xs-12 col-sm-4 col-md-3 blocchi-parent" style="height: 436px;">
+      <% if content_gallery.image? %>
+      <img src="<%= content_gallery.image.url(:directory_size).to_s %>" style="width:100%;max-height: 264px;" />
+      <%= link_to "Image", content_gallery_path(content_gallery)%>
+      <% end %>
+
+        
+        <p><%= content_gallery.caption %></p>
+
+
+
+  </div>
+  <% end %>
+</div>
+
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="admin-section" >
+      <h2>Admin</h2>
+        <%= link_to 'New Content gallery', new_content_gallery_path %>
+    </div>
+  <% end %>
+<% end %>
+
