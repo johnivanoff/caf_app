@@ -39,7 +39,7 @@
          <% if @content.feature_image? %>
           <img src="<%= @content.feature_image.url(:landscape_profile).to_s %>" class="feature_image" />
         <% end %><br />
-      <%= f.label :feature_image %><br />
+      <%= f.label :feature_image %>: <%= @content.feature_image.url(:landscape_profile).to_s %><br />
       <%= f.file_field :feature_image, :class => 'boxsizingBorder' %>
     </div>
 
