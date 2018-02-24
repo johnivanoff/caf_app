@@ -51,13 +51,13 @@
             <% delay = ((i + 1)*200) %>
               <div class="welcome1 animated" data-animation="flipInY" data-animation-delay="<%= delay.to_i %>">
                 <% if !news.feature_image.blank? %>
-                  <img src="<%= news.feature_image.url(:landscape_profile).to_s %>" style="width: 100%;object-fit: cover;">
+                  <%= link_to image_tag(news.feature_image.url(:landscape_profile).to_s), content_path(news),  :class => 'blog-feature-image' %>
                 <% else %>
                   <img src="/uploads/website_images/blocchi8-01.jpg" style="width: 100%;">
                 <% end %>
                 <br><br>		
                 <span><%= news.published_at.strftime("%b %-d, %Y") %></span>
-              <div class="txt1"><%= news.title %></div>
+              <div class="txt1"><%= link_to news.title, content_path(news) %></div>
               <div class="txt2"><%= markdown truncate(news.body, :length => 220, :separator => ' ') %></div>
                 <a href="/contents/<%= news.id %>" class="btn-default btn2">Read more...</a>
               </div>

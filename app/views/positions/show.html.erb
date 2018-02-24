@@ -1,0 +1,22 @@
+<p>
+  <b>Position name:</b>
+  <%= @position.position_name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @position.description %>
+</p>
+
+
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="admin-section" >
+      <h2>Admin</h2>
+        <%= link_to 'Edit', edit_position_path(@position) %> |
+        <%= link_to 'Back', positions_path %>
+
+        <%#= render 'versions', :position => @position %>
+    </div>
+  <% end %>
+<% end %>

@@ -1,8 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<div class='row'>
+  <div class="field col-sm-6">
+  <%= image_tag @content_gallery.image.url(:landscape_profile).to_s %>
+  <br /> landscape_profile
+  </div>
+  <div class="field col-sm-6">
   <%= image_tag @content_gallery.image.url(:directory_size).to_s %>
-
-
+  <br /> directory_size
+  </div>
+</div>
 <p>
   <b>Caption:</b>
   <%= @content_gallery.caption %>
@@ -15,10 +22,11 @@
 
         <table>
           <tr><td>original</td><td><%= @content_gallery.image.url %></td></tr>
+          <tr><td>540 x 360 landscape</td><td><%= @content_gallery.image.url(:landscape_profile).to_s %></td></tr>
           <tr><td>265 x 265 square</td><td><%= @content_gallery.image.url(:directory_size).to_s %></td></tr>
           <tr><td>50 x 50 square</td><td><%= @content_gallery.image.url(:thumb).to_s %></td></tr>
           <tr><td>35 x 35 square</td><td><%= @content_gallery.image.url(:tiny_thumb).to_s %></td></tr>
         </table>
-
+<br />
 <%= link_to 'Edit', edit_content_gallery_path(@content_gallery) %> |
 <%= link_to 'Back', content_galleries_path %>

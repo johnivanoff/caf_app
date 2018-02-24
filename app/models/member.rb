@@ -7,6 +7,9 @@ class Member < ActiveRecord::Base
   belongs_to :user
   accepts_nested_attributes_for :user, :allow_destroy => true
 
+  has_many :terms
+  has_many :positions, :through => :terms
+
   validates :first_name, :last_name, :presence => true, :on => :create
 
   has_paper_trail :class_name => 'MemberVersion',
@@ -19,6 +22,10 @@ class Member < ActiveRecord::Base
 #  scope :inactive, where("members.active = 0")
 
   scope :ordered, order("members.last_name ASC, members.first_name ASC")
+
+  scope :gs_staff, joins(:positions).merge(Position.gs_staff)
+
+
 
 #  scope :hq_staff, where('id = 1')
 

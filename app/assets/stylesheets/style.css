@@ -539,6 +539,15 @@ figcaption {
   text-align: right;
 }
 
+.txt1 a {
+  text-decoration: none;
+}
+
+.blog-feature-image img {
+  width: 100%;
+  object-fit: cover;
+}
+
 /* Ludos overwrites */
 
 @media (max-width: 767px) {
