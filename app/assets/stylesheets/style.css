@@ -548,6 +548,10 @@ figcaption {
   object-fit: cover;
 }
 
+.ui-datepicker .ui-datepicker-title select.ui-datepicker-year {
+    color: #666;
+    }
+
 /* Ludos overwrites */
 
 @media (max-width: 767px) {
