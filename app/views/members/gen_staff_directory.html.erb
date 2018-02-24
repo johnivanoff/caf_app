@@ -23,17 +23,18 @@
       <img src="/uploads/website_images/default_member.png" style="width:100%;max-height: 264px;" />
       <% end %>
 
-        
-        <p><%= gs_staff.first_name %> <%= gs_staff.last_name %>
+        <% if gs_staff.first_name? %>
+        <p><strong><%= gs_staff.first_name %> <%= gs_staff.last_name %></strong>
                   <% if signed_in?%>
             <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
             <span class="small"><%= link_to 'edit', edit_member_path(gs_staff) %></span>
             <% end %>
           <% end %>
+          
         <br />
-           <%= gs_staff.user.email %><br />
-          <%= gs_staff.work_phone %></p>
-
+           <%= link_to gs_staff.user.email, "mailto: " + gs_staff.user.email %><br />
+           <%#= gs_staff.work_phone %></p>
+        <% end %>
 
   </div>
   <% end %>
