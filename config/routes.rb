@@ -1,6 +1,12 @@
 CafApp::Application.routes.draw do
 
 
+  resources :terms
+
+
+  resources :positions
+
+
   resources :content_galleries
 
 
@@ -83,7 +89,7 @@ CafApp::Application.routes.draw do
   match 'aircraft_admin' => 'aircraft#aircraft_admin', :as => :aircraft_admin
   match 'hq_position_admin' => 'hq_position_assignments#hq_position_admin', :as => :hq_position_admin
   match 'headquarters_staff' => 'position_assignments#headquarters_staff', :as => :headquarters_staff
-  match 'general_staff' => 'position_assignments#general_staff', :as => :general_staff
+  match 'general_staff' => 'members#gen_staff_directory', :as => :general_staff
   match 'home' => 'contents#home', :as => :home
   match 'content/:id/news_edit'
 

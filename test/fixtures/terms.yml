@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  position: 
+  member: 
+  term_start: 2018-02-23
+  term_end: 2018-02-23
+
+two:
+  position: 
+  member: 
+  term_start: 2018-02-23
+  term_end: 2018-02-23

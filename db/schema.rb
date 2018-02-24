@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180215233609) do
+ActiveRecord::Schema.define(:version => 20180224050427) do
 
   create_table "aircraft", :force => true do |t|
     t.string   "name"
@@ -332,6 +332,13 @@ ActiveRecord::Schema.define(:version => 20180215233609) do
   add_index "position_assignments", ["hq_position_id"], :name => "index_position_assignments_on_position_id"
   add_index "position_assignments", ["member_id"], :name => "index_position_assignments_on_member_id"
 
+  create_table "positions", :force => true do |t|
+    t.string   "position_name"
+    t.text     "description"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "rights", :force => true do |t|
     t.string   "resource"
     t.string   "operation"
@@ -361,6 +368,18 @@ ActiveRecord::Schema.define(:version => 20180215233609) do
   end
 
   add_index "social_links", ["unit_id"], :name => "index_social_links_on_unit_id"
+
+  create_table "terms", :force => true do |t|
+    t.integer  "position_id"
+    t.integer  "member_id"
+    t.date     "term_start"
+    t.date     "term_end"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "terms", ["member_id"], :name => "index_terms_on_member_id"
+  add_index "terms", ["position_id"], :name => "index_terms_on_position_id"
 
   create_table "unit_assignments", :force => true do |t|
     t.integer  "member_id"
