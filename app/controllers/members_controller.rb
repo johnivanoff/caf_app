@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
   before_filter :set_member, only: [:show, :edit, :update, :destroy]
 
-#skip_before_filter :check_authorization, :check_authentication, :only => [:index]
+skip_before_filter :check_authorization, :check_authentication, :only => [:gen_staff_directory]
 
 
   respond_to :html
@@ -15,6 +15,11 @@ class MembersController < ApplicationController
     @hq_positions = HqPosition.all
     
   end
+
+  def gen_staff_directory
+    @gs_staff = Member.gs_staff.ordered.all
+  end 
+
 
   def show
     respond_with(@member)

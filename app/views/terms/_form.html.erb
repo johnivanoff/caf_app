@@ -1,0 +1,33 @@
+<%= form_for(@term) do |f| %>
+  <% if @term.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@term.errors.count, "error") %> prohibited this term from being saved:</h2>
+
+      <ul>
+      <% @term.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :position %><br />
+    <%= f.collection_select :position_id, Position.all, :id, :position_name, options = {:order => 'position_name ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
+  </div>
+  <div class="field">
+    <%= f.label :member_id, "member" %><br />
+    <%= f.collection_select :member_id, Member.ordered.all, :id, :full_name, options = {:order => 'last_name ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
+  </div>
+  <div class="field">
+    <%= f.label :term_start %><br />
+    <%= f.date_select :term_start %>
+  </div>
+  <div class="field">
+    <%= f.label :term_end %><br />
+    <%= f.date_select :term_end %>
+  </div>
+  <div class="actions">
+    <%= f.submit:data => { :disable_with => "Submitting ..." }, :class => "btn-default btn1" %>
+  </div>
+<% end %>
