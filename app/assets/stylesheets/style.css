@@ -571,14 +571,26 @@ figcaption {
   border-style: solid none solid none;
   }
 
+.navbar_ .nav > li > a.donate-highlight {
+  background-color: rgba(51, 255, 0, 0.3);
+}
+
+.navbar_ .nav > li > a.donate-highlight:hover {
+  background-color: #397fb4;
+}
+
 /* Ludos overwrites */
 
 @media (max-width: 767px) {
 
   /* add background color so nav links show in mobile ~ LN 1002 */
-	.navbar_ .nav > li > a{
+.navbar_ .nav > li > a{
 	background: #284b71;
 	}
+
+.navbar_ .nav > li > a.donate-highlight {
+  background-color: #006600;
+}
 
 .blocchi-unit img {
   width: auto;
