@@ -12,7 +12,7 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:gen_s
   end
 
   def hq_directory
-    @hq_positions = HqPosition.all
+    @hq_positions = Member.hq_staff.ordered.all
     
   end
 

@@ -6,6 +6,8 @@ class PositionAssignment < ActiveRecord::Base
 
   scope :hq_staff, where('hq_position_id != "35"') 
 
+
   scope :general_staff, where('hq_position_id = "35"')
+
 
 end
