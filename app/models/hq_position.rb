@@ -5,6 +5,6 @@ class HqPosition < ActiveRecord::Base
 
   scope :alpha_order, order("position_name ASC")
 
-
+  scope :hq_staff, where('hq_position_id > 0')
 
 end

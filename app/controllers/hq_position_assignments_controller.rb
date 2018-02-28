@@ -11,7 +11,7 @@ class HqPositionAssignmentsController < ApplicationController
   end
 
   def hq_position_admin
-    @hq_position_assignments = HqPositionAssignment.all
+    @hq_position_assignments = HqPositionAssignment.ordered.all
     respond_with(@hq_position_assignments)
   end
 
