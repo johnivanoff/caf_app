@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :member %><br />
-    <%= f.text_field :member %>
+    <%= f.label :member_id %><br />
+    <%= f.collection_select :member_id, Member.ordered.all, :id, :full_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
   </div>
   <div class="field">
-    <%= f.label :hq_position %><br />
-    <%= f.text_field :hq_position %>
+    <%= f.label :hq_position_id %><br />
+      <%= f.collection_select :hq_position_id, HqPosition.alpha_order.all, :id, :position_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
   </div>
   <div class="actions">
     <%= f.submit:data => { :disable_with => "Submitting ..." }, :class => "btn-default btn1" %>

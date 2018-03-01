@@ -25,7 +25,7 @@ class Member < ActiveRecord::Base
 
   scope :gs_staff, joins(:positions).merge(Position.gs_staff)
 
-
+  scope :hq_staff, joins(:hq_positions).merge(HqPosition.hq_staff.alpha_order)
 
 #  scope :hq_staff, where('id = 1')
 

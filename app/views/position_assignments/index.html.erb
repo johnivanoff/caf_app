@@ -14,8 +14,8 @@
 
 <% @position_assignments.each do |position_assignment| %>
   <tr>
-    <td><%= position_assignment.hq_position.position_name %></td>
-    <td><%= position_assignment.member.last_name + ", " + position_assignment.member.first_name %></td>
+    <td><% if !position_assignment.hq_position.position_name.blank? %> <%= position_assignment.hq_position.position_name %><% end %></td>
+    <td><% if !position_assignment.member.blank? %> <%= position_assignment.member.last_name + ", " + position_assignment.member.first_name %><% end %></td>
     <td><%= position_assignment.assignment_start %></td>
     <td><%= position_assignment.assignment_end %></td>
     <td><%= position_assignment.notes %></td>
