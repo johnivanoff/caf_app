@@ -33,8 +33,10 @@ FB.api(
         var day = Currdate.getDate();
         var monthIndex = Currdate.getMonth();
         var year = Currdate.getFullYear();
+  //get location test if there is an event 'place'
+        if (response.data[e].place != undefined) {
         if (response.data[e].place.location == undefined) {var location = response.data[e].place.name;} else {var location = response.data[e].place.location.city + ', ' + response.data[e].place.location.state;}
-        var place = response.data[e].place.name;
+        var place = response.data[e].place.name; } else {var location = ''}
   //look back five days from today        
         if (Currdate > today.setDate(today.getDate() - 5) ) {
         
