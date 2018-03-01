@@ -82,6 +82,9 @@ CafApp::Application.routes.draw do
 	match 'add_blog' => 'contents#add_blog', :as => :add_blog
 
   match 'contacts' => 'contents#show', :id => 3, :as => :contacts
+  match 'careers' => 'contents#show', :id => 65, :as => :careers
+  match 'privacy_policy' => 'contents#show', :id => 82, :as => :privacy_policy
+  match 'membership' => 'contents#show', :id => 21, :as => :membership
   match 'admin' => 'contents#show', :id => 4, :as => :admin
   match 'member_home' => 'contents#member_home', :as => :member_home
   match 'unit_admin' => 'units#unit_admin', :as => :unit_admin
