@@ -1,0 +1,52 @@
+<%= render "layouts/scripts" %>
+
+<h1>Aircraft Rides <span style="font-size: 0.65em;"><%= @ride_aircraft.count %> Participating Aircraft</span></h1>
+
+<%= markdown @rides_copy.last.body %>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+        <div class="form-tip"><%= link_to 'Edit copy', edit_content_path(@rides_copy.last) %></div>
+  <% end %>
+<% end %>
+
+
+  <div class="col-sm-12" id="search-area">
+  <form id="live-search" action="" class="styled formfilter"" method="post">
+
+
+    <fieldset>
+        <label>Search/Filter:</label>
+        <input type="text" class="text-input" id="filter" value="" />
+        <span id="filter-count"></span>
+    </fieldset>
+    <div class="form-tip">examples include: type like "b-17", state like "tx", unit like "red tail", n-number like "9643c" </div>
+</form>
+</div>
+
+<div class='row'>
+<% @ride_aircraft.each do |aircraft| %>
+  <div class="col-xs-12 col-sm-4 col-md-3 blocchi-parent" style="min-height: 250px;">
+    <a href="aircraft/<%= aircraft.id %>" class="blocchi-unit">
+      <% if aircraft.profile_photo? %>
+      <img src="<%= aircraft.profile_photo.url(:directory_size).to_s %>">
+      <% else %>
+      <img src="/uploads/aircraft_profile_photos/default_2.jpg" />
+      <% end %>
+      <div class="bottone">
+        <h4><%= aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.name %></h4>
+        <p><%= aircraft.n_number %></p>
+        <% if !aircraft.unit.blank? %>
+        <p><%= aircraft.unit.unit_name %><br /><%= aircraft.unit.city + ', ' + aircraft.unit.state %></p>
+        <% if !aircraft.aircraft_type.aircraft_classes.blank? %>
+            <% aircraft.aircraft_type.aircraft_classes.each do |aircraft_class| %>
+              <div style="display: none"><%= aircraft_class.class_type %></div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </a>
+  </div>
+
+<% end %>
+
+</div>

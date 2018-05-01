@@ -1,7 +1,7 @@
 class AircraftController < ApplicationController
   before_filter :set_aircraft, only: [:show, :edit, :update, :destroy]
 
-  skip_before_filter :check_authorization, :check_authentication, :only => [:index, :show, :aircraft_admin, ]
+  skip_before_filter :check_authorization, :check_authentication, :only => [:aircraft_rides, :index, :show, :aircraft_admin, ]
 
   respond_to :html
 
@@ -22,6 +22,12 @@ class AircraftController < ApplicationController
     @aircraft_classes = AircraftClass.all
 #    @bombers = Aircraft.bomber.all
     respond_with(@aircrafts)
+  end
+
+  def aircraft_rides
+    @ride_aircraft = Aircraft.rides
+    @rides_copy = Content.aircraft_rides_copy
+    respond_with(@ride_aircraft)
   end
 
   def aircraft_admin
