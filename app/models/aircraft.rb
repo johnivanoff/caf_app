@@ -15,7 +15,7 @@ class Aircraft < ActiveRecord::Base
 
   scope :bomber, joins(:aircraft_classes).merge(AircraftClass.bomber)
 
-  mount_uploader :profile_photo, AircraftProfileUploader
+  scope :rides, where('rides = 1') 
 
 #  scope :type_order, joins(:aircraft_type).merge(AircraftType.type_order)
   
