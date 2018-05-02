@@ -8,6 +8,11 @@ class TermsController < ApplicationController
     respond_with(@terms)
   end
 
+  def hall_of_fame
+    @hall_of_famers = Term.hof
+    respond_with(@hall_of_famers)
+  end
+
   def show
     respond_with(@term)
   end

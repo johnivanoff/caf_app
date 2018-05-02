@@ -15,5 +15,7 @@ class Term < ActiveRecord::Base
     }
   scope :time_ordered, order("terms.term_start DESC") 
 
+  scope :hof, where("terms.position_id = 2")
+
 
 end
