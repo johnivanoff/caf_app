@@ -1,0 +1,63 @@
+<% year = "" %>
+
+<h1>CAF HAll of Fame</h1>
+
+<%= markdown @hall_of_fame_copy.last.body %>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+        <div class="form-tip"><%= link_to 'Edit copy', edit_content_path(@hall_of_fame_copy.last) %></div>
+  <% end %>
+<% end %>
+
+  <div class="col-sm-12">
+  <form id="live-search" action="" class="styled formfilter"" method="post">
+
+
+    <fieldset>
+        <input type="text" class="text-input" id="filter" value="" />
+        <label>Search/Filter</label>
+        <span id="filter-count"></span>
+    </fieldset>
+</form>
+</div>
+
+
+<div class="row"> 
+<% @hall_of_famers.each do |hall_of_famer| %>
+  <% if hall_of_famer.terms.last.term_start.strftime("%Y") != year %>
+    <div style="clear: both;"></div>
+    <h3 class="hall-of-fame"><%= hall_of_famer.terms.last.term_start.strftime("%Y") %></h3>
+  <% end %>
+
+
+  <div class="col-xs-12 col-sm-4 col-md-3 blocchi-parent"  style="min-height: 250px;">
+      <% if hall_of_famer.photo? %>
+      <img src="<%= hall_of_famer.member.photo.url(:directory_size).to_s %>"  style="width:100%;" />
+      <% else %>
+      <img src="/uploads/website_images/default_member.png"  style="width:100%;" />
+      <% end %>
+
+        <% if hall_of_famer.first_name? %>
+        <p><strong><%= hall_of_famer.first_name %> <%= hall_of_famer.last_name %></strong>
+                  <% if signed_in?%>
+            <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+            <span class="small"><%= link_to 'edit', edit_member_path(hall_of_famer) %></span>
+            <% end %>
+          <% end %>
+          
+           <div style="display: none"><%= hall_of_famer.terms.last.term_start.strftime("%Y") %></div>
+           <% year = hall_of_famer.terms.last.term_start.strftime("%Y") %></p>
+        <% end %>
+
+  </div>
+  <% end %>
+</div>
+
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="admin-section" >
+      <h2>Admin</h2>
+        <%= button_to 'Add New Term', new_term_path, method: :get, :class => "btn-default btn1" %>
+    </div>
+  <% end %>
+<% end %>

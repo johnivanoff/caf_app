@@ -25,6 +25,11 @@ class Member < ActiveRecord::Base
 
   scope :gs_staff, joins(:positions).merge(Position.gs_staff)
 
+  scope :hall_of_fame, joins(:positions).merge(Position.hof_member)
+
+  scope :term_ordered, joins(:terms).merge(Term.time_ordered)
+#scope :time_ordered, order("terms.term_start DESC")
+
   scope :hq_staff, joins(:hq_positions).merge(HqPosition.hq_staff.alpha_order)
 
 #  scope :hq_staff, where('id = 1')

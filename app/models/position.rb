@@ -5,6 +5,7 @@ class Position < ActiveRecord::Base
   has_many :members, :through => :terms
 
   scope :gs_staff, where('position_name = "General Staff"')
+  scope :hof_member, where('position_name = "Hall of Fame"')
   scope :hq_staff, where('position_name = "General Staff"')
 
 end

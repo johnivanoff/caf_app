@@ -20,7 +20,11 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:gen_s
     @gs_staff = Member.gs_staff.ordered.all
   end 
 
-
+  def hall_of_fame
+    @hall_of_famers = Member.hall_of_fame.term_ordered.all
+    @hall_of_fame_copy = Content.hall_of_fame_copy
+  end 
+  
   def show
     respond_with(@member)
   end

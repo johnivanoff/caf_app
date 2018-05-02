@@ -145,6 +145,12 @@ strong {
   margin: 1.12em 0;
 }
 
+h3.hall-of-fame {
+  margin: 1em 0;
+  font-size: 1.4em;
+  text-decoration: underline;
+}
+
 
 /* =Table Elements
 -------------------------------------------------------------- */
