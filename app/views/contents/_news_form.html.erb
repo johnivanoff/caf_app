@@ -1,4 +1,4 @@
-
+<%= render "scripts" %>
 
 <h1>Editing News Content</h1>
 
@@ -52,7 +52,7 @@
     </div>
     <div class="field">
       <%= f.label :published_at %><br />
-      <%= f.datetime_select :published_at %>
+      <%= f.text_field :published_at %>
     </div>
     <div class="actions">
       <%= f.submit:data => { :disable_with => "Submitting ..." }, :class => "btn-default btn1" %>

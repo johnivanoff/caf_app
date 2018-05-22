@@ -13,6 +13,7 @@ class ContentsController < ApplicationController
 
   def news_index
     @contents = Content.news.reverse.all
+    @news_copy = Content.news_copy.last
     respond_with(@contents)
   end
 

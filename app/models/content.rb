@@ -26,6 +26,7 @@ class Content < ActiveRecord::Base
 
   scope :aircraft_rides_copy, where('slug = "aircraft_rides_intro"')
   scope :hall_of_fame_copy, where('slug = "hall_of_fame"')
+  scope :news_copy, where('slug = "news-index-copy"')
 
   scope :categorize, order("contents.content_category_id ASC")
   scope :tease, :limit => 4
