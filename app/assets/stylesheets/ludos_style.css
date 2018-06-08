@@ -30,7 +30,7 @@ visibility: visible;
 }
 
 /* ============================= header ====================== */
-#top1{width: 100%; position: relative; left: 0; top: 0; /*z-index: 99;*/ min-width: 320px;  background-image:url(../uploads/website_images/img_header-bg.jpg); background-size: cover;}
+#top1{width: 100%; position: relative; left: 0; top: 0; z-index: 99; min-width: 320px;  background-image:url(../uploads/website_images/img_header-bg.jpg); background-size: cover;}
 
 .top1_wrapper{ }
 
