@@ -1,16 +1,76 @@
-
-<%= render "fb_events" %>
-
 <% initial_date = "" %>
 
 <h1>Upcoming Events</h1>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <%= button_to 'Add New Event', new_event_path, method: :get, :class => "btn-default btn1" %>
+  <% end %>
+<% end %>
 
-<p>Do you have an event, airshow or program you want posted on the CAF Calendar?</p>
+<% if !@events.blank? %>
+<% @events.each do |event| %>
+  <% if initial_date == "" %>
+    <div class="month-subheader">
+       <strong><%= event.event_start.strftime("%B - %Y") %></strong>
+    </div>
+      <% elsif event.event_start.strftime("%B - %Y") != initial_date %>
+    <div class="month-subheader">
+       <strong><%= event.event_start.strftime("%B - %Y") %></strong>
+    </div>
+  <% end %>
+<div class="calendar_row">
+  <div class="cell" style="width: 25%; margin-right: 2em;">
+    <% if event.event_start.strftime("%b %d" ) == event.event_end.strftime("%b %d") %>
+      <div class="date-range">
+        <div class="calendar-css">
+          <div class="calendar_month"><%= event.event_start.strftime("%b") %></div>
+          <div class="calendar_date"><%= event.event_start.strftime("%d") %></div>
+        </div>
+      </div>
+    <% else %>
+       <div class="date-range">
+        <div class="calendar-css">
+          <div class="calendar_month"><%= event.event_start.strftime("%b") %></div>
+          <div class="calendar_date"><%= event.event_start.strftime("%d") %></div>
+        </div>
+        <span style=" font-size: 1em; margin: 0.5em 0 0 0;">&#8211; </span>
+        <div class="calendar-css">
+          <div class="calendar_month"><%= event.event_end.strftime("%b") %></div>
+          <div class="calendar_date"><%= event.event_end.strftime("%d") %></div>
+        </div>
+        </div>
+    <% end %>
 
-<p><a href="mailto:media@cafhq.org?subject=Please%20add%20my%20event%20to%20the%20CAF%20Calendar.">Click here to submit a request</a> or you can <a href="https://www.facebook.com/CommemorativeAF/">share it with the CAF Facebook Page</a>.</p>
+      <div class="location"><%= event.location.city + ", " + event.location.state %></div>
+    </div>
+<div class="cell" style="width: 70%;">
+<h2><%= link_to event.event_title, event %></h2>
+<img src="<%= event.feature_image.url(:directory_size).to_s %>" style="float: right;margin: 1em 0 2em 2em;"/>
+<br />      
+      <% if event.details.length > 220 %>
+        <%= truncate(event.details, :length => 220, :separator => ' ') %> <em><%= link_to "Go to event", event %></em>
+      <% else %>
+        <%= event.details %>
+      <% end %>
+</div></div>
+<% initial_date = event.event_start.strftime("%B - %Y").to_s %>
+<% end %>
 
-<ul>
-<div id="results">
-</div>
-</ul>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="admin-section" >
+      <h2>Admin</h2>
+        <%= link_to 'New Event', new_event_path %> |
+    </div>
+  <% end %>
+<% end %>
+
+<% else %>
+   <div class="calendar_row" style="width: 90%; padding-top: 0.25em">
+     <div class="cell" style="width: 25%;">&nbsp;</div>
+       No scheduled events at this time.
+   </div>
+<% end %>
+
+
 

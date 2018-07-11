@@ -1,6 +1,6 @@
 <%= render "scripts" %>
 
-<%= form_for(@event) do |f| %>
+<%= form_for @event, :html => {:multipart => true} do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -14,6 +14,14 @@
   <% end %>
 
 <div class="row">
+  <div class="field col-sm-8">
+    <%= f.label :location_id %><br />
+    <%#= f.text_field :location_id %>
+    <%= f.collection_select :location_id, Location.all, :id, :combined_value, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
+    <%= link_to "Don't see your loaction? Add location", new_location_path %>
+  </div>
+</div>
+<div class="row">
   <div class="field col-sm-4">
     <%= f.label :event_title %><br />
     <%= f.text_field :event_title, :autofocus => true %>
@@ -23,8 +31,6 @@
     <%= f.collection_select :unit_id, Unit.alpha_order.all, :id, :unit_name, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
   </div>
   <div class="field col-sm-4"
-    <%= f.label :location_id %><br />
-    <%= f.text_field :location_id %>
   </div>
 </div>
 <div class="row">
@@ -50,10 +56,15 @@
     <%= f.label :details %><br />
     <%= f.text_area :details, :rows => 5, :class => 'boxsizingBorder' %>
   </div>
-  <div class="field">
-    <%= f.label :graphic_address %><br />
-    <%= f.text_field :graphic_address %>
-  </div>
+
+    <div class="field">
+         <% if @event.feature_image? %>
+          <img src="<%= @event.feature_image.url(:landscape_profile).to_s %>" class="feature_image" />
+        <% end %><br />
+      <%= f.label :feature_image %>: <%= @event.feature_image.url(:landscape_profile).to_s %><br />
+      <%= f.file_field :feature_image, :class => 'boxsizingBorder' %>
+    </div>
+
   <div class="actions">
     <%= f.submit:data => { :disable_with => "Submitting ..." }, :class => "btn-default btn1" %>
   </div>

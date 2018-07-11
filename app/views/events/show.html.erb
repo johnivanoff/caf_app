@@ -1,39 +1,48 @@
 <h1><%= @event.event_title %></h1>
 
-<p>
-  <b>Location:</b>
-  <%= @event.location.location_name %>
-</p>
 
-<p>
-  <b>Event start:</b>
-  <%= @event.event_start.strftime('%b %d, %Y %I:%M %p %Z') %>
-</p>
+<div class="row">
+  <div class="col-sm-4">
+    <% if @event.event_start.strftime("%b %d" ) == @event.event_end.strftime("%b %d") %>
+      <div class="date-range">
+        <div class="calendar-css">
+          <div class="calendar_month"><%= @event.event_start.strftime("%b") %></div>
+          <div class="calendar_date"><%= @event.event_start.strftime("%d") %></div>
+        </div>
+      </div>
+    <% else %>
+       <div class="date-range">
+        <div class="calendar-css">
+          <div class="calendar_month"><%= @event.event_start.strftime("%b") %></div>
+          <div class="calendar_date"><%= @event.event_start.strftime("%d") %></div>
+        </div>
+        <span style=" font-size: 1em; margin: 0.5em 0 0 0;">&#8211; </span>
+        <div class="calendar-css">
+          <div class="calendar_month"><%= @event.event_end.strftime("%b") %></div>
+          <div class="calendar_date"><%= @event.event_end.strftime("%d") %></div>
+        </div>
+        </div>
+    <% end %>
 
-<p>
-  <b>Event end:</b>
-  <%= @event.event_end.strftime('%b %d, %Y %I:%M %p %Z') %>
-</p>
+      <div class="location"><%= @event.location.city + ", " + @event.location.state %></div>
+</div>
+  <div class="col-sm-8">
+  <% if !@event.feature_image.blank? %>
+    <img src="<%= @event.feature_image.url(:landscape_profile).to_s %>" style="border: 1px solid #000;margin: 0 auto;"/>
+  <% end %>
+  
+  </div>
+</div>
+
 
 <p>
   <b>More Info:</b>
   <%= link_to @event.event_URL, @event.event_URL %>
 </p>
 
-<p>
-  <b>Contact:</b>
-  <%= @event.contact_info %>
-</p>
 
-<p>
-  <b>Details:</b>
-  <%= @event.details %>
-</p>
+  <%= markdown @event.details %>
 
-<p>
-  <b>Graphic address:</b>
-  <%= @event.graphic_address %>
-</p>
 
 <% if signed_in?%>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>

@@ -1,3 +1,18 @@
+<script>
+
+$(function() {
+$('body').on('click','a[href^="#aircraft_info"]',function(event){
+    event.preventDefault();
+    var target_offset = $(this.hash).offset() ? $(this.hash).offset().top : 0;
+    //change this number to create the additional off set        
+    var customoffset = -800
+    $('html, body').animate({scrollTop:target_offset - customoffset}, 800);
+    $('.nav-tabs a[href="#aircraft"]').tab('show');
+});
+});
+</script>
+
+
 <% @aircraft_array = @all_aircraft.map{|x| x[:id]} %>
 
 <div class="btn-group btn-group-justified" role="group" >

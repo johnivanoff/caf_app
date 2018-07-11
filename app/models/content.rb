@@ -23,6 +23,10 @@ class Content < ActiveRecord::Base
   scope :home, joins(:content_category).merge(ContentCategory.home)
   scope :member_home, joins(:content_category).merge(ContentCategory.member_home)
 
+
+  scope :aircraft_rides_copy, where('slug = "aircraft_rides_intro"')
+  scope :hall_of_fame_copy, where('slug = "hall_of_fame"')
+
   scope :categorize, order("contents.content_category_id ASC")
   scope :tease, :limit => 4
   scope :reverse, order("contents.published_at DESC")

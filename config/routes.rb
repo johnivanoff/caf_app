@@ -95,7 +95,8 @@ CafApp::Application.routes.draw do
   match 'general_staff' => 'members#gen_staff_directory', :as => :general_staff
   match 'home' => 'contents#home', :as => :home
   match 'content/:id/news_edit'
-
+  match 'aircraft_rides' => 'aircraft#aircraft_rides', :as => :aircraft_rides
+  match 'hall_of_fame' => 'members#hall_of_fame', :as => :hall_of_fame
 
   post 'preview', :to => 'previews#show', :as => :preview
 

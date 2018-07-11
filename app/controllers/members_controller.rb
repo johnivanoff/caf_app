@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
   before_filter :set_member, only: [:show, :edit, :update, :destroy]
 
-skip_before_filter :check_authorization, :check_authentication, :only => [:gen_staff_directory]
+skip_before_filter :check_authorization, :check_authentication, :only => [:gen_staff_directory, :hall_of_fame]
 
 
   respond_to :html
@@ -20,7 +20,11 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:gen_s
     @gs_staff = Member.gs_staff.ordered.all
   end 
 
-
+  def hall_of_fame
+    @hall_of_famers = Member.hall_of_fame.term_ordered.all
+    @hall_of_fame_copy = Content.hall_of_fame_copy
+  end 
+  
   def show
     respond_with(@member)
   end
@@ -89,8 +93,8 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:gen_s
     if params[:commit] == "Update Member"
       checked_roles = []
       checked_params = params[:role_list] || []
-      for check_box_id in checked_params
-        role = Role.find(check_box_id)
+      for role_check_box_id in checked_params
+        role = Role.find(role_check_box_id)
         if not @member.user.roles.include?(role)
           @member.user.roles << role
         end
