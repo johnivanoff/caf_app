@@ -95,6 +95,7 @@
           <ul class="nav nav-tabs">
             <li class="active"><a href="#aircraft" data-toggle="tab"><i class="fa fa-plane"></i> Aircraft  x<%= @unit.aircrafts.count %></a></li>
             <li>               <a href="#aboutus" data-toggle="tab"><i class="fa fa-info-circle"></i> About</a></li>
+            <li>               <a href="#events" data-toggle="tab"><i class="fa fa-calendar "></i> Events</a></li>
           </ul>
           <div class="tab-content">
 
@@ -143,6 +144,74 @@
                 </div>
               </div>
             </div> 
+
+            <div class="tab-pane fade" id="events">
+              <div class="media">
+                <div class="media-body">
+                          <% if !@unit.events.blank? %>
+                          <% @unit.events.each do |event| %>
+                             <div class="row">
+                               <div class="col-sm-3">
+                                <% if event.feature_image? %>
+                                  <img src='<%= event.feature_image.url(:directory_size).to_s %>' width="250px" class="profile_photo" />
+                                <% else %>
+                                  <img src='/uploads/aircraft_profile_photos/default_2.jpg' width="250px" class="profile_photo" />
+                                <% end %>
+                               </div>
+                               <div class="col-sm-9">
+                                 <div class="calendar_row" style="border: none;">
+                                  <div class="cell" style="width: 25%; margin-right: 2em;">
+                                    <% if event.event_start.strftime("%b %d" ) == event.event_end.strftime("%b %d") %>
+                                      <div class="date-range">
+                                        <div class="calendar-css">
+                                          <div class="calendar_month"><%= event.event_start.strftime("%b") %></div>
+                                          <div class="calendar_date"><%= event.event_start.strftime("%d") %></div>
+                                        </div>
+                                      </div>
+                                    <% else %>
+                                       <div class="date-range">
+                                        <div class="calendar-css">
+                                          <div class="calendar_month"><%= event.event_start.strftime("%b") %></div>
+                                          <div class="calendar_date"><%= event.event_start.strftime("%d") %></div>
+                                        </div>
+                                        <span style=" font-size: 1em; margin: 0.5em 0 0 0;">&#8211; </span>
+                                        <div class="calendar-css">
+                                          <div class="calendar_month"><%= event.event_end.strftime("%b") %></div>
+                                          <div class="calendar_date"><%= event.event_end.strftime("%d") %></div>
+                                        </div>
+                                        </div>
+                                    <% end %>
+
+                                      <div class="location"><%= event.location.city + ", " + event.location.state %></div>
+                                    </div>
+                                <div class="cell" style="width: 70%;">
+                                 <h2><%= event.event_title %> <span><%= link_to 'More Info', event_path(event) %></span></h2>
+                                       <% if event.details? %>
+                                         <% if event.details.length > 700 %>
+                                            <%= truncate(event.details, :length => 700, :separator => ' ') %> <em>...</em>
+                                          <% else %>
+                                            <%= markdown event.details %>
+                                          <% end %>
+                                        <% end %>                                 
+                                 
+                                   <% if signed_in?%>
+                                     <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+                                       <br /><%= link_to 'Edit Event', edit_event_path(event) %>
+                                     <% end %>
+                                   <% end %>
+                               </div>
+                             </div></div></div>
+                          <% end %>
+                          <% else %>
+                          <p>No events currently scheduled.</p>
+                          <% end %>
+                </div>
+              </div>
+            </div>
+
+
+
+
 </div>	  
 
 

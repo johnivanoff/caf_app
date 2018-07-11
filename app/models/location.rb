@@ -3,4 +3,8 @@ class Location < ActiveRecord::Base
 
   has_many :events
   
+  def combined_value
+    "#{self.location_name_short} | #{self.icao_identifier}, #{self.city}  #{self.state}"
+  end
+  
 end
