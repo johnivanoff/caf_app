@@ -104,15 +104,15 @@
                 <div class="media-body">
                           <% if !@unit.aircrafts.blank? %>
                           <% @unit.aircrafts.each do |aircraft| %>
-                             <div class="row">
-                               <div class="col-sm-3">
+                             <div class="aircraft-tab row">
+                               <div class="col-sm-5 col-md-4 col-lg-3">
                                 <% if aircraft.profile_photo? %>
                                   <img src='<%= aircraft.profile_photo.url(:directory_size).to_s %>' width="250px" class="profile_photo" />
                                 <% else %>
                                   <img src='/uploads/aircraft_profile_photos/default_2.jpg' width="250px" class="profile_photo" />
                                 <% end %>
                                </div>
-                               <div class="col-sm-9">
+                               <div class="col-sm-7 col-md-8 col-lg-9">
                                  <h2><%= aircraft.aircraft_type.aircraft_type_designation + ' ' + aircraft.aircraft_type.aircraft_name + ' ' + aircraft.name %> <span><%= link_to 'More '  + aircraft.name + ' Info', aircraft_path(aircraft) %></span></h2>
                                        <% if aircraft.description? %>
                                          <% if aircraft.description.length > 700 %>

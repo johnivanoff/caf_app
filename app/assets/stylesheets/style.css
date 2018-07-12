@@ -409,6 +409,11 @@ label {
   bottom: 0px;
   }
 
+.aircraft-tab {
+  margin: 0 0 2em 0;
+  padding: 0 0 2em 0;
+  border-bottom: 1px solid #ddd;
+}
 
 .actions {
   margin-top: 2em;

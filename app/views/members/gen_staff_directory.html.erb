@@ -16,9 +16,9 @@
 <div class="row"> 
 <% @gs_staff.each do |gs_staff| %>
 
-  <div class="col-xs-12 col-sm-4 col-md-3 blocchi-parent" style="height: 436px;">
+  <div class="col-xs-12 col-sm-4 col-md-3 blocchi-parent" style="min-height: 250px;">
       <% if gs_staff.photo? %>
-      <img src="<%= gs_staff.photo.url(:directory_size).to_s %>" style="width:100%;max-height: 264px;" />
+      <img src="<%= gs_staff.photo.url(:directory_size).to_s %>" style="width:100%" />
       <% else %>
       <img src="/uploads/website_images/default_member.png" style="width:100%;max-height: 264px;" />
       <% end %>
