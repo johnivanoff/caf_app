@@ -17,7 +17,7 @@
   <div class="field col-sm-8">
     <%= f.label :location_id %><br />
     <%#= f.text_field :location_id %>
-    <%= f.collection_select :location_id, Location.all, :id, :combined_value, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
+    <%= f.collection_select :location_id, Location.ordered.all, :id, :combined_value, options = {:prompt => true}, html_options = {:class => "styled-select boxsizingBorder"} %>
     <%= link_to "Don't see your location? Add location", new_location_path %>
   </div>
 </div>

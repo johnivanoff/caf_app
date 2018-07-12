@@ -7,4 +7,6 @@ class Location < ActiveRecord::Base
     "#{self.location_name_short} | #{self.icao_identifier}, #{self.city}  #{self.state}"
   end
   
+  scope :ordered, order("locations.location_name_short ASC")
+
 end
