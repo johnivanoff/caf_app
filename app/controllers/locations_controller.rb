@@ -4,7 +4,7 @@ class LocationsController < ApplicationController
   respond_to :html
 
   def index
-    @locations = Location.all
+    @locations = Location.ordered.all
     respond_with(@locations)
   end
 
