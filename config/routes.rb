@@ -83,6 +83,7 @@ CafApp::Application.routes.draw do
 
   match 'contacts' => 'contents#show', :id => 3, :as => :contacts
   match 'careers' => 'contents#show', :id => 65, :as => :careers
+  match 'airbase' => 'contents#show', :id => 64, :as => :airbase
   match 'privacy_policy' => 'contents#show', :id => 82, :as => :privacy_policy
   match 'membership' => 'contents#show', :id => 21, :as => :membership
   match 'admin' => 'contents#show', :id => 4, :as => :admin
