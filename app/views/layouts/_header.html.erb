@@ -10,7 +10,7 @@
             Last login: <%= current_user.last_sign_in_at.strftime('%H:%M on %m/%d/%y') %> | 
             <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
           <% else %>
-            <%= link_to 'Member Login', login_path %>
+            <%#= link_to 'Member Login', login_path %>
           <% end %>
         </div>
 
