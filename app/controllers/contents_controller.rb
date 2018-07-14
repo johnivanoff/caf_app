@@ -93,6 +93,10 @@ class ContentsController < ApplicationController
     respond_with(@content)
   end
 
+  def password_reset
+
+  end
+
   private
     def set_content
       @content = Content.find(params[:id])
