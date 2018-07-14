@@ -172,14 +172,15 @@ CafApp::Application.routes.draw do
   end
 
 
-devise_for :users, :skip => [:registrations]                                          
-    as :user do
+
+#devise_for :users, :skip => [:registrations]                                          
+    devise_scope :user do
       get "login", :to => "devise/sessions#new"
       get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
       put 'users' => 'devise/registrations#update', :as => 'user_registration'            
     end
 
-
+ devise_for :users, :controllers => { :passwords =>  "passwords" }
 
 #  resources :users
 resources :users do

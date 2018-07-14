@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180224050427) do
+ActiveRecord::Schema.define(:version => 20180714020513) do
 
   create_table "aircraft", :force => true do |t|
     t.string   "name"
@@ -214,6 +214,7 @@ ActiveRecord::Schema.define(:version => 20180224050427) do
     t.string   "contact_info"
     t.text     "details"
     t.string   "graphic_address"
+    t.string   "feature_image"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.integer  "unit_id"
@@ -463,10 +464,12 @@ ActiveRecord::Schema.define(:version => 20180224050427) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["username"], :name => "index_users_on_username", :unique => true
 
   create_table "versions", :force => true do |t|
     t.string   "item_type",                        :null => false

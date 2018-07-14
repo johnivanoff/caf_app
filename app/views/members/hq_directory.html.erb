@@ -12,8 +12,17 @@
 </form>
 </div>
 
+<style>
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+</style>
 
-<div class="row"> 
+
+<div class="row row-eq-height"> 
 <% @hq_positions.each do |member| %>
 
   <div class="col-xs-12 col-sm-4 col-md-3 blocchi-parent" style="min-height: 250px;">
@@ -35,8 +44,11 @@
           <% end %>
         <br />
            <%= member.user.email %><br />
-          <%= member.work_phone %></p>
-
+          <% if member.work_phone? %>
+            <%= member.work_phone %>
+          <% else %>
+            &nbsp;
+          <% end %></p>
 
 
   </div>

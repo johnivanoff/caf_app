@@ -46,4 +46,10 @@ class ApplicationController < ActionController::Base
    end
   end
 
+# for redirect to custom reset password followup page
+
+  def after_sending_reset_password_instructions_path_for(resource)
+    password_reset_path
+  end
+
 end

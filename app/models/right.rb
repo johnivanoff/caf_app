@@ -25,7 +25,8 @@ class Right < ActiveRecord::Base
     "add_news" => "READ",
     "blogs_index" => "READ",
     "add_blog" => "READ",
-    "hall_of_fame" => "READ"
+    "hall_of_fame" => "READ",
+    "password_reset" => "READ"
 	}
 
 	scope :ordered, order("rights.resource ASC")
