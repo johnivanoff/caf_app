@@ -44,5 +44,13 @@ class Member < ActiveRecord::Base
     self.last_name + ', ' + self.first_name
   end
 
+  def self.search(search)
+    if search
+      find(:all, :conditions => ['last_name LIKE ?', "%#{search}%"], :order => "last_name, first_name")
+    else
+      find(:all, :order => "last_name, first_name", :limit => 10)
+    end
+  end
+
 
 end
