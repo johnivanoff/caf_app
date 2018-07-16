@@ -7,8 +7,12 @@ skip_before_filter :check_authorization, :check_authentication, :only => [:gen_s
   respond_to :html
 
   def index
-    @members = Member.ordered.all
-    respond_with(@members)
+#    @members = Member.ordered.all
+#    respond_with(@members)
+
+    results = Member.search(params[:search])
+    @members = results
+
   end
 
   def hq_directory
