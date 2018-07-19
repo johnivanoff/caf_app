@@ -598,6 +598,17 @@ h3:after {
   background: none;
 }
 
+.highlightbox {
+    border: 1px solid #ddd;
+    padding: 1em;
+    font-size: 1.25em;
+    line-height: 1.4em;
+    margin: 1em auto 2em;
+    -webkit-box-shadow: 2px 2px 5px 1px #b8b8b8;
+    -moz-box-shadow: 2px 2px 5px 1px #b8b8b8;
+    box-shadow: 2px 2px 5px 1px #b8b8b8;
+}
+
 /* Ludos overwrites ==============================================================*/
 
 @media (max-width: 767px) {

@@ -98,6 +98,8 @@ CafApp::Application.routes.draw do
   match 'content/:id/news_edit'
   match 'aircraft_rides' => 'aircraft#aircraft_rides', :as => :aircraft_rides
   match 'hall_of_fame' => 'members#hall_of_fame', :as => :hall_of_fame
+  get "contents/password_reset"
+  match 'password_reset' => 'contents#password_reset', :as => :password_reset
 
   post 'preview', :to => 'previews#show', :as => :preview
 
@@ -176,8 +178,8 @@ CafApp::Application.routes.draw do
 #devise_for :users, :skip => [:registrations]                                          
     devise_scope :user do
       get "login", :to => "devise/sessions#new"
-      get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
-      put 'users' => 'devise/registrations#update', :as => 'user_registration'            
+#      get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'    
+#      put 'users' => 'devise/registrations#update', :as => 'user_registration'            
     end
 
  devise_for :users, :controllers => { :passwords =>  "passwords" }
