@@ -73,28 +73,30 @@ CafApp::Application.routes.draw do
   end
   
   
-  
+  match 'home' => 'contents#home', :as => :home
   match 'news' => 'contents#news_index', :as => :news
 	match 'new_page' => 'contents#new_page', :as => :new_page
 	match 'add_news' => 'contents#add_news', :as => :add_news
-
   match 'blogs' => 'contents#blogs_index', :as => :blogs
-	match 'add_blog' => 'contents#add_blog', :as => :add_blog
 
+	match 'add_blog' => 'contents#add_blog', :as => :add_blog
   match 'contacts' => 'contents#show', :id => 3, :as => :contacts
   match 'careers' => 'contents#show', :id => 65, :as => :careers
   match 'airbase' => 'contents#show', :id => 64, :as => :airbase
+  match 'rtl-support' => 'contents#show', :id => 45, :as => :rtl_support
+  
   match 'privacy_policy' => 'contents#show', :id => 82, :as => :privacy_policy
   match 'membership' => 'contents#show', :id => 21, :as => :membership
   match 'admin' => 'contents#show', :id => 4, :as => :admin
   match 'member_home' => 'contents#member_home', :as => :member_home
+
   match 'unit_admin' => 'units#unit_admin', :as => :unit_admin
   match 'hq_directory' => 'members#hq_directory', :as => :hq_directory
   match 'aircraft_admin' => 'aircraft#aircraft_admin', :as => :aircraft_admin
   match 'hq_position_admin' => 'hq_position_assignments#hq_position_admin', :as => :hq_position_admin
   match 'headquarters_staff' => 'position_assignments#headquarters_staff', :as => :headquarters_staff
   match 'general_staff' => 'members#gen_staff_directory', :as => :general_staff
-  match 'home' => 'contents#home', :as => :home
+
   match 'content/:id/news_edit'
   match 'aircraft_rides' => 'aircraft#aircraft_rides', :as => :aircraft_rides
   match 'hall_of_fame' => 'members#hall_of_fame', :as => :hall_of_fame
