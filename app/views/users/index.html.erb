@@ -1,16 +1,43 @@
-<h1>Users</h1>
+<script>
+
+$(function() {
+  $('th').click(function(){
+      var table = $(this).parents('table').eq(0)
+      var rows = table.find('tr:gt(0)').toArray().sort(comparer($(this).index()))
+      this.asc = !this.asc
+      if (!this.asc){rows = rows.reverse()}
+      for (var i = 0; i < rows.length; i++){table.append(rows[i])}
+  })
+function comparer(index) {
+    return function(a, b) {
+        var valA = getCellValue(a, index), valB = getCellValue(b, index)
+        return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.localeCompare(valB)
+    }
+}
+function getCellValue(row, index){ return $(row).children('td').eq(index).html() }
+  });
+
+</script>
+
+<h1>Users [<%= @users.count %>]</h1>
 
 <table>
   <tr>
-    <th>Username</th>
+    <th class="sortable">Username</th>
     <th>Roles</th>
-    <th>Last Login</th>
+    <th class="sortable">Sign in Qty</th>
+    <th class="sortable">Last Login</th>
   </tr>
 
 <% @users.each do |user| %>
   <tr>
     <td><%= user.email %></td>
-    <td>n/a</td>
+    <td>
+    <% user.roles.each do |role| %>
+      <li><%= role.name %></li>
+    <% end %>
+    </td>
+    <td><%= user.sign_in_count.to_s %></td>
     <td><%= user.last_sign_in_at %></td>
   </tr>
 <% end %>

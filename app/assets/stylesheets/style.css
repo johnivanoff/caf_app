@@ -195,6 +195,59 @@ td {
   padding: 0.3em;
 }
 
+.member-card-list {
+  min-height: 250px
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-gap: 32px;
+  margin: 0 auto;
+  max-width: 1170px;
+
+}
+
+@media (min-width: 500px) {
+.grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+}
+
+@media (min-width: 950px) {
+.grid-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+}
+
+@media (min-width: 1200px) {
+.grid-4 {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+}
+
+.grid-item {
+  border: 1px solid #ddd;
+}
+
+.card {
+
+}
+
+.card-thumb {
+background: #1b202f;
+background-size: cover;
+background-position: center center;
+min-height: 265px;
+position: relative;
+height: 100%;
+}
+
+.pa16 {
+  padding: 0.75em;
+}
+
 /* =Input Elements
 -------------------------------------------------------------- */
 
