@@ -713,11 +713,19 @@ transition: all 0.3s ease-out; -moz-transition: all 0.3s ease-out; -webkit-trans
 
 
 
-.formfilter { padding: 10px; float: left; width: 100%; border: #ccc 1px solid; margin: 10px 0px 30px 0px;}
+.formfilter { 
+  padding: 10px; 
+  /*float: left;*/
+  width: 100%; 
+  border: #ccc 1px solid; 
+  margin: 10px 0px 30px 0px;
+}
 
-
-
-
+.filter-box {
+  display: block;
+  width: 100%;
+  clear: both;
+}
 
 
 

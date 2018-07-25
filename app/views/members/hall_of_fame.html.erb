@@ -9,18 +9,15 @@
   <% end %>
 <% end %>
 
-  <div class="col-sm-12">
-  <form id="live-search" action="" class="styled formfilter"" method="post">
-
-
+<div class="filter-box">
+  <form id="live-search" action="" class="styled formfilter" method="post">
     <fieldset>
-        <input type="text" class="text-input" id="filter" value="" />
-        <label>Search/Filter</label>
-        <span id="filter-count"></span>
+      <input type="text" class="text-input" id="filter" value="" />
+      <label>Search/Filter</label>
+      <span id="filter-count"></span>
     </fieldset>
-</form>
+  </form>
 </div>
-
 
 <div class="row"> 
 <% @hall_of_famers.each do |hall_of_famer| %>
