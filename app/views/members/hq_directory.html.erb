@@ -1,10 +1,18 @@
 <h1>Headquarters Contacts</h1>
 
-
+<div class="filter-box">
+  <form id="live-search" action="" class="styled formfilter" method="post">
+    <fieldset>
+      <input type="text" class="text-input" id="filter" value="" />
+      <label>Search/Filter</label>
+      <span id="filter-count"></span>
+    </fieldset>
+  </form>
+</div>
 
 <div class="grid grid-2 grid-3 grid-4"> 
   <% @hq_positions.each do |member| %>
-    <div class="grid-item">
+    <div class="grid-item blocchi-parent">
       <div class="card">
       <% if member.photo? %>
         <div class="card-thumb" style="background-image: url(https://commemorativeairforce.org<%= member.photo.url(:directory_size).to_s %>);"></div>
@@ -28,11 +36,9 @@
           <% end %>
         </p>
         </article>
-</div>
+      </div>
     </div>
   <% end %>
-
-
 </div>
 
 <% if signed_in?%>
