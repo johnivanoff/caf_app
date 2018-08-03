@@ -50,7 +50,7 @@ class ContentsController < ApplicationController
     @info_blocks = Content.home.find_by_slug('info_blocks')
     @special_events = Content.home.find_by_slug('special_events')
     @support = Content.home.find_by_slug('support_caf')      
-    @recent_news = Content.news.reverse.tease.all
+    @recent_news = Content.news.members_only.reverse.tease.all
     @gift_shop = Content.home.find_by_slug('gift_shop')
     @bottom_info_blocks = Content.home.find_by_slug('bottom_info_blocks')
 

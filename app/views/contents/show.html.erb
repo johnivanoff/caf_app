@@ -5,10 +5,20 @@
   <%= link_to "<< Back to Blogs", blogs_path %>
 <% end %>
 
+<% if @content.members_only == true %>
+  <% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "member"} %>
+      <h1><%= @content.title %></h1>
 
-<h1><%= @content.title %></h1>
-
-<%= markdown @content.body %>
+      <%= markdown @content.body %>
+    <% end %>
+  <% else %>
+  <p>This content is for members only. You must be a member and logged in to view.</p>
+  <% end %>      
+<% else %>
+  <h1><%= @content.title %></h1>
+  <%= markdown @content.body %>
+<% end %>
 
 
 <% if signed_in?%>

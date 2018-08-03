@@ -54,6 +54,10 @@
       <%= f.label :published_at %><br />
       <%= f.datetime_select :published_at %>
     </div>
+    <div class="field">
+      <%= f.label :members_only %><br />
+      <%= f.check_box :members_only %>
+    </div>
     <div class="actions">
       <%= f.submit:data => { :disable_with => "Submitting ..." }, :class => "btn-default btn1" %>
     </div>

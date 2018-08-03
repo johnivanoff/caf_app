@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20180714020513) do
+ActiveRecord::Schema.define(:version => 20180803145050) do
 
   create_table "aircraft", :force => true do |t|
     t.string   "name"
@@ -180,6 +180,7 @@ ActiveRecord::Schema.define(:version => 20180714020513) do
     t.datetime "published_at"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.boolean  "members_only"
   end
 
   add_index "contents", ["user_id", "title", "slug"], :name => "index_contents_on_user_id_and_title_and_slug"
