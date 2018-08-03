@@ -13,7 +13,7 @@
 
 <div class="row">
   <div class="field col-sm-4">
-    <%= f.label :location_name_short %><br />
+    *<%= f.label :location_name_short, 'Short name' %> <span class="form-tip">something unique and short</span><br />
     <%= f.text_field :location_name_short, :autofocus => true %>
   </div>
   <div class="field col-sm-4">
@@ -39,11 +39,11 @@
 </div>
 <div class="row">
   <div class="field col-sm-4">
-    <%= f.label :city %><br />
+    *<%= f.label :city %><br />
     <%= f.text_field :city, :class => 'boxsizingBorder' %>
   </div>
   <div class="field col-sm-4">
-    <%= f.label :state %><br />
+    *<%= f.label :state %><br />
     <%= f.text_field :state, :class => 'boxsizingBorder' %>
   </div>
   <div class="field col-sm-4">
