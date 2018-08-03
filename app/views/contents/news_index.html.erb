@@ -16,21 +16,40 @@
   </form>
 </div>
 
-<% @contents.each do |content| %>
-<div class="news-summary-item">
-  <h2 style="margin: 1.4em 0;"><%= link_to content.title, content_path(content) %></h2>
 
-		<% if !content.feature_image.blank? %>
-			<img src="<%= content.feature_image.url(:landscape_profile).to_s %>" style="float: left;">
-		<% end %>
 
-		<div class="txt2"><%= markdown truncate(content.body, :length => 600, :separator => ' ') %></div>
-		<a href="/contents/<%= content.id %>" class="btn-default btn2">Read more...</a>
+  <% if signed_in?%>
+    <% if current_user.roles.any? {|role| role.name == "member"} %>
+      <% @member_contents.each do |content| %>
+        <div class="news-summary-item">
+          <h2 style="margin: 1.4em 0;"><%= link_to content.title, content_path(content) %></h2>
+            <% if !content.feature_image.blank? %>
+              <img src="<%= content.feature_image.url(:landscape_profile).to_s %>" style="float: left;">
+            <% end %>
+            <div class="txt2"><%= markdown truncate(content.body, :length => 600, :separator => ' ') %></div>
+            <a href="/contents/<%= content.id %>" class="btn-default btn2">Read more...</a>
+        </div> 
+      <hr />  
+      <% end %>
+    <% end %>
+  <% end %>      
+<% else %>
+  <% @public_contents.each do |content| %>
+        <div class="news-summary-item">
+          <h2 style="margin: 1.4em 0;"><%= link_to content.title, content_path(content) %></h2>
+            <% if !content.feature_image.blank? %>
+              <img src="<%= content.feature_image.url(:landscape_profile).to_s %>" style="float: left;">
+            <% end %>
+            <div class="txt2"><%= markdown truncate(content.body, :length => 600, :separator => ' ') %></div>
+            <a href="/contents/<%= content.id %>" class="btn-default btn2">Read more...</a>
+        </div> 
+      <hr />  
+      <% end %>
 
-</div> 
- <hr />  
-  
-<% end %>
+
+
+
+
 
 <% if signed_in?%>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>

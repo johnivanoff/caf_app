@@ -12,7 +12,8 @@ class ContentsController < ApplicationController
   end
 
   def news_index
-    @contents = Content.news.reverse.all
+    @public_contents = Content.news.public.reverse.all
+    @member_contents = Content.news.reverse.all
     respond_with(@contents)
   end
 
@@ -50,7 +51,7 @@ class ContentsController < ApplicationController
     @info_blocks = Content.home.find_by_slug('info_blocks')
     @special_events = Content.home.find_by_slug('special_events')
     @support = Content.home.find_by_slug('support_caf')      
-    @recent_news = Content.news.members_only.reverse.tease.all
+    @recent_news = Content.news.public.reverse.tease.all
     @gift_shop = Content.home.find_by_slug('gift_shop')
     @bottom_info_blocks = Content.home.find_by_slug('bottom_info_blocks')
 

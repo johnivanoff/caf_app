@@ -23,7 +23,7 @@ class Content < ActiveRecord::Base
   scope :home, joins(:content_category).merge(ContentCategory.home)
   scope :member_home, joins(:content_category).merge(ContentCategory.member_home)
 
-  scope :members_only, where('members_only != 1')
+  scope :public, where('members_only != 1')
   scope :aircraft_rides_copy, where('slug = "aircraft_rides_intro"')
   scope :hall_of_fame_copy, where('slug = "hall_of_fame"')
 
