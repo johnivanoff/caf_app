@@ -1,4 +1,14 @@
-<h1>Listing locations</h1>
+<h1>Locations</h1>
+
+<div class="col-sm-12">
+  <form id="live-search" action="" class="styled formfilter"" method="post">
+    <fieldset>
+        <input type="text" class="text-input" id="table-filter" value="" />
+        <label>Search/Filter</label>
+        <span id="filter-count"></span>
+    </fieldset>
+  </form>
+</div>
 
 <table>
   <tr>
@@ -19,7 +29,7 @@
   </tr>
 
 <% @locations.each do |location| %>
-  <tr>
+  <tr class='result'>
     <td><%= location.location_name_short %></td>
     <td><%= location.location_name %></td>
     <td><%= location.airport_name %></td>
@@ -40,4 +50,4 @@
 
 <br />
 
-<%= link_to 'New Location', new_location_path %>
+<%= button_to 'New Location', new_location_path, method: :get, :class => "btn-default btn1" %>

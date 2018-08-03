@@ -2,5 +2,18 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @location %> |
-<%= link_to 'Back', locations_path %>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+    <div class="admin-section" >
+      <h2>Admin</h2>
+      <div class='row'>
+        <div class='col-sm-4'>
+          <%= button_to 'Show', @location, method: :get, :class => "btn-default btn1" %>
+        </div>
+        <div class='col-sm-4'>
+          <%= button_to 'Back', locations_path, method: :get, :class => "btn-default btn1" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

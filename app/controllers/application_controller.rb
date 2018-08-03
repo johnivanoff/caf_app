@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
 #  force_ssl
 
+  before_filter :store_user_location!, if: :storable_location?
+  
   before_filter :check_authentication, :header_footer
 
   def check_authentication
@@ -39,16 +41,29 @@ class ApplicationController < ActionController::Base
     end
   end
 
+    def storable_location?
+      request.get? && is_navigational_format? && !devise_controller? && !request.xhr? 
+    end
+
+    def store_user_location!
+      store_location_for(:user, request.fullpath)
+    end
+
   def after_sign_in_path_for(resource)
-   @user = current_user
-   if user_signed_in?
-     member_home_path
-   end
+#     stored_location_for(resource) || member_home_path
+    member_home_path
   end
+  
+#  def after_sign_in_path_for(resource)
+#   @user = current_user
+#   if user_signed_in?
+#     member_home_path
+#   end
+#  end
 
 # for redirect to custom reset password followup page
 
-  def after_sending_reset_password_instructions_path_for(resource)
+  def after_sending_reset_password_instructions_path_for()
     password_reset_path
   end
 
