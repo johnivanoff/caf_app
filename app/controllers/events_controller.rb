@@ -6,7 +6,7 @@ class EventsController < ApplicationController
   respond_to :html
 
   def index
-    @events = Event.published.all
+    @events = Event.ordered.published.all
     respond_with(@events)
   end
 
