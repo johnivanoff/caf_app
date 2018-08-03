@@ -1,6 +1,6 @@
 class Content < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :body, :content_type_id, :content_category_id, :feature_image, :published_at, :slug, :title, :user_id
+  attr_accessible :body, :content_type_id, :content_category_id, :feature_image, :members_only, :published_at, :slug, :title, :user_id
 
   belongs_to :content_category
   belongs_to :content_type
@@ -23,7 +23,7 @@ class Content < ActiveRecord::Base
   scope :home, joins(:content_category).merge(ContentCategory.home)
   scope :member_home, joins(:content_category).merge(ContentCategory.member_home)
 
-
+  scope :public, where('members_only != 1')
   scope :aircraft_rides_copy, where('slug = "aircraft_rides_intro"')
   scope :hall_of_fame_copy, where('slug = "hall_of_fame"')
 
