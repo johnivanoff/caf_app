@@ -48,10 +48,14 @@
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
     <div class="admin-section" >
       <h2>Admin</h2>
-        <%= link_to 'Edit', edit_event_path(@event) %> |
-        <%= link_to 'Back', events_path %>
-
-        <%= render 'versions', :member => @member %>
+      <div class='row'>
+        <div class='col-sm-4'>
+          <%= button_to 'Edit Event', edit_event_path(@event), method: :get, :class => "btn-default btn1" %>
+        </div>
+        <div class='col-sm-4'>
+        <%= button_to  'Back', events_path, method: :get, :class => "btn-default btn1" %>
+        </div>
+      </div>
     </div>
   <% end %>
 <% end %>

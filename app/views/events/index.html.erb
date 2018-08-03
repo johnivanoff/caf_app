@@ -60,7 +60,7 @@
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
     <div class="admin-section" >
       <h2>Admin</h2>
-        <%= link_to 'New Event', new_event_path %> |
+       <%= button_to 'Add New Event', new_event_path, method: :get, :class => "btn-default btn1" %>
     </div>
   <% end %>
 <% end %>
