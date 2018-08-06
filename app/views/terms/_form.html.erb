@@ -18,7 +18,7 @@
     <%= f.collection_select :position_id, Position.all, :id, :position_name, options = {:order => 'position_name ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
   </div>
   <div class="field">
-    <%= f.label :member_id, "member" %><br />
+    <%= f.label :member_id, "Member" %><br />
     <%= f.collection_select :member_id, Member.ordered.all, :id, :full_name, options = {:order => 'last_name ASC', :prompt => true}, html_options = {:class => "styled-select"} %>
   </div>
   <div class="field">
