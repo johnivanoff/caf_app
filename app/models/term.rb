@@ -7,15 +7,18 @@ class Term < ActiveRecord::Base
 
 
   scope :ordered, order("terms.position_id ASC") 
+
   scope :current, lambda {
     where ("terms.term_start IS NOT NULL AND terms.term_start < ? AND terms.term_end > ? "), (Date.today), (Date.today)
     }
   scope :past, lambda {
     where ("terms.term_start IS NOT NULL AND terms.term_end < ? "), (Date.today)
     }
+
   scope :time_ordered, order("terms.term_start DESC") 
 
   scope :hof, where("terms.position_id = 2")
 
+  scope :alpha_order, joins(:member).merge(Member.ordered)
 
 end

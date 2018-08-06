@@ -4,7 +4,7 @@ class TermsController < ApplicationController
   respond_to :html
 
   def index
-    @terms = Term.all
+    @terms = Term.ordered.alpha_order.all
     respond_with(@terms)
   end
 
