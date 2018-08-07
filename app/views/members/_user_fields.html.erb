@@ -4,7 +4,9 @@
   <%= f.text_field :email %>
 </div>
 <div class='field col-sm-6'>
+<% if !@member.user.persisted? %>
   <%= f.label :password %><br />
-  <%= f.password_field :password  %>
+  <%= f.password_field :password   %>
+<% end %>
 </div>
 </div>

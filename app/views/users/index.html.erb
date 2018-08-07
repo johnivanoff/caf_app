@@ -23,6 +23,7 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
 
 <table>
   <tr>
+    <th class="sortable">User ID</th>
     <th class="sortable">Username</th>
     <th>Roles</th>
     <th class="sortable">Sign in Qty</th>
@@ -31,6 +32,7 @@ function getCellValue(row, index){ return $(row).children('td').eq(index).html()
 
 <% @users.each do |user| %>
   <tr>
+    <td><%= user.id %></td>
     <td><%= user.email %></td>
     <td>
     <% user.roles.each do |role| %>
