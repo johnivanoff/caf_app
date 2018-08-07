@@ -8,6 +8,8 @@ class Content < ActiveRecord::Base
   has_paper_trail :class_name => 'ContentVersion',
      :meta => { :author_username => :user_name}
 
+  mount_uploader :feature_image, ImageUploader
+  
 #  validates_presence_of :slug
 
 #  def to_param
@@ -30,8 +32,6 @@ class Content < ActiveRecord::Base
   scope :categorize, order("contents.content_category_id ASC")
   scope :tease, :limit => 4
   scope :reverse, order("contents.published_at DESC")
-
-  mount_uploader :feature_image, ImageUploader
   
 # Content category ids
 #
