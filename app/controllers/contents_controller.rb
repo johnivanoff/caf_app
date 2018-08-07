@@ -94,9 +94,9 @@ class ContentsController < ApplicationController
     respond_with(@content)
   end
 
-  def password_reset
+#  def password_reset
 
-  end
+#  end
 
   private
     def set_content
