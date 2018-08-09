@@ -7,6 +7,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.ordered.published.all
+    @event_copy = Content.event_copy
     respond_with(@events)
   end
 
