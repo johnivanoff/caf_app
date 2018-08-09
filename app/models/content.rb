@@ -28,6 +28,7 @@ class Content < ActiveRecord::Base
   scope :public, where('members_only != 1')
   scope :aircraft_rides_copy, where('slug = "aircraft_rides_intro"')
   scope :hall_of_fame_copy, where('slug = "hall_of_fame"')
+  scope :event_copy, where('slug = "event"')
 
   scope :categorize, order("contents.content_category_id ASC")
   scope :tease, :limit => 4

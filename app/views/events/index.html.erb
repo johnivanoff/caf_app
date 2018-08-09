@@ -1,11 +1,19 @@
 <% initial_date = "" %>
-
-<h1>Upcoming Events</h1>
 <% if signed_in?%>
   <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
     <%= button_to 'Add New Event', new_event_path, method: :get, :class => "btn-default btn1" %>
   <% end %>
 <% end %>
+
+<h1>Upcoming Events</h1>
+
+<%= markdown @event_copy.last.body %>
+<% if signed_in?%>
+  <% if current_user.roles.any? {|role| role.name == "superuser" or role.name == "admin"} %>
+        <div class="form-tip"><%= link_to 'Edit copy', edit_content_path(@event_copy.last) %></div>
+  <% end %>
+<% end %>
+
 
 <% if !@events.blank? %>
 <% @events.each do |event| %>
