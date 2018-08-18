@@ -21,6 +21,7 @@ gem 'activemerchant', :require => 'active_merchant'
 #SEO Gems
 gem 'headliner', '~> 0.1.3'
 gem 'metamagic'
+gem 'sitemap_generator'
 
 #adding acts_as_state_machine for orders processing
 gem 'aasm'
