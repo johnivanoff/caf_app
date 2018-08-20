@@ -73,22 +73,46 @@ CafApp::Application.routes.draw do
   end
   
   
-  match 'home' => 'contents#home', :as => :home
-  match 'news' => 'contents#news_index', :as => :news
-	match 'new_page' => 'contents#new_page', :as => :new_page
-	match 'add_news' => 'contents#add_news', :as => :add_news
-  match 'blogs' => 'contents#blogs_index', :as => :blogs
+  get 'home' => 'contents#home', :as => :home
+  get 'news' => 'contents#news_index', :as => :news
+	get 'new_page' => 'contents#new_page', :as => :new_page
+	get 'add_news' => 'contents#add_news', :as => :add_news
+  get 'blogs' => 'contents#blogs_index', :as => :blogs
 
-	match 'add_blog' => 'contents#add_blog', :as => :add_blog
-  match 'contacts' => 'contents#show', :id => 3, :as => :contacts
-  match 'careers' => 'contents#show', :id => 65, :as => :careers
-  match 'airbase' => 'contents#show', :id => 64, :as => :airbase
-  match 'rtl-support' => 'contents#show', :id => 45, :as => :rtl_support
+	get 'add_blog' => 'contents#add_blog', :as => :add_blog
+  get 'contacts' => 'contents#show', :id => 3, :as => :contacts
+  get 'careers' => 'contents#show', :id => 65, :as => :careers
+  get 'airbase' => 'contents#show', :id => 64, :as => :airbase
+  get 'rtl-support' => 'contents#show', :id => 45, :as => :rtl_support
   
-  match 'privacy_policy' => 'contents#show', :id => 82, :as => :privacy_policy
-  match 'membership' => 'contents#show', :id => 21, :as => :membership
-  match 'admin' => 'contents#show', :id => 4, :as => :admin
-  match 'member_home' => 'contents#member_home', :as => :member_home
+  get 'privacy_policy' => 'contents#show', :id => 82, :as => :privacy_policy
+  get 'membership' => 'contents#show', :id => 21, :as => :membership
+  get 'admin' => 'contents#show', :id => 4, :as => :admin
+  get 'member_home' => 'contents#member_home', :as => :member_home
+  get 'how_to_get_involved_with_the_caf' => 'contents#show', :id => 61, :as => :how_to_get_involved_with_the_caf
+  
+  get 'education' => 'contents#show', :id => 92, :as => :education
+  get 'non_profit_information'  => 'contents#show', :id => 63, :as => :non_profit_information
+  get 'media_inquiries' => 'contents#show', :id => 7, :as => :media_inquiries
+  get 'request_an_aircraft_appearance' => 'contents#show', :id => 25, :as => :request_an_aircraft_appearance
+
+  # Support page and associated links
+  get 'support' => 'contents#show', :id => 10, :as => :support
+  get 'donation' => 'contents#show', :id => 11, :as => :donation
+  get 'sponsor_an_aircraft' => 'contents#show', :id => 5, :as => :sponsor_an_aircraft
+  get 'support_a_special_caf_project' => 'contents#show', :id => 16, :as => :support_a_special_caf_project
+  get 'join_the_heritage_club' => 'contents#show', :id => 13, :as => :join_the_heritage_club
+  get 'join_the_victory_circle' => 'contents#show', :id => 12, :as => :join_the_victory_circle
+  get 'aircraft_donations' => 'contents#show', :id => 15, :as => :aircraft_donations
+
+  # Membership page and associated links
+  get 'membership' => 'contents#show', :id => 21, :as => :membership
+  get 'membership_options' => 'contents#show', :id => 17, :as => :membership_options
+  get 'how_to_get_involved' => 'contents#show', :id => 61, :as => :how_to_get_involved
+  get 'renew_membership' => 'contents#show', :id => 19, :as => :renew_membership
+  get 'member_benefits' => 'contents#show', :id => 31, :as => :member_benefits
+  get 'contact_member_services' => 'contents#show', :id => 62, :as => :contact_member_services
+  
 
   match 'unit_admin' => 'units#unit_admin', :as => :unit_admin
   match 'hq_directory' => 'members#hq_directory', :as => :hq_directory
