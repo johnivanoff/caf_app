@@ -153,7 +153,7 @@ CafApp::Application.routes.draw do
     end
   end
 
-#  resources :aircraft
+  resources :aircraft
   resources :aircraft do
     resources :versions, :only => [:destroy] do
       member do
